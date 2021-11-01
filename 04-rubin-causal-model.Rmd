@@ -1023,7 +1023,7 @@ A way to improve your representativeness, at least regarding a biased sample, is
 
 ### Unconfoundedness
 
-A fourth assumption we use when working with causal models --- but not with predictive models --- is **"unconfoundedness."** If whether or not a unit received treatment or control is a random, we write that treatment assignment is not "confounded." If, however, treatment assignment depends on the value of another variable --- either a covariate or a potential outcome --- then treatment assignment is confounded. Our lives are easiest if we can (reasonably!) assume unconfoundedness. In that case, we can estimate the average treatment effect by subtracting the average outcome of control unit from the average outcome of treated units, as we do above. 
+A fourth assumption we use when working with causal models --- but not with predictive models --- is **"unconfoundedness."** If whether or not a unit received treatment or control is a random, we write that treatment assignment is not "confounded." If, however, treatment assignment depends on the value of a potential outcome, then treatment assignment is confounded. Our lives are easiest if we can (reasonably!) assume unconfoundedness. In that case, we can estimate the average treatment effect by subtracting the average outcome of control unit from the average outcome of treated units, as we do above. 
 
 Consider the "Perfect Doctor" as an example of the problems caused by confounded treatment assignments. Imagine we have this omniscient doctor who knows how any patient will respond to a certain drug. She has perfect knowledge of the entire Preceptor Table. Using this information, she always assign each patient the treatment with the best outcome, whether that is treatment or control. Consider:
 
@@ -1087,19 +1087,7 @@ tibble(subject = c("Yao", "Emma", "Cassidy", "Tahmid", "Diego", "MEAN"),
 
 &nbsp;
 
-The true causal effect of the treatment, as we can see in the first table, is -8. In other words, the treatment lowers blood pressure on average. But, using just the data we have access to if the Perfect Doctor performs the treatment assignment, we would --- if we mistakenly assume random assignment --- that the causal effect is positive, that treatment increase blood presssure. 
-
-<!-- DK: Clean up. Humor OK! But connect the humor to the specific terminology we are using. units. treatment. population. outcome. what is treatment assignment confounded with? Two possibilities: potential outcomes or covariates. Maybe  -->
-
-<!-- units: people (same 5 people as usual) -->
-<!-- population: people who got positive covid test -->
-<!-- outcome: days in hospital (most people is zero) -->
-<!-- covariate: healthy which is TRUE or FALSE -->
-<!-- treatment: you decide -->
-<!-- treatment assignment, instead of being random, give the treatment to just the healthy -->
-<!-- show the full preceptor table -->
-
-<!-- Assume drug is bad! Causal effect is to increase days in hospital.  -->
+The true causal effect of the treatment, as we can see in the first table, is -8. In other words, the treatment lowers blood pressure on average. But, using just the data we have access to if the Perfect Doctor performs the treatment assignment, we would --- if we mistakenly assume random assignment --- that the causal effect is positive, that treatment increase blood pressure. 
 
 
 
@@ -1114,7 +1102,6 @@ Now that we’ve established that unconfoundedness sucks, let’s discuss how we
 
 The only way we actually care about is randomization, where you randomly assign control and treatment groups. Flip a coin, draw sticks, whatever. As long as you use randomization as your assignment mechanism, you’re good. There is the possibility that you can’t use pure randomization due to ethical or practical reasons, so we are forced to use non-random assignment mechanisms. Many statistical methods have been developed for causal inference when there is a non-random assignment mechanism. Those methods, however, are beyond the scope of this book. So, we can pretend they don't exist, and just say "try your best to randomize everything!"
 
-<!-- DK: Delete this next section. But mention these topics in the above two sections, including the general idea of "Missing data mechanisms". sz: yup -->
 
 ## Summary
 

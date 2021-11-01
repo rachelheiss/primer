@@ -142,6 +142,13 @@
       "Repository": "CRAN",
       "Hash": "b181d4eb2904da0897a742a559964173"
     },
+    "animation": {
+      "Package": "animation",
+      "Version": "2.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b44dfd6eca87dd78c1b8acc67887c615"
+    },
     "ash": {
       "Package": "ash",
       "Version": "1.0-15",
@@ -1136,6 +1143,13 @@
       "Repository": "CRAN",
       "Hash": "092e8bfd36dc747184cb56e4686f0cd3"
     },
+    "plotly": {
+      "Package": "plotly",
+      "Version": "4.9.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f6b85d9e4ed88074ea0ede1aa74bb00e"
+    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.6",
@@ -1325,10 +1339,10 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.8",
+      "Version": "2.11",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f518ba47713f92d0d603eec7c6888faf"
+      "Hash": "320017b52d05a943981272b295750388"
     },
     "rprojroot": {
       "Package": "rprojroot",

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Rubin Causal Model | Preceptor’s Primer for Bayesian Data Science</title>
 <meta name="author" content="David Kane">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
@@ -9359,8 +9359,8 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <h3>
 <span class="header-section-number">4.4.5</span> Unconfoundedness<a class="anchor" aria-label="anchor" href="#unconfoundedness"><i class="fas fa-link"></i></a>
 </h3>
-<p>A fourth assumption we use when working with causal models — but not with predictive models — is <strong>“unconfoundedness.”</strong> Whether a unit received treatment or control should be independent of all covariates and all potential outcomes. Such a condition is most easily satisfied via random assignment to treatment or control.</p>
-<p>The idea of unconfoundedness can be seen through ‘The Perfect Doctor Experiment.’ Imagine we have this godly doctor who knows how any patient will respond to a certain drug. Using this information, they always assign each patient the best drug to cure their disease. Today, the doctor has just received a new drug (<span class="math inline">\(Y_t(u)\)</span>) which should lower someone’s blood pressure, and she is responsible for determining whether the drug actually works using an experiment. The information that the Perfect Doctor knows is displayed below.</p>
+<p>A fourth assumption we use when working with causal models — but not with predictive models — is <strong>“unconfoundedness.”</strong> If whether or not a unit received treatment or control is a random, we write that treatment assignment is not “confounded.” If, however, treatment assignment depends on the value of a potential outcome, then treatment assignment is confounded. Our lives are easiest if we can (reasonably!) assume unconfoundedness. In that case, we can estimate the average treatment effect by subtracting the average outcome of control unit from the average outcome of treated units, as we do above.</p>
+<p>Consider the “Perfect Doctor” as an example of the problems caused by confounded treatment assignments. Imagine we have this omniscient doctor who knows how any patient will respond to a certain drug. She has perfect knowledge of the entire Preceptor Table. Using this information, she always assign each patient the treatment with the best outcome, whether that is treatment or control. Consider:</p>
 <div id="qtbaaxieeq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -9808,7 +9808,8 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </table></div>
 </div>
 <p> </p>
-<p>Let’s say the doctor was bribed to get results that showed that this new drug sucks, so they makes the following treatment assignments.</p>
+<p>The Perfect Doctor would assign the treatment to Emma, Cassidy and Tahmid. She would assign control to Yao and Diego. And that is good! This is what the doctor should do. This is the best treatment assignment for the patients. But <strong>it is not a good assignment mechanism for estimating the average causal effect because treatment assignment is confounded by the values of the potential outcomes.</strong></p>
+<p>We, the non-Perfect Doctors, do not have access to the entire Precetor Table. We can only see this:</p>
 <p> </p>
 <div id="gsulnzinob" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
@@ -10257,7 +10258,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </table></div>
 </div>
 <p> </p>
-<p>The Perfect Doctor ends up producing skewed data, as they filters out all the bad reactions to the drug. Notice how the average causal effect (the difference between means) is significantly distorted. In the biased table, it shows that the control drug produces a better response, but when we look at the table with all the information, it shows that the new drug does better. We can also see how it impacts an individual unit, such as Yao, where The Doctor hides the negative effects of him taking the drug by assigning Yao be a part of the control group.</p>
+<p>The true causal effect of the treatment, as we can see in the first table, is -8. In other words, the treatment lowers blood pressure on average. But, using just the data we have access to if the Perfect Doctor performs the treatment assignment, we would — if we mistakenly assume random assignment — that the causal effect is positive, that treatment increase blood pressure.</p>
 <p>Unconfoundedness can also be seen if:</p>
 <ul>
 <li>There’s a pandemic and you only give healthy people drugs, and see a significant improvement in health
@@ -10273,7 +10274,6 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </ul>
 <p>Now that we’ve established that unconfoundedness sucks, let’s discuss how we can prevent it. All we have to do is ensure that covariants and potential outcomes don’t affect the assignment mechanism. Sounds easy!</p>
 <p>The only way we actually care about is randomization, where you randomly assign control and treatment groups. Flip a coin, draw sticks, whatever. As long as you use randomization as your assignment mechanism, you’re good. There is the possibility that you can’t use pure randomization due to ethical or practical reasons, so we are forced to use non-random assignment mechanisms. Many statistical methods have been developed for causal inference when there is a non-random assignment mechanism. Those methods, however, are beyond the scope of this book. So, we can pretend they don’t exist, and just say “try your best to randomize everything!”</p>
-<!-- DK: Delete this next section. But mention these topics in the above two sections, including the general idea of "Missing data mechanisms". sz: yup -->
 </div>
 </div>
 <div id="summary-5" class="section level2" number="4.5">

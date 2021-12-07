@@ -9,10 +9,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="libs/rglWebGL-binding-0.106.8/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.106.8/rgl.css" rel="stylesheet">
-<script src="libs/rglwidgetClass-0.106.8/rglClass.min.js"></script><script src="libs/CanvasMatrix4-0.106.8/CanvasMatrix.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet">
+<script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script><script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -51,8 +49,6 @@
 <li><a class="" href="tools.html">Tools</a></li>
 <li><a class="" href="functions.html">Functions</a></li>
 <li><a class="" href="maps.html">Maps</a></li>
-<li><a class="" href="ipums.html">IPUMS</a></li>
-<li><a class="" href="animation.html">Animation</a></li>
 <li><a class="" href="set-up-for-working-on-the-primer.html">Set Up for Working on The Primer</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -92,7 +88,11 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.data</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/">rstanarm</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/bbolker/broom.mixed">broom.mixed</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb797"><pre class="downlit sourceCode r">
+<pre><code>## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
+## TMB was built with Matrix version 1.3.4
+## Current Matrix version is 1.3.3
+## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package</code></pre>
+<div class="sourceCode" id="cb798"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">income</span> <span class="op">~</span> <span class="va">age</span>, 
          data <span class="op">=</span> <span class="va">trains</span>, 
          refresh <span class="op">=</span> <span class="fl">0</span>,
@@ -100,17 +100,17 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">fit_1</span>, detail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>##             Median   MAD_SD  
-## (Intercept) 103379.6  24657.3
-## age            904.7    561.4
+## (Intercept) 102647.9  25944.2
+## age            911.5    580.7
 ## 
 ## Auxiliary parameter(s):
 ##       Median  MAD_SD 
-## sigma 74166.4  5146.6</code></pre>
+## sigma 74251.0  4937.5</code></pre>
 <p>There is nothing wrong with this model. Yet the interpretation of <span class="math inline">\(\beta_0\)</span>, the intercept in the regression, is awkward. It represents the average income for people of age zero. That is useless! There are no people of zero age in our data. And, even if there were, it would be weird to think about such people taking the commuter train into Boston and filling out our survey forms.</p>
 <p>It is easy, however, to <em>transform</em> <code>age</code> into a variable which makes the intercept more meaningful. Consider a new variable, <code>c_age</code>, which is <code>age</code> minus the average age in the sample. Using this <strong>c</strong>entered version of age does not change the predictions or residuals in the model, but it does make the intercept easier to interpret.</p>
-<div class="sourceCode" id="cb799"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains_2</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>c_age <span class="op">=</span> <span class="va">age</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb800"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains_2</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>c_age <span class="op">=</span> <span class="va">age</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">fit_1_c</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">income</span> <span class="op">~</span> <span class="va">c_age</span>, 
                     data <span class="op">=</span> <span class="va">trains_2</span>, 
@@ -119,22 +119,22 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">fit_1_c</span>, detail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>##             Median   MAD_SD  
-## (Intercept) 141804.2   7188.0
-## c_age          906.7    572.9
+## (Intercept) 141786.2   7181.8
+## c_age          890.3    571.8
 ## 
 ## Auxiliary parameter(s):
 ##       Median  MAD_SD 
-## sigma 74273.6  4882.0</code></pre>
-<p>The intercept, 141,804, is the expected income for someone with <code>c_age = 0</code>, i.e., someone of an average age in the data, which is around 42.</p>
+## sigma 74300.5  5207.5</code></pre>
+<p>The intercept, 141,786, is the expected income for someone with <code>c_age = 0</code>, i.e., someone of an average age in the data, which is around 42.</p>
 </div>
 <div id="scaling" class="section level3" number="9.1.2">
 <h3>
 <span class="header-section-number">9.1.2</span> Scaling<a class="anchor" aria-label="anchor" href="#scaling"><i class="fas fa-link"></i></a>
 </h3>
 <p>Centering — changing a variable via addition/subtraction — often makes the intercept easier to interpret. Scaling — changing a variable via multiplication/division — often makes it easier to interpret coefficients. The most common scaling method is to divide the variable by its standard deviation.</p>
-<div class="sourceCode" id="cb801"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains_3</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>s_age <span class="op">=</span> <span class="va">age</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb802"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains_3</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>s_age <span class="op">=</span> <span class="va">age</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">fit_1_s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">income</span> <span class="op">~</span> <span class="va">s_age</span>, 
                     data <span class="op">=</span> <span class="va">trains_3</span>, 
@@ -143,12 +143,12 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">fit_1_s</span>, detail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>##             Median   MAD_SD  
-## (Intercept) 103061.4  25235.6
-## s_age        11121.0   6921.6
+## (Intercept) 103532.2  26128.0
+## s_age        11072.7   7150.2
 ## 
 ## Auxiliary parameter(s):
 ##       Median  MAD_SD 
-## sigma 74124.8  4959.5</code></pre>
+## sigma 74133.5  4825.2</code></pre>
 <p><code>s_age</code> is age <strong>s</strong>caled by its own standard deviation. A change in one unit of <code>s_age</code> is the same as a change in one standard deviation of the <code>age</code>, which is about 12. The interpretation of <span class="math inline">\(\beta_1\)</span> is now:</p>
 <p><em>When comparing two people, one about 1 standard deviation worth of years older than the other, we expect the older person to earn about 11,000 dollars more.</em></p>
 <p>But, because we scaled without centering, the intercept is now back to the (nonsensical) meaning of the expected income for people of age 0.</p>
@@ -158,9 +158,9 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.1.3</span> <em>z</em>-scores<a class="anchor" aria-label="anchor" href="#z-scores"><i class="fas fa-link"></i></a>
 </h3>
 <p>The most common transformation applies both centering and scaling. The base R function <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> subtracts the mean and divides by the standard deviation. A variable so transformed is a “<em>z</em>-score,” meaning a variable with a mean of zero and a standard deviation of one. Using <em>z</em>-scores makes interpretation easier, especially when we seek to compare the importance of different predictors.</p>
-<div class="sourceCode" id="cb803"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains_4</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>z_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb804"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains_4</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>z_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">fit_1_z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">income</span> <span class="op">~</span> <span class="va">z_age</span>, 
                     data <span class="op">=</span> <span class="va">trains_4</span>, 
@@ -169,12 +169,12 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 
 <span class="fu"><a href="https://docs.ropensci.org/skimr/reference/print.html">print</a></span><span class="op">(</span><span class="va">fit_1_z</span>, detail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>##             Median   MAD_SD  
-## (Intercept) 141650.2   7101.3
-## z_age        10899.1   6712.0
+## (Intercept) 141725.5   7054.3
+## z_age        11148.5   7071.8
 ## 
 ## Auxiliary parameter(s):
 ##       Median  MAD_SD 
-## sigma 74300.4  5019.0</code></pre>
+## sigma 74389.5  4926.4</code></pre>
 <p>The two parameters are easy to interpret after this transformation.</p>
 <p><em>The expected income of someone of average age, which is about 42 in this study, is about 142,000 dollars.</em></p>
 <p><em>When comparing two individuals who differ in age by one standard deviation, which is about 12 years in this study, the older person is expected to earn about 11,000 dollars more than the younger.</em></p>
@@ -185,22 +185,22 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.1.4</span> Taking logs<a class="anchor" aria-label="anchor" href="#taking-logs"><i class="fas fa-link"></i></a>
 </h3>
 <p>It is often helpful to take the log of predictor variables, especially in cases in which their distribution is skewed. You should generally only take the log of variables for which all the values are strictly positive. The log of a negative number is not defined. Consider the number of registered voters (<code>rv13</code>) at each of the polling stations in <code>kenya</code>.</p>
-<div class="sourceCode" id="cb805"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">kenya</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">rv13</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>
+<div class="sourceCode" id="cb806"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">kenya</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rv13</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>
 
-<span class="va">rv_p</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">rv13</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-    <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Registered Voters"</span>,
+<span class="va">rv_p</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">rv13</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Registered Voters"</span>,
          y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> 
 
-<span class="va">log_rv_p</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">rv13</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-    <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Log of Registered Voters"</span>,
+<span class="va">log_rv_p</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">rv13</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Log of Registered Voters"</span>,
          y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">expand_limits</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">175</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">175</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">rv_p</span> <span class="op">+</span> <span class="va">log_rv_p</span> <span class="op">+</span>
   <span class="fu">plot_annotation</span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Registered Votes In Kenya Communities'</span>,
@@ -221,23 +221,23 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.1.5</span> Adding transformed terms<a class="anchor" aria-label="anchor" href="#adding-transformed-terms"><i class="fas fa-link"></i></a>
 </h3>
 <p>Instead of simply transforming variables, we can add more terms which are transformed versions of a variable. Consider the relation of <code>height</code> to <code>age</code> in <code>nhanes</code>. Let’s start by dropping the missing values.</p>
-<div class="sourceCode" id="cb806"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">no_na_nhanes</span> <span class="op">&lt;-</span> <span class="va">nhanes</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">height</span>, <span class="va">age</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">drop_na</span><span class="op">(</span><span class="op">)</span> </code></pre></div>
-<p>Fit and plot a simple linear model:</p>
 <div class="sourceCode" id="cb807"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">no_na_nhanes</span> <span class="op">&lt;-</span> <span class="va">nhanes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">height</span>, <span class="va">age</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<p>Fit and plot a simple linear model:</p>
+<div class="sourceCode" id="cb808"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nhanes_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">height</span> <span class="op">~</span> <span class="va">age</span>,
                      data <span class="op">=</span> <span class="va">no_na_nhanes</span>,
                      refresh <span class="op">=</span> <span class="fl">0</span>,
                      seed <span class="op">=</span> <span class="fl">47</span><span class="op">)</span>
 
-<span class="va">no_na_nhanes</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_1</span><span class="op">)</span><span class="op">)</span>, 
+<span class="va">no_na_nhanes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_1</span><span class="op">)</span><span class="op">)</span>, 
               color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
          subtitle <span class="op">=</span> <span class="st">"Children are shorter, but a linear fit is poor"</span>,
          x <span class="op">=</span> <span class="st">"Age"</span>,
          y <span class="op">=</span> <span class="st">"Height (cm)"</span>,
@@ -245,36 +245,36 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-628-1.png" width="100%"></div>
 <p>That is not a very good model, obviously.</p>
 <p>Adding a quadratic term makes it better. (Note the need for <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code> in creating the squared term within the <code>formula</code> argument.)</p>
-<div class="sourceCode" id="cb808"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb809"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nhanes_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">height</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">age</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,
                      data <span class="op">=</span> <span class="va">no_na_nhanes</span>,
                      refresh <span class="op">=</span> <span class="fl">0</span>,
                      seed <span class="op">=</span> <span class="fl">33</span><span class="op">)</span>
 
-<span class="va">no_na_nhanes</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_2</span><span class="op">)</span><span class="op">)</span>, 
+<span class="va">no_na_nhanes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_2</span><span class="op">)</span><span class="op">)</span>, 
               color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
          subtitle <span class="op">=</span> <span class="st">"Quadratic fit is much better, but still poor"</span>,
          x <span class="op">=</span> <span class="st">"Age"</span>,
          y <span class="op">=</span> <span class="st">"Height (cm)"</span>,
          caption <span class="op">=</span> <span class="st">"Data source: NHANES"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-629-1.png" width="100%"></div>
 <p>Still, we have not made use of our background knowledge in creating these variables. We know that people don’t get any taller after age 18 or so. Let’s create variables which capture that break.</p>
-<div class="sourceCode" id="cb809"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb810"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nhanes_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">height</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">age</span> <span class="op">&gt;</span> <span class="fl">18</span>, <span class="fl">18</span>, <span class="va">age</span><span class="op">)</span><span class="op">)</span>,
                      data <span class="op">=</span> <span class="va">no_na_nhanes</span>,
                      refresh <span class="op">=</span> <span class="fl">0</span>,
                      seed <span class="op">=</span> <span class="fl">23</span><span class="op">)</span>
 
-<span class="va">no_na_nhanes</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_3</span><span class="op">)</span><span class="op">)</span>, 
+<span class="va">no_na_nhanes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">nhanes_3</span><span class="op">)</span><span class="op">)</span>, 
               color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Age and Height"</span>,
          subtitle <span class="op">=</span> <span class="st">"Domain knowledge makes for better models"</span>,
          x <span class="op">=</span> <span class="st">"Age"</span>,
          y <span class="op">=</span> <span class="st">"Height (cm)"</span>,
@@ -291,7 +291,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <p>Transforming predictor variables is uncontroversial. It does not matter much. Change most continuous predictor variables to <span class="math inline">\(z\)</span>-scores and you won’t go far wrong. Or keep them in their original form, and take care with your interpretations. It’s all good.</p>
 <p>Transforming the outcome variable is a much more difficult question. Imagine that we seek to create a model which explains <code>rv13</code> from the <code>kenya</code> tibble. Should we transform it?</p>
 <ul>
-<li><p>Maybe? There are no right answers. A model with <code>rv13</code> as the outcome variable is different from a model with <code><a href="https://rdrr.io/r/base/Log.html">log(rv13)</a></code> as the outcome. The two are not directly comparable.</p></li>
+<li><p>Maybe? There are no right answers. A model with <code>rv13</code> as the outcome variable is different from a model with <code>log(rv13)</code> as the outcome. The two are not directly comparable.</p></li>
 <li><p>Much of the same advice with regard to taking logs of predictor variables applies here as well.</p></li>
 </ul>
 <p>See <span class="citation"><a href="references.html#ref-roas" role="doc-biblioref">Gelman, Hill, and Vehtari</a> (<a href="references.html#ref-roas" role="doc-biblioref">2020</a>)</span></p>
@@ -341,7 +341,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.2.3</span> att_end ~ treatment + att_start<a class="anchor" aria-label="anchor" href="#att_end-treatment-att_start"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, let’s look at a model with a left hand variable, <code>att_end</code>, and two right side variables, <code>treatment</code> and <code>att_start</code>.</p>
-<div class="sourceCode" id="cb810"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb811"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_1_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">att_end</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">att_start</span>, 
                     data <span class="op">=</span> <span class="va">trains</span>, 
                     refresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
@@ -385,7 +385,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.2.4</span> income ~ age + liberal<a class="anchor" aria-label="anchor" href="#income-age-liberal"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now, we will look at <code>income</code> as a function of <code>age</code> and <code>liberal</code>, a proxy for political party.</p>
-<div class="sourceCode" id="cb812"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb813"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">income</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">liberal</span>, 
                     data <span class="op">=</span> <span class="va">trains</span>, 
                     refresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
@@ -398,13 +398,13 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 ##  predictors:   3
 ## ------
 ##             Median   MAD_SD  
-## (Intercept) 111015.1  25409.9
-## age           1061.6    562.6
-## liberalTRUE -31754.0  14086.3
+## (Intercept) 110500.0  24027.5
+## age           1081.7    565.8
+## liberalTRUE -32345.9  14082.9
 ## 
 ## Auxiliary parameter(s):
 ##       Median  MAD_SD 
-## sigma 72800.0  4974.5
+## sigma 72767.4  4866.5
 ## 
 ## ------
 ## * For help interpreting the printed output see ?print.stanreg
@@ -418,7 +418,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <li><p>The estimate for <code>liberalTRUE</code> represents the offset in predicted income for commuters who <em>are</em> liberal. To find the estimate, we must add the coefficient to our <code>(Intercept)</code> value. We see that, on average, liberal commuters make less money.</p></li>
 </ul>
 <p>It is important to note that we are not looking at a causal relationship for either of these explanatory variables. We are noting the differences between two groups, without considering causality. This is known as an <em>across unit</em> comparison. When we compare <em>across unit</em> we are not looking at a causal relationship.</p>
-<p>When comparing <code>liberalTRUE</code> with our <code>(Intercept)</code>, recall that the <code>(Intercept)</code> is calculating income for the case where <code>liberal == FALSE</code>. As we can see, then, the coefficient for <code>liberalTRUE</code>, -31,754, shows that the liberals in our dataset make less on average than non-liberals in our dataset. The coefficient is large relative to the <code>(Intercept)</code> and, with rough mental math, we see that the 95% confidence interval excludes 0. Therefore, <code>liberal</code> is a helpful variable!</p>
+<p>When comparing <code>liberalTRUE</code> with our <code>(Intercept)</code>, recall that the <code>(Intercept)</code> is calculating income for the case where <code>liberal == FALSE</code>. As we can see, then, the coefficient for <code>liberalTRUE</code>, -32,346, shows that the liberals in our dataset make less on average than non-liberals in our dataset. The coefficient is large relative to the <code>(Intercept)</code> and, with rough mental math, we see that the 95% confidence interval excludes 0. Therefore, <code>liberal</code> is a helpful variable!</p>
 <p>The variable <code>age</code>, however, does not appear to have a meaningful impact on our <code>(Intercept)</code>. The coefficient of <code>age</code> is low and the 95% confidence interval <em>does not</em> exclude 0.</p>
 <p><strong>Conclusion</strong>: definitely keep <code>liberal</code>! <code>age</code> is less clear. It is really a matter of preference at this point.</p>
 </div>
@@ -427,7 +427,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.2.5</span> liberal ~ I(income/1e+05) + party<a class="anchor" aria-label="anchor" href="#liberal-iincome1e05-party"><i class="fas fa-link"></i></a>
 </h3>
 <p>We will now look at liberal as a function of a transformed <code>income</code> and <code>party</code>. The reason we have transformed <code>income</code> here is due to the fact that, without a transformation, income makes predictions according to <em>very small income disparities</em>. This is not helpful. To enhance the significance of income, we have divided the variable by <span class="math inline">\(100000\)</span>. (Note the need for <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code> in creating the income term within the <code>formula</code> argument.)</p>
-<div class="sourceCode" id="cb814"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb815"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">liberal</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">income</span><span class="op">/</span><span class="fl">1e+05</span><span class="op">)</span> <span class="op">+</span> <span class="va">party</span>, 
                     data <span class="op">=</span> <span class="va">trains</span>, 
                     refresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
@@ -472,7 +472,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 </h2>
 <p>Deciding which variables to include in a model is a subset of the larger question: How do we decide which model, out of the set of possible models, to choose?</p>
 <p>Consider two models which explain attitudes to immigration among Boston commuters.</p>
-<div class="sourceCode" id="cb816"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb817"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_liberal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">att_end</span> <span class="op">~</span> <span class="va">liberal</span>,
                   data <span class="op">=</span> <span class="va">trains</span>,
                   refresh <span class="op">=</span> <span class="fl">0</span>,
@@ -486,7 +486,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 ## Auxiliary parameter(s):
 ##       Median MAD_SD
 ## sigma 2.7    0.2</code></pre>
-<div class="sourceCode" id="cb818"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb819"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_att_start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">att_end</span> <span class="op">~</span> <span class="va">att_start</span>,
                   data <span class="op">=</span> <span class="va">trains</span>,
                   refresh <span class="op">=</span> <span class="fl">0</span>,
@@ -507,24 +507,24 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.3.1</span> Better models make better predictions<a class="anchor" aria-label="anchor" href="#better-models-make-better-predictions"><i class="fas fa-link"></i></a>
 </h3>
 <p>The most obvious criteria for comparing models is the accuracy of the predictions. For example, consider the use of <code>liberal</code> to predict <code>att_end</code>.</p>
-<div class="sourceCode" id="cb820"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>pred_liberal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">pred_liberal</span>, y <span class="op">=</span> <span class="va">att_end</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, height <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+<div class="sourceCode" id="cb821"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pred_liberal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pred_liberal</span>, y <span class="op">=</span> <span class="va">att_end</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, height <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   
   <span class="co"># Add a red circle where our predictions are most accurate (where the x and y</span>
   <span class="co"># values are the same, which is where our predictions = the true attitudes).</span>
   <span class="co"># pch = 1 makes the inside of the point translucent to show the number of</span>
   <span class="co"># correct predictions.</span>
   
-  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">8</span>, y <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">8</span>, y <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>, 
              size <span class="op">=</span> <span class="fl">20</span>, pch <span class="op">=</span> <span class="fl">1</span>, 
              color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, 
              size <span class="op">=</span> <span class="fl">20</span>, pch <span class="op">=</span> <span class="fl">1</span>, 
              color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Modeling Attitude Toward Immigration"</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Modeling Attitude Toward Immigration"</span>,
          subtitle <span class="op">=</span> <span class="st">"Liberals are less conservative"</span>,
          x <span class="op">=</span> <span class="st">"Predicted Attitude"</span>,
          y <span class="op">=</span> <span class="st">"True Attitude"</span><span class="op">)</span></code></pre></div>
@@ -532,30 +532,30 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <!-- DK: Could put this discussion in fig.cap. Could add some details to the plots to indicate the points that I am talking about. Should create an animation, which brings in new point, forecasts it, and then measures how wrong the model was. -->
 <p>Because there are only two possible values for <code>liberal</code> — TRUE and FALSE — there are only two predictions which this model will make: about 10 for <code>liberal == FALSE</code> and about 8 for <code>liberal == TRUE</code>. (The points in the above plot are jittered.) For some individuals, these are perfect predictions. For others, they are poor predictions. the red circles on our plot illustrate the areas where our predictions are equal to true values. As we can see, the model isn’t great at predicting attitude end. (Note the two individuals who are <code>liberal == TRUE</code>, and who the model thinks will have <code>att_end == 8</code>, but who have <code>att_end == 15</code>. The model got them both very, very wrong.)</p>
 <p>Consider our second model, using <code>att_start</code> to forecast <code>att_end</code>.</p>
-<div class="sourceCode" id="cb821"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>pred_liberal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">pred_liberal</span>, y <span class="op">=</span> <span class="va">att_end</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, height <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+<div class="sourceCode" id="cb822"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pred_liberal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pred_liberal</span>, y <span class="op">=</span> <span class="va">att_end</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, height <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
   
   <span class="co"># Insert red line where our predictions = the truth using geom_abline with an</span>
   <span class="co"># intercept, slope, and color.</span>
   
-  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="fl">0</span>, slope <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Modeling Attitude Toward Immigration"</span>,
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>intercept <span class="op">=</span> <span class="fl">0</span>, slope <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Modeling Attitude Toward Immigration"</span>,
          subtitle <span class="op">=</span> <span class="st">"Survey responses are somewhat consistent"</span>,
          x <span class="op">=</span> <span class="st">"Predicted Attitude"</span>,
          y <span class="op">=</span> <span class="st">"True Attitude"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-638-1.png" width="100%"></div>
 <p>Because <code>att_end</code> takes on 13 unique values, the model makes 13 unique predictions. Some of those predictions are perfect! But others are very wrong. The red line shows the points where our predictions match the truth. Note the individual with a predicted <code>att_end</code> of around 9 but with an actual value of <code>15</code>. That is a big miss!</p>
 <p>Rather than looking at individual cases, we need to look at the errors for all the predictions. Fortunately, a prediction error is the same thing as a residual, which is easy enough to calculate.</p>
-<div class="sourceCode" id="cb822"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">att_end</span>, <span class="va">att_start</span>, <span class="va">liberal</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>pred_lib <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>resid_lib <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>pred_as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>resid_as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb823"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">att_end</span>, <span class="va">att_start</span>, <span class="va">liberal</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pred_lib <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>resid_lib <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pred_as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>resid_as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 115 x 7
 ##    att_end att_start liberal pred_lib resid_lib pred_as resid_as
 ##      &lt;dbl&gt;     &lt;dbl&gt; &lt;lgl&gt;      &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -571,12 +571,12 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 ## 10      10         9 FALSE      10.0     0.0259    8.97   -1.03 
 ## # … with 105 more rows</code></pre>
 <p>Let’s look at the square root of the average squared error.</p>
-<div class="sourceCode" id="cb824"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">trains</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">att_end</span>, <span class="va">att_start</span>, <span class="va">liberal</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>lib_err <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>as_err <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarize</span><span class="op">(</span>lib_sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lib_err</span><span class="op">)</span><span class="op">)</span>,
+<div class="sourceCode" id="cb825"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trains</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">att_end</span>, <span class="va">att_start</span>, <span class="va">liberal</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lib_err <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>as_err <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span> <span class="op">-</span> <span class="va">att_end</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>lib_sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lib_err</span><span class="op">)</span><span class="op">)</span>,
             as_sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">as_err</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##   lib_sigma as_sigma
@@ -601,22 +601,22 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-643-1.png" width="100%"></div>
 <p>Is this a better model? Maybe?</p>
 <p>But why stop at adding <span class="math inline">\(x^2\)</span> to the regression? Why not add <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^4\)</span> and all the way to <span class="math inline">\(x^9\)</span>? When we do so, the fit is much better.</p>
-<div class="sourceCode" id="cb826"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb827"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nine_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">9</span><span class="op">)</span>,
                        data <span class="op">=</span> <span class="va">ovrftng</span><span class="op">)</span>
 
-<span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>,
+<span class="va">newdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>,
                   y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">nine_pred</span>, 
-                              newdata <span class="op">=</span> <span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+                              newdata <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">ovrftng</span> <span class="op">%&gt;%</span> 
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">geom_line</span><span class="op">(</span>data <span class="op">=</span> <span class="va">newdata</span>, 
-              <span class="fu">aes</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"`y` as a 9-Degree Polynomial Function of `x`"</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<span class="va">ovrftng</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">newdata</span>, 
+              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"`y` as a 9-Degree Polynomial Function of `x`"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-644-1.png" width="100%"></div>
 <p><em>If the only criteria we cared about was how well the model predicts using the data on which the parameters were estimated, then a model with more parameters will always be better.</em> But that is not what truly matters. What matters is how well the model works on data which was not used to create the model.</p>
 <!-- DK: Discuss how this is the perfect model. Plot y versus y_hat. It is a perfect line!  -->
@@ -651,7 +651,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <p>In essence: <em>One piece of data is excluded from our model, the model is re-fit, the model attempts to predict the value of the missing piece, we compare the true value to the predicted value, and we assess the accuracy of our model’s prediction.</em> This process occurs for each piece of data, allowing us to assess the model’s accuracy in making predictions.</p>
 <p>To perform leave-one-out(LOO) cross validation, we will be using the function <code><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo()</a></code> from an R package. This is how we will determine which model is superior for our purposes.</p>
 <p>First, we will refamiliarize ourselves with our first model, <code>fit_liberal</code>.</p>
-<div class="sourceCode" id="cb827"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb828"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_liberal</span></code></pre></div>
 <pre><code>## stan_glm
 ##  family:       gaussian [identity]
@@ -671,7 +671,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 ## * For help interpreting the printed output see ?print.stanreg
 ## * For info on the priors used see ?prior_summary.stanreg</code></pre>
 <p>Now, we will perform <code><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo()</a></code> on our model and look at the results.</p>
-<div class="sourceCode" id="cb829"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb830"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">loo_liberal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo</a></span><span class="op">(</span><span class="va">fit_liberal</span><span class="op">)</span>
 
 <span class="va">loo_liberal</span></code></pre></div>
@@ -702,7 +702,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <p><strong>The higher our value for <code>elpd_loo</code>, the better our model performs.</strong> This means that, when comparing models, we want to select the model with the higher value for <code>elpd_loo</code>.</p>
 <!-- DK: Untrue! Hint: the higher value will be the the value closest to 0, as the results for `elpd_loo()` are negative.  -->
 <p>Let’s turn our attention to our second model. To begin, let’s observe the qualities of <code>fit_att_start</code> once again.</p>
-<div class="sourceCode" id="cb831"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb832"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_att_start</span></code></pre></div>
 <pre><code>## stan_glm
 ##  family:       gaussian [identity]
@@ -722,7 +722,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 ## * For help interpreting the printed output see ?print.stanreg
 ## * For info on the priors used see ?prior_summary.stanreg</code></pre>
 <p>Great! Now, let’s perform <code><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo()</a></code> on this model.</p>
-<div class="sourceCode" id="cb833"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb834"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">loo_att_start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo</a></span><span class="op">(</span><span class="va">fit_att_start</span><span class="op">)</span> 
 
 <span class="va">loo_att_start</span></code></pre></div>
@@ -746,7 +746,7 @@ Do we discuss anything in the "Other transformations section" (pg. 195)? This in
 <span class="header-section-number">9.4.2</span> Comparing models using <code>loo_compare()</code><a class="anchor" aria-label="anchor" href="#comparing-models-using-loo_compare"><i class="fas fa-link"></i></a>
 </h3>
 <p>To compare the two models directly, we can use the function <code>loo_compare</code> with our two <code>loo</code> objects created above. This will calculate the difference in <code>elpd_loo()</code> between our models for us, making our job easier:</p>
-<div class="sourceCode" id="cb835"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb836"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo_compare</a></span><span class="op">(</span><span class="va">loo_att_start</span>, <span class="va">loo_liberal</span><span class="op">)</span></code></pre></div>
 <pre><code>##               elpd_diff se_diff
 ## fit_att_start   0.0       0.0  
@@ -789,10 +789,10 @@ FIGURE 9.1: Wisdom
 </p>
 </div>
 <p>Before making a model which seeks to explain <code>att_end</code>, we should plot it and the variables we think are connected to it:</p>
-<div class="sourceCode" id="cb837"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">trains</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">att_start</span>, y <span class="op">=</span> <span class="va">att_end</span>, color <span class="op">=</span> <span class="va">liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Attitude End Compared with Attitude Start and Liberal"</span>,
+<div class="sourceCode" id="cb838"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">trains</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">att_start</span>, y <span class="op">=</span> <span class="va">att_end</span>, color <span class="op">=</span> <span class="va">liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Attitude End Compared with Attitude Start and Liberal"</span>,
        x <span class="op">=</span> <span class="st">"Attitude at Start of Study"</span>,
        y <span class="op">=</span> <span class="st">"Attitude at End of Study"</span>,
        color <span class="op">=</span> <span class="st">"Liberal?"</span><span class="op">)</span></code></pre></div>
@@ -845,7 +845,7 @@ FIGURE 9.3: Courage
 </p>
 </div>
 <p>The use of <code>stan_glm</code> is the same as usual. Using <code>stan_glm</code>, we will create our model, <code>fit_1</code>.</p>
-<div class="sourceCode" id="cb838"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb839"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">att_end</span> <span class="op">~</span> <span class="va">liberal</span> <span class="op">+</span> <span class="va">att_start</span>,
                   data <span class="op">=</span> <span class="va">trains</span>,
                   refresh <span class="op">=</span> <span class="fl">0</span>,
@@ -872,13 +872,13 @@ FIGURE 9.3: Courage
 ## * For info on the priors used see ?prior_summary.stanreg</code></pre>
 <p>To remind ourselves, recall that the <code>(Intercept)</code> here is representing the <code>att_end</code> value for cases where <code>liberal = FALSE</code> and <code>treatment does not equal Control</code>. The next row, <code>liberalTRUE</code> gives a median value which represents the <em>offset</em> in the prediction compared with the <code>(Intercept)</code>. In other words, the true intercept for cases where <code>liberal = TRUE</code> is represented by <span class="math inline">\((Intercept) + liberalTRUE\)</span>. The value of <code>treatmentControl</code> is the offset in <code>att_end</code> for those in the Control group.</p>
 <p>To find our intercepts, we will need to tidy our regression using the <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function from the <strong>broom.mixed</strong> package. We tidy our data and extract values to create a parallel slopes model. The parallel slopes model allows us to visualize multi-variate Bayesian modeling (i.e. modeling with more than one explanatory variable). That is a complicated way of saying that we will visualize the fitted model created above in a way that allows us to see the intercepts and slopes for two different groups, <code>liberalTRUE</code> and <code>liberalFALSE</code>:</p>
-<div class="sourceCode" id="cb840"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb841"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># First, we will tidy the data from our model and select the term and estimate.</span>
 <span class="co"># This allows us to create our regression lines more easily.</span>
 
-<span class="va">tidy</span> <span class="op">&lt;-</span> <span class="va">fit_1</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">term</span>, <span class="va">estimate</span><span class="op">)</span>
+<span class="va">tidy</span> <span class="op">&lt;-</span> <span class="va">fit_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">estimate</span><span class="op">)</span>
 
 <span class="va">tidy</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
@@ -887,7 +887,7 @@ FIGURE 9.3: Courage
 ## 1 (Intercept)    1.93 
 ## 2 liberalTRUE   -0.300
 ## 3 att_start      0.799</code></pre>
-<div class="sourceCode" id="cb842"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb843"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Extract and name the columns of our tidy object. By calling tidy$estimate[1],</span>
 <span class="co"># we are telling R to extract the first value from the estimate column in our</span>
 <span class="co"># tidy object.</span>
@@ -896,7 +896,7 @@ FIGURE 9.3: Courage
 <span class="va">liberal_true</span> <span class="op">&lt;-</span> <span class="va">tidy</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
 <span class="va">att_start</span> <span class="op">&lt;-</span> <span class="va">tidy</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
 <p>Now, we can define the following terms—- <code>liberal_false_intercept</code> and <code>liberal_false_att_slope</code>; and <code>liberal_true_intercept</code> and <code>liberal_true_att_slope</code>:</p>
-<div class="sourceCode" id="cb843"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb844"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Recall that the (Intercept) shows us the estimate for the case where liberal =</span>
 <span class="co"># FALSE. We want to extract the liberal_false_intercept to indicate where the</span>
 <span class="co"># intercept in our visualization should be. The slope for this case, and for the</span>
@@ -912,23 +912,23 @@ FIGURE 9.3: Courage
 <span class="va">liberal_true_intercept</span> <span class="op">&lt;-</span> <span class="va">intercept</span> <span class="op">+</span> <span class="va">liberal_true</span>
 <span class="va">liberal_true_att_slope</span> <span class="op">&lt;-</span> <span class="va">att_start</span></code></pre></div>
 <p>All we’ve done here is extracted the values for our intercepts and slopes, and named them to be separated into two groups. This allows us to create a <code>geom_abline</code> object that takes a unique slope and intercept value, so we can separate the <code>liberalTRUE</code> and <code>liberalFALSE</code> observations.</p>
-<div class="sourceCode" id="cb844"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb845"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># From the dataset trains, use att_start for the x-axis and att_end for</span>
 <span class="co"># the y-axis with color as liberal. This will split our data into two color</span>
 <span class="co"># coordinates (one for liberal = TRUE and one for liberal = FALSE)</span>
 
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">trains</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">att_start</span>, y <span class="op">=</span> <span class="va">att_end</span>, color <span class="op">=</span> <span class="va">liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">trains</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">att_start</span>, y <span class="op">=</span> <span class="va">att_end</span>, color <span class="op">=</span> <span class="va">liberal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   
   <span class="co"># Use geom_point to show the datapoints. </span>
   
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   
   <span class="co"># Create a geom_abline object for the liberal false values. Set the intercept</span>
   <span class="co"># equal to our previously created liberal_false_intercept, while setting slope</span>
   <span class="co"># equal to our previously created liberal_false_att_slope. The color call is</span>
   <span class="co"># for coral, to match the colors used by tidyverse for geom_point().</span>
   
-  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="va">liberal_false_intercept</span>,
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>intercept <span class="op">=</span> <span class="va">liberal_false_intercept</span>,
               slope <span class="op">=</span> <span class="va">liberal_false_att_slope</span>, 
               color <span class="op">=</span> <span class="st">"#F8766D"</span>, 
               size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
@@ -938,14 +938,14 @@ FIGURE 9.3: Courage
   <span class="co"># equal to our previously created liberal_true_att_slope. The color call is</span>
   <span class="co"># for teal, to match the colors used by tidyverse for geom_point().</span>
 
-  <span class="fu">geom_abline</span><span class="op">(</span>intercept <span class="op">=</span> <span class="va">liberal_true_intercept</span>,
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>intercept <span class="op">=</span> <span class="va">liberal_true_intercept</span>,
               slope <span class="op">=</span> <span class="va">liberal_true_att_slope</span>,
               color <span class="op">=</span> <span class="st">"#00BFC4"</span>, 
               size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
   
   <span class="co"># Add the appropriate titles and axis labels. </span>
   
-  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Parallel Slopes Model"</span>,
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Parallel Slopes Model"</span>,
        x <span class="op">=</span> <span class="st">"Attitude at Start"</span>, 
        y <span class="op">=</span> <span class="st">"Attitude at End"</span>, 
        color <span class="op">=</span> <span class="st">"Liberal"</span><span class="op">)</span> </code></pre></div>
@@ -953,7 +953,7 @@ FIGURE 9.3: Courage
 <p>This is our parallel slopes model. What we have done, essentially, is created a unique line for <code>liberalTRUE</code> and <code>liberalFALSE</code> to observe the differences in the groups as related to attitude start and attitude end.</p>
 <p>As we can see, commuters who are <em>not</em> liberal tend to start with slightly higher values for <code>att_start</code>. Commuters who <em>are</em> liberal tend to have lower starting values for <code>att_start</code>.</p>
 <p>Now, what if we want to look at another model? To judge whether we can have a superior model? Let’s create another object, using <code>stan_glm</code>, that looks at <code>att_end</code> as a function of <code>treatment</code> and <code>att_start</code>.</p>
-<div class="sourceCode" id="cb845"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb846"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fit_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">att_end</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">att_start</span>,
                   data <span class="op">=</span> <span class="va">trains</span>,
                   refresh <span class="op">=</span> <span class="fl">0</span>,
@@ -987,7 +987,7 @@ FIGURE 9.3: Courage
 <p>An important point here is that <strong>these models are causal</strong>. When including the variable <code>treatment</code>, we have a measured causal effect of a condition. This is different from our prior parallel slopes model, where we were modeling for prediction, not causation.</p>
 <!-- DK: A causal model is one in which, at least in theory, one of the righthand side variables could have been manipulated, and when you care about estimating causal effects. If someone just needs to forecast or predict something that, almost always, she is not asking a causal question, so she does not care if the righthand side variables could be manipulated. Is the sunset beautiful if no one is looking at it? Is the model causal if I just want to predict? -->
 <p>To see how these models compare in performance, we will perform leave-one-out (LOO) cross validation again.</p>
-<div class="sourceCode" id="cb847"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb848"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">L1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo</a></span><span class="op">(</span><span class="va">fit_1</span><span class="op">)</span>
 
 <span class="va">L1</span></code></pre></div>
@@ -1011,7 +1011,7 @@ FIGURE 9.3: Courage
 ## All Pareto k estimates are ok (k &lt; 0.7).
 ## See help('pareto-k-diagnostic') for details.</code></pre>
 <p>Perform <code><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo()</a></code> on our second model:</p>
-<div class="sourceCode" id="cb849"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb850"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">L2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo</a></span><span class="op">(</span><span class="va">fit_2</span><span class="op">)</span>
 
 <span class="va">L2</span></code></pre></div>
@@ -1035,7 +1035,7 @@ FIGURE 9.3: Courage
 ## All Pareto k estimates are ok (k &lt; 0.7).
 ## See help('pareto-k-diagnostic') for details.</code></pre>
 <p>Recall that the relevant data is the data from <code>elpd_loo</code>. The estimates for <code>elpd_loo</code> vary quite a bit. Recall that the superior model will have a value of <code>elpd_loo()</code> that is closer to 0. The standard error (SE) for these models also differs some. To compare these directly, we will use <code>loo_compare</code>.</p>
-<div class="sourceCode" id="cb851"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb852"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://mc-stan.org/rstanarm/reference/loo.stanreg.html">loo_compare</a></span><span class="op">(</span><span class="va">L1</span>, <span class="va">L2</span><span class="op">)</span></code></pre></div>
 <pre><code>##       elpd_diff se_diff
 ## fit_2  0.0       0.0   

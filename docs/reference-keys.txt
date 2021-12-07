@@ -12,7 +12,6 @@ fig:unnamed-chunk-147
 fig:unnamed-chunk-188
 fig:unnamed-chunk-191
 fig:unnamed-chunk-202
-fig:unnamed-chunk-225
 fig:unnamed-chunk-226
 tab:unnamed-chunk-240
 fig:unnamed-chunk-245
@@ -426,11 +425,6 @@ summary-13
 lists-and-list-columns
 writing-functions
 distributions-1
-create-facets-by-continent
-let-the-view-follow-the-data-in-each-frame
-show-preceding-frames-with-gradual-falloff
-show-the-original-data-as-background-marks
-let-data-gradually-appear
 computer-set-up
 project-set-up
 daily-work

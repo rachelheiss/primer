@@ -940,13 +940,6 @@
       "Repository": "CRAN",
       "Hash": "41287f1ac7d28a92f0a286ed507928d3"
     },
-    "manipulateWidget": {
-      "Package": "manipulateWidget",
-      "Version": "0.10.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0550157e5d6450ea442eaba5a340a9fc"
-    },
     "maptools": {
       "Package": "maptools",
       "Version": "1.1-1",
@@ -1318,10 +1311,10 @@
     },
     "rgl": {
       "Package": "rgl",
-      "Version": "0.106.8",
+      "Version": "0.108.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b14c98ea1476eb8a384989f205cc6803"
+      "Hash": "f64f09322c08801bb67928325188c38c"
     },
     "rlang": {
       "Package": "rlang",
@@ -1623,13 +1616,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "aac6012f34348b3ca6bf373fe7172b06"
-    },
-    "webshot": {
-      "Package": "webshot",
-      "Version": "0.5.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e99d80ad34457a4853674e89d5e806de"
     },
     "whisker": {
       "Package": "whisker",

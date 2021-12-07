@@ -54,8 +54,13 @@ bookdown::gitbook:
 # to convert to PDF. By default, this TeX file is removed, however if you want to keep
 # it (e.g., for an article submission), you can specify the keep_tex option.
 
-bookdown::pdf_book:
-    keep_tex: yes
+# I have commented these out because they seemed to cause the book to generate
+# a pdf version every time we built it, perhaps in conjunction with an update
+# to bs4_book. First, we don't need a pdf. Second, the build failed (and took
+# twice as long when we did this.)
+
+# bookdown::pdf_book:
+#     keep_tex: yes
 
 # Output options if the book is created in epub format.
 

@@ -2,7 +2,7 @@
 
 <!-- Replace flights with fec16? airlines are boring. Got rid of 538?  -->
 
-<!-- Add in other join diagrams, like the one used for for inner join. -->
+<!-- Add in other join diagrams, like the one used for for inner join? -->
 
 <!-- Start joins with left_join, since it is most important. -->
 
@@ -1142,40 +1142,43 @@ This bell-shaped distribution is defined by two parameters: (1) the *mean* $\mu$
 1. The dashed normal curve has mean $\mu = 15$ \& standard deviation $\sigma = 2$.
 
 ```{r, echo = FALSE, fig.cap = "Three normal distributions."}
-# library(ggrepel)
-# all_points <- tibble(
-#   domain = seq(from = -10, to = 25, by = 0.01),
-#   `mu = 5, sigma = 2` = dnorm(x = domain, mean = 5, sd = 2),
-#   `mu = 5, sigma = 5` = dnorm(x = domain, mean = 5, sd = 5),
-#   `mu = 15, sigma = 2` = dnorm(x = domain, mean = 15, sd = 2)
-# )  %>% 
-#   pivot_longer(- domain, names_to = "Distribution", values_to = "value", ) %>% 
-#   mutate(
-#     Distribution = factor(
-#       Distribution, 
-#       levels = c("mu = 5, sigma = 2", 
-#                  "mu = 5, sigma = 5", 
-#                  "mu = 15, sigma = 2")
-#     )
-#   )
-# for_labels <- all_points %>% 
-#   filter(between(domain, 3.795, 3.805) & Distribution == "mu = 5, sigma = 2" |
-#            between(domain, 0.005, 0.0105) & Distribution == "mu = 5, sigma = 5" |
-#            between(domain, 16.005, 16.015) & Distribution == "mu = 15, sigma = 2")
-# all_points %>% 
-#   ggplot(aes(x = domain, y = value, linetype = Distribution)) +
-#   geom_line() +
-#   geom_label_repel(data = for_labels, aes(label = Distribution),
-#                             nudge_x = c(-1, -2.1, 1)) +
-#   theme_light() +
-#   scale_linetype_manual(values=c("solid", "dotted", "longdash")) + 
-#   theme(
-#     axis.title.y = element_blank(),
-#     axis.title.x = element_blank(),
-#     axis.text.y = element_blank(),
-#     axis.ticks.y = element_blank(),
-#     legend.position = "none"
-#   )
+library(ggrepel)
+
+all_points <- tibble(
+  domain = seq(from = -10, to = 25, by = 0.01),
+  `mu = 5, sigma = 2` = dnorm(x = domain, mean = 5, sd = 2),
+  `mu = 5, sigma = 5` = dnorm(x = domain, mean = 5, sd = 5),
+  `mu = 15, sigma = 2` = dnorm(x = domain, mean = 15, sd = 2)
+)  %>%
+  pivot_longer(- domain, names_to = "Distribution", values_to = "value", ) %>%
+  mutate(
+    Distribution = factor(
+      Distribution,
+      levels = c("mu = 5, sigma = 2",
+                 "mu = 5, sigma = 5",
+                 "mu = 15, sigma = 2")
+    )
+  )
+
+for_labels <- all_points %>%
+  filter(between(domain, 3.795, 3.805) & Distribution == "mu = 5, sigma = 2" |
+           between(domain, 0.005, 0.0105) & Distribution == "mu = 5, sigma = 5" |
+           between(domain, 16.005, 16.015) & Distribution == "mu = 15, sigma = 2")
+
+all_points %>%
+  ggplot(aes(x = domain, y = value, linetype = Distribution)) +
+  geom_line() +
+  geom_label_repel(data = for_labels, aes(label = Distribution),
+                            nudge_x = c(-1, -2.1, 1)) +
+  theme_light() +
+  scale_linetype_manual(values=c("solid", "dotted", "longdash")) +
+  theme(
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    legend.position = "none"
+  )
 ```
 
 Notice how the solid and dotted line normal curves have the same center due to their common mean $\mu$ = 5. However, the dotted line normal curve is wider due to its larger standard deviation of $\sigma = 5$. On the other hand, the solid and dashed line normal curves have the same variation due to their common standard deviation $\sigma = 2$. However, they are centered at different locations. 

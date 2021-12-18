@@ -2,14 +2,6 @@
 
 Everyone loves visualizations.
 
-<!-- Heather owns this Chapter! Change anything an everything! Change anything you like in Getting Started. -->
-
-<!-- Highest priority is making sure that what we have is good. No ugliness or embarassments. -->
-
-<!-- Take ownership of the Advanced Plots section. Add the tips and tricks in the comments. -->
-
-<!-- Add comments to the code chunks, even if students won't see the comments. For example, initial plot should have a whole bunch of comments about where you got this data and how we can update it in the future.  -->
-
 <!-- DO NOT DO THIS. Hold off on this for now. Don't use the unemployment data anymore. Use two or three of the temperature series from primer.data::temperature.  I have similar concerns about the `group` aesthetic, especially for line plots. But maybe group is too difficult? But can you possibly do geom_line without showing groups? -->
 
 <!-- Consider swapping out animation to use this instead: https://github.com/jschoeley/de0anim -->
@@ -825,14 +817,6 @@ Another function similar to `if_else()`, is `dplyr::case_when()`. `case_when()` 
 
 ### `summarize()`
 
-A musical interlude inspired by the Tidyverse:
-
-
-```{r, echo = FALSE}
-knitr::include_app("https://www.youtube.com/embed/p8Py9C8iq2s")
-```
-
-
 We often need to calculate *summary statistics*, things like the *mean* (also called the average) and the *median* (the middle value). Other examples of summary statistics include the *sum*, the *minimum*, the *maximum*, and the *standard deviation*.
 
 The function `summarize()` allows us to calculate these statistics on individual columns from a tibble. Example:
@@ -1000,8 +984,6 @@ This code displays the image in an Rmd, assuming that the file "enos_trains.jpg"
 ### Faceting
 
 Faceting splits a visualization into parts, one for each value of another variable. This will create multiple copies of the same type of plot with matching x and y axes, but whose contents will differ. 
-
-<!-- Liam: Thought gapminder was a function. -->
 
 Before we proceed, let's create a subset of the tibble `gapminder` from the **gapminder** package. (You may need to install the **gapminder** package for this code to work. Refer back to the introduction if you need a refresher on how to do so.)
 
@@ -1292,49 +1274,49 @@ There! Within the `theme()` function, we can change the plot title to bold, the 
 There are so many more plots you can make with R that we have not shown you yet. For example, you can create cool animations with the *gganimate* package, like this plot below.
 
 ```{r, echo = FALSE, cache = TRUE}
-# library(gganimate)
-# 
-# gapminder_p <- gapminder %>%
-#   filter(continent != "Oceania") %>%
-#   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
-#     geom_point(show.legend = FALSE, alpha = 0.7) +
-#     facet_wrap(~continent, nrow = 1) +
-#     scale_size(range = c(2, 12)) +
-#     scale_x_log10() +
-#     labs(subtitle = "Life Expectancy and GDP per Capita (1952-2007)",
-#          x = "GDP per Capita, USD",
-#          y = "Life Expectancy, Years") +
-#     theme_linedraw() +
-#     transition_time(year) +
-#     labs(title = "Year: {frame_time}") +
-#     shadow_wake(wake_length = 0.1, alpha = FALSE)
-# 
-# gapminder_p
+library(gganimate)
+
+gapminder_p <- gapminder %>%
+  filter(continent != "Oceania") %>%
+  ggplot(aes(gdpPercap, lifeExp, color = continent)) +
+    geom_point(show.legend = FALSE, alpha = 0.7) +
+    facet_wrap(~continent, nrow = 1) +
+    scale_size(range = c(2, 12)) +
+    scale_x_log10() +
+    labs(subtitle = "Life Expectancy and GDP per Capita (1952-2007)",
+         x = "GDP per Capita, USD",
+         y = "Life Expectancy, Years") +
+    theme_linedraw() +
+    transition_time(year) +
+    labs(title = "Year: {frame_time}") +
+    shadow_wake(wake_length = 0.1, alpha = FALSE)
+
+gapminder_p
 ```
 
 You can make your plots interactive, using the **plotly** package. Remember, you need to load packages before you use them, so load `library(plotly)` if you want to make your own interactive plots. Example:
 
 ```{r, echo = FALSE}
-# gapminder_plot <- gapminder %>%
-#   filter(continent != "Oceania") %>%
-#   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
-#     geom_point(alpha = 0.2, size = 0.5) +
-#     geom_smooth(method = "loess", 
-#                 formula = y ~ x,
-#                 se = TRUE) + 
-#     facet_wrap(~continent, nrow = 1) +
-#     labs(title = "Life Expectancy and GDP per Capita",
-#          subtitle = "Connection between GDP and life expectancy is weakest in Africa",
-#          x = "GDP per Capita",
-#          y = "Life Expectancy") +
-#     scale_x_log10(breaks = c(500, 5000, 50000),
-#                   labels = scales::dollar_format(accuracy = 1)) + 
-#     theme_linedraw() + 
-#     theme(legend.position = "none")
-# 
-# gapminder_plotly <- ggplotly(gapminder_plot)
-# 
-# gapminder_plotly
+gapminder_plot <- gapminder %>%
+  filter(continent != "Oceania") %>%
+  ggplot(aes(gdpPercap, lifeExp, color = continent)) +
+    geom_point(alpha = 0.2, size = 0.5) +
+    geom_smooth(method = "loess",
+                formula = y ~ x,
+                se = TRUE) +
+    facet_wrap(~continent, nrow = 1) +
+    labs(title = "Life Expectancy and GDP per Capita",
+         subtitle = "Connection between GDP and life expectancy is weakest in Africa",
+         x = "GDP per Capita",
+         y = "Life Expectancy") +
+    scale_x_log10(breaks = c(500, 5000, 50000),
+                  labels = scales::dollar_format(accuracy = 1)) +
+    theme_linedraw() +
+    theme(legend.position = "none")
+
+gapminder_plotly <- ggplotly(gapminder_plot)
+
+gapminder_plotly
 ```
 
 You can also create maps from census data, like this plot below.

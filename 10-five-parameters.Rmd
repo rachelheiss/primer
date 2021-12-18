@@ -19,7 +19,11 @@ Last chapter, we studied four parameters: models in which we studied multiple ri
 
 Packages:
 
-```{r, message=FALSE}
+<!-- broom.mixed generates a weird warning about TMB was built with Matrix version -->
+<!-- 1.3.4 and Current Matrix version is 1.3.3. Not sure what to do, besides turn -->
+<!-- it off for now. -->
+
+```{r, message = FALSE, warning = FALSE}
 library(primer.data)
 library(gt)
 library(gtsummary)
@@ -28,6 +32,9 @@ library(tidyverse)
 library(rstanarm)
 library(broom.mixed)
 ```
+
+
+
 
 
 Consider the following questions:

@@ -130,10 +130,10 @@
     },
     "TMB": {
       "Package": "TMB",
-      "Version": "1.7.20",
+      "Version": "1.7.22",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "db241456677ae165b3095b6df5d79009"
+      "Hash": "d1a16b564d4d43d01943002981f45ab6"
     },
     "V8": {
       "Package": "V8",
@@ -603,6 +603,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "3eb6477d01eb5bbdc03f7d5f70f2733e"
+    },
+    "ggrepel": {
+      "Package": "ggrepel",
+      "Version": "0.9.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "08ab869f37e6a7741a64ab9069bcb67d"
     },
     "ggridges": {
       "Package": "ggridges",

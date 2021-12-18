@@ -90,7 +90,7 @@ However, the main point of this exercise is to see *what we want to know* compar
 
 After loading the packages we need, let's perform an EDA, starting off by running `glimpse()` on the `shaming` tibble from the **primer.data** package. 
 
-```{r, message = FALSE}
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(primer.data)
 library(rstanarm)

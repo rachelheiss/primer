@@ -204,7 +204,7 @@ We can create an R Project by going to File -> New Project and following the dia
 knitr::include_graphics("00-getting-started/images/new_r_project.gif")
 ```
 
-### R Markdown Files
+### R Markdown Files {-}
 
 <!-- AG: This may be a bit too complicated and too long for getting started. -->
 
@@ -294,7 +294,7 @@ Now what? There are a few ways you can close out of a tutorial safely so you can
 * If you clicked "Show in new window" and were working on the tutorial in a pop-up window, simply X out of the pop-up window.  
 * If you were working on the tutorial inside the Tutorial pane of RStudio, simply press the red stop sign icon.   
 
-### Basic Commands
+### Basic Commands {-}
 
 Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.
 

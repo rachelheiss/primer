@@ -31,12 +31,18 @@ $$ y_i = \beta_0  + \beta_1 age_i + \epsilon_i$$
 
 We fit this using the `trains` data from **primer.data**. We will also be using a new package, **broom.mixed**, which allows us to tidy regression data for plotting.
 
-```{r, message = FALSE}
+<!-- broom.mixed generates a weird warning about TMB was built with Matrix version -->
+<!-- 1.3.4 and Current Matrix version is 1.3.3. Not sure what to do, besides turn -->
+<!-- it off for now. -->
+
+
+```{r, message = FALSE, warning =  FALSE}
 library(tidyverse)
 library(primer.data)
 library(rstanarm)
 library(broom.mixed)
 ```
+
 
 
 ```{r}

@@ -51,6 +51,7 @@
 <li><a class="" href="tools.html">Tools</a></li>
 <li><a class="" href="functions.html">Functions</a></li>
 <li><a class="" href="maps.html">Maps</a></li>
+<li><a class="" href="ipums.html">IPUMS</a></li>
 <li><a class="" href="animation.html">Animation</a></li>
 <li><a class="" href="set-up-for-working-on-the-primer.html">Set Up for Working on The Primer</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -286,16 +287,16 @@ FIGURE 2.2: Real data is nasty.
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 1
-##   fruit       
-##   &lt;chr&gt;       
-## 1 kiwi fruit  
-## 2 strawberry  
-## 3 blood orange
-## 4 chili pepper
-## 5 persimmon   
-## 6 rock melon  
-## 7 mango       
-## 8 jambul</code></pre>
+##   fruit     
+##   &lt;chr&gt;     
+## 1 breadfruit
+## 2 grape     
+## 3 plum      
+## 4 apple     
+## 5 watermelon
+## 6 satsuma   
+## 7 honeydew  
+## 8 cantaloupe</code></pre>
 <!-- AM: Demonstrate a use of the `prop` argument? Or just delete it entirely? -->
 <p>Note that <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code> selects a random set of rows from the tibble. The argument <code>n</code>, as shown above, will display that many rows. Use the argument <code>prop</code> to return a specific percentage of all the rows in the tibble.</p>
 <p><code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> determines if a character vector matches a pattern. It returns a logical vector that is the same length as the input. Recall logicals are either <code>TRUE</code> or <code>FALSE</code>.</p>
@@ -686,7 +687,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <pre><code>## [1] "2021-12-17"</code></pre>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-17 21:30:46 EST"</code></pre>
+<pre><code>## [1] "2021-12-17 23:18:14 EST"</code></pre>
 <p>Otherwise, there are three ways you’re likely to create a date/time:</p>
 <ol style="list-style-type: decimal">
 <li>From a string.</li>

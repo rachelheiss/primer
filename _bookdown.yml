@@ -33,7 +33,7 @@ rmd_files:
     "functions.Rmd",
     "maps.Rmd",
     # "ipums.Rmd",
-    # "animation.Rmd",
+    "animation.Rmd",
     "set-up.Rmd",
     "references.Rmd", # Must have comma after last entry
   ]

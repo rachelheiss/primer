@@ -9,7 +9,9 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet">
 <script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script><script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -97,12 +99,12 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
 </h2>
 <p>A <strong>Preceptor Table</strong> is a table with rows and columns such that, if none of the data is missing, the thing we want to know is trivial to calculate. Preceptor Tables vary in the number of their rows and columns. We use question marks to indicate missing data in a Preceptor Table. The rows in the Preceptor Table are the <em>units</em> — people, galaxies, oak trees — which are the subjects of interest. Even the simplest Preceptor Table will have two columns. The first is an <em>ID</em> column which serves to label each unit. The second column is the <em>outcome</em> of interest, the variable we are trying to predict/understand/change.</p>
 <p>Assume that there are five adult brothers and you are given four of their heights. What is the average height of all five brothers? Consider a Preceptor Table for this problem:</p>
-<div id="lnoiuacvzt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rbmbkirvcm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lnoiuacvzt .gt_table {
+#rbmbkirvcm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -127,7 +129,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-left-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_heading {
+#rbmbkirvcm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -139,7 +141,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_title {
+#rbmbkirvcm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -149,7 +151,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-width: 0;
 }
 
-#lnoiuacvzt .gt_subtitle {
+#rbmbkirvcm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -159,13 +161,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-width: 0;
 }
 
-#lnoiuacvzt .gt_bottom_border {
+#rbmbkirvcm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_col_headings {
+#rbmbkirvcm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -180,7 +182,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_col_heading {
+#rbmbkirvcm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -200,7 +202,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#lnoiuacvzt .gt_column_spanner_outer {
+#rbmbkirvcm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -212,15 +214,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 4px;
 }
 
-#lnoiuacvzt .gt_column_spanner_outer:first-child {
+#rbmbkirvcm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lnoiuacvzt .gt_column_spanner_outer:last-child {
+#rbmbkirvcm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lnoiuacvzt .gt_column_spanner {
+#rbmbkirvcm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -232,7 +234,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   width: 100%;
 }
 
-#lnoiuacvzt .gt_group_heading {
+#rbmbkirvcm .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -254,7 +256,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#lnoiuacvzt .gt_empty_group_heading {
+#rbmbkirvcm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -269,15 +271,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#lnoiuacvzt .gt_from_md > :first-child {
+#rbmbkirvcm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lnoiuacvzt .gt_from_md > :last-child {
+#rbmbkirvcm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lnoiuacvzt .gt_row {
+#rbmbkirvcm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -296,7 +298,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#lnoiuacvzt .gt_stub {
+#rbmbkirvcm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -308,7 +310,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-left: 12px;
 }
 
-#lnoiuacvzt .gt_summary_row {
+#rbmbkirvcm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -318,7 +320,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#lnoiuacvzt .gt_first_summary_row {
+#rbmbkirvcm .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -328,7 +330,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_grand_summary_row {
+#rbmbkirvcm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -338,7 +340,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#lnoiuacvzt .gt_first_grand_summary_row {
+#rbmbkirvcm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,11 +350,11 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_striped {
+#rbmbkirvcm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lnoiuacvzt .gt_table_body {
+#rbmbkirvcm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -361,7 +363,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_footnotes {
+#rbmbkirvcm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -375,13 +377,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_footnote {
+#rbmbkirvcm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#lnoiuacvzt .gt_sourcenotes {
+#rbmbkirvcm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -395,41 +397,41 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#lnoiuacvzt .gt_sourcenote {
+#rbmbkirvcm .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#lnoiuacvzt .gt_left {
+#rbmbkirvcm .gt_left {
   text-align: left;
 }
 
-#lnoiuacvzt .gt_center {
+#rbmbkirvcm .gt_center {
   text-align: center;
 }
 
-#lnoiuacvzt .gt_right {
+#rbmbkirvcm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lnoiuacvzt .gt_font_normal {
+#rbmbkirvcm .gt_font_normal {
   font-weight: normal;
 }
 
-#lnoiuacvzt .gt_font_bold {
+#rbmbkirvcm .gt_font_bold {
   font-weight: bold;
 }
 
-#lnoiuacvzt .gt_font_italic {
+#rbmbkirvcm .gt_font_italic {
   font-style: italic;
 }
 
-#lnoiuacvzt .gt_super {
+#rbmbkirvcm .gt_super {
   font-size: 65%;
 }
 
-#lnoiuacvzt .gt_footnote_marks {
+#rbmbkirvcm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -482,12 +484,12 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
 <span class="header-section-number">4.1.1</span> Harvard Height<a class="anchor" aria-label="anchor" href="#harvard-height"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consider a more complex problem. We have the heights of 100 Harvard students, and from that we want to know the average height of all students in the school.</p>
-<div id="jxrbmbkirv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bwrjhgitmq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jxrbmbkirv .gt_table {
+#bwrjhgitmq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -512,7 +514,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-left-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_heading {
+#bwrjhgitmq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -524,7 +526,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_title {
+#bwrjhgitmq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -534,7 +536,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-width: 0;
 }
 
-#jxrbmbkirv .gt_subtitle {
+#bwrjhgitmq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -544,13 +546,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-width: 0;
 }
 
-#jxrbmbkirv .gt_bottom_border {
+#bwrjhgitmq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_col_headings {
+#bwrjhgitmq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -565,7 +567,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_col_heading {
+#bwrjhgitmq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,7 +587,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#jxrbmbkirv .gt_column_spanner_outer {
+#bwrjhgitmq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -597,15 +599,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 4px;
 }
 
-#jxrbmbkirv .gt_column_spanner_outer:first-child {
+#bwrjhgitmq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jxrbmbkirv .gt_column_spanner_outer:last-child {
+#bwrjhgitmq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jxrbmbkirv .gt_column_spanner {
+#bwrjhgitmq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -617,7 +619,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   width: 100%;
 }
 
-#jxrbmbkirv .gt_group_heading {
+#bwrjhgitmq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -639,7 +641,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#jxrbmbkirv .gt_empty_group_heading {
+#bwrjhgitmq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -654,15 +656,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#jxrbmbkirv .gt_from_md > :first-child {
+#bwrjhgitmq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jxrbmbkirv .gt_from_md > :last-child {
+#bwrjhgitmq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jxrbmbkirv .gt_row {
+#bwrjhgitmq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -681,7 +683,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#jxrbmbkirv .gt_stub {
+#bwrjhgitmq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -693,7 +695,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-left: 12px;
 }
 
-#jxrbmbkirv .gt_summary_row {
+#bwrjhgitmq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -703,7 +705,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#jxrbmbkirv .gt_first_summary_row {
+#bwrjhgitmq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,7 +715,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_grand_summary_row {
+#bwrjhgitmq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -723,7 +725,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#jxrbmbkirv .gt_first_grand_summary_row {
+#bwrjhgitmq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -733,11 +735,11 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_striped {
+#bwrjhgitmq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jxrbmbkirv .gt_table_body {
+#bwrjhgitmq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -746,7 +748,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_footnotes {
+#bwrjhgitmq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -760,13 +762,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_footnote {
+#bwrjhgitmq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#jxrbmbkirv .gt_sourcenotes {
+#bwrjhgitmq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -780,41 +782,41 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#jxrbmbkirv .gt_sourcenote {
+#bwrjhgitmq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#jxrbmbkirv .gt_left {
+#bwrjhgitmq .gt_left {
   text-align: left;
 }
 
-#jxrbmbkirv .gt_center {
+#bwrjhgitmq .gt_center {
   text-align: center;
 }
 
-#jxrbmbkirv .gt_right {
+#bwrjhgitmq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jxrbmbkirv .gt_font_normal {
+#bwrjhgitmq .gt_font_normal {
   font-weight: normal;
 }
 
-#jxrbmbkirv .gt_font_bold {
+#bwrjhgitmq .gt_font_bold {
   font-weight: bold;
 }
 
-#jxrbmbkirv .gt_font_italic {
+#bwrjhgitmq .gt_font_italic {
   font-style: italic;
 }
 
-#jxrbmbkirv .gt_super {
+#bwrjhgitmq .gt_super {
   font-size: 65%;
 }
 
-#jxrbmbkirv .gt_footnote_marks {
+#bwrjhgitmq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -891,12 +893,12 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
 <p>Our actual data rows contain the information that we do know. These rows contain entries for both our covariates and the outcomes. In this case, the actual data comes from data on Harvard students in 2015, so age column will read as the matching age and our year entries of these rows will either read “2015.”</p>
 <!-- Do we need to add ID to this table? To any Population Tables? -->
 <p>Our population rows contain no data. These are subjects which fall under our desired population, but for which we have no data. As such, all rows are missing.</p>
-<div id="cmbwrjhgit" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="chdobipjin" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#cmbwrjhgit .gt_table {
+#chdobipjin .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -921,7 +923,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-left-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_heading {
+#chdobipjin .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -933,7 +935,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_title {
+#chdobipjin .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -943,7 +945,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-width: 0;
 }
 
-#cmbwrjhgit .gt_subtitle {
+#chdobipjin .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -953,13 +955,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-width: 0;
 }
 
-#cmbwrjhgit .gt_bottom_border {
+#chdobipjin .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_col_headings {
+#chdobipjin .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -974,7 +976,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_col_heading {
+#chdobipjin .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -994,7 +996,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#cmbwrjhgit .gt_column_spanner_outer {
+#chdobipjin .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1006,15 +1008,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 4px;
 }
 
-#cmbwrjhgit .gt_column_spanner_outer:first-child {
+#chdobipjin .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cmbwrjhgit .gt_column_spanner_outer:last-child {
+#chdobipjin .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cmbwrjhgit .gt_column_spanner {
+#chdobipjin .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1026,7 +1028,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   width: 100%;
 }
 
-#cmbwrjhgit .gt_group_heading {
+#chdobipjin .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1048,7 +1050,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#cmbwrjhgit .gt_empty_group_heading {
+#chdobipjin .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1063,15 +1065,15 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   vertical-align: middle;
 }
 
-#cmbwrjhgit .gt_from_md > :first-child {
+#chdobipjin .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cmbwrjhgit .gt_from_md > :last-child {
+#chdobipjin .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cmbwrjhgit .gt_row {
+#chdobipjin .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1090,7 +1092,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   overflow-x: hidden;
 }
 
-#cmbwrjhgit .gt_stub {
+#chdobipjin .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1102,7 +1104,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-left: 12px;
 }
 
-#cmbwrjhgit .gt_summary_row {
+#chdobipjin .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1112,7 +1114,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#cmbwrjhgit .gt_first_summary_row {
+#chdobipjin .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1122,7 +1124,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_grand_summary_row {
+#chdobipjin .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1132,7 +1134,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   padding-right: 5px;
 }
 
-#cmbwrjhgit .gt_first_grand_summary_row {
+#chdobipjin .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1142,11 +1144,11 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-top-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_striped {
+#chdobipjin .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cmbwrjhgit .gt_table_body {
+#chdobipjin .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1155,7 +1157,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-bottom-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_footnotes {
+#chdobipjin .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1169,13 +1171,13 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_footnote {
+#chdobipjin .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#cmbwrjhgit .gt_sourcenotes {
+#chdobipjin .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1189,41 +1191,41 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
   border-right-color: #D3D3D3;
 }
 
-#cmbwrjhgit .gt_sourcenote {
+#chdobipjin .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#cmbwrjhgit .gt_left {
+#chdobipjin .gt_left {
   text-align: left;
 }
 
-#cmbwrjhgit .gt_center {
+#chdobipjin .gt_center {
   text-align: center;
 }
 
-#cmbwrjhgit .gt_right {
+#chdobipjin .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cmbwrjhgit .gt_font_normal {
+#chdobipjin .gt_font_normal {
   font-weight: normal;
 }
 
-#cmbwrjhgit .gt_font_bold {
+#chdobipjin .gt_font_bold {
   font-weight: bold;
 }
 
-#cmbwrjhgit .gt_font_italic {
+#chdobipjin .gt_font_italic {
   font-style: italic;
 }
 
-#cmbwrjhgit .gt_super {
+#chdobipjin .gt_super {
   font-size: 65%;
 }
 
-#cmbwrjhgit .gt_footnote_marks {
+#chdobipjin .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1392,7 +1394,7 @@ for discussion. I think that something like c("$$13 - \\tau_M$$") could become c
 <span class="header-section-number">4.2</span> Causal effect<a class="anchor" aria-label="anchor" href="#causal-effect"><i class="fas fa-link"></i></a>
 </h2>
 <div class="figure">
-<span id="fig:unnamed-chunk-337"></span>
+<span id="fig:unnamed-chunk-336"></span>
 <img src="04-rubin-causal-model/images/enos_seal.png" alt="This study, which shows the impact of spanish-speaking on attitudes towards immigration, was conducted by Ryan Enos." width="100%"><p class="caption">
 FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes towards immigration, was conducted by Ryan Enos.
 </p>
@@ -1406,12 +1408,12 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
 <span class="header-section-number">4.2.1</span> Potential outcomes<a class="anchor" aria-label="anchor" href="#potential-outcomes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Suppose that Yao is one of the commuters surveyed in this experiment. If we were omniscient, we would know the outcomes for Yao under both treatment (with Spanish-speakers) and control (no Spanish-speakers), and we’d be able to ignore the Fundamental Problem of Causal Inference. We can show this using a Preceptor Table. Calculating the number we are interested in is trivial because none of the data is missing.</p>
-<div id="mqchdobipj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="swetzijqbp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mqchdobipj .gt_table {
+#swetzijqbp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1436,7 +1438,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-left-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_heading {
+#swetzijqbp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1448,7 +1450,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_title {
+#swetzijqbp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1458,7 +1460,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-width: 0;
 }
 
-#mqchdobipj .gt_subtitle {
+#swetzijqbp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1468,13 +1470,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-width: 0;
 }
 
-#mqchdobipj .gt_bottom_border {
+#swetzijqbp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_col_headings {
+#swetzijqbp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1489,7 +1491,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_col_heading {
+#swetzijqbp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1509,7 +1511,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#mqchdobipj .gt_column_spanner_outer {
+#swetzijqbp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1521,15 +1523,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 4px;
 }
 
-#mqchdobipj .gt_column_spanner_outer:first-child {
+#swetzijqbp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mqchdobipj .gt_column_spanner_outer:last-child {
+#swetzijqbp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mqchdobipj .gt_column_spanner {
+#swetzijqbp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1541,7 +1543,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   width: 100%;
 }
 
-#mqchdobipj .gt_group_heading {
+#swetzijqbp .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1563,7 +1565,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#mqchdobipj .gt_empty_group_heading {
+#swetzijqbp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1578,15 +1580,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#mqchdobipj .gt_from_md > :first-child {
+#swetzijqbp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mqchdobipj .gt_from_md > :last-child {
+#swetzijqbp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mqchdobipj .gt_row {
+#swetzijqbp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1605,7 +1607,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#mqchdobipj .gt_stub {
+#swetzijqbp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1617,7 +1619,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-left: 12px;
 }
 
-#mqchdobipj .gt_summary_row {
+#swetzijqbp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1627,7 +1629,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#mqchdobipj .gt_first_summary_row {
+#swetzijqbp .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1637,7 +1639,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_grand_summary_row {
+#swetzijqbp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1647,7 +1649,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#mqchdobipj .gt_first_grand_summary_row {
+#swetzijqbp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1657,11 +1659,11 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_striped {
+#swetzijqbp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mqchdobipj .gt_table_body {
+#swetzijqbp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1670,7 +1672,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_footnotes {
+#swetzijqbp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1684,13 +1686,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_footnote {
+#swetzijqbp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#mqchdobipj .gt_sourcenotes {
+#swetzijqbp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1704,41 +1706,41 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#mqchdobipj .gt_sourcenote {
+#swetzijqbp .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#mqchdobipj .gt_left {
+#swetzijqbp .gt_left {
   text-align: left;
 }
 
-#mqchdobipj .gt_center {
+#swetzijqbp .gt_center {
   text-align: center;
 }
 
-#mqchdobipj .gt_right {
+#swetzijqbp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mqchdobipj .gt_font_normal {
+#swetzijqbp .gt_font_normal {
   font-weight: normal;
 }
 
-#mqchdobipj .gt_font_bold {
+#swetzijqbp .gt_font_bold {
   font-weight: bold;
 }
 
-#mqchdobipj .gt_font_italic {
+#swetzijqbp .gt_font_italic {
   font-style: italic;
 }
 
-#mqchdobipj .gt_super {
+#swetzijqbp .gt_super {
   font-size: 65%;
 }
 
-#mqchdobipj .gt_footnote_marks {
+#swetzijqbp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1770,12 +1772,12 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
 <p> </p>
 <p>From this table we only know the causal effect on Yao. Everyone else in the study might have a lower (more liberal) or higher (more conservative) attitude scores if treated. Regardless of what the causal effect is for other subjects, the causal effect for Yao of being on the train platform with Spanish-speakers is a shift towards a more conservative attitude.</p>
 <p>Using the response variable — the actual symbol rather than a written description — makes for a more concise Preceptor Table.</p>
-<div id="inswetzijq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hqqooljzzk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#inswetzijq .gt_table {
+#hqqooljzzk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1800,7 +1802,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-left-color: #D3D3D3;
 }
 
-#inswetzijq .gt_heading {
+#hqqooljzzk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1812,7 +1814,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#inswetzijq .gt_title {
+#hqqooljzzk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1822,7 +1824,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-width: 0;
 }
 
-#inswetzijq .gt_subtitle {
+#hqqooljzzk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1832,13 +1834,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-width: 0;
 }
 
-#inswetzijq .gt_bottom_border {
+#hqqooljzzk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#inswetzijq .gt_col_headings {
+#hqqooljzzk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1853,7 +1855,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#inswetzijq .gt_col_heading {
+#hqqooljzzk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1873,7 +1875,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#inswetzijq .gt_column_spanner_outer {
+#hqqooljzzk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1885,15 +1887,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 4px;
 }
 
-#inswetzijq .gt_column_spanner_outer:first-child {
+#hqqooljzzk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#inswetzijq .gt_column_spanner_outer:last-child {
+#hqqooljzzk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#inswetzijq .gt_column_spanner {
+#hqqooljzzk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1905,7 +1907,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   width: 100%;
 }
 
-#inswetzijq .gt_group_heading {
+#hqqooljzzk .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1927,7 +1929,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#inswetzijq .gt_empty_group_heading {
+#hqqooljzzk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1942,15 +1944,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#inswetzijq .gt_from_md > :first-child {
+#hqqooljzzk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#inswetzijq .gt_from_md > :last-child {
+#hqqooljzzk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#inswetzijq .gt_row {
+#hqqooljzzk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +1971,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#inswetzijq .gt_stub {
+#hqqooljzzk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1981,7 +1983,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-left: 12px;
 }
 
-#inswetzijq .gt_summary_row {
+#hqqooljzzk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1991,7 +1993,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#inswetzijq .gt_first_summary_row {
+#hqqooljzzk .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2001,7 +2003,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#inswetzijq .gt_grand_summary_row {
+#hqqooljzzk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2011,7 +2013,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#inswetzijq .gt_first_grand_summary_row {
+#hqqooljzzk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2021,11 +2023,11 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#inswetzijq .gt_striped {
+#hqqooljzzk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#inswetzijq .gt_table_body {
+#hqqooljzzk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2034,7 +2036,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-color: #D3D3D3;
 }
 
-#inswetzijq .gt_footnotes {
+#hqqooljzzk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2048,13 +2050,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#inswetzijq .gt_footnote {
+#hqqooljzzk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#inswetzijq .gt_sourcenotes {
+#hqqooljzzk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2068,41 +2070,41 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#inswetzijq .gt_sourcenote {
+#hqqooljzzk .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#inswetzijq .gt_left {
+#hqqooljzzk .gt_left {
   text-align: left;
 }
 
-#inswetzijq .gt_center {
+#hqqooljzzk .gt_center {
   text-align: center;
 }
 
-#inswetzijq .gt_right {
+#hqqooljzzk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#inswetzijq .gt_font_normal {
+#hqqooljzzk .gt_font_normal {
   font-weight: normal;
 }
 
-#inswetzijq .gt_font_bold {
+#hqqooljzzk .gt_font_bold {
   font-weight: bold;
 }
 
-#inswetzijq .gt_font_italic {
+#hqqooljzzk .gt_font_italic {
   font-style: italic;
 }
 
-#inswetzijq .gt_super {
+#hqqooljzzk .gt_super {
   font-size: 65%;
 }
 
-#inswetzijq .gt_footnote_marks {
+#hqqooljzzk .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2139,12 +2141,12 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
 </div>
 <p> </p>
 <p>Recall that the “causal effect” is the difference between Yao’s potential outcome under treatment and his potential outcome under control.</p>
-<div id="bphqqooljz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rhezfcsxfx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bphqqooljz .gt_table {
+#rhezfcsxfx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2169,7 +2171,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-left-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_heading {
+#rhezfcsxfx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2181,7 +2183,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_title {
+#rhezfcsxfx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2191,7 +2193,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-width: 0;
 }
 
-#bphqqooljz .gt_subtitle {
+#rhezfcsxfx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2201,13 +2203,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-width: 0;
 }
 
-#bphqqooljz .gt_bottom_border {
+#rhezfcsxfx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_col_headings {
+#rhezfcsxfx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2222,7 +2224,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_col_heading {
+#rhezfcsxfx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2242,7 +2244,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#bphqqooljz .gt_column_spanner_outer {
+#rhezfcsxfx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2254,15 +2256,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 4px;
 }
 
-#bphqqooljz .gt_column_spanner_outer:first-child {
+#rhezfcsxfx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bphqqooljz .gt_column_spanner_outer:last-child {
+#rhezfcsxfx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bphqqooljz .gt_column_spanner {
+#rhezfcsxfx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2274,7 +2276,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   width: 100%;
 }
 
-#bphqqooljz .gt_group_heading {
+#rhezfcsxfx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2296,7 +2298,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#bphqqooljz .gt_empty_group_heading {
+#rhezfcsxfx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2311,15 +2313,15 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   vertical-align: middle;
 }
 
-#bphqqooljz .gt_from_md > :first-child {
+#rhezfcsxfx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bphqqooljz .gt_from_md > :last-child {
+#rhezfcsxfx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bphqqooljz .gt_row {
+#rhezfcsxfx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2338,7 +2340,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   overflow-x: hidden;
 }
 
-#bphqqooljz .gt_stub {
+#rhezfcsxfx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2350,7 +2352,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-left: 12px;
 }
 
-#bphqqooljz .gt_summary_row {
+#rhezfcsxfx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2360,7 +2362,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#bphqqooljz .gt_first_summary_row {
+#rhezfcsxfx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2370,7 +2372,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_grand_summary_row {
+#rhezfcsxfx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2380,7 +2382,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   padding-right: 5px;
 }
 
-#bphqqooljz .gt_first_grand_summary_row {
+#rhezfcsxfx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2390,11 +2392,11 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-top-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_striped {
+#rhezfcsxfx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bphqqooljz .gt_table_body {
+#rhezfcsxfx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2403,7 +2405,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-bottom-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_footnotes {
+#rhezfcsxfx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2417,13 +2419,13 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_footnote {
+#rhezfcsxfx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#bphqqooljz .gt_sourcenotes {
+#rhezfcsxfx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2437,41 +2439,41 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
   border-right-color: #D3D3D3;
 }
 
-#bphqqooljz .gt_sourcenote {
+#rhezfcsxfx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#bphqqooljz .gt_left {
+#rhezfcsxfx .gt_left {
   text-align: left;
 }
 
-#bphqqooljz .gt_center {
+#rhezfcsxfx .gt_center {
   text-align: center;
 }
 
-#bphqqooljz .gt_right {
+#rhezfcsxfx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bphqqooljz .gt_font_normal {
+#rhezfcsxfx .gt_font_normal {
   font-weight: normal;
 }
 
-#bphqqooljz .gt_font_bold {
+#rhezfcsxfx .gt_font_bold {
   font-weight: bold;
 }
 
-#bphqqooljz .gt_font_italic {
+#rhezfcsxfx .gt_font_italic {
   font-style: italic;
 }
 
-#bphqqooljz .gt_super {
+#rhezfcsxfx .gt_super {
   font-size: 65%;
 }
 
-#bphqqooljz .gt_footnote_marks {
+#rhezfcsxfx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2516,7 +2518,7 @@ FIGURE 4.1: This study, which shows the impact of spanish-speaking on attitudes 
 <p> </p>
 <p>Remember that, in the real world, we will have a bunch of missing data! We can not use simple arithmetic to calculate the causal effect on Yao’s attitude toward immigration. Instead, we will be required to estimate it. An <strong>estimand</strong> is some unknown variable in the real world that we are trying to measure. In this case, it is <span class="math inline">\(Y_{t}-Y_{c}\)</span>, not <span class="math inline">\(+4\)</span>. An estimand is not the <em>value</em> you calculated, but is rather the <em>unknown variable</em> you want to estimate.</p>
 <div class="figure">
-<span id="fig:unnamed-chunk-341"></span>
+<span id="fig:unnamed-chunk-340"></span>
 <img src="04-rubin-causal-model/images/don_rubin.jpg" alt="Don Rubin was a professor of Statistics at  Harvard." width="100%"><p class="caption">
 FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
 </p>
@@ -2554,12 +2556,12 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
 <p>Instead of <span class="math inline">\(Y_t\)</span>, we will use <span class="math inline">\(Y_t(u)\)</span> to represent “Attitude if Treated.” If you want to talk about only Emma, you could say “Emma’s Attitude if Treated” or “<span class="math inline">\(Y_t(u = Emma)\)</span>” or “the <span class="math inline">\(Y_t(u)\)</span> for Emma,” but not just <span class="math inline">\(Y_t\)</span>. That notation is too ambiguous when there is more than one subject.</p>
 <p>Let’s look at a Preceptor Table with more subjects using our new notation:</p>
 <!-- DK: Do you two table trick. A descriptive table only has one outcome table, labeled Y. -->
-<div id="zkrhezfcsx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="byzahsprwa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zkrhezfcsx .gt_table {
+#byzahsprwa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2584,7 +2586,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-left-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_heading {
+#byzahsprwa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2596,7 +2598,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_title {
+#byzahsprwa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2606,7 +2608,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-bottom-width: 0;
 }
 
-#zkrhezfcsx .gt_subtitle {
+#byzahsprwa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2616,13 +2618,13 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-width: 0;
 }
 
-#zkrhezfcsx .gt_bottom_border {
+#byzahsprwa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_col_headings {
+#byzahsprwa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2637,7 +2639,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_col_heading {
+#byzahsprwa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2657,7 +2659,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   overflow-x: hidden;
 }
 
-#zkrhezfcsx .gt_column_spanner_outer {
+#byzahsprwa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2669,15 +2671,15 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 4px;
 }
 
-#zkrhezfcsx .gt_column_spanner_outer:first-child {
+#byzahsprwa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zkrhezfcsx .gt_column_spanner_outer:last-child {
+#byzahsprwa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zkrhezfcsx .gt_column_spanner {
+#byzahsprwa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2689,7 +2691,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   width: 100%;
 }
 
-#zkrhezfcsx .gt_group_heading {
+#byzahsprwa .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2711,7 +2713,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   vertical-align: middle;
 }
 
-#zkrhezfcsx .gt_empty_group_heading {
+#byzahsprwa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2726,15 +2728,15 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   vertical-align: middle;
 }
 
-#zkrhezfcsx .gt_from_md > :first-child {
+#byzahsprwa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zkrhezfcsx .gt_from_md > :last-child {
+#byzahsprwa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zkrhezfcsx .gt_row {
+#byzahsprwa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2753,7 +2755,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   overflow-x: hidden;
 }
 
-#zkrhezfcsx .gt_stub {
+#byzahsprwa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2765,7 +2767,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-left: 12px;
 }
 
-#zkrhezfcsx .gt_summary_row {
+#byzahsprwa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2775,7 +2777,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 5px;
 }
 
-#zkrhezfcsx .gt_first_summary_row {
+#byzahsprwa .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2785,7 +2787,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_grand_summary_row {
+#byzahsprwa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2795,7 +2797,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 5px;
 }
 
-#zkrhezfcsx .gt_first_grand_summary_row {
+#byzahsprwa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2805,11 +2807,11 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_striped {
+#byzahsprwa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zkrhezfcsx .gt_table_body {
+#byzahsprwa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2818,7 +2820,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-bottom-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_footnotes {
+#byzahsprwa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2832,13 +2834,13 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_footnote {
+#byzahsprwa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#zkrhezfcsx .gt_sourcenotes {
+#byzahsprwa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2852,41 +2854,41 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#zkrhezfcsx .gt_sourcenote {
+#byzahsprwa .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#zkrhezfcsx .gt_left {
+#byzahsprwa .gt_left {
   text-align: left;
 }
 
-#zkrhezfcsx .gt_center {
+#byzahsprwa .gt_center {
   text-align: center;
 }
 
-#zkrhezfcsx .gt_right {
+#byzahsprwa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zkrhezfcsx .gt_font_normal {
+#byzahsprwa .gt_font_normal {
   font-weight: normal;
 }
 
-#zkrhezfcsx .gt_font_bold {
+#byzahsprwa .gt_font_bold {
   font-weight: bold;
 }
 
-#zkrhezfcsx .gt_font_italic {
+#byzahsprwa .gt_font_italic {
   font-style: italic;
 }
 
-#zkrhezfcsx .gt_super {
+#byzahsprwa .gt_super {
   font-size: 65%;
 }
 
-#zkrhezfcsx .gt_footnote_marks {
+#byzahsprwa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2999,12 +3001,12 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
 </ul>
 </div>
 <p>Similar concepts can also be applied to the Population Table, where similar to Preceptor Tables, which can also answer several questions that one may be interested in knowing.</p>
-<div id="fxbyzahspr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="sxmxihimrx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fxbyzahspr .gt_table {
+#sxmxihimrx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3029,7 +3031,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-left-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_heading {
+#sxmxihimrx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3041,7 +3043,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_title {
+#sxmxihimrx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3051,7 +3053,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-bottom-width: 0;
 }
 
-#fxbyzahspr .gt_subtitle {
+#sxmxihimrx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3061,13 +3063,13 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-width: 0;
 }
 
-#fxbyzahspr .gt_bottom_border {
+#sxmxihimrx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_col_headings {
+#sxmxihimrx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3082,7 +3084,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_col_heading {
+#sxmxihimrx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3102,7 +3104,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   overflow-x: hidden;
 }
 
-#fxbyzahspr .gt_column_spanner_outer {
+#sxmxihimrx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3114,15 +3116,15 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 4px;
 }
 
-#fxbyzahspr .gt_column_spanner_outer:first-child {
+#sxmxihimrx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fxbyzahspr .gt_column_spanner_outer:last-child {
+#sxmxihimrx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fxbyzahspr .gt_column_spanner {
+#sxmxihimrx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3134,7 +3136,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   width: 100%;
 }
 
-#fxbyzahspr .gt_group_heading {
+#sxmxihimrx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3156,7 +3158,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   vertical-align: middle;
 }
 
-#fxbyzahspr .gt_empty_group_heading {
+#sxmxihimrx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3171,15 +3173,15 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   vertical-align: middle;
 }
 
-#fxbyzahspr .gt_from_md > :first-child {
+#sxmxihimrx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fxbyzahspr .gt_from_md > :last-child {
+#sxmxihimrx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fxbyzahspr .gt_row {
+#sxmxihimrx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3198,7 +3200,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   overflow-x: hidden;
 }
 
-#fxbyzahspr .gt_stub {
+#sxmxihimrx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3210,7 +3212,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-left: 12px;
 }
 
-#fxbyzahspr .gt_summary_row {
+#sxmxihimrx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3220,7 +3222,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 5px;
 }
 
-#fxbyzahspr .gt_first_summary_row {
+#sxmxihimrx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3230,7 +3232,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_grand_summary_row {
+#sxmxihimrx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3240,7 +3242,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   padding-right: 5px;
 }
 
-#fxbyzahspr .gt_first_grand_summary_row {
+#sxmxihimrx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3250,11 +3252,11 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-top-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_striped {
+#sxmxihimrx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fxbyzahspr .gt_table_body {
+#sxmxihimrx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3263,7 +3265,7 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-bottom-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_footnotes {
+#sxmxihimrx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3277,13 +3279,13 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_footnote {
+#sxmxihimrx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#fxbyzahspr .gt_sourcenotes {
+#sxmxihimrx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3297,41 +3299,41 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
   border-right-color: #D3D3D3;
 }
 
-#fxbyzahspr .gt_sourcenote {
+#sxmxihimrx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#fxbyzahspr .gt_left {
+#sxmxihimrx .gt_left {
   text-align: left;
 }
 
-#fxbyzahspr .gt_center {
+#sxmxihimrx .gt_center {
   text-align: center;
 }
 
-#fxbyzahspr .gt_right {
+#sxmxihimrx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fxbyzahspr .gt_font_normal {
+#sxmxihimrx .gt_font_normal {
   font-weight: normal;
 }
 
-#fxbyzahspr .gt_font_bold {
+#sxmxihimrx .gt_font_bold {
   font-weight: bold;
 }
 
-#fxbyzahspr .gt_font_italic {
+#sxmxihimrx .gt_font_italic {
   font-style: italic;
 }
 
-#fxbyzahspr .gt_super {
+#sxmxihimrx .gt_super {
   font-size: 65%;
 }
 
-#fxbyzahspr .gt_footnote_marks {
+#sxmxihimrx .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -3575,12 +3577,12 @@ FIGURE 4.2: Don Rubin was a professor of Statistics at Harvard.
 <p>What does our real-world Preceptor Table look like?</p>
 <!-- SZ: Can't seem to make GT tables appear side by side, can only find working versions for Kable tables. Thoughts?  
 See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side-or-in-a-grid-or-table-of-tables -->
-<div id="wasxmxihim" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kplaslbvlp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wasxmxihim .gt_table {
+#kplaslbvlp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3605,7 +3607,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_heading {
+#kplaslbvlp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3617,7 +3619,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_title {
+#kplaslbvlp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3627,7 +3629,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#wasxmxihim .gt_subtitle {
+#kplaslbvlp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3637,13 +3639,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#wasxmxihim .gt_bottom_border {
+#kplaslbvlp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_col_headings {
+#kplaslbvlp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3658,7 +3660,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_col_heading {
+#kplaslbvlp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3678,7 +3680,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#wasxmxihim .gt_column_spanner_outer {
+#kplaslbvlp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3690,15 +3692,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#wasxmxihim .gt_column_spanner_outer:first-child {
+#kplaslbvlp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wasxmxihim .gt_column_spanner_outer:last-child {
+#kplaslbvlp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wasxmxihim .gt_column_spanner {
+#kplaslbvlp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3710,7 +3712,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#wasxmxihim .gt_group_heading {
+#kplaslbvlp .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3732,7 +3734,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#wasxmxihim .gt_empty_group_heading {
+#kplaslbvlp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3747,15 +3749,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#wasxmxihim .gt_from_md > :first-child {
+#kplaslbvlp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wasxmxihim .gt_from_md > :last-child {
+#kplaslbvlp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wasxmxihim .gt_row {
+#kplaslbvlp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3774,7 +3776,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#wasxmxihim .gt_stub {
+#kplaslbvlp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3786,7 +3788,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#wasxmxihim .gt_summary_row {
+#kplaslbvlp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3796,7 +3798,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#wasxmxihim .gt_first_summary_row {
+#kplaslbvlp .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3806,7 +3808,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_grand_summary_row {
+#kplaslbvlp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3816,7 +3818,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#wasxmxihim .gt_first_grand_summary_row {
+#kplaslbvlp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3826,11 +3828,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_striped {
+#kplaslbvlp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wasxmxihim .gt_table_body {
+#kplaslbvlp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3839,7 +3841,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_footnotes {
+#kplaslbvlp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3853,13 +3855,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_footnote {
+#kplaslbvlp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#wasxmxihim .gt_sourcenotes {
+#kplaslbvlp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3873,41 +3875,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#wasxmxihim .gt_sourcenote {
+#kplaslbvlp .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#wasxmxihim .gt_left {
+#kplaslbvlp .gt_left {
   text-align: left;
 }
 
-#wasxmxihim .gt_center {
+#kplaslbvlp .gt_center {
   text-align: center;
 }
 
-#wasxmxihim .gt_right {
+#kplaslbvlp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wasxmxihim .gt_font_normal {
+#kplaslbvlp .gt_font_normal {
   font-weight: normal;
 }
 
-#wasxmxihim .gt_font_bold {
+#kplaslbvlp .gt_font_bold {
   font-weight: bold;
 }
 
-#wasxmxihim .gt_font_italic {
+#kplaslbvlp .gt_font_italic {
   font-style: italic;
 }
 
-#wasxmxihim .gt_super {
+#kplaslbvlp .gt_super {
   font-size: 65%;
 }
 
-#wasxmxihim .gt_footnote_marks {
+#kplaslbvlp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -4007,12 +4009,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </tbody>
 </table></div>
 </div>
-<div id="rxkplaslbv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ijruslphsi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rxkplaslbv .gt_table {
+#ijruslphsi .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4037,7 +4039,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_heading {
+#ijruslphsi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4049,7 +4051,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_title {
+#ijruslphsi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4059,7 +4061,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#rxkplaslbv .gt_subtitle {
+#ijruslphsi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4069,13 +4071,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#rxkplaslbv .gt_bottom_border {
+#ijruslphsi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_col_headings {
+#ijruslphsi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4090,7 +4092,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_col_heading {
+#ijruslphsi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4110,7 +4112,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#rxkplaslbv .gt_column_spanner_outer {
+#ijruslphsi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4122,15 +4124,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#rxkplaslbv .gt_column_spanner_outer:first-child {
+#ijruslphsi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rxkplaslbv .gt_column_spanner_outer:last-child {
+#ijruslphsi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rxkplaslbv .gt_column_spanner {
+#ijruslphsi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4142,7 +4144,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#rxkplaslbv .gt_group_heading {
+#ijruslphsi .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4164,7 +4166,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#rxkplaslbv .gt_empty_group_heading {
+#ijruslphsi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4179,15 +4181,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#rxkplaslbv .gt_from_md > :first-child {
+#ijruslphsi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rxkplaslbv .gt_from_md > :last-child {
+#ijruslphsi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rxkplaslbv .gt_row {
+#ijruslphsi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4206,7 +4208,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#rxkplaslbv .gt_stub {
+#ijruslphsi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4218,7 +4220,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#rxkplaslbv .gt_summary_row {
+#ijruslphsi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4228,7 +4230,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#rxkplaslbv .gt_first_summary_row {
+#ijruslphsi .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4238,7 +4240,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_grand_summary_row {
+#ijruslphsi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4248,7 +4250,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#rxkplaslbv .gt_first_grand_summary_row {
+#ijruslphsi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4258,11 +4260,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_striped {
+#ijruslphsi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rxkplaslbv .gt_table_body {
+#ijruslphsi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4271,7 +4273,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_footnotes {
+#ijruslphsi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4285,13 +4287,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_footnote {
+#ijruslphsi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#rxkplaslbv .gt_sourcenotes {
+#ijruslphsi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4305,41 +4307,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#rxkplaslbv .gt_sourcenote {
+#ijruslphsi .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#rxkplaslbv .gt_left {
+#ijruslphsi .gt_left {
   text-align: left;
 }
 
-#rxkplaslbv .gt_center {
+#ijruslphsi .gt_center {
   text-align: center;
 }
 
-#rxkplaslbv .gt_right {
+#ijruslphsi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rxkplaslbv .gt_font_normal {
+#ijruslphsi .gt_font_normal {
   font-weight: normal;
 }
 
-#rxkplaslbv .gt_font_bold {
+#ijruslphsi .gt_font_bold {
   font-weight: bold;
 }
 
-#rxkplaslbv .gt_font_italic {
+#ijruslphsi .gt_font_italic {
   font-style: italic;
 }
 
-#rxkplaslbv .gt_super {
+#ijruslphsi .gt_super {
   font-size: 65%;
 }
 
-#rxkplaslbv .gt_footnote_marks {
+#ijruslphsi .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -4415,12 +4417,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </h3>
 <p>One model might be that the causal effect is the same for everyone. There is a single parameter, <span class="math inline">\(\tau\)</span>, which we then estimate. (<span class="math inline">\(\tau\)</span> is a Greek letter, written as “tau” and rhyming with “cow.”) Once we have an estimate, we can fill in the Preceptor Table because, knowing it, we can estimate what the unobserved potential outcome is for each person. We use our assumption about <span class="math inline">\(\tau\)</span> to estimate the counterfactual outcome for each unit.</p>
 <p>Remember what our Preceptor Table looks like with all of the missing data:</p>
-<div id="lpijruslph" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="heldaeexfa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lpijruslph .gt_table {
+#heldaeexfa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4445,7 +4447,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#lpijruslph .gt_heading {
+#heldaeexfa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4457,7 +4459,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#lpijruslph .gt_title {
+#heldaeexfa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4467,7 +4469,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#lpijruslph .gt_subtitle {
+#heldaeexfa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4477,13 +4479,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#lpijruslph .gt_bottom_border {
+#heldaeexfa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lpijruslph .gt_col_headings {
+#heldaeexfa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4498,7 +4500,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#lpijruslph .gt_col_heading {
+#heldaeexfa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4518,7 +4520,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#lpijruslph .gt_column_spanner_outer {
+#heldaeexfa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4530,15 +4532,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#lpijruslph .gt_column_spanner_outer:first-child {
+#heldaeexfa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lpijruslph .gt_column_spanner_outer:last-child {
+#heldaeexfa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lpijruslph .gt_column_spanner {
+#heldaeexfa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4550,7 +4552,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#lpijruslph .gt_group_heading {
+#heldaeexfa .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4572,7 +4574,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#lpijruslph .gt_empty_group_heading {
+#heldaeexfa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4587,15 +4589,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#lpijruslph .gt_from_md > :first-child {
+#heldaeexfa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lpijruslph .gt_from_md > :last-child {
+#heldaeexfa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lpijruslph .gt_row {
+#heldaeexfa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4614,7 +4616,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#lpijruslph .gt_stub {
+#heldaeexfa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4626,7 +4628,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#lpijruslph .gt_summary_row {
+#heldaeexfa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4636,7 +4638,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#lpijruslph .gt_first_summary_row {
+#heldaeexfa .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4646,7 +4648,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#lpijruslph .gt_grand_summary_row {
+#heldaeexfa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4656,7 +4658,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#lpijruslph .gt_first_grand_summary_row {
+#heldaeexfa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4666,11 +4668,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#lpijruslph .gt_striped {
+#heldaeexfa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lpijruslph .gt_table_body {
+#heldaeexfa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4679,7 +4681,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#lpijruslph .gt_footnotes {
+#heldaeexfa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4693,13 +4695,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#lpijruslph .gt_footnote {
+#heldaeexfa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#lpijruslph .gt_sourcenotes {
+#heldaeexfa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4713,41 +4715,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#lpijruslph .gt_sourcenote {
+#heldaeexfa .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#lpijruslph .gt_left {
+#heldaeexfa .gt_left {
   text-align: left;
 }
 
-#lpijruslph .gt_center {
+#heldaeexfa .gt_center {
   text-align: center;
 }
 
-#lpijruslph .gt_right {
+#heldaeexfa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lpijruslph .gt_font_normal {
+#heldaeexfa .gt_font_normal {
   font-weight: normal;
 }
 
-#lpijruslph .gt_font_bold {
+#heldaeexfa .gt_font_bold {
   font-weight: bold;
 }
 
-#lpijruslph .gt_font_italic {
+#heldaeexfa .gt_font_italic {
   font-style: italic;
 }
 
-#lpijruslph .gt_super {
+#heldaeexfa .gt_super {
   font-size: 65%;
 }
 
-#lpijruslph .gt_footnote_marks {
+#heldaeexfa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -4850,12 +4852,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p> </p>
 <p>If we assume <span class="math inline">\(\tau\)</span> is the treatment effect for everyone, how do we fill in the table? We are using <span class="math inline">\(\tau\)</span> as an estimate for the causal effect. By definition: <span class="math inline">\(Y_t(u) - Y_c(u) = \tau\)</span>. Using simple algebra, it is then clear that <span class="math inline">\(Y_t(u) = Y_c(u) + \tau\)</span> and <span class="math inline">\(Y_c(u) = Y_t(u) - \tau\)</span>. In other words, you could add it to the observed value of every observation in the control group (or subtract it from the observed value of every observation in the treatment group), and thus fill in all the missing values.</p>
 <p>Assuming there is a constant treatment effect, <span class="math inline">\(\tau\)</span>, for everyone, filling in the missing values would look like this:</p>
-<div id="siheldaeex" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="avohfbvhpv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#siheldaeex .gt_table {
+#avohfbvhpv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4880,7 +4882,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#siheldaeex .gt_heading {
+#avohfbvhpv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4892,7 +4894,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#siheldaeex .gt_title {
+#avohfbvhpv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4902,7 +4904,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#siheldaeex .gt_subtitle {
+#avohfbvhpv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4912,13 +4914,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#siheldaeex .gt_bottom_border {
+#avohfbvhpv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#siheldaeex .gt_col_headings {
+#avohfbvhpv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4933,7 +4935,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#siheldaeex .gt_col_heading {
+#avohfbvhpv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4953,7 +4955,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#siheldaeex .gt_column_spanner_outer {
+#avohfbvhpv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4965,15 +4967,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#siheldaeex .gt_column_spanner_outer:first-child {
+#avohfbvhpv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#siheldaeex .gt_column_spanner_outer:last-child {
+#avohfbvhpv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#siheldaeex .gt_column_spanner {
+#avohfbvhpv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4985,7 +4987,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#siheldaeex .gt_group_heading {
+#avohfbvhpv .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5007,7 +5009,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#siheldaeex .gt_empty_group_heading {
+#avohfbvhpv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5022,15 +5024,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#siheldaeex .gt_from_md > :first-child {
+#avohfbvhpv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#siheldaeex .gt_from_md > :last-child {
+#avohfbvhpv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#siheldaeex .gt_row {
+#avohfbvhpv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5049,7 +5051,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#siheldaeex .gt_stub {
+#avohfbvhpv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5061,7 +5063,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#siheldaeex .gt_summary_row {
+#avohfbvhpv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5071,7 +5073,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#siheldaeex .gt_first_summary_row {
+#avohfbvhpv .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5081,7 +5083,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#siheldaeex .gt_grand_summary_row {
+#avohfbvhpv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5091,7 +5093,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#siheldaeex .gt_first_grand_summary_row {
+#avohfbvhpv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5101,11 +5103,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#siheldaeex .gt_striped {
+#avohfbvhpv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#siheldaeex .gt_table_body {
+#avohfbvhpv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5114,7 +5116,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#siheldaeex .gt_footnotes {
+#avohfbvhpv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5128,13 +5130,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#siheldaeex .gt_footnote {
+#avohfbvhpv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#siheldaeex .gt_sourcenotes {
+#avohfbvhpv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5148,41 +5150,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#siheldaeex .gt_sourcenote {
+#avohfbvhpv .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#siheldaeex .gt_left {
+#avohfbvhpv .gt_left {
   text-align: left;
 }
 
-#siheldaeex .gt_center {
+#avohfbvhpv .gt_center {
   text-align: center;
 }
 
-#siheldaeex .gt_right {
+#avohfbvhpv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#siheldaeex .gt_font_normal {
+#avohfbvhpv .gt_font_normal {
   font-weight: normal;
 }
 
-#siheldaeex .gt_font_bold {
+#avohfbvhpv .gt_font_bold {
   font-weight: bold;
 }
 
-#siheldaeex .gt_font_italic {
+#avohfbvhpv .gt_font_italic {
   font-style: italic;
 }
 
-#siheldaeex .gt_super {
+#avohfbvhpv .gt_super {
   font-size: 65%;
 }
 
-#siheldaeex .gt_footnote_marks {
+#avohfbvhpv .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -5288,12 +5290,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p><span class="math display">\[$\frac{\Sigma Y_t(u)}{n_t} + \frac{\Sigma Y_c(u)}{n_c} = \widehat{ATE}\]</span></p>
 <p><span class="math inline">\(\Sigma\)</span> represents the sum of the treated/control values, and n represents the amount of values within the control and treated group.This formula is for something called <span class="math inline">\(\widehat{ATE}\)</span>, which we will discuss in more depth in a later section.</p>
 <p>Continuing with the example, calculating the ATE or the causal effect, gives us an estimate of <span class="math inline">\(+1\)</span> for <span class="math inline">\(\tau\)</span>. Let’s fill in our missing values by adding <span class="math inline">\(\tau\)</span> to the observed values under control and by subtracting <span class="math inline">\(\tau\)</span> from the observed value under treatment like so:</p>
-<div id="faavohfbvh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ngezlduliy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#faavohfbvh .gt_table {
+#ngezlduliy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -5318,7 +5320,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_heading {
+#ngezlduliy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5330,7 +5332,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_title {
+#ngezlduliy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5340,7 +5342,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#faavohfbvh .gt_subtitle {
+#ngezlduliy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5350,13 +5352,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#faavohfbvh .gt_bottom_border {
+#ngezlduliy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_col_headings {
+#ngezlduliy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5371,7 +5373,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_col_heading {
+#ngezlduliy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5391,7 +5393,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#faavohfbvh .gt_column_spanner_outer {
+#ngezlduliy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5403,15 +5405,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#faavohfbvh .gt_column_spanner_outer:first-child {
+#ngezlduliy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#faavohfbvh .gt_column_spanner_outer:last-child {
+#ngezlduliy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#faavohfbvh .gt_column_spanner {
+#ngezlduliy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5423,7 +5425,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#faavohfbvh .gt_group_heading {
+#ngezlduliy .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5445,7 +5447,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#faavohfbvh .gt_empty_group_heading {
+#ngezlduliy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5460,15 +5462,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#faavohfbvh .gt_from_md > :first-child {
+#ngezlduliy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#faavohfbvh .gt_from_md > :last-child {
+#ngezlduliy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#faavohfbvh .gt_row {
+#ngezlduliy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5487,7 +5489,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#faavohfbvh .gt_stub {
+#ngezlduliy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5499,7 +5501,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#faavohfbvh .gt_summary_row {
+#ngezlduliy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5509,7 +5511,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#faavohfbvh .gt_first_summary_row {
+#ngezlduliy .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5519,7 +5521,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_grand_summary_row {
+#ngezlduliy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5529,7 +5531,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#faavohfbvh .gt_first_grand_summary_row {
+#ngezlduliy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5539,11 +5541,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_striped {
+#ngezlduliy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#faavohfbvh .gt_table_body {
+#ngezlduliy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5552,7 +5554,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_footnotes {
+#ngezlduliy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5566,13 +5568,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_footnote {
+#ngezlduliy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#faavohfbvh .gt_sourcenotes {
+#ngezlduliy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5586,41 +5588,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#faavohfbvh .gt_sourcenote {
+#ngezlduliy .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#faavohfbvh .gt_left {
+#ngezlduliy .gt_left {
   text-align: left;
 }
 
-#faavohfbvh .gt_center {
+#ngezlduliy .gt_center {
   text-align: center;
 }
 
-#faavohfbvh .gt_right {
+#ngezlduliy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#faavohfbvh .gt_font_normal {
+#ngezlduliy .gt_font_normal {
   font-weight: normal;
 }
 
-#faavohfbvh .gt_font_bold {
+#ngezlduliy .gt_font_bold {
   font-weight: bold;
 }
 
-#faavohfbvh .gt_font_italic {
+#ngezlduliy .gt_font_italic {
   font-style: italic;
 }
 
-#faavohfbvh .gt_super {
+#ngezlduliy .gt_super {
   font-size: 65%;
 }
 
-#faavohfbvh .gt_footnote_marks {
+#ngezlduliy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -5722,12 +5724,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </div>
 <p> </p>
 <p>Which gives us:</p>
-<div id="pvngezldul" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wsblfckjyl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pvngezldul .gt_table {
+#wsblfckjyl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -5752,7 +5754,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#pvngezldul .gt_heading {
+#wsblfckjyl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5764,7 +5766,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#pvngezldul .gt_title {
+#wsblfckjyl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5774,7 +5776,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#pvngezldul .gt_subtitle {
+#wsblfckjyl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5784,13 +5786,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#pvngezldul .gt_bottom_border {
+#wsblfckjyl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pvngezldul .gt_col_headings {
+#wsblfckjyl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5805,7 +5807,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#pvngezldul .gt_col_heading {
+#wsblfckjyl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5825,7 +5827,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#pvngezldul .gt_column_spanner_outer {
+#wsblfckjyl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5837,15 +5839,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#pvngezldul .gt_column_spanner_outer:first-child {
+#wsblfckjyl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pvngezldul .gt_column_spanner_outer:last-child {
+#wsblfckjyl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pvngezldul .gt_column_spanner {
+#wsblfckjyl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5857,7 +5859,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#pvngezldul .gt_group_heading {
+#wsblfckjyl .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5879,7 +5881,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#pvngezldul .gt_empty_group_heading {
+#wsblfckjyl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5894,15 +5896,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#pvngezldul .gt_from_md > :first-child {
+#wsblfckjyl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pvngezldul .gt_from_md > :last-child {
+#wsblfckjyl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pvngezldul .gt_row {
+#wsblfckjyl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5921,7 +5923,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#pvngezldul .gt_stub {
+#wsblfckjyl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5933,7 +5935,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#pvngezldul .gt_summary_row {
+#wsblfckjyl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5943,7 +5945,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#pvngezldul .gt_first_summary_row {
+#wsblfckjyl .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5953,7 +5955,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#pvngezldul .gt_grand_summary_row {
+#wsblfckjyl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5963,7 +5965,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#pvngezldul .gt_first_grand_summary_row {
+#wsblfckjyl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5973,11 +5975,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#pvngezldul .gt_striped {
+#wsblfckjyl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pvngezldul .gt_table_body {
+#wsblfckjyl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5986,7 +5988,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#pvngezldul .gt_footnotes {
+#wsblfckjyl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6000,13 +6002,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#pvngezldul .gt_footnote {
+#wsblfckjyl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pvngezldul .gt_sourcenotes {
+#wsblfckjyl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6020,41 +6022,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#pvngezldul .gt_sourcenote {
+#wsblfckjyl .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pvngezldul .gt_left {
+#wsblfckjyl .gt_left {
   text-align: left;
 }
 
-#pvngezldul .gt_center {
+#wsblfckjyl .gt_center {
   text-align: center;
 }
 
-#pvngezldul .gt_right {
+#wsblfckjyl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pvngezldul .gt_font_normal {
+#wsblfckjyl .gt_font_normal {
   font-weight: normal;
 }
 
-#pvngezldul .gt_font_bold {
+#wsblfckjyl .gt_font_bold {
   font-weight: bold;
 }
 
-#pvngezldul .gt_font_italic {
+#wsblfckjyl .gt_font_italic {
   font-style: italic;
 }
 
-#pvngezldul .gt_super {
+#wsblfckjyl .gt_super {
   font-size: 65%;
 }
 
-#pvngezldul .gt_footnote_marks {
+#wsblfckjyl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -6164,12 +6166,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </h3>
 <p>A second model might assume that the causal effect is different between levels of a category but the same within those levels. For example, perhaps there is a <span class="math inline">\(\tau_F\)</span> for females and <span class="math inline">\(\tau_M\)</span> for males where <span class="math inline">\(\tau_F != \tau_M\)</span>. We are making this assumption to give us a different model with which we can fill in the missing values in our Preceptor Table. We can’t make any progress unless we make some assumptions. That is an inescapable result of the <em>Fundamental Problem of Causal Inference</em>.</p>
 <p>Consider a model in which causal effects differ based on sex. When we are looking at a “category” of units — for instance, gender — we call this a <em>covariate</em>. A covariate is an independent variable that can influence the outcome of a given statistical trial, but which is not of direct interest. Possible covariates include, but are not limited to, sex, age, and political party.</p>
-<div id="iywsblfckj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pzepxquqsa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#iywsblfckj .gt_table {
+#pzepxquqsa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -6194,7 +6196,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_heading {
+#pzepxquqsa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6206,7 +6208,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_title {
+#pzepxquqsa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6216,7 +6218,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#iywsblfckj .gt_subtitle {
+#pzepxquqsa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6226,13 +6228,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#iywsblfckj .gt_bottom_border {
+#pzepxquqsa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_col_headings {
+#pzepxquqsa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6247,7 +6249,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_col_heading {
+#pzepxquqsa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6267,7 +6269,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#iywsblfckj .gt_column_spanner_outer {
+#pzepxquqsa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6279,15 +6281,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#iywsblfckj .gt_column_spanner_outer:first-child {
+#pzepxquqsa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iywsblfckj .gt_column_spanner_outer:last-child {
+#pzepxquqsa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iywsblfckj .gt_column_spanner {
+#pzepxquqsa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6299,7 +6301,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#iywsblfckj .gt_group_heading {
+#pzepxquqsa .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6321,7 +6323,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#iywsblfckj .gt_empty_group_heading {
+#pzepxquqsa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6336,15 +6338,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#iywsblfckj .gt_from_md > :first-child {
+#pzepxquqsa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iywsblfckj .gt_from_md > :last-child {
+#pzepxquqsa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iywsblfckj .gt_row {
+#pzepxquqsa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6363,7 +6365,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#iywsblfckj .gt_stub {
+#pzepxquqsa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6375,7 +6377,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#iywsblfckj .gt_summary_row {
+#pzepxquqsa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6385,7 +6387,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#iywsblfckj .gt_first_summary_row {
+#pzepxquqsa .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6395,7 +6397,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_grand_summary_row {
+#pzepxquqsa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6405,7 +6407,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#iywsblfckj .gt_first_grand_summary_row {
+#pzepxquqsa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6415,11 +6417,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_striped {
+#pzepxquqsa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iywsblfckj .gt_table_body {
+#pzepxquqsa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6428,7 +6430,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_footnotes {
+#pzepxquqsa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6442,13 +6444,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_footnote {
+#pzepxquqsa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#iywsblfckj .gt_sourcenotes {
+#pzepxquqsa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6462,41 +6464,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iywsblfckj .gt_sourcenote {
+#pzepxquqsa .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#iywsblfckj .gt_left {
+#pzepxquqsa .gt_left {
   text-align: left;
 }
 
-#iywsblfckj .gt_center {
+#pzepxquqsa .gt_center {
   text-align: center;
 }
 
-#iywsblfckj .gt_right {
+#pzepxquqsa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iywsblfckj .gt_font_normal {
+#pzepxquqsa .gt_font_normal {
   font-weight: normal;
 }
 
-#iywsblfckj .gt_font_bold {
+#pzepxquqsa .gt_font_bold {
   font-weight: bold;
 }
 
-#iywsblfckj .gt_font_italic {
+#pzepxquqsa .gt_font_italic {
   font-style: italic;
 }
 
-#iywsblfckj .gt_super {
+#pzepxquqsa .gt_super {
   font-size: 65%;
 }
 
-#iywsblfckj .gt_footnote_marks {
+#pzepxquqsa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -6620,12 +6622,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p><span class="math inline">\(\tau_M\)</span> would be <span class="math display">\[(13+3)/2 - 12 = -4\]</span>
 <span class="math inline">\(\tau_F\)</span> would be <span class="math display">\[(14-6 = +8)\]</span></p>
 <p>Using those values, we would fill out our new table like this:</p>
-<div id="ylpzepxquq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uayfnqvshh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ylpzepxquq .gt_table {
+#uayfnqvshh .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -6650,7 +6652,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_heading {
+#uayfnqvshh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6662,7 +6664,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_title {
+#uayfnqvshh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6672,7 +6674,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#ylpzepxquq .gt_subtitle {
+#uayfnqvshh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6682,13 +6684,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#ylpzepxquq .gt_bottom_border {
+#uayfnqvshh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_col_headings {
+#uayfnqvshh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6703,7 +6705,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_col_heading {
+#uayfnqvshh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6723,7 +6725,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#ylpzepxquq .gt_column_spanner_outer {
+#uayfnqvshh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6735,15 +6737,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#ylpzepxquq .gt_column_spanner_outer:first-child {
+#uayfnqvshh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ylpzepxquq .gt_column_spanner_outer:last-child {
+#uayfnqvshh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ylpzepxquq .gt_column_spanner {
+#uayfnqvshh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6755,7 +6757,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#ylpzepxquq .gt_group_heading {
+#uayfnqvshh .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6777,7 +6779,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#ylpzepxquq .gt_empty_group_heading {
+#uayfnqvshh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6792,15 +6794,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#ylpzepxquq .gt_from_md > :first-child {
+#uayfnqvshh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ylpzepxquq .gt_from_md > :last-child {
+#uayfnqvshh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ylpzepxquq .gt_row {
+#uayfnqvshh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6819,7 +6821,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#ylpzepxquq .gt_stub {
+#uayfnqvshh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6831,7 +6833,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#ylpzepxquq .gt_summary_row {
+#uayfnqvshh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6841,7 +6843,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#ylpzepxquq .gt_first_summary_row {
+#uayfnqvshh .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6851,7 +6853,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_grand_summary_row {
+#uayfnqvshh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6861,7 +6863,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#ylpzepxquq .gt_first_grand_summary_row {
+#uayfnqvshh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6871,11 +6873,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_striped {
+#uayfnqvshh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ylpzepxquq .gt_table_body {
+#uayfnqvshh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6884,7 +6886,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_footnotes {
+#uayfnqvshh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6898,13 +6900,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_footnote {
+#uayfnqvshh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ylpzepxquq .gt_sourcenotes {
+#uayfnqvshh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6918,41 +6920,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#ylpzepxquq .gt_sourcenote {
+#uayfnqvshh .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ylpzepxquq .gt_left {
+#uayfnqvshh .gt_left {
   text-align: left;
 }
 
-#ylpzepxquq .gt_center {
+#uayfnqvshh .gt_center {
   text-align: center;
 }
 
-#ylpzepxquq .gt_right {
+#uayfnqvshh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ylpzepxquq .gt_font_normal {
+#uayfnqvshh .gt_font_normal {
   font-weight: normal;
 }
 
-#ylpzepxquq .gt_font_bold {
+#uayfnqvshh .gt_font_bold {
   font-weight: bold;
 }
 
-#ylpzepxquq .gt_font_italic {
+#uayfnqvshh .gt_font_italic {
   font-style: italic;
 }
 
-#ylpzepxquq .gt_super {
+#uayfnqvshh .gt_super {
   font-size: 65%;
 }
 
-#ylpzepxquq .gt_footnote_marks {
+#uayfnqvshh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -7054,12 +7056,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </div>
 <p> </p>
 <p>Which gives us:</p>
-<div id="sauayfnqvs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xiralalxaf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#sauayfnqvs .gt_table {
+#xiralalxaf .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -7084,7 +7086,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_heading {
+#xiralalxaf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7096,7 +7098,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_title {
+#xiralalxaf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7106,7 +7108,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#sauayfnqvs .gt_subtitle {
+#xiralalxaf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -7116,13 +7118,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#sauayfnqvs .gt_bottom_border {
+#xiralalxaf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_col_headings {
+#xiralalxaf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7137,7 +7139,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_col_heading {
+#xiralalxaf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7157,7 +7159,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#sauayfnqvs .gt_column_spanner_outer {
+#xiralalxaf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7169,15 +7171,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#sauayfnqvs .gt_column_spanner_outer:first-child {
+#xiralalxaf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sauayfnqvs .gt_column_spanner_outer:last-child {
+#xiralalxaf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sauayfnqvs .gt_column_spanner {
+#xiralalxaf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7189,7 +7191,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#sauayfnqvs .gt_group_heading {
+#xiralalxaf .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7211,7 +7213,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#sauayfnqvs .gt_empty_group_heading {
+#xiralalxaf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7226,15 +7228,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#sauayfnqvs .gt_from_md > :first-child {
+#xiralalxaf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sauayfnqvs .gt_from_md > :last-child {
+#xiralalxaf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sauayfnqvs .gt_row {
+#xiralalxaf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7253,7 +7255,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#sauayfnqvs .gt_stub {
+#xiralalxaf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7265,7 +7267,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#sauayfnqvs .gt_summary_row {
+#xiralalxaf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7275,7 +7277,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#sauayfnqvs .gt_first_summary_row {
+#xiralalxaf .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7285,7 +7287,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_grand_summary_row {
+#xiralalxaf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7295,7 +7297,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#sauayfnqvs .gt_first_grand_summary_row {
+#xiralalxaf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7305,11 +7307,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_striped {
+#xiralalxaf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sauayfnqvs .gt_table_body {
+#xiralalxaf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7318,7 +7320,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_footnotes {
+#xiralalxaf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7332,13 +7334,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_footnote {
+#xiralalxaf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#sauayfnqvs .gt_sourcenotes {
+#xiralalxaf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7352,41 +7354,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#sauayfnqvs .gt_sourcenote {
+#xiralalxaf .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#sauayfnqvs .gt_left {
+#xiralalxaf .gt_left {
   text-align: left;
 }
 
-#sauayfnqvs .gt_center {
+#xiralalxaf .gt_center {
   text-align: center;
 }
 
-#sauayfnqvs .gt_right {
+#xiralalxaf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sauayfnqvs .gt_font_normal {
+#xiralalxaf .gt_font_normal {
   font-weight: normal;
 }
 
-#sauayfnqvs .gt_font_bold {
+#xiralalxaf .gt_font_bold {
   font-weight: bold;
 }
 
-#sauayfnqvs .gt_font_italic {
+#xiralalxaf .gt_font_italic {
   font-style: italic;
 }
 
-#sauayfnqvs .gt_super {
+#xiralalxaf .gt_super {
   font-size: 65%;
 }
 
-#sauayfnqvs .gt_footnote_marks {
+#xiralalxaf .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -7495,12 +7497,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </h3>
 <p>Is the assumption of a constant treatment effect, <span class="math inline">\(\tau\)</span>, usually true? No! It is never true. People vary. The effect of a pill on you will always be different from the effect of a pill on your friend, at least if we measure outcomes accurately enough. Treatment effects are always <em>heterogeneous</em>, meaning that they vary across individuals.</p>
 <p>Reality looks like this:</p>
-<div id="hhxiralalx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nimtcazusl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hhxiralalx .gt_table {
+#nimtcazusl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -7525,7 +7527,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_heading {
+#nimtcazusl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7537,7 +7539,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_title {
+#nimtcazusl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7547,7 +7549,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#hhxiralalx .gt_subtitle {
+#nimtcazusl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -7557,13 +7559,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#hhxiralalx .gt_bottom_border {
+#nimtcazusl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_col_headings {
+#nimtcazusl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7578,7 +7580,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_col_heading {
+#nimtcazusl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7598,7 +7600,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#hhxiralalx .gt_column_spanner_outer {
+#nimtcazusl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7610,15 +7612,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#hhxiralalx .gt_column_spanner_outer:first-child {
+#nimtcazusl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hhxiralalx .gt_column_spanner_outer:last-child {
+#nimtcazusl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hhxiralalx .gt_column_spanner {
+#nimtcazusl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7630,7 +7632,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#hhxiralalx .gt_group_heading {
+#nimtcazusl .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7652,7 +7654,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#hhxiralalx .gt_empty_group_heading {
+#nimtcazusl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7667,15 +7669,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#hhxiralalx .gt_from_md > :first-child {
+#nimtcazusl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hhxiralalx .gt_from_md > :last-child {
+#nimtcazusl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hhxiralalx .gt_row {
+#nimtcazusl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7694,7 +7696,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#hhxiralalx .gt_stub {
+#nimtcazusl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7706,7 +7708,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#hhxiralalx .gt_summary_row {
+#nimtcazusl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7716,7 +7718,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#hhxiralalx .gt_first_summary_row {
+#nimtcazusl .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7726,7 +7728,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_grand_summary_row {
+#nimtcazusl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7736,7 +7738,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#hhxiralalx .gt_first_grand_summary_row {
+#nimtcazusl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7746,11 +7748,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_striped {
+#nimtcazusl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hhxiralalx .gt_table_body {
+#nimtcazusl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7759,7 +7761,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_footnotes {
+#nimtcazusl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7773,13 +7775,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_footnote {
+#nimtcazusl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#hhxiralalx .gt_sourcenotes {
+#nimtcazusl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7793,41 +7795,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#hhxiralalx .gt_sourcenote {
+#nimtcazusl .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#hhxiralalx .gt_left {
+#nimtcazusl .gt_left {
   text-align: left;
 }
 
-#hhxiralalx .gt_center {
+#nimtcazusl .gt_center {
   text-align: center;
 }
 
-#hhxiralalx .gt_right {
+#nimtcazusl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hhxiralalx .gt_font_normal {
+#nimtcazusl .gt_font_normal {
   font-weight: normal;
 }
 
-#hhxiralalx .gt_font_bold {
+#nimtcazusl .gt_font_bold {
   font-weight: bold;
 }
 
-#hhxiralalx .gt_font_italic {
+#nimtcazusl .gt_font_italic {
   font-style: italic;
 }
 
-#hhxiralalx .gt_super {
+#nimtcazusl .gt_super {
   font-size: 65%;
 }
 
-#hhxiralalx .gt_footnote_marks {
+#nimtcazusl .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -7947,12 +7949,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p>Just because the ATE is often a useful estimand doesn’t mean that it <em>always</em> is.</p>
 <p>Consider point #3. For example, let’s say the treatment effect does vary dependent on sex. For males there is a small negative effect (-4), but for females there is a larger positive effect (+8). However, the average treatment effect for the whole sample, even if you estimate it correctly, will be a single negative number (+1) – since the positive effect for females is larger than the negative effect for males.</p>
 <p>Estimating the average treatment effect, by calculating <span class="math inline">\(\widehat{ATE}\)</span>, is easy. But is our <span class="math inline">\(\widehat{ATE}\)</span> a good estimate of the actual ATE? After all, if we knew all the missing values in the Preceptor Table, we could calculate the ATE perfectly. But those missing values may be wildly different from the observed values. Consider this Preceptor Table:</p>
-<div id="afnimtcazu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pubeysdxio" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#afnimtcazu .gt_table {
+#pubeysdxio .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -7977,7 +7979,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_heading {
+#pubeysdxio .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7989,7 +7991,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_title {
+#pubeysdxio .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7999,7 +8001,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#afnimtcazu .gt_subtitle {
+#pubeysdxio .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8009,13 +8011,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#afnimtcazu .gt_bottom_border {
+#pubeysdxio .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_col_headings {
+#pubeysdxio .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8030,7 +8032,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_col_heading {
+#pubeysdxio .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8050,7 +8052,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#afnimtcazu .gt_column_spanner_outer {
+#pubeysdxio .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8062,15 +8064,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#afnimtcazu .gt_column_spanner_outer:first-child {
+#pubeysdxio .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#afnimtcazu .gt_column_spanner_outer:last-child {
+#pubeysdxio .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#afnimtcazu .gt_column_spanner {
+#pubeysdxio .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8082,7 +8084,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#afnimtcazu .gt_group_heading {
+#pubeysdxio .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8104,7 +8106,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#afnimtcazu .gt_empty_group_heading {
+#pubeysdxio .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8119,15 +8121,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#afnimtcazu .gt_from_md > :first-child {
+#pubeysdxio .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#afnimtcazu .gt_from_md > :last-child {
+#pubeysdxio .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#afnimtcazu .gt_row {
+#pubeysdxio .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8146,7 +8148,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#afnimtcazu .gt_stub {
+#pubeysdxio .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8158,7 +8160,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#afnimtcazu .gt_summary_row {
+#pubeysdxio .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8168,7 +8170,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#afnimtcazu .gt_first_summary_row {
+#pubeysdxio .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8178,7 +8180,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_grand_summary_row {
+#pubeysdxio .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8188,7 +8190,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#afnimtcazu .gt_first_grand_summary_row {
+#pubeysdxio .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8198,11 +8200,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_striped {
+#pubeysdxio .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#afnimtcazu .gt_table_body {
+#pubeysdxio .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8211,7 +8213,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_footnotes {
+#pubeysdxio .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8225,13 +8227,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_footnote {
+#pubeysdxio .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#afnimtcazu .gt_sourcenotes {
+#pubeysdxio .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8245,41 +8247,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#afnimtcazu .gt_sourcenote {
+#pubeysdxio .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#afnimtcazu .gt_left {
+#pubeysdxio .gt_left {
   text-align: left;
 }
 
-#afnimtcazu .gt_center {
+#pubeysdxio .gt_center {
   text-align: center;
 }
 
-#afnimtcazu .gt_right {
+#pubeysdxio .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#afnimtcazu .gt_font_normal {
+#pubeysdxio .gt_font_normal {
   font-weight: normal;
 }
 
-#afnimtcazu .gt_font_bold {
+#pubeysdxio .gt_font_bold {
   font-weight: bold;
 }
 
-#afnimtcazu .gt_font_italic {
+#pubeysdxio .gt_font_italic {
   font-style: italic;
 }
 
-#afnimtcazu .gt_super {
+#pubeysdxio .gt_super {
   font-size: 65%;
 }
 
-#afnimtcazu .gt_footnote_marks {
+#pubeysdxio .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -8396,12 +8398,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </h3>
 <p>Our earlier Population Table familiarized us with the three sources of data for which we are making inferences: our data, the greater population, and the Preceptor Table.</p>
 <p>The rows from our data have all information we desire. The rows from the Preceptor Table include covariates, but not outcomes. The rows from our greater population include no data, as we know nothing about these units.</p>
-<div id="slpubeysdx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gktrpcspdw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#slpubeysdx .gt_table {
+#gktrpcspdw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -8426,7 +8428,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_heading {
+#gktrpcspdw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8438,7 +8440,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_title {
+#gktrpcspdw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8448,7 +8450,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#slpubeysdx .gt_subtitle {
+#gktrpcspdw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8458,13 +8460,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#slpubeysdx .gt_bottom_border {
+#gktrpcspdw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_col_headings {
+#gktrpcspdw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8479,7 +8481,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_col_heading {
+#gktrpcspdw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8499,7 +8501,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#slpubeysdx .gt_column_spanner_outer {
+#gktrpcspdw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8511,15 +8513,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#slpubeysdx .gt_column_spanner_outer:first-child {
+#gktrpcspdw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#slpubeysdx .gt_column_spanner_outer:last-child {
+#gktrpcspdw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#slpubeysdx .gt_column_spanner {
+#gktrpcspdw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8531,7 +8533,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#slpubeysdx .gt_group_heading {
+#gktrpcspdw .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8553,7 +8555,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#slpubeysdx .gt_empty_group_heading {
+#gktrpcspdw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8568,15 +8570,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#slpubeysdx .gt_from_md > :first-child {
+#gktrpcspdw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#slpubeysdx .gt_from_md > :last-child {
+#gktrpcspdw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#slpubeysdx .gt_row {
+#gktrpcspdw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8595,7 +8597,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#slpubeysdx .gt_stub {
+#gktrpcspdw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8607,7 +8609,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#slpubeysdx .gt_summary_row {
+#gktrpcspdw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8617,7 +8619,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#slpubeysdx .gt_first_summary_row {
+#gktrpcspdw .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8627,7 +8629,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_grand_summary_row {
+#gktrpcspdw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8637,7 +8639,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#slpubeysdx .gt_first_grand_summary_row {
+#gktrpcspdw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8647,11 +8649,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_striped {
+#gktrpcspdw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#slpubeysdx .gt_table_body {
+#gktrpcspdw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8660,7 +8662,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_footnotes {
+#gktrpcspdw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8674,13 +8676,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_footnote {
+#gktrpcspdw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#slpubeysdx .gt_sourcenotes {
+#gktrpcspdw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8694,41 +8696,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#slpubeysdx .gt_sourcenote {
+#gktrpcspdw .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#slpubeysdx .gt_left {
+#gktrpcspdw .gt_left {
   text-align: left;
 }
 
-#slpubeysdx .gt_center {
+#gktrpcspdw .gt_center {
   text-align: center;
 }
 
-#slpubeysdx .gt_right {
+#gktrpcspdw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#slpubeysdx .gt_font_normal {
+#gktrpcspdw .gt_font_normal {
   font-weight: normal;
 }
 
-#slpubeysdx .gt_font_bold {
+#gktrpcspdw .gt_font_bold {
   font-weight: bold;
 }
 
-#slpubeysdx .gt_font_italic {
+#gktrpcspdw .gt_font_italic {
   font-style: italic;
 }
 
-#slpubeysdx .gt_super {
+#gktrpcspdw .gt_super {
   font-size: 65%;
 }
 
-#slpubeysdx .gt_footnote_marks {
+#gktrpcspdw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -8861,12 +8863,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p>To understand validity in regards to the Population Table, we must first recognize an inherent flaw in any experiment design: <em>no two units receive exactly the same treatment</em>.</p>
 <p>If this doesn’t ring true, consider our Spanish speaking train experiment. The units on the Spanish-speaking platform received the same treatment, right? No, actually!</p>
 <p>Consider different volume levels, measured in decibels (dB), at which Spanish is being spoken.</p>
-<div id="iogktrpcsp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jyqxjgtrex" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#iogktrpcsp .gt_table {
+#jyqxjgtrex .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -8891,7 +8893,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_heading {
+#jyqxjgtrex .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8903,7 +8905,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_title {
+#jyqxjgtrex .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8913,7 +8915,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#iogktrpcsp .gt_subtitle {
+#jyqxjgtrex .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8923,13 +8925,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#iogktrpcsp .gt_bottom_border {
+#jyqxjgtrex .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_col_headings {
+#jyqxjgtrex .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8944,7 +8946,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_col_heading {
+#jyqxjgtrex .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8964,7 +8966,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#iogktrpcsp .gt_column_spanner_outer {
+#jyqxjgtrex .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8976,15 +8978,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#iogktrpcsp .gt_column_spanner_outer:first-child {
+#jyqxjgtrex .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iogktrpcsp .gt_column_spanner_outer:last-child {
+#jyqxjgtrex .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iogktrpcsp .gt_column_spanner {
+#jyqxjgtrex .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8996,7 +8998,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#iogktrpcsp .gt_group_heading {
+#jyqxjgtrex .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9018,7 +9020,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#iogktrpcsp .gt_empty_group_heading {
+#jyqxjgtrex .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9033,15 +9035,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#iogktrpcsp .gt_from_md > :first-child {
+#jyqxjgtrex .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iogktrpcsp .gt_from_md > :last-child {
+#jyqxjgtrex .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iogktrpcsp .gt_row {
+#jyqxjgtrex .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9060,7 +9062,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#iogktrpcsp .gt_stub {
+#jyqxjgtrex .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9072,7 +9074,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#iogktrpcsp .gt_summary_row {
+#jyqxjgtrex .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9082,7 +9084,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#iogktrpcsp .gt_first_summary_row {
+#jyqxjgtrex .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9092,7 +9094,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_grand_summary_row {
+#jyqxjgtrex .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9102,7 +9104,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#iogktrpcsp .gt_first_grand_summary_row {
+#jyqxjgtrex .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9112,11 +9114,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_striped {
+#jyqxjgtrex .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iogktrpcsp .gt_table_body {
+#jyqxjgtrex .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9125,7 +9127,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_footnotes {
+#jyqxjgtrex .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9139,13 +9141,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_footnote {
+#jyqxjgtrex .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#iogktrpcsp .gt_sourcenotes {
+#jyqxjgtrex .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9159,41 +9161,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#iogktrpcsp .gt_sourcenote {
+#jyqxjgtrex .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#iogktrpcsp .gt_left {
+#jyqxjgtrex .gt_left {
   text-align: left;
 }
 
-#iogktrpcsp .gt_center {
+#jyqxjgtrex .gt_center {
   text-align: center;
 }
 
-#iogktrpcsp .gt_right {
+#jyqxjgtrex .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iogktrpcsp .gt_font_normal {
+#jyqxjgtrex .gt_font_normal {
   font-weight: normal;
 }
 
-#iogktrpcsp .gt_font_bold {
+#jyqxjgtrex .gt_font_bold {
   font-weight: bold;
 }
 
-#iogktrpcsp .gt_font_italic {
+#jyqxjgtrex .gt_font_italic {
   font-style: italic;
 }
 
-#iogktrpcsp .gt_super {
+#jyqxjgtrex .gt_super {
   font-size: 65%;
 }
 
-#iogktrpcsp .gt_footnote_marks {
+#jyqxjgtrex .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -9357,12 +9359,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 </h3>
 <p>A fourth assumption we use when working with causal models — but not with predictive models — is <strong>“unconfoundedness.”</strong> If whether or not a unit received treatment or control is a random, we write that treatment assignment is not “confounded.” If, however, treatment assignment depends on the value of a potential outcome, then treatment assignment is confounded. Our lives are easiest if we can (reasonably!) assume unconfoundedness. In that case, we can estimate the average treatment effect by subtracting the average outcome of control unit from the average outcome of treated units, as we do above.</p>
 <p>Consider the “Perfect Doctor” as an example of the problems caused by confounded treatment assignments. Imagine we have this omniscient doctor who knows how any patient will respond to a certain drug. She has perfect knowledge of the entire Preceptor Table. Using this information, she always assign each patient the treatment with the best outcome, whether that is treatment or control. Consider:</p>
-<div id="dwjyqxjgtr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qtbaaxieeq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dwjyqxjgtr .gt_table {
+#qtbaaxieeq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -9387,7 +9389,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_heading {
+#qtbaaxieeq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -9399,7 +9401,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_title {
+#qtbaaxieeq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -9409,7 +9411,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#dwjyqxjgtr .gt_subtitle {
+#qtbaaxieeq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -9419,13 +9421,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#dwjyqxjgtr .gt_bottom_border {
+#qtbaaxieeq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_col_headings {
+#qtbaaxieeq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9440,7 +9442,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_col_heading {
+#qtbaaxieeq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9460,7 +9462,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#dwjyqxjgtr .gt_column_spanner_outer {
+#qtbaaxieeq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9472,15 +9474,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#dwjyqxjgtr .gt_column_spanner_outer:first-child {
+#qtbaaxieeq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dwjyqxjgtr .gt_column_spanner_outer:last-child {
+#qtbaaxieeq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dwjyqxjgtr .gt_column_spanner {
+#qtbaaxieeq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -9492,7 +9494,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#dwjyqxjgtr .gt_group_heading {
+#qtbaaxieeq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9514,7 +9516,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#dwjyqxjgtr .gt_empty_group_heading {
+#qtbaaxieeq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9529,15 +9531,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#dwjyqxjgtr .gt_from_md > :first-child {
+#qtbaaxieeq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dwjyqxjgtr .gt_from_md > :last-child {
+#qtbaaxieeq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dwjyqxjgtr .gt_row {
+#qtbaaxieeq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9556,7 +9558,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#dwjyqxjgtr .gt_stub {
+#qtbaaxieeq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9568,7 +9570,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#dwjyqxjgtr .gt_summary_row {
+#qtbaaxieeq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9578,7 +9580,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#dwjyqxjgtr .gt_first_summary_row {
+#qtbaaxieeq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9588,7 +9590,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_grand_summary_row {
+#qtbaaxieeq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9598,7 +9600,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#dwjyqxjgtr .gt_first_grand_summary_row {
+#qtbaaxieeq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9608,11 +9610,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_striped {
+#qtbaaxieeq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dwjyqxjgtr .gt_table_body {
+#qtbaaxieeq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9621,7 +9623,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_footnotes {
+#qtbaaxieeq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9635,13 +9637,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_footnote {
+#qtbaaxieeq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#dwjyqxjgtr .gt_sourcenotes {
+#qtbaaxieeq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9655,41 +9657,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#dwjyqxjgtr .gt_sourcenote {
+#qtbaaxieeq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#dwjyqxjgtr .gt_left {
+#qtbaaxieeq .gt_left {
   text-align: left;
 }
 
-#dwjyqxjgtr .gt_center {
+#qtbaaxieeq .gt_center {
   text-align: center;
 }
 
-#dwjyqxjgtr .gt_right {
+#qtbaaxieeq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dwjyqxjgtr .gt_font_normal {
+#qtbaaxieeq .gt_font_normal {
   font-weight: normal;
 }
 
-#dwjyqxjgtr .gt_font_bold {
+#qtbaaxieeq .gt_font_bold {
   font-weight: bold;
 }
 
-#dwjyqxjgtr .gt_font_italic {
+#qtbaaxieeq .gt_font_italic {
   font-style: italic;
 }
 
-#dwjyqxjgtr .gt_super {
+#qtbaaxieeq .gt_super {
   font-size: 65%;
 }
 
-#dwjyqxjgtr .gt_footnote_marks {
+#qtbaaxieeq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -9807,12 +9809,12 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
 <p>The Perfect Doctor would assign the treatment to Emma, Cassidy and Tahmid. She would assign control to Yao and Diego. And that is good! This is what the doctor should do. This is the best treatment assignment for the patients. But <strong>it is not a good assignment mechanism for estimating the average causal effect because treatment assignment is confounded by the values of the potential outcomes.</strong></p>
 <p>We, the non-Perfect Doctors, do not have access to the entire Precetor Table. We can only see this:</p>
 <p> </p>
-<div id="exqtbaaxie" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gsulnzinob" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#exqtbaaxie .gt_table {
+#gsulnzinob .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -9837,7 +9839,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-left-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_heading {
+#gsulnzinob .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -9849,7 +9851,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_title {
+#gsulnzinob .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -9859,7 +9861,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-width: 0;
 }
 
-#exqtbaaxie .gt_subtitle {
+#gsulnzinob .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -9869,13 +9871,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-width: 0;
 }
 
-#exqtbaaxie .gt_bottom_border {
+#gsulnzinob .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_col_headings {
+#gsulnzinob .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9890,7 +9892,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_col_heading {
+#gsulnzinob .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9910,7 +9912,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#exqtbaaxie .gt_column_spanner_outer {
+#gsulnzinob .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9922,15 +9924,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 4px;
 }
 
-#exqtbaaxie .gt_column_spanner_outer:first-child {
+#gsulnzinob .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#exqtbaaxie .gt_column_spanner_outer:last-child {
+#gsulnzinob .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#exqtbaaxie .gt_column_spanner {
+#gsulnzinob .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -9942,7 +9944,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   width: 100%;
 }
 
-#exqtbaaxie .gt_group_heading {
+#gsulnzinob .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9964,7 +9966,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#exqtbaaxie .gt_empty_group_heading {
+#gsulnzinob .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9979,15 +9981,15 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   vertical-align: middle;
 }
 
-#exqtbaaxie .gt_from_md > :first-child {
+#gsulnzinob .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#exqtbaaxie .gt_from_md > :last-child {
+#gsulnzinob .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#exqtbaaxie .gt_row {
+#gsulnzinob .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10006,7 +10008,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   overflow-x: hidden;
 }
 
-#exqtbaaxie .gt_stub {
+#gsulnzinob .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10018,7 +10020,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-left: 12px;
 }
 
-#exqtbaaxie .gt_summary_row {
+#gsulnzinob .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10028,7 +10030,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#exqtbaaxie .gt_first_summary_row {
+#gsulnzinob .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10038,7 +10040,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_grand_summary_row {
+#gsulnzinob .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10048,7 +10050,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   padding-right: 5px;
 }
 
-#exqtbaaxie .gt_first_grand_summary_row {
+#gsulnzinob .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10058,11 +10060,11 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-top-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_striped {
+#gsulnzinob .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#exqtbaaxie .gt_table_body {
+#gsulnzinob .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10071,7 +10073,7 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-bottom-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_footnotes {
+#gsulnzinob .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10085,13 +10087,13 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_footnote {
+#gsulnzinob .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#exqtbaaxie .gt_sourcenotes {
+#gsulnzinob .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10105,41 +10107,41 @@ See: https://stackoverflow.com/questions/65835639/arrange-gt-tables-side-by-side
   border-right-color: #D3D3D3;
 }
 
-#exqtbaaxie .gt_sourcenote {
+#gsulnzinob .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#exqtbaaxie .gt_left {
+#gsulnzinob .gt_left {
   text-align: left;
 }
 
-#exqtbaaxie .gt_center {
+#gsulnzinob .gt_center {
   text-align: center;
 }
 
-#exqtbaaxie .gt_right {
+#gsulnzinob .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#exqtbaaxie .gt_font_normal {
+#gsulnzinob .gt_font_normal {
   font-weight: normal;
 }
 
-#exqtbaaxie .gt_font_bold {
+#gsulnzinob .gt_font_bold {
   font-weight: bold;
 }
 
-#exqtbaaxie .gt_font_italic {
+#gsulnzinob .gt_font_italic {
   font-style: italic;
 }
 
-#exqtbaaxie .gt_super {
+#gsulnzinob .gt_super {
   font-size: 65%;
 }
 
-#exqtbaaxie .gt_footnote_marks {
+#gsulnzinob .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;

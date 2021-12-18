@@ -424,6 +424,11 @@ summary-13
 lists-and-list-columns
 writing-functions
 distributions-1
+create-facets-by-continent
+let-the-view-follow-the-data-in-each-frame
+show-preceding-frames-with-gradual-falloff
+show-the-original-data-as-background-marks
+let-data-gradually-appear
 computer-set-up
 project-set-up
 daily-work

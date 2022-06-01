@@ -1,5 +1,7 @@
 # Probability {#probability}
 
+<!-- For some reason, this now fails regularly with an error like "Error: C stack usage  8727068 is too close to the limit". Something has changed since June 2021. Highest priority is fixing this, and then uncommenting out the code around the "Yuhan" comments. -->
+
 <!-- Major change is that each example needs to have a simple question. Then it needs a DGM. Then we use the DGM to answer the question.  -->
 
 <!-- Topics we don't currently address in the chapter but which we might add: population, Preceptor Table, Population Table. -->
@@ -723,6 +725,8 @@ Joint distributions are also mathematical objects that cover a set of outcomes, 
 Let's say that you are rolling two six-sided dice simultaneously. Die 1 is weighted so that there is a 50% chance of rolling a 6 and a 10% chance of each of the other values. Die 2 is weighted so there is a 50% chance of rolling a 5 and a 10% chance of rolling each of the other values. Let's roll both dice 1,000 times. In previous examples involving two dice, we cared about the sum of results and not the outcomes of the first versus the second die of each simulation. With a joint distributions, the order matters; so instead of 11 possible outcomes on the x-axis of our distribution plot (ranging from 2 to 12), we have 36. Furthermore, a 2D probability distribution is not sufficient to represent all of the variables involved, so the joint distribution for this example is displayed using a 3D plot.
 
 ```{r, echo = FALSE}
+# Yuhan: This stopped working sometime in the last year. Not sure why.
+
 # DK: Revisit and clean up this code.
 
 # Step 1: Create and organize the data.
@@ -759,6 +763,7 @@ plot_gg(mtplot,
         sunangle = 225, # Angle of sunshine for shadows (0-360°)
         soliddepth = -50, # Thickness of pane (always <0, the smaller the thicker)
         windowsize = c(2048,1536)) # Resolution
+
 Sys.sleep(0.2)
 
 # Step 4: Embed plot in Rmd file.
@@ -1007,6 +1012,8 @@ jd_disease_plot <- jd_disease %>%
           title = element_text(size = 7),
           axis.text.x = element_text(size = 7),
           axis.text.y = element_text(size = 7))
+
+# Yuhan: This stopped working sometime in the last year. Not sure why.
 
 plot_gg(jd_disease_plot,
         width = 3.5,

@@ -7,4 +7,4 @@
 
 knitr::write_bib(c(.packages(), "bookdown"), "bib/packages.bib")
 
-lifecycle::last_warnings()
+# lifecycle::last_warnings() Now causes an error. Still necessary?

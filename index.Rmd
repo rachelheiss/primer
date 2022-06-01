@@ -51,7 +51,7 @@ Third, I am highly opinionated about what matters and what does not. You might n
 ## Dedication {-}
 
 ```{r, echo = FALSE}
-knitr::include_graphics("other/images/marine_corps_birthday_ball.jpeg") 
+# knitr::include_graphics("other/images/marine_corps_birthday_ball.jpeg") 
 ```
 
 And what is romantic, Kay ---  

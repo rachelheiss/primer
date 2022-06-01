@@ -6,13 +6,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Wrangling | Preceptor’s Primer for Bayesian Data Science</title>
 <meta name="author" content="David Kane">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Wrangling | Preceptor’s Primer for Bayesian Data Science">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Wrangling | Preceptor’s Primer for Bayesian Data Science">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet">
-<script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script><script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Data science is data cleaning. Start by loading the packages which we will need in this chapter. library(tidyverse) library(primer.data) library(lubridate) library(skimr) library(nycflights13)...">
+<meta property="og:description" content="Data science is data cleaning. Start by loading the packages which we will need in this chapter. library(tidyverse) library(primer.data) library(lubridate) library(skimr) library(nycflights13)...">
+<meta name="twitter:description" content="Data science is data cleaning. Start by loading the packages which we will need in this chapter. library(tidyverse) library(primer.data) library(lubridate) library(skimr) library(nycflights13)...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -112,7 +145,7 @@
 </h3>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">2.1</span>, b <span class="op">=</span> <span class="st">"Hello"</span>, c <span class="op">=</span> <span class="cn">TRUE</span>, d <span class="op">=</span> <span class="fl">9L</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 4
+<pre><code>## # A tibble: 1 × 4
 ##       a b     c         d
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;lgl&gt; &lt;int&gt;
 ## 1   2.1 Hello TRUE      9</code></pre>
@@ -122,7 +155,7 @@
 <p>Variables should not begin with a number (like <code>54abc</code>) or include spaces (like <code>my var</code>). If you insist on using variable names such, you must include backticks around each name when you reference it.</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>`54abc` <span class="op">=</span> <span class="fl">1</span>, `my var` <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
+<pre><code>## # A tibble: 1 × 3
 ##   `54abc` `my var`     c
 ##     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
 ## 1       1        2     3</code></pre>
@@ -139,7 +172,7 @@
   <span class="fl">1</span>,           <span class="fl">3</span>,      <span class="fl">5</span>,
   <span class="fl">4</span>,           <span class="fl">6</span>,      <span class="fl">8</span>,
 <span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
+<pre><code>## # A tibble: 2 × 3
 ##    var1 `var 2` myvar
 ##   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
 ## 1     1       3     5
@@ -154,7 +187,7 @@
 </h2>
 <!-- AM: Shouldn't the figure come AFTER the first demonstration of `list()` on lines 113-116? -->
 <div class="figure">
-<span id="fig:unnamed-chunk-135"></span>
+<span style="display:block;" id="fig:unnamed-chunk-135"></span>
 <img src="02-wrangling/images/lists-subsetting.png" alt="Subsetting a list, visually." width="100%"><p class="caption">
 FIGURE 2.1: Subsetting a list, visually.
 </p>
@@ -267,13 +300,13 @@ FIGURE 2.1: Subsetting a list, visually.
 <span class="header-section-number">2.3</span> Characters<a class="anchor" aria-label="anchor" href="#characters"><i class="fas fa-link"></i></a>
 </h2>
 <div class="figure">
-<span id="fig:unnamed-chunk-146"></span>
+<span style="display:block;" id="fig:unnamed-chunk-146"></span>
 <img src="02-wrangling/images/nasty.gif" alt="Real data is nasty." width="100%"><p class="caption">
 FIGURE 2.2: Real data is nasty.
 </p>
 </div>
 <!-- AM: These first three sentences should preface the chapter. -->
-<p>So far, our tibbles have been clean and wholesome, like <code>gapminder</code> and <code>trains</code>. <strong>Real data is nasty.</strong> You will bring data into R from the outside world and discover there are problems. We will now discuss common remedial tasks for cleaning and transforming character data, also known as strings. A <em>string</em> is one or more characters that are enclosed inside a pair of matching ‘single’ or “double quotes.”</p>
+<p>So far, our tibbles have been clean and wholesome, like <code>gapminder</code> and <code>trains</code>. <strong>Real data is nasty.</strong> You will bring data into R from the outside world and discover there are problems. We will now discuss common remedial tasks for cleaning and transforming character data, also known as strings. A <em>string</em> is one or more characters that are enclosed inside a pair of matching ‘single’ or “double quotes”.</p>
 <!-- AM: This could be worded better. -->
 <p>We will use the <code>fruit</code> data, a vector with the names of different fruits, from the <strong>stringr</strong> package, which is automatically loaded when we issue <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>. Although we can manipulate character vectors directly, it is much more common, in real world situations, to work with vectors which are in a tibble.</p>
 <!-- AM: Should this codeblock be put beneath the "Character vectors" section? -->
@@ -286,17 +319,17 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 8 x 1
-##   fruit     
-##   &lt;chr&gt;     
-## 1 breadfruit
-## 2 grape     
-## 3 plum      
-## 4 apple     
-## 5 watermelon
-## 6 satsuma   
-## 7 honeydew  
-## 8 cantaloupe</code></pre>
+<pre><code>## # A tibble: 8 × 1
+##   fruit       
+##   &lt;chr&gt;       
+## 1 jackfruit   
+## 2 passionfruit
+## 3 huckleberry 
+## 4 pomelo      
+## 5 goji berry  
+## 6 durian      
+## 7 elderberry  
+## 8 apple</code></pre>
 <!-- AM: Demonstrate a use of the `prop` argument? Or just delete it entirely? -->
 <p>Note that <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code> selects a random set of rows from the tibble. The argument <code>n</code>, as shown above, will display that many rows. Use the argument <code>prop</code> to return a specific percentage of all the rows in the tibble.</p>
 <p><code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> determines if a character vector matches a pattern. It returns a logical vector that is the same length as the input. Recall logicals are either <code>TRUE</code> or <code>FALSE</code>.</p>
@@ -304,7 +337,7 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fruit_in_name <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">fruit</span>, pattern <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 80 x 2
+<pre><code>## # A tibble: 80 × 2
 ##    fruit        fruit_in_name
 ##    &lt;chr&gt;        &lt;lgl&gt;        
 ##  1 apple        FALSE        
@@ -323,7 +356,7 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name_length <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">fruit</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 80 x 2
+<pre><code>## # A tibble: 80 × 2
 ##    fruit        name_length
 ##    &lt;chr&gt;              &lt;int&gt;
 ##  1 apple                  5
@@ -341,7 +374,7 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>first_three_letters <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 80 x 2
+<pre><code>## # A tibble: 80 × 2
 ##    fruit        first_three_letters
 ##    &lt;chr&gt;        &lt;chr&gt;              
 ##  1 apple        app                
@@ -359,7 +392,7 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>name_with_s <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">"s"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 80 x 2
+<pre><code>## # A tibble: 80 × 2
 ##    fruit        name_with_s  
 ##    &lt;chr&gt;        &lt;chr&gt;        
 ##  1 apple        apples       
@@ -379,7 +412,7 @@ FIGURE 2.2: Real data is nasty.
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>capital_A <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="va">fruit</span>, 
                                  pattern <span class="op">=</span> <span class="st">"a"</span>, 
                                  replacement <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<pre><code>## # A tibble: 80 x 2
+<pre><code>## # A tibble: 80 × 2
 ##    fruit        capital_A   
 ##    &lt;chr&gt;        &lt;chr&gt;       
 ##  1 apple        Apple       
@@ -403,18 +436,18 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">fruit</span>, pattern <span class="op">=</span> <span class="st">"w"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 1
+<pre><code>## # A tibble: 4 × 1
 ##   fruit     
 ##   &lt;chr&gt;     
 ## 1 honeydew  
 ## 2 kiwi fruit
 ## 3 strawberry
 ## 4 watermelon</code></pre>
-<p>In the code below, the first metacharacter is the period <code>.</code> , which stands for any single character, except a newline (which, by the way, is represented by <code>\n</code>). The regex <code>b.r</code> will match all fruits that have an “b,” followed by any single character, followed by “r.” Regexes are case sensitive.</p>
+<p>In the code below, the first metacharacter is the period <code>.</code> , which stands for any single character, except a newline (which, by the way, is represented by <code>\n</code>). The regex <code>b.r</code> will match all fruits that have an “b”, followed by any single character, followed by “r”. Regexes are case sensitive.</p>
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">fruit</span>, pattern <span class="op">=</span> <span class="st">"b.r"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 15 x 1
+<pre><code>## # A tibble: 15 × 1
 ##    fruit      
 ##    &lt;chr&gt;      
 ##  1 bilberry   
@@ -436,14 +469,14 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">fruit</span>, pattern <span class="op">=</span> <span class="st">"^w"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##   fruit     
 ##   &lt;chr&gt;     
 ## 1 watermelon</code></pre>
 <div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl_fruit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">fruit</span>, pattern <span class="op">=</span> <span class="st">"o$"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 1
+<pre><code>## # A tibble: 5 × 1
 ##   fruit    
 ##   &lt;chr&gt;    
 ## 1 avocado  
@@ -465,7 +498,7 @@ FIGURE 2.2: Real data is nasty.
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fac_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fac_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fac_3 <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_factor.html">parse_factor</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 4
+<pre><code>## # A tibble: 3 × 4
 ##   X     fac_1 fac_2 fac_3
 ##   &lt;chr&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
 ## 1 a     a     a     a    
@@ -490,7 +523,7 @@ FIGURE 2.2: Real data is nasty.
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 2
+<pre><code>## # A tibble: 5 × 2
 ##   continent     n
 ##   &lt;fct&gt;     &lt;int&gt;
 ## 1 Africa      624
@@ -500,7 +533,7 @@ FIGURE 2.2: Real data is nasty.
 ## 5 Oceania      24</code></pre>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_count.html">fct_count</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 2
+<pre><code>## # A tibble: 5 × 2
 ##   f            n
 ##   &lt;fct&gt;    &lt;int&gt;
 ## 1 Africa     624
@@ -684,10 +717,10 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <p>To get the current date or date-time you can use <code><a href="https://lubridate.tidyverse.org/reference/now.html">today()</a></code> or <code><a href="https://lubridate.tidyverse.org/reference/now.html">now()</a></code>:</p>
 <div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-17"</code></pre>
+<pre><code>## [1] "2022-06-01"</code></pre>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-17 23:18:14 EST"</code></pre>
+<pre><code>## [1] "2022-06-01 17:51:53 EDT"</code></pre>
 <p>Otherwise, there are three ways you’re likely to create a date/time:</p>
 <ol style="list-style-type: decimal">
 <li>From a string.</li>
@@ -699,7 +732,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <h3>
 <span class="header-section-number">2.5.1</span> From strings<a class="anchor" aria-label="anchor" href="#from-strings"><i class="fas fa-link"></i></a>
 </h3>
-<p>Date/time data often comes as strings. The <strong>lubridate</strong> functions automatically work out the format once you specify the order of the component. First, figure out that you want the order in which year, month, and day appear in your dates, then arrange “y,” “m,” and “d” accordingly. That gives you the name of the <strong>lubridate</strong> function that will parse your date. For example:</p>
+<p>Date/time data often comes as strings. The <strong>lubridate</strong> functions automatically work out the format once you specify the order of the component. First, figure out that you want the order in which year, month, and day appear in your dates, then arrange “y”, “m”, and “d” accordingly. That gives you the name of the <strong>lubridate</strong> function that will parse your date. For example:</p>
 <div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="st">"2017-01-31"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "2017-01-31"</code></pre>
@@ -713,7 +746,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fl">20170131</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "2017-01-31"</code></pre>
-<p><code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code> and friends create dates. To create a date-time, add an underscore and one or more of “h,” “m,” and “s” to the name of the parsing function:</p>
+<p><code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code> and friends create dates. To create a date-time, add an underscore and one or more of “h”, “m”, and “s” to the name of the parsing function:</p>
 <div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html">ymd_hms</a></span><span class="op">(</span><span class="st">"2017-01-31 20:11:59"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "2017-01-31 20:11:59 UTC"</code></pre>
@@ -733,7 +766,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">hour</span>, <span class="va">minute</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 5
+<pre><code>## # A tibble: 336,776 × 5
 ##     year month   day  hour minute
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
 ##  1  2013     1     1     5     15
@@ -752,7 +785,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <code class="sourceCode R"><span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">hour</span>, <span class="va">minute</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>departure <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_datetime</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">hour</span>, <span class="va">minute</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 6
+<pre><code>## # A tibble: 336,776 × 6
 ##     year month   day  hour minute departure          
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             
 ##  1  2013     1     1     5     15 2013-01-01 05:15:00
@@ -774,11 +807,11 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 <p>You may want to switch between a date-time and a date. That’s the job of <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime()</a></code> and <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date()</a></code>:</p>
 <div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">today</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-17 UTC"</code></pre>
+<pre><code>## [1] "2022-06-01 UTC"</code></pre>
 <div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/now.html">now</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-12-17"</code></pre>
-<p>Sometimes you’ll get date/times as numeric offsets from the “Unix Epoch,” 1970-01-01. If the offset is in seconds, use <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime()</a></code>; if it’s in days, use <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date()</a></code>.</p>
+<pre><code>## [1] "2022-06-01"</code></pre>
+<p>Sometimes you’ll get date/times as numeric offsets from the “Unix Epoch”, 1970-01-01. If the offset is in seconds, use <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime()</a></code>; if it’s in days, use <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date()</a></code>.</p>
 <!-- Atilla: This section seems ambiguous. I feel like what the code below does and what the offset from "Unix Epoch" should be more clearly explained.-->
 <div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="fl">60</span> <span class="op">*</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
@@ -860,7 +893,7 @@ as <code>&lt;dttm&gt;</code>.</p></li>
 </h2>
 <p>There are many ways to bring data together.</p>
 <div class="figure">
-<span id="fig:unnamed-chunk-187"></span>
+<span style="display:block;" id="fig:unnamed-chunk-187"></span>
 <img src="02-wrangling/images/wrangling.gif" alt="Combining data is often tricky." width="100%"><p class="caption">
 FIGURE 2.3: Combining data is often tricky.
 </p>
@@ -875,7 +908,7 @@ FIGURE 2.3: Combining data is often tricky.
 
 
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">data_1</span>, <span class="va">data_2</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 2
+<pre><code>## # A tibble: 4 × 2
 ##       x y    
 ##   &lt;int&gt; &lt;chr&gt;
 ## 1     1 A    
@@ -911,7 +944,7 @@ FIGURE 2.3: Combining data is often tricky.
 <!-- Instead show a diagram of left_join() and briefly cover the rest of the joins, as left_join() is by far the most commonly-used join method. -->
 <p><code>inner_join(x, y)</code>: Returns all rows from <code>x</code> where there are matching values in <code>y</code>, and all columns from <code>x</code> and <code>y</code>. If there are multiple matches between <code>x</code> and <code>y</code>, all combination of the matches are returned.</p>
 <div class="figure">
-<span id="fig:unnamed-chunk-190"></span>
+<span style="display:block;" id="fig:unnamed-chunk-190"></span>
 <img src="02-wrangling/images/join-inner.png" alt="Inner join." width="100%"><p class="caption">
 FIGURE 2.4: Inner join.
 </p>
@@ -919,7 +952,7 @@ FIGURE 2.4: Inner join.
 <div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span><span class="op">)</span></code></pre></div>
 <pre><code>## Joining, by = "publisher"</code></pre>
-<pre><code>## # A tibble: 4 x 4
+<pre><code>## # A tibble: 4 × 4
 ##   name     gender publisher yr_founded
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt;
 ## 1 Magneto  male   Marvel          1939
@@ -927,14 +960,14 @@ FIGURE 2.4: Inner join.
 ## 3 Batman   male   DC              1934
 ## 4 Catwoman female DC              1934</code></pre>
 <p>We lose Hellboy in the join because, although he appears in <code>x = superheroes</code>, his publisher Dark Horse Comics does not appear in <code>y = publishers</code>. The join result has all variables from <code>x = superheroes</code> plus <code>yr_founded</code>, from <code>y</code>.</p>
-<p>Note the message that we are ‘Joining, by = “publisher”.’ Whenever joining, R checks to see if there are variables in common between the two tibbles and, if there are, uses them to join. However, it is concerned that you may not be aware that this is what it is doing, so R tells you. Such messages are both annoying and a signal that we have not made our code as robust as we should. Fortunately, we can specify precisely which variables we want to join by. Always do this.</p>
+<p>Note the message that we are ‘Joining, by = “publisher”’. Whenever joining, R checks to see if there are variables in common between the two tibbles and, if there are, uses them to join. However, it is concerned that you may not be aware that this is what it is doing, so R tells you. Such messages are both annoying and a signal that we have not made our code as robust as we should. Fortunately, we can specify precisely which variables we want to join by. Always do this.</p>
 <div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
 <p><code>by</code> also takes a vector of key variables if you want to merge by multiple variables.</p>
 <p>Now compare this result to that of using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> with the two datasets in opposite positions.</p>
 <div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">publishers</span>, <span class="va">superheroes</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 4
+<pre><code>## # A tibble: 4 × 4
 ##   publisher yr_founded name     gender
 ##   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; 
 ## 1 DC              1934 Batman   male  
@@ -950,7 +983,7 @@ FIGURE 2.4: Inner join.
 <p><code>full_join(x, y)</code>: Returns all rows and all columns from both <code>x</code> and <code>y</code>. Where there are not matching values, returns <code>NA</code> for the one missing.</p>
 <div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
+<pre><code>## # A tibble: 6 × 4
 ##   name     gender publisher         yr_founded
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                  &lt;int&gt;
 ## 1 Magneto  male   Marvel                  1939
@@ -969,7 +1002,7 @@ FIGURE 2.4: Inner join.
 <p><code>left_join(x, y)</code>: Returns all rows from <code>x</code>, and all columns from <code>x</code> and <code>y</code>. If there are multiple matches between <code>x</code> and <code>y</code>, all combination of the matches are returned.</p>
 <div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 4
+<pre><code>## # A tibble: 5 × 4
 ##   name     gender publisher         yr_founded
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                  &lt;int&gt;
 ## 1 Magneto  male   Marvel                  1939
@@ -981,7 +1014,7 @@ FIGURE 2.4: Inner join.
 <p>Now compare this result to that of running <code>left_join(x = publishers, y = superheroes)</code>. Unlike <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code> the order of the arguments has a significant effect on the resulting tibble.</p>
 <div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">publishers</span>, <span class="va">superheroes</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 4
+<pre><code>## # A tibble: 5 × 4
 ##   publisher yr_founded name     gender
 ##   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; 
 ## 1 DC              1934 Batman   male  
@@ -999,7 +1032,7 @@ FIGURE 2.4: Inner join.
 <p><code>semi_join(x, y)</code>: Returns all rows from <code>x</code> where there are matching values in <code>y</code>, keeping just columns from <code>x</code>. A semi join differs from an inner join because an inner join will return one row of <code>x</code> for each matching row of <code>y</code>, whereas a semi join will never duplicate rows of <code>x</code>. This is a filtering join.</p>
 <div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 3
+<pre><code>## # A tibble: 4 × 3
 ##   name     gender publisher
 ##   &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    
 ## 1 Magneto  male   Marvel   
@@ -1009,7 +1042,7 @@ FIGURE 2.4: Inner join.
 <p>Compare the result of switching the values of the arguments.</p>
 <div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">publishers</span>, y <span class="op">=</span> <span class="va">superheroes</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<pre><code>## # A tibble: 2 × 2
 ##   publisher yr_founded
 ##   &lt;chr&gt;          &lt;int&gt;
 ## 1 DC              1934
@@ -1023,7 +1056,7 @@ FIGURE 2.4: Inner join.
 <p><code>anti_join(x, y)</code>: Return all rows from <code>x</code> where there are no matching values in <code>y</code>, keeping just columns from <code>x</code>.</p>
 <div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">superheroes</span>, <span class="va">publishers</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
+<pre><code>## # A tibble: 1 × 3
 ##   name    gender publisher        
 ##   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;            
 ## 1 Hellboy male   Dark Horse Comics</code></pre>
@@ -1031,7 +1064,7 @@ FIGURE 2.4: Inner join.
 <p>Now switch the arguments and compare the result.</p>
 <div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">publishers</span>, <span class="va">superheroes</span>, by <span class="op">=</span> <span class="st">"publisher"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<pre><code>## # A tibble: 1 × 2
 ##   publisher yr_founded
 ##   &lt;chr&gt;          &lt;int&gt;
 ## 1 Image           1992</code></pre>
@@ -1044,7 +1077,7 @@ FIGURE 2.4: Inner join.
 </h3>
 <p>Consider the relationships among the tibbles in the <strong>nycflights13</strong> package:</p>
 <div class="figure">
-<span id="fig:unnamed-chunk-201"></span>
+<span style="display:block;" id="fig:unnamed-chunk-201"></span>
 <img src="02-wrangling/images/relational-nycflights.png" alt="Relationships among nycflights tables" width="100%"><p class="caption">
 FIGURE 2.5: Relationships among nycflights tables
 </p>
@@ -1053,7 +1086,7 @@ FIGURE 2.5: Relationships among nycflights tables
 <div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">airlines</span>, by <span class="op">=</span> <span class="st">"carrier"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 336,776 x 20
+<pre><code>## # A tibble: 336,776 × 20
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
 ##  1  2013     1     1      517            515         2      830            819
@@ -1076,26 +1109,26 @@ FIGURE 2.5: Relationships among nycflights tables
 <p>The <code>airports</code> data frame contains the airport codes for each airport:</p>
 <div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">airports</span></code></pre></div>
-<pre><code>## # A tibble: 1,458 x 8
-##    faa   name                       lat    lon   alt    tz dst   tzone          
-##    &lt;chr&gt; &lt;chr&gt;                    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;          
-##  1 04G   Lansdowne Airport         41.1  -80.6  1044    -5 A     America/New_Yo…
-##  2 06A   Moton Field Municipal A…  32.5  -85.7   264    -6 A     America/Chicago
-##  3 06C   Schaumburg Regional       42.0  -88.1   801    -6 A     America/Chicago
-##  4 06N   Randall Airport           41.4  -74.4   523    -5 A     America/New_Yo…
-##  5 09J   Jekyll Island Airport     31.1  -81.4    11    -5 A     America/New_Yo…
-##  6 0A9   Elizabethton Municipal …  36.4  -82.2  1593    -5 A     America/New_Yo…
-##  7 0G6   Williams County Airport   41.5  -84.5   730    -5 A     America/New_Yo…
-##  8 0G7   Finger Lakes Regional A…  42.9  -76.8   492    -5 A     America/New_Yo…
-##  9 0P2   Shoestring Aviation Air…  39.8  -76.6  1000    -5 U     America/New_Yo…
-## 10 0S9   Jefferson County Intl     48.1 -123.    108    -8 A     America/Los_An…
+<pre><code>## # A tibble: 1,458 × 8
+##    faa   name                             lat    lon   alt    tz dst   tzone    
+##    &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    
+##  1 04G   Lansdowne Airport               41.1  -80.6  1044    -5 A     America/…
+##  2 06A   Moton Field Municipal Airport   32.5  -85.7   264    -6 A     America/…
+##  3 06C   Schaumburg Regional             42.0  -88.1   801    -6 A     America/…
+##  4 06N   Randall Airport                 41.4  -74.4   523    -5 A     America/…
+##  5 09J   Jekyll Island Airport           31.1  -81.4    11    -5 A     America/…
+##  6 0A9   Elizabethton Municipal Airport  36.4  -82.2  1593    -5 A     America/…
+##  7 0G6   Williams County Airport         41.5  -84.5   730    -5 A     America/…
+##  8 0G7   Finger Lakes Regional Airport   42.9  -76.8   492    -5 A     America/…
+##  9 0P2   Shoestring Aviation Airfield    39.8  -76.6  1000    -5 U     America/…
+## 10 0S9   Jefferson County Intl           48.1 -123.    108    -8 A     America/…
 ## # … with 1,448 more rows</code></pre>
 <p>However, if you look at both the <code>airports</code> and <code>flights</code> data frames, you’ll find that the airport codes are in variables that have different names. In <code>airports</code> the airport code is in <code>faa</code>, whereas in <code>flights</code> the airport codes are in <code>origin</code> and <code>dest</code>.</p>
 <p>In order to join these two data frames by airport code, our <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> operation will use <code>by = c("dest" = "faa")</code> thereby allowing us to join two data frames where the key variable has a different name.</p>
 <div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">flights</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">airports</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dest"</span> <span class="op">=</span> <span class="st">"faa"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 329,174 x 26
+<pre><code>## # A tibble: 329,174 × 26
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
 ##  1  2013     1     1      517            515         2      830            819
@@ -1122,19 +1155,19 @@ FIGURE 2.5: Relationships among nycflights tables
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">num_flights</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">airports</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dest"</span> <span class="op">=</span> <span class="st">"faa"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>airport_name <span class="op">=</span> <span class="va">name</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 101 x 9
-##    dest  num_flights airport_name          lat    lon   alt    tz dst   tzone   
-##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
-##  1 ORD         17283 Chicago Ohare Intl   42.0  -87.9   668    -6 A     America…
-##  2 ATL         17215 Hartsfield Jackson…  33.6  -84.4  1026    -5 A     America…
-##  3 LAX         16174 Los Angeles Intl     33.9 -118.    126    -8 A     America…
-##  4 BOS         15508 General Edward Law…  42.4  -71.0    19    -5 A     America…
-##  5 MCO         14082 Orlando Intl         28.4  -81.3    96    -5 A     America…
-##  6 CLT         14064 Charlotte Douglas …  35.2  -80.9   748    -5 A     America…
-##  7 SFO         13331 San Francisco Intl   37.6 -122.     13    -8 A     America…
-##  8 FLL         12055 Fort Lauderdale Ho…  26.1  -80.2     9    -5 A     America…
-##  9 MIA         11728 Miami Intl           25.8  -80.3     8    -5 A     America…
-## 10 DCA          9705 Ronald Reagan Wash…  38.9  -77.0    15    -5 A     America…
+<pre><code>## # A tibble: 101 × 9
+##    dest  num_flights airport_name             lat    lon   alt    tz dst   tzone
+##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;                  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 ORD         17283 Chicago Ohare Intl      42.0  -87.9   668    -6 A     Amer…
+##  2 ATL         17215 Hartsfield Jackson At…  33.6  -84.4  1026    -5 A     Amer…
+##  3 LAX         16174 Los Angeles Intl        33.9 -118.    126    -8 A     Amer…
+##  4 BOS         15508 General Edward Lawren…  42.4  -71.0    19    -5 A     Amer…
+##  5 MCO         14082 Orlando Intl            28.4  -81.3    96    -5 A     Amer…
+##  6 CLT         14064 Charlotte Douglas Intl  35.2  -80.9   748    -5 A     Amer…
+##  7 SFO         13331 San Francisco Intl      37.6 -122.     13    -8 A     Amer…
+##  8 FLL         12055 Fort Lauderdale Holly…  26.1  -80.2     9    -5 A     Amer…
+##  9 MIA         11728 Miami Intl              25.8  -80.3     8    -5 A     Amer…
+## 10 DCA          9705 Ronald Reagan Washing…  38.9  -77.0    15    -5 A     Amer…
 ## # … with 91 more rows</code></pre>
 <p><code>"ORD"</code> is the airport code of Chicago O’Hare airport and <code>"FLL"</code> is the code for the main airport in Fort Lauderdale, Florida, which can be seen in the <code>airport_name</code> variable.</p>
 </div>
@@ -1144,14 +1177,14 @@ FIGURE 2.5: Relationships among nycflights tables
 <span class="header-section-number">2.7</span> Tidy data<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Consider the first five rows from the <code>drinks</code> data frame from the <strong>fivethirtyeight</strong> package:</p>
-<pre><code>## # A tibble: 5 x 5
-##   country    beer_servings spirit_servings wine_servings total_litres_of_pure_a…
-##   &lt;chr&gt;              &lt;int&gt;           &lt;int&gt;         &lt;int&gt;                   &lt;dbl&gt;
-## 1 Afghanist…             0               0             0                     0  
-## 2 Albania               89             132            54                     4.9
-## 3 Algeria               25               0            14                     0.7
-## 4 Andorra              245             138           312                    12.4
-## 5 Angola               217              57            45                     5.9</code></pre>
+<pre><code>## # A tibble: 5 × 5
+##   country     beer_servings spirit_servings wine_servings total_litres_of_pure_…
+##   &lt;chr&gt;               &lt;int&gt;           &lt;int&gt;         &lt;int&gt;                  &lt;dbl&gt;
+## 1 Afghanistan             0               0             0                    0  
+## 2 Albania                89             132            54                    4.9
+## 3 Algeria                25               0            14                    0.7
+## 4 Andorra               245             138           312                   12.4
+## 5 Angola                217              57            45                    5.9</code></pre>
 <p>After reading the help file by running <code><a href="https://rdrr.io/pkg/fivethirtyeight/man/drinks.html">?drinks</a></code>, you’ll see that <code>drinks</code> is a data frame that contains the results from a survey of the average number of servings of beer, spirits, and wine consumed in 193 countries. This data was originally reported on FiveThirtyEight.com in Mona Chalabi’s article: <a href="https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/">“Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?”</a>.</p>
 <p>Let’s apply some of the data wrangling verbs on the <code>drinks</code> data frame:</p>
 <ol style="list-style-type: decimal">
@@ -1171,7 +1204,7 @@ FIGURE 2.5: Relationships among nycflights tables
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">total_litres_of_pure_alcohol</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>beer <span class="op">=</span> <span class="va">beer_servings</span>, spirit <span class="op">=</span> <span class="va">spirit_servings</span>, wine <span class="op">=</span> <span class="va">wine_servings</span><span class="op">)</span>
 <span class="va">drinks_smaller</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 4
+<pre><code>## # A tibble: 4 × 4
 ##   country       beer spirit  wine
 ##   &lt;chr&gt;        &lt;int&gt;  &lt;int&gt; &lt;int&gt;
 ## 1 China           79    192     8
@@ -1182,7 +1215,7 @@ FIGURE 2.5: Relationships among nycflights tables
 <h3>
 <span class="header-section-number">2.7.1</span> Definition of “tidy” data<a class="anchor" aria-label="anchor" href="#definition-of-tidy-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>What does it mean for your data to be “tidy?” While “tidy” has a clear English meaning of “organized,” the word “tidy” in data science using R means that your data follows a standardized format.</p>
+<p>What does it mean for your data to be “tidy”? While “tidy” has a clear English meaning of “organized,” the word “tidy” in data science using R means that your data follows a standardized format.</p>
 <p>“Tidy” data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In <em>tidy data</em>:</p>
 <ol style="list-style-type: decimal">
 <li>Each variable forms a column.</li>
@@ -1195,11 +1228,11 @@ FIGURE 2.5: Relationships among nycflights tables
 <h3>
 <span class="header-section-number">2.7.2</span> Converting to “tidy” data<a class="anchor" aria-label="anchor" href="#converting-to-tidy-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>In this book so far, you’ve only seen data frames that were already in “tidy” format. Furthermore, for the rest of this book, you’ll mostly only see data frames that are already tidy as well. This is not always the case, however, with all datasets in the world. If your original data frame is in wide (non-“tidy”) format and you would like to use the <strong>ggplot2</strong> or <strong>dplyr</strong> packages, you will first have to convert it to “tidy” format. To do so, we recommend using the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function in the <strong>tidyr</strong> package <span class="citation">(<a href="references.html#ref-R-tidyr" role="doc-biblioref">Wickham 2021d</a>)</span>.</p>
+<p>In this book so far, you’ve only seen data frames that were already in “tidy” format. Furthermore, for the rest of this book, you’ll mostly only see data frames that are already tidy as well. This is not always the case, however, with all datasets in the world. If your original data frame is in wide (non-“tidy”) format and you would like to use the <strong>ggplot2</strong> or <strong>dplyr</strong> packages, you will first have to convert it to “tidy” format. To do so, we recommend using the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function in the <strong>tidyr</strong> package <span class="citation">(<a href="references.html#ref-R-tidyr" role="doc-biblioref">Wickham and Girlich 2022</a>)</span>.</p>
 <p>Going back to our <code>drinks_smaller</code> data frame from earlier:</p>
 <div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">drinks_smaller</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 4
+<pre><code>## # A tibble: 4 × 4
 ##   country       beer spirit  wine
 ##   &lt;chr&gt;        &lt;int&gt;  &lt;int&gt; &lt;int&gt;
 ## 1 China           79    192     8
@@ -1213,7 +1246,7 @@ FIGURE 2.5: Relationships among nycflights tables
                values_to <span class="op">=</span> <span class="st">"servings"</span>, 
                cols <span class="op">=</span> <span class="op">-</span><span class="va">country</span><span class="op">)</span>
 <span class="va">drinks_smaller_tidy</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 3
+<pre><code>## # A tibble: 12 × 3
 ##    country      type   servings
 ##    &lt;chr&gt;        &lt;chr&gt;     &lt;int&gt;
 ##  1 China        beer         79
@@ -1306,7 +1339,7 @@ FIGURE 2.5: Relationships among nycflights tables
          y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,
                        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">comma_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-218-1.png" width="100%"></div>
 <p><code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> is just one of many functions for creating draws — or, more colloquially, “drawing” — from a distribution. Three of the most important functions are: <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code>, <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code>, and <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>.</p>
 </div>
@@ -1345,7 +1378,7 @@ FIGURE 2.5: Relationships among nycflights tables
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,
                        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tails"</span>, <span class="st">"Heads"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-221-1.png" width="100%"></div>
-<p>In our graph above, we use the function <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous()</a></code> because our x-axis variable is continuous, meaning it can take on any real values. The <code>breaks</code> argument to <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous()</a></code> converts our x-axis to having two different “tick marks.” There is a fairly even distribution of Tails and Heads. More draws would typically result in an even more equal split.</p>
+<p>In our graph above, we use the function <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous()</a></code> because our x-axis variable is continuous, meaning it can take on any real values. The <code>breaks</code> argument to <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous()</a></code> converts our x-axis to having two different “tick marks”. There is a fairly even distribution of Tails and Heads. More draws would typically result in an even more equal split.</p>
 <p>Randomness creates (inevitable) tension between distribution as a “thing” and distribution as a vector of draws from that thing. In this case, the vector of draws is not balanced between Tails and Heads. Yet, we “know” that it should be since the coin is, by definition, fair. In a sense, the mathematics require an even split. Yet, randomness means that the vector of draws will rarely match the mathematically “true” result. And that is OK! First, randomness is an intrinsic property of the real world. Second, we can make the effect of randomness be as small as we want by increasing the number of draws.</p>
 <!-- DK: Could do a little example of that, showing the convergence to 50% as n increases. -->
 <p>Suppose instead we wanted to simulate an unfair coin, where the probability of landing on Heads was 0.75 instead of 0.25.</p>
@@ -1389,7 +1422,7 @@ FIGURE 2.5: Relationships among nycflights tables
 <li>The dashed normal curve has mean <span class="math inline">\(\mu = 15\)</span> &amp; standard deviation <span class="math inline">\(\sigma = 2\)</span>.</li>
 </ol>
 <div class="figure">
-<span id="fig:unnamed-chunk-224"></span>
+<span style="display:block;" id="fig:unnamed-chunk-224"></span>
 <img src="book_temp_files/figure-html/unnamed-chunk-224-1.png" alt="Three normal distributions." width="100%"><p class="caption">
 FIGURE 2.6: Three normal distributions.
 </p>
@@ -1409,7 +1442,7 @@ FIGURE 2.6: Three normal distributions.
 <li>The middle six segments represent the interval -3 to 3. The shaded area above this interval represents 2.35% + 13.5% + 34% + 34% + 13.5% + 2.35% = 99.7% of the area under the curve. In other words, 99.7% of values.</li>
 </ol>
 <div class="figure">
-<span id="fig:unnamed-chunk-225"></span>
+<span style="display:block;" id="fig:unnamed-chunk-225"></span>
 <img src="book_temp_files/figure-html/unnamed-chunk-225-1.png" alt="Rules of thumb about areas under normal curves." width="100%"><p class="caption">
 FIGURE 2.7: Rules of thumb about areas under normal curves.
 </p>
@@ -1423,7 +1456,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <p>We often need to create a tibble with all the possible combinations of two or more variables. <code><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid()</a></code> is the easiest approach.</p>
 <div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 8 x 2
+<pre><code>## # A tibble: 8 × 2
 ##   x         y
 ##   &lt;chr&gt; &lt;dbl&gt;
 ## 1 A         1
@@ -1465,8 +1498,10 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <code class="sourceCode R"><span class="va">m</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
-## Using compatibility `.name_repair`.</code></pre>
-<pre><code>## # A tibble: 3 x 3
+## Using compatibility `.name_repair`.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>## # A tibble: 3 × 3
 ##      V1    V2    V3
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1     3     9     0
@@ -1488,7 +1523,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <span class="op">)</span>
 
 <span class="va">tbl</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
+<pre><code>## # A tibble: 3 × 3
 ##       a     b     c
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1     2     3     5
@@ -1498,7 +1533,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>avg_a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##   avg_a
 ##   &lt;dbl&gt;
 ## 1    NA</code></pre>
@@ -1506,7 +1541,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>avg_a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">a</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<pre><code>## # A tibble: 1 × 1
 ##   avg_a
 ##   &lt;dbl&gt;
 ## 1     3</code></pre>
@@ -1514,7 +1549,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 3
+<pre><code>## # A tibble: 2 × 3
 ##       a     b     c
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1     2     3     5
@@ -1523,7 +1558,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
+<pre><code>## # A tibble: 1 × 3
 ##       a     b     c
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1     2     3     5</code></pre>
@@ -1531,7 +1566,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>a_missing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 4
+<pre><code>## # A tibble: 3 × 4
 ##       a     b     c a_missing
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;    
 ## 1     2     3     5 FALSE    
@@ -1546,7 +1581,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 <div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tbl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
+<pre><code>## # A tibble: 3 × 3
 ## # Rowwise: 
 ##       a     b     c
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1560,7 +1595,7 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sum_a_c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">c</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>largest <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>largest_na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 6
+<pre><code>## # A tibble: 3 × 6
 ## # Rowwise: 
 ##       a     b     c sum_a_c largest largest_na
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
@@ -1624,6 +1659,16 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 </table></div>
 <p><strong>Variable type: character</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="19%">
+<col width="13%">
+<col width="19%">
+<col width="5%">
+<col width="5%">
+<col width="8%">
+<col width="12%">
+<col width="15%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -1659,6 +1704,14 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 </table></div>
 <p><strong>Variable type: factor</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="14%">
+<col width="10%">
+<col width="14%">
+<col width="8%">
+<col width="9%">
+<col width="43%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -1696,6 +1749,19 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
 </table></div>
 <p><strong>Variable type: numeric</strong></p>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="17%">
+<col width="11%">
+<col width="16%">
+<col width="9%">
+<col width="6%">
+<col width="8%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="5%">
+<col width="6%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">skim_variable</th>
 <th align="right">n_missing</th>
@@ -1961,6 +2027,22 @@ FIGURE 2.7: Rules of thumb about areas under normal curves.
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

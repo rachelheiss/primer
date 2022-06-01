@@ -6,13 +6,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Tools | Preceptor’s Primer for Bayesian Data Science</title>
 <meta name="author" content="David Kane">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Tools | Preceptor’s Primer for Bayesian Data Science">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tools | Preceptor’s Primer for Bayesian Data Science">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="libs/rglWebGL-binding-0.108.3/rglWebGL.js"></script><link href="libs/rglwidgetClass-0.108.3/rgl.css" rel="stylesheet">
-<script src="libs/rglwidgetClass-0.108.3/rglClass.min.js"></script><script src="libs/CanvasMatrix4-0.108.3/CanvasMatrix.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="The chapter will be broken into the following sections. Read whichever ones are relevant. Absolute and relative file paths Working with the terminal Git, GitHub, and RStudio PDF Style guide How to...">
+<meta property="og:description" content="The chapter will be broken into the following sections. Read whichever ones are relevant. Absolute and relative file paths Working with the terminal Git, GitHub, and RStudio PDF Style guide How to...">
+<meta name="twitter:description" content="The chapter will be broken into the following sections. Read whichever ones are relevant. Absolute and relative file paths Working with the terminal Git, GitHub, and RStudio PDF Style guide How to...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -87,7 +120,7 @@
 <!-- DK: Move this section to tools.Rmd. -->
 <!-- AG: I added this as another section because it's important enough to stand on its own. This also serves as a great way to introduce the Terminal.-->
 <p>When you read data into R, you first need to tell R where that data lives. Most times, the data will be in a file. The file could live on your computer (local) or somewhere on the internet (remote).</p>
-<p>The place where the file lives on your computer is called the “path.” You can think of the path as directions to the file. The path includes both the location of the file and the name of the file itself. There are two kinds of paths: relative and absolute. A <em>relative</em> path describes the location of the file relative to where you currently are on the computer. An <em>absolute</em> path is where the file is in respect to the base (or root) folder of the computer’s filesystem. Absolute paths always start with a forward slash, a “/.”</p>
+<p>The place where the file lives on your computer is called the “path”. You can think of the path as directions to the file. The path includes both the location of the file and the name of the file itself. There are two kinds of paths: relative and absolute. A <em>relative</em> path describes the location of the file relative to where you currently are on the computer. An <em>absolute</em> path is where the file is in respect to the base (or root) folder of the computer’s filesystem. Absolute paths always start with a forward slash, a “/”.</p>
 <p>Consider a file called <code>report.csv</code>. Read the file using a relative path:</p>
 <pre><code>x &lt;- read_csv("data/report.csv")</code></pre>
 <p>Read <code>report.csv</code> using an absolute path:</p>
@@ -100,7 +133,7 @@
 <!-- Include a section about how you're supposed to put \ whenever there's a space, since 90% of people will have a space in their file name. However, because we don't have a section about it, we get a lot of confusion about why somebody's thing isn't working. Fixed - AG -->
 <p>One important part of using paths is recognizing when there are spaces in the file name. For example, trying to use the path</p>
 <p><code>/home/preceptor/desktop/projects/important data/report.csv</code></p>
-<p>does not work because it includes a space the file name, with “important data.” Instead, the path</p>
+<p>does not work because it includes a space the file name, with “important data”. Instead, the path</p>
 <p><code>/home/preceptor/desktop/projects/important\ data/report.csv</code></p>
 <p>is valid and allows you to access the <code>report.csv</code> data. This is because the <code>\</code> tells the computer to treat the next character only as a character instead of something special. For example, the space character is normally used to show a break in the code, so the computer treats it as a break point whenever it sees a space. However, <code>\</code> tells the computer that the space isn’t a break point and is instead part of the file path, solving the issue.</p>
 <!-- DK: Video includes a bunch of good stuff, like ~, ., .., and /. All that should be mentioned here and connected to the terminal tutorial. -->
@@ -175,7 +208,7 @@
 <code>cp</code>: Copying files<a class="anchor" aria-label="anchor" href="#cp-copying-files"><i class="fas fa-link"></i></a>
 </h3>
 <p>Copying files is very similar to moving files in the Terminal. Using the previous example, if we wanted to copy test.txt into the Gov-1005 folder but not delete the original test.txt file, we just replace <code>mv</code> with <code>cp</code> (copy paste):</p>
-<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="tools.html#cb917-1" aria-hidden="true" tabindex="-1"></a>cp test.txt Gov<span class="dv">-1005</span><span class="sc">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="tools.html#cb890-1" aria-hidden="true" tabindex="-1"></a>cp test.txt Gov<span class="dv">-1005</span><span class="sc">/</span></span></code></pre></div>
 </div>
 <div id="rm-removing-files" class="section level3 unnumbered">
 <h3>
@@ -257,12 +290,12 @@ git config --global user.email "your@email.com"</code></pre>
 <li><p>Turn on two-factor authentication for your GitHub account under <a href="https://github.com/settings/security">Settings -&gt; Security</a>.</p></li>
 <li><p>Create a token:</p></li>
 </ol>
-<div class="sourceCode" id="cb919"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb892"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/github-token.html">create_github_token</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This will, after logging in, bring you back to Github. Accept the defaults and press the <strong>Generate token</strong> button at the bottom. (You may need to change the <strong>Note</strong> if you have generated tokens before.) Copy the token which has been created. It will look something like:</p>
 <p>8be3e800891425f8462c4491d9a4dbb5b1c1f35c</p>
 <p>Then, issue this R command:</p>
-<div class="sourceCode" id="cb920"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb893"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">gitcreds</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gitcreds/man/gitcreds_get.html">gitcreds_set</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Provide your token. After you start a new RStudio instance, Github should not ask you for your login/password again. Or it might just ask one more time. Seek help if this does not work.</p>
 <!-- DK: Could use a gif for the above as well. -->
@@ -277,10 +310,10 @@ git config --global user.email "your@email.com"</code></pre>
 <li><p>Making PDF files may just “work,” especially if you are using a Mac. Give it a try!</p></li>
 <li><p>If it doesn’t just work, we <em>strongly</em> recommend using the <strong><a href="https://yihui.org/tinytex/">tinytex</a></strong> R package. First, install the R package.</p></li>
 </ol>
-<div class="sourceCode" id="cb921"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb894"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tinytex'</span><span class="op">)</span></code></pre></div>
 <p>Second, use the R package to install the underlying LaTeX distribution.</p>
-<div class="sourceCode" id="cb922"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb895"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Depending on your operating system, this may not work. But there should be an error message providing further instructions. Follow those instructions.</p>
 <p>Restart R and everything should just work.</p>
@@ -321,7 +354,7 @@ git config --global user.email "your@email.com"</code></pre>
 <h4>Whitespace<a class="anchor" aria-label="anchor" href="#whitespace"><i class="fas fa-link"></i></a>
 </h4>
 <p><code>%&gt;%</code> should always have a space before it, and should usually be followed by a new line. After the first step in the pipe, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.</p>
-<div class="sourceCode" id="cb923"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb896"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="va">iris</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
@@ -337,7 +370,7 @@ git config --global user.email "your@email.com"</code></pre>
 <span class="va">ungroup</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="va">measure</span>, <span class="va">value</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span></code></pre></div>
 <p><strong>ggplot2</strong> code is handled in a similar fashion. All commands after the initial invocation of <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> are indented.</p>
-<div class="sourceCode" id="cb924"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb897"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="va">diamonds</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
@@ -359,7 +392,7 @@ git config --global user.email "your@email.com"</code></pre>
 <h4>Commas<a class="anchor" aria-label="anchor" href="#commas"><i class="fas fa-link"></i></a>
 </h4>
 <p>Always put a space after a comma, never before, just like in regular English.</p>
-<div class="sourceCode" id="cb925"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb898"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>
@@ -374,7 +407,7 @@ git config --global user.email "your@email.com"</code></pre>
 <h4>Parentheses<a class="anchor" aria-label="anchor" href="#parentheses"><i class="fas fa-link"></i></a>
 </h4>
 <p>Do not put spaces inside or outside parentheses for regular function calls.</p>
-<div class="sourceCode" id="cb926"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb899"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -388,7 +421,7 @@ git config --global user.email "your@email.com"</code></pre>
 <h4>Infix operators<a class="anchor" aria-label="anchor" href="#infix-operators"><i class="fas fa-link"></i></a>
 </h4>
 <p>Most infix operators (<code>=</code>, <code>==</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, <code>~</code>, et cetera) should be surrounded by one space.</p>
-<div class="sourceCode" id="cb927"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb900"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="va">height</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">feet</span> <span class="op">*</span> <span class="fl">12</span><span class="op">)</span> <span class="op">+</span> <span class="va">inches</span>
@@ -402,7 +435,7 @@ git config --global user.email "your@email.com"</code></pre>
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">y</span><span class="op">~</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
 <p>Other operators — like <code>::</code>, <code>:::</code>, <code>$</code>, <code>@</code>, <code>[</code>, <code>[[</code>, <code>^</code>, and <code>:</code> — should never be surrounded by spaces.</p>
-<div class="sourceCode" id="cb928"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb901"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Good</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
@@ -415,7 +448,7 @@ git config --global user.email "your@email.com"</code></pre>
 <span class="va">df</span> <span class="op">$</span> <span class="va">z</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">10</span></code></pre></div>
 <p>You may add extra spaces if it improves alignment of <code>=</code> or <code>&lt;-</code>.</p>
-<div class="sourceCode" id="cb929"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb902"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>total <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span>,
      mean <span class="op">=</span> <span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span><span class="op">)</span></code></pre></div>
 <p>Do not add extra spaces to places where space is not usually allowed.</p>
@@ -464,7 +497,7 @@ git config --global user.email "your@email.com"</code></pre>
 </ol>
 <div class="inline-figure"><img src="other/images/rpubs-8.png" width="100%"></div>
 <ol start="9" style="list-style-type: decimal">
-<li>Hit “Continue,” et voilá! You have published your first document to Rpubs!</li>
+<li>Hit “Continue”, et voilá! You have published your first document to Rpubs!</li>
 </ol>
 <div class="inline-figure"><img src="other/images/rpubs-9.png" width="100%"></div>
 <ol start="10" style="list-style-type: decimal">
@@ -486,11 +519,11 @@ git config --global user.email "your@email.com"</code></pre>
 </h3>
 <p>If you don’t find an answer to your question and you’re still stuck, then you should ask your own question on these forums! In order to get the best response, sharing a reproducible example with the community allows others to easily start where you left off. The <strong>reprex</strong> package allows you to do this easily.</p>
 <p>First, install the <strong>reprex</strong> package. Then, load the package.</p>
-<div class="sourceCode" id="cb930"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb903"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"reprex"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://reprex.tidyverse.org">reprex</a></span><span class="op">)</span></code></pre></div>
 <!-- DK: Switch this to use a built in data set. -->
-<p>Let’s now look at some problematic code. The data set “murders” from the package “dslabs” provides murder statistics, as well as population counts, for all states. Suppose we want to calculate the rate of murders in each state per 100k residents (number of murders/population * 10^6). However, in the code below we have misspelled “population,” resulting in this error:</p>
+<p>Let’s now look at some problematic code. The data set “murders” from the package “dslabs” provides murder statistics, as well as population counts, for all states. Suppose we want to calculate the rate of murders in each state per 100k residents (number of murders/population * 10^6). However, in the code below we have misspelled “population”, resulting in this error:</p>
 <div class="inline-figure"><img src="other/images/reprex-2.gif" width="110%"></div>
 <p>To use <strong>reprex</strong>, highlight the code <em>and</em> the necessary packages. Then copy the highlighted code by pressing Ctrl/Cmd + c. The code is now in the clipboard. In the Console, type reprex() and hit Enter/Return. <strong>reprex</strong> then automatically creates a reproducible example and places it in your clipboard.</p>
 <div class="inline-figure"><img src="other/images/reprex-3.gif" width="110%"></div>
@@ -507,18 +540,18 @@ git config --global user.email "your@email.com"</code></pre>
 <p><strong>gt</strong> is an R package for creating elegant tables. First, we’ll create a <strong>gt</strong> summary table of some observations from the data. Second, we’ll run a regression and display the outcome using <strong>gtsummary</strong>, a companion package to <strong>gt</strong> which specializes in presenting the results of statistical models.</p>
 <p>If you want to learn more about <strong>gt</strong> check <a href="https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/">this</a> fantastic guide. Go <a href="https://gt.rstudio.com">here</a> for the official <strong>gt</strong> package website. See <a href="https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html">here</a> for an extensive guide to <strong>gtsummary</strong>.</p>
 <p>Load the necessary libraries.</p>
-<div class="sourceCode" id="cb931"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb904"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.data</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></code></pre></div>
 <p>We set <code>message=FALSE</code> in the above code chunk to avoid showing all the ugly notes when these libraries are loaded.</p>
 <p>Let’s pull some data which we will use in our table:</p>
-<div class="sourceCode" id="cb932"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb905"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gender</span>, <span class="va">income</span>, <span class="va">att_end</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
 <span class="va">x</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 3
+<pre><code>## # A tibble: 5 × 3
 ##   gender income att_end
 ##   &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 Female 135000      11
@@ -527,7 +560,7 @@ git config --global user.email "your@email.com"</code></pre>
 ## 4 Male   300000      11
 ## 5 Male   135000       5</code></pre>
 <p>Create the simplest table with <code><a href="https://gt.rstudio.com/reference/gt.html">gt()</a></code>, the key command:</p>
-<div class="sourceCode" id="cb934"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb907"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div id="meehpfmejn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -578,6 +611,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -587,7 +622,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -659,14 +696,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #meehpfmejn .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -738,7 +778,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#meehpfmejn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#meehpfmejn .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #meehpfmejn .gt_summary_row {
@@ -752,13 +811,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #meehpfmejn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#meehpfmejn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#meehpfmejn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #meehpfmejn .gt_grand_summary_row {
@@ -811,7 +879,10 @@ git config --global user.email "your@email.com"</code></pre>
 #meehpfmejn .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #meehpfmejn .gt_sourcenotes {
@@ -830,7 +901,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #meehpfmejn .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #meehpfmejn .gt_left {
@@ -862,10 +936,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#meehpfmejn .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #meehpfmejn .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#meehpfmejn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#meehpfmejn .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#meehpfmejn .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#meehpfmejn .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -907,7 +1014,7 @@ git config --global user.email "your@email.com"</code></pre>
 <p>Now let’s make this more professional. <strong>gt</strong> offers a variety of functions to add features like these<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;source: &lt;a href="https://gt.rstudio.com" class="uri"&gt;https://gt.rstudio.com&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>:</p>
 <div class="inline-figure"><img src="other/images/gt_features.png" width="100%"></div>
 <p>You can add a title and subtitle using <code><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header()</a></code>:</p>
-<div class="sourceCode" id="cb935"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb908"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Enos Data Observations"</span>, 
@@ -960,6 +1067,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -969,7 +1078,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -1041,14 +1152,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #igoxcmrtaa .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1120,7 +1234,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#igoxcmrtaa .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#igoxcmrtaa .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #igoxcmrtaa .gt_summary_row {
@@ -1134,13 +1267,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #igoxcmrtaa .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#igoxcmrtaa .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#igoxcmrtaa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #igoxcmrtaa .gt_grand_summary_row {
@@ -1193,7 +1335,10 @@ git config --global user.email "your@email.com"</code></pre>
 #igoxcmrtaa .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #igoxcmrtaa .gt_sourcenotes {
@@ -1212,7 +1357,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #igoxcmrtaa .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #igoxcmrtaa .gt_left {
@@ -1244,10 +1392,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#igoxcmrtaa .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #igoxcmrtaa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#igoxcmrtaa .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#igoxcmrtaa .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#igoxcmrtaa .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#igoxcmrtaa .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -1295,7 +1476,7 @@ git config --global user.email "your@email.com"</code></pre>
 </div>
 <p> </p>
 <p>By default, titles and other text can not be formatted. If you want formatting, you must wrap the character string in a call to <code><a href="https://gt.rstudio.com/reference/md.html">md()</a></code>, where <em>md</em> stands for (M)ark(d)own. For example, here is a bolded title.</p>
-<div class="sourceCode" id="cb936"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb909"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -1348,6 +1529,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -1357,7 +1540,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -1429,14 +1614,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #keoqmiqcnz .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1508,7 +1696,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#keoqmiqcnz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#keoqmiqcnz .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #keoqmiqcnz .gt_summary_row {
@@ -1522,13 +1729,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #keoqmiqcnz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#keoqmiqcnz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#keoqmiqcnz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #keoqmiqcnz .gt_grand_summary_row {
@@ -1581,7 +1797,10 @@ git config --global user.email "your@email.com"</code></pre>
 #keoqmiqcnz .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #keoqmiqcnz .gt_sourcenotes {
@@ -1600,7 +1819,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #keoqmiqcnz .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #keoqmiqcnz .gt_left {
@@ -1632,10 +1854,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#keoqmiqcnz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #keoqmiqcnz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#keoqmiqcnz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#keoqmiqcnz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#keoqmiqcnz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#keoqmiqcnz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -1683,7 +1938,7 @@ git config --global user.email "your@email.com"</code></pre>
 </div>
 <p> </p>
 <p>We can use <code><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner()</a></code> to add spanner columns. The <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> argument takes in the variables that the spanner column will cover.</p>
-<div class="sourceCode" id="cb937"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb910"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -1737,6 +1992,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -1746,7 +2003,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -1818,14 +2077,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #uatdyvtzxg .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1897,7 +2159,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uatdyvtzxg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uatdyvtzxg .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #uatdyvtzxg .gt_summary_row {
@@ -1911,13 +2192,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #uatdyvtzxg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uatdyvtzxg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uatdyvtzxg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #uatdyvtzxg .gt_grand_summary_row {
@@ -1970,7 +2260,10 @@ git config --global user.email "your@email.com"</code></pre>
 #uatdyvtzxg .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #uatdyvtzxg .gt_sourcenotes {
@@ -1989,7 +2282,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #uatdyvtzxg .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #uatdyvtzxg .gt_left {
@@ -2021,10 +2317,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#uatdyvtzxg .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #uatdyvtzxg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#uatdyvtzxg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uatdyvtzxg .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#uatdyvtzxg .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#uatdyvtzxg .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -2080,7 +2409,7 @@ git config --global user.email "your@email.com"</code></pre>
 <p>From here on, our current table will not include a spanner column. If you wish to see more examples of spanner columns, go to <a href="https://ppbds.github.io/primer/rubin-causal-model.html#a-single-value-for-tau">Chapter 4</a>.</p>
 <p> </p>
 <p>You can change the column names using <code><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label()</a></code>:</p>
-<div class="sourceCode" id="cb938"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb911"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -2136,6 +2465,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -2145,7 +2476,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -2217,14 +2550,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #tqbwodysgq .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2296,7 +2632,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tqbwodysgq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tqbwodysgq .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #tqbwodysgq .gt_summary_row {
@@ -2310,13 +2665,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #tqbwodysgq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tqbwodysgq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tqbwodysgq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #tqbwodysgq .gt_grand_summary_row {
@@ -2369,7 +2733,10 @@ git config --global user.email "your@email.com"</code></pre>
 #tqbwodysgq .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #tqbwodysgq .gt_sourcenotes {
@@ -2388,7 +2755,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #tqbwodysgq .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #tqbwodysgq .gt_left {
@@ -2420,10 +2790,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#tqbwodysgq .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #tqbwodysgq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#tqbwodysgq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tqbwodysgq .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#tqbwodysgq .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#tqbwodysgq .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -2471,7 +2874,7 @@ git config --global user.email "your@email.com"</code></pre>
 </div>
 <p> </p>
 <p>Use <code><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note()</a></code> to cite the source of the data or to create a caption. This function is not exclusively for providing a source — though it’s a handy way to do so — and can be used to display any text you’d like:</p>
-<div class="sourceCode" id="cb939"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb912"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -2528,6 +2931,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -2537,7 +2942,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -2609,14 +3016,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #qbmyogdqrz .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2688,7 +3098,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qbmyogdqrz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qbmyogdqrz .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #qbmyogdqrz .gt_summary_row {
@@ -2702,13 +3131,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #qbmyogdqrz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qbmyogdqrz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qbmyogdqrz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #qbmyogdqrz .gt_grand_summary_row {
@@ -2761,7 +3199,10 @@ git config --global user.email "your@email.com"</code></pre>
 #qbmyogdqrz .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #qbmyogdqrz .gt_sourcenotes {
@@ -2780,7 +3221,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #qbmyogdqrz .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #qbmyogdqrz .gt_left {
@@ -2812,10 +3256,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#qbmyogdqrz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #qbmyogdqrz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#qbmyogdqrz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qbmyogdqrz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#qbmyogdqrz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#qbmyogdqrz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -2866,7 +3343,7 @@ git config --global user.email "your@email.com"</code></pre>
 </div>
 <p> </p>
 <p>Using <code><a href="https://gt.rstudio.com/reference/md.html">md()</a></code> again, we can italicize the name of the Enos study in the caption:</p>
-<div class="sourceCode" id="cb940"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb913"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -2923,6 +3400,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -2932,7 +3411,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -3004,14 +3485,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #vvqawqzoph .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3083,7 +3567,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvqawqzoph .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vvqawqzoph .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #vvqawqzoph .gt_summary_row {
@@ -3097,13 +3600,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #vvqawqzoph .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vvqawqzoph .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vvqawqzoph .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #vvqawqzoph .gt_grand_summary_row {
@@ -3156,7 +3668,10 @@ git config --global user.email "your@email.com"</code></pre>
 #vvqawqzoph .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #vvqawqzoph .gt_sourcenotes {
@@ -3175,7 +3690,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #vvqawqzoph .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #vvqawqzoph .gt_left {
@@ -3207,10 +3725,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#vvqawqzoph .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #vvqawqzoph .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#vvqawqzoph .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vvqawqzoph .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#vvqawqzoph .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#vvqawqzoph .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -3262,7 +3813,7 @@ git config --global user.email "your@email.com"</code></pre>
 </div>
 <p> </p>
 <p>Now that the table structure looks good, we want to format the numbers themselves. Let’s add some dollar signs to the income column using <code><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency()</a></code>. This function also adds commas (if you want commas without dollar signs use <code><a href="https://gt.rstudio.com/reference/fmt_number.html">fmt_number()</a></code>). The <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> within <code><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency()</a></code> denotes the variable being formatted as a currency:</p>
-<div class="sourceCode" id="cb941"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb914"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, 
@@ -3322,6 +3873,8 @@ git config --global user.email "your@email.com"</code></pre>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -3331,7 +3884,9 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -3403,14 +3958,17 @@ git config --global user.email "your@email.com"</code></pre>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #vnwebhztbq .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3482,7 +4040,26 @@ git config --global user.email "your@email.com"</code></pre>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vnwebhztbq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vnwebhztbq .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #vnwebhztbq .gt_summary_row {
@@ -3496,13 +4073,22 @@ git config --global user.email "your@email.com"</code></pre>
 }
 
 #vnwebhztbq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vnwebhztbq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vnwebhztbq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #vnwebhztbq .gt_grand_summary_row {
@@ -3555,7 +4141,10 @@ git config --global user.email "your@email.com"</code></pre>
 #vnwebhztbq .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #vnwebhztbq .gt_sourcenotes {
@@ -3574,7 +4163,10 @@ git config --global user.email "your@email.com"</code></pre>
 
 #vnwebhztbq .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #vnwebhztbq .gt_left {
@@ -3606,10 +4198,43 @@ git config --global user.email "your@email.com"</code></pre>
   font-size: 65%;
 }
 
+#vnwebhztbq .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #vnwebhztbq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#vnwebhztbq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vnwebhztbq .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#vnwebhztbq .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#vnwebhztbq .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -3665,22 +4290,30 @@ Contact on Exclusionary Attitudes</em>
 <div id="regression-tables" class="section level3 unnumbered">
 <h3>Regression tables<a class="anchor" aria-label="anchor" href="#regression-tables"><i class="fas fa-link"></i></a>
 </h3>
-<p>We can making a <strong>gt</strong> table with a <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> regression object. Key to this is the <strong>gtsummary</strong> package and its <code><a href="http://www.danieldsjoberg.com/gtsummary//reference/tbl_regression.html">tbl_regression()</a></code> function.</p>
-<div class="sourceCode" id="cb942"><pre class="downlit sourceCode r">
+<p>We can making a <strong>gt</strong> table with a <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> regression object. Key to this is the <strong>gtsummary</strong> package and its <code><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html">tbl_regression()</a></code> function.</p>
+<div class="sourceCode" id="cb915"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/">rstanarm</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/bbolker/broom.mixed">broom.mixed</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bbolker/broom.mixed">broom.mixed</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span>
 
 <span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">att_end</span> <span class="op">~</span> <span class="va">party</span>, data <span class="op">=</span> <span class="va">trains</span>, refresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
-<span class="fu"><a href="http://www.danieldsjoberg.com/gtsummary//reference/tbl_regression.html">tbl_regression</a></span><span class="op">(</span><span class="va">fit2</span>, 
+<span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html">tbl_regression</a></span><span class="op">(</span><span class="va">fit2</span>, 
                intercept <span class="op">=</span> <span class="cn">TRUE</span>, 
-               estimate_fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="http://www.danieldsjoberg.com/gtsummary//reference/style_sigfig.html">style_sigfig</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="http://www.danieldsjoberg.com/gtsummary//reference/as_gt.html">as_gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+               estimate_fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/style_sigfig.html">style_sigfig</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/as_gt.html">as_gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Regression of Attitudes about Immigration"</span>, 
                subtitle <span class="op">=</span> <span class="st">"The Effect of Party on End Attitude"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note</a></span><span class="op">(</span><span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"Source: Ryan Enos, *Causal Effect of Intergroup 
                         Contact on Exclusionary Attitudes*"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: The `fmt_missing()` function is deprecated and will soon be removed
+## * Use the `sub_missing()` function instead
+
+## Warning: The `fmt_missing()` function is deprecated and will soon be removed
+## * Use the `sub_missing()` function instead
+
+## Warning: The `fmt_missing()` function is deprecated and will soon be removed
+## * Use the `sub_missing()` function instead</code></pre>
 <div id="xfnmqvitxi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -3729,6 +4362,8 @@ Contact on Exclusionary Attitudes</em>
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
@@ -3738,7 +4373,9 @@ Contact on Exclusionary Attitudes</em>
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -3810,14 +4447,17 @@ Contact on Exclusionary Attitudes</em>
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
 #xfnmqvitxi .gt_group_heading {
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3889,7 +4529,26 @@ Contact on Exclusionary Attitudes</em>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xfnmqvitxi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xfnmqvitxi .gt_row_group_first td {
+  border-top-width: 2px;
 }
 
 #xfnmqvitxi .gt_summary_row {
@@ -3903,13 +4562,22 @@ Contact on Exclusionary Attitudes</em>
 }
 
 #xfnmqvitxi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xfnmqvitxi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xfnmqvitxi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 #xfnmqvitxi .gt_grand_summary_row {
@@ -3962,7 +4630,10 @@ Contact on Exclusionary Attitudes</em>
 #xfnmqvitxi .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #xfnmqvitxi .gt_sourcenotes {
@@ -3981,7 +4652,10 @@ Contact on Exclusionary Attitudes</em>
 
 #xfnmqvitxi .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #xfnmqvitxi .gt_left {
@@ -4013,10 +4687,43 @@ Contact on Exclusionary Attitudes</em>
   font-size: 65%;
 }
 
+#xfnmqvitxi .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
 #xfnmqvitxi .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#xfnmqvitxi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xfnmqvitxi .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#xfnmqvitxi .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#xfnmqvitxi .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <div class="inline-table"><table class="gt_table">
@@ -4062,15 +4769,9 @@ Contact on Exclusionary Attitudes</em>
 Contact on Exclusionary Attitudes</em>
 </td>
     </tr></tfoot>
-<tfoot><tr class="gt_footnotes">
-<td colspan="3">
-        <p class="gt_footnote">
-          <sup class="gt_footnote_marks"><em>1</em>
-          </sup>
-           
-          CI = Confidence Interval
-          <br></p>
-      </td>
+<tfoot class="gt_footnotes"><tr>
+<td class="gt_footnote" colspan="3">
+<sup class="gt_footnote_marks">1</sup> CI = Credible Interval</td>
     </tr></tfoot>
 </table></div>
 </div>
@@ -4166,6 +4867,22 @@ Contact on Exclusionary Attitudes</em>
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

@@ -14,17 +14,17 @@ library(gapminder)
 library(plotly)
 
 president_data <- read_csv("01-visualization/data/president_approval.csv",
-                           show_col_types = FALSE) %>% 
+                           show_col_types = FALSE) |> 
   pivot_longer(names_to = "approval_type",
                values_to = "rate",
-               cols = c(-president, -enddate)) %>% 
+               cols = c(-president, -enddate)) |> 
   mutate(enddate = lubridate::mdy(enddate),
          enddate = lubridate::yday(enddate),
          enddate = as.integer(enddate - 20))
 
 # Data is from 538, this is the data for the first 100 days of both Biden's and Trump's presidency. Changed the columns to date formates, but also bc the term starts on January 20th instead of January 1st I needed to subtract 20 days to make sure January 20 was counted as "Day 1"
 
-hundred_days_p <- president_data %>%
+hundred_days_p <- president_data |>
   ggplot(mapping = aes(x = enddate,
                        y = rate,
                        color = approval_type)) +
@@ -479,9 +479,9 @@ Whites are over-represented in the Control group even though the `treatment` was
 `geom_col()` is similar to `geom_bar()`, except that `geom_col()` requires you to calculate the number of observations in each category ahead of time. `geom_bar()` does the calculation for you. See an example below.
 
 ```{r}
-trains %>% 
-  group_by(race,treatment) %>%
-  summarize(count = sum(n())) %>% 
+trains |> 
+  group_by(race,treatment) |>
+  summarize(count = sum(n())) |> 
   ggplot(mapping = aes(x = race,
                        y = count,
                        fill = treatment)) +
@@ -612,9 +612,9 @@ We can't use all the beautiful plots that we learned in the previous chapter unt
 
 * `summarize()`: to create a new tibble comprised of summary statistics for one (or more) rows for each grouped variable, or for the tibble as a whole if it is ungrouped. 
 
-### The pipe operator: `%>%`
+### The pipe operator: `|>`
 
-The pipe operator (`%>%`) allows us to combine multiple operations in R into a single sequential *chain* of actions. Much like how the `+` sign has to come at the end of the line when constructing plots --- because we are building the plot layer-by-layer --- the pipe operator `%>%` has to come at the end of the line because we are building a data wrangling pipeline step-by-step. If you do not include the pipe operator, R assumes the next line of code is unrelated to the layers you built and you will get an error.
+The pipe operator (`|>`) allows us to combine multiple operations in R into a single sequential *chain* of actions. Much like how the `+` sign has to come at the end of the line when constructing plots --- because we are building the plot layer-by-layer --- the pipe operator `|>` has to come at the end of the line because we are building a data wrangling pipeline step-by-step. If you do not include the pipe operator, R assumes the next line of code is unrelated to the layers you built and you will get an error.
 
 ### `filter()` rows
 
@@ -626,14 +626,14 @@ The `filter()` function works much like the "Filter" option in Microsoft Excel. 
 
 
 ```{r}
-trains %>% 
+trains |> 
   filter(gender == "Male")
 ```
 
 The result of using `filter()` will be a tibble with just the rows that you want. When we alter our data, it can be a good idea to save the result in a new data frame by using the `<-` assignment operator.
 
 ```{r}
-trains_men <- trains %>% 
+trains_men <- trains |> 
   filter(gender == "Male")
 ```
 
@@ -657,7 +657,7 @@ Furthermore, you can combine multiple criteria using operators that make compari
 For example, let's `filter()` the `trains` tibble to include only women who are Republicans and younger than 40.
 
 ```{r}
-trains %>% 
+trains |> 
   filter(gender == "Female" & 
            party == "Republican" &
            age < 40)
@@ -666,7 +666,7 @@ trains %>%
 Instead of creating a single criterion with many parts, like with an `&`, you can just separate the parts with a comma. The resulting tibble is the same.
 
 ```{r}
-trains %>% 
+trains |> 
   filter(gender == "Female",
          party == "Republican",
          age < 40)
@@ -690,21 +690,21 @@ glimpse(trains)
 However, if you only need two of these variables, say `gender` and `treatment`. You can `select()` just these two:
 
 ```{r}
-trains %>% 
+trains |> 
   select(gender, treatment)
 ```
 
 You can drop, or "de-select," certain variables by using the minus (`-`) sign:
 
 ```{r}
-trains %>% 
+trains |> 
   select(-gender, -liberal, -party, -age)
 ```
 
 You can specify a range of columns by using the `:` operator. 
 
 ```{r}
-trains %>% 
+trains |> 
   select(gender:age)
 ```
 
@@ -714,14 +714,14 @@ This will `select()` all columns between the two specified variables.
 The `select()` function can also be used to rearrange columns when used with the `everything()` helper function. We can put the `treatment` and `gender` variables first with:  
 
 ```{r}
-trains %>% 
+trains |> 
   select(treatment, gender, everything())
 ```
 
 The helper functions `starts_with()`, `ends_with()`, and `contains()` can be used to select variables/columns that match those conditions. Examples:
 
 ```{r}
-trains %>% 
+trains |> 
   select(starts_with("a"))
 ```
 
@@ -732,7 +732,7 @@ trains %>%
 Using `slice()` gives us specific rows from the `trains` tibble:
 
 ```{r}
-trains %>% 
+trains |> 
   slice(2:5)
 ```
 
@@ -741,8 +741,8 @@ Unlike `filter()`, `slice()` relies on numeric order of the data.
 `pull()` grabs out a variable as a vector, rather than leaving it within a tibble, as `select()` does:
 
 ```{r}
-trains %>% 
-  slice(2:5) %>% 
+trains |> 
+  slice(2:5) |> 
   pull(age)
 ```
 
@@ -752,16 +752,16 @@ trains %>%
 `arrange()` allows us to sort/reorder a tibble's rows according to the values of a specific variable. Unlike `filter()` or `select()`, `arrange()` does not remove any rows or columns from the tibble. Example:
 
 ```{r}
-trains %>% 
-  select(treatment, gender, age) %>% 
+trains |> 
+  select(treatment, gender, age) |> 
   arrange(age)
 ```
 
 `arrange()` always returns rows sorted in ascending order by default. To switch the ordering to descending order instead, use the `desc()` function:
 
 ```{r}
-trains %>% 
-  select(treatment, gender, age) %>% 
+trains |> 
+  select(treatment, gender, age) |> 
   arrange(desc(age))
 ```
 
@@ -777,8 +777,8 @@ knitr::include_graphics("01-visualization/images/mutate.png")
 `mutate()` takes existing columns and creates a new column. Recall that the `income` variable in the `trains` tibble is in dollars. Let's use `mutate()` to create a new variable which is income in thousands of dollars. (We use `select()` at the start of the pipe so that it is easier to see the new and old variables at the same time.)
 
 ```{r}
-trains %>% 
-  select(gender, income) %>% 
+trains |> 
+  select(gender, income) |> 
   mutate(income_in_thousands = income / 1000)
 ```
 
@@ -788,7 +788,7 @@ Notice that we have a newly created column at the right-hand side of our tibble 
 When creating new variables we can also *overwrite* the original tibble:
 
 ```{r}
-trains <- trains %>% 
+trains <- trains |> 
   mutate(income_in_thousands = (income) / 1000)
 ```
 
@@ -807,8 +807,8 @@ For example, instead of overwriting `trains` in the code above, we could have cr
 Imagine that we want to create a new variable `old`, which is TRUE when `age > 50` and FALSE otherwise. 
 
 ```{r}
-trains %>% 
-  select(age) %>% 
+trains |> 
+  select(age) |> 
   mutate(old = if_else(age > 50, TRUE, FALSE))
 ```
 
@@ -822,7 +822,7 @@ We often need to calculate *summary statistics*, things like the *mean* (also ca
 The function `summarize()` allows us to calculate these statistics on individual columns from a tibble. Example:
 
 ```{r}
-trains %>% 
+trains |> 
   summarize(mn_age = mean(age), 
             sd_age = sd(age))
 ```
@@ -893,7 +893,7 @@ If there is an `NA` value in the variable, any statistical function like `mean()
 We can the use `mean()` with `summarize()` to calculate the average age for all the people in `trains`, as we did above.
 
 ```{r}
-trains %>% 
+trains |> 
   summarize(avg = mean(age))
 ```
 
@@ -901,15 +901,15 @@ What if we want the mean `age` for each `gender`? Consider:
 
 
 ```{r}
-trains %>% 
+trains |> 
   group_by(gender)
 ```
 
 The data is the same as before, but note the "Groups" message at the top. R is informing you that this tibble has been grouped so that any operation you perform now will be done for each `gender`. 
 
 ```{r}
-trains %>% 
-  group_by(gender) %>% 
+trains |> 
+  group_by(gender) |> 
   summarize(avg = mean(age))
 ```
 
@@ -918,8 +918,8 @@ Notice the message R sends us. The warning means that the tibble which issues fo
 The proper way to handle the situation, here and everywhere else that we use `group_by()` and `summarize()`, is to specify the `.groups` argument.
 
 ```{r}
-trains %>% 
-  group_by(gender) %>% 
+trains |> 
+  group_by(gender) |> 
   summarize(mean = mean(age),
             .groups = "drop")
 ```
@@ -989,7 +989,7 @@ Before we proceed, let's create a subset of the tibble `gapminder` from the **ga
 
 ```{r}
 library(gapminder)
-gapminder_filt <- gapminder %>% 
+gapminder_filt <- gapminder |> 
       filter(year == 2007, continent != "Oceania")
 ```
 
@@ -1148,9 +1148,9 @@ Consider the following faceted scatterplot.
 
 
 ```{r}
-gapminder %>%
-  filter(continent != "Oceania") %>%
-  filter(year == max(year)) %>% 
+gapminder |>
+  filter(continent != "Oceania") |>
+  filter(year == max(year)) |> 
   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
     geom_point(alpha = 0.7) +
     geom_smooth(method = "lm", 
@@ -1171,9 +1171,9 @@ Let's now add a theme to our faceted scatterplot. We will use the theme `theme_e
 ```{r}
 library(ggthemes)
 
-gapminder %>%
-  filter(continent != "Oceania") %>%
-  filter(year == max(year)) %>% 
+gapminder |>
+  filter(continent != "Oceania") |>
+  filter(year == max(year)) |> 
   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
     geom_point(alpha = 0.7) +
     geom_smooth(method = "lm", 
@@ -1191,9 +1191,9 @@ gapminder %>%
 This looks pretty good. However, notice the legend on the top of our graph.  It crowds our graph and takes away from the most important part: the data. We can use `theme()` to customize the non-data parts of our plots such as background, gridlines, and legends. Let's de-clutter the graph by removing our legend. We can do this by using the `legend.position` argument and setting it to "none".
 
 ```{r}
-gapminder %>%
-  filter(continent != "Oceania") %>%
-  filter(year == max(year)) %>% 
+gapminder |>
+  filter(continent != "Oceania") |>
+  filter(year == max(year)) |> 
   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
     geom_point(alpha = 0.7) +
     geom_smooth(method = "lm", 
@@ -1276,8 +1276,8 @@ There are so many more plots you can make with R that we have not shown you yet.
 ```{r, echo = FALSE, cache = TRUE}
 library(gganimate)
 
-gapminder_p <- gapminder %>%
-  filter(continent != "Oceania") %>%
+gapminder_p <- gapminder |>
+  filter(continent != "Oceania") |>
   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
     geom_point(show.legend = FALSE, alpha = 0.7) +
     facet_wrap(~continent, nrow = 1) +
@@ -1297,8 +1297,8 @@ gapminder_p
 You can make your plots interactive, using the **plotly** package. Remember, you need to load packages before you use them, so load `library(plotly)` if you want to make your own interactive plots. Example:
 
 ```{r, echo = FALSE}
-gapminder_plot <- gapminder %>%
-  filter(continent != "Oceania") %>%
+gapminder_plot <- gapminder |>
+  filter(continent != "Oceania") |>
   ggplot(aes(gdpPercap, lifeExp, color = continent)) +
     geom_point(alpha = 0.2, size = 0.5) +
     geom_smooth(method = "loess",

@@ -216,7 +216,7 @@ file_4_tibble$`one powers`
 But that can still cause problems down the line and it's just annoying to use the backticks every time you want a column name. This is when we can use the `clean_names()` function from the **janitor** package. It essentially formats the column names so that they follow the [underscore separated naming convention](https://en.wikipedia.org/wiki/Snake_case) and are all unique.
 
 ```{r}
-file_4_tibble %>% 
+file_4_tibble |> 
   clean_names()
 ```
 
@@ -429,7 +429,7 @@ The `read_excel()` function also has arguments similar to the `read_csv()` funct
 <!-- You can also delete created sheets by using the `googledrive::drive_trash()` function in conjunction with the `gs4_find()` function. -->
 
 <!-- ```{r} -->
-<!-- gs4_find("sheets-create-demo") %>% -->
+<!-- gs4_find("sheets-create-demo") |> -->
 <!--   googledrive::drive_trash() -->
 <!-- ``` -->
 
@@ -452,7 +452,7 @@ However, RDS files are limited to R projects only, and they're incomprehensible 
 Take the following R object, a graph of the `iris` data set.
 
 ```{r}
-iris_p <- iris %>% 
+iris_p <- iris |> 
   ggplot(aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_jitter() +
   labs(title = "Sepal Dimensions of Various Species of Iris",
@@ -685,15 +685,15 @@ Here's an example of using the **dbpylr** package to get the number of albums ea
 # itself. This code is deliberately long in order to show the common functions
 # that we use.
 
-band_albums <- tbl(con, "albums") %>%
-                 inner_join(tbl(con, "artists"), by = "ArtistId") %>%
-                 select("AlbumId", "ArtistId", "Title", "Name") %>%
-                 group_by(ArtistId) %>%
-                 summarize(Name = Name, num_albums = n()) %>%
-                 mutate(artist_name = Name) %>%
-                 mutate(artist_id = ArtistId) %>%
-                 filter(num_albums > 3) %>%
-                 arrange(desc(num_albums)) %>%
+band_albums <- tbl(con, "albums") |>
+                 inner_join(tbl(con, "artists"), by = "ArtistId") |>
+                 select("AlbumId", "ArtistId", "Title", "Name") |>
+                 group_by(ArtistId) |>
+                 summarize(Name = Name, num_albums = n()) |>
+                 mutate(artist_name = Name) |>
+                 mutate(artist_id = ArtistId) |>
+                 filter(num_albums > 3) |>
+                 arrange(desc(num_albums)) |>
                  select(artist_id, artist_name, num_albums)
 band_albums
 ```
@@ -1001,7 +1001,7 @@ raw_html_1 <- "<html>
                    Hello World
                  </p>
                </html>"
-raw_html_1 %>%
+raw_html_1 |>
   minimal_html()
 ```
 
@@ -1010,8 +1010,8 @@ Then we need to filter by the elements that the HTML file contains. In this case
 ```{r}
 # Only use the letter part of the tag, not the <, >, or /
 
-raw_html_1 %>%
-  minimal_html() %>%
+raw_html_1 |>
+  minimal_html() |>
   html_element("p")
 ```
 
@@ -1021,9 +1021,9 @@ This returns an HTML node, or the specific element that we chose. If we had more
 # html_text2() is different from the normal html_text() because it returns an
 # actual string. This is normally what we want.
 
-raw_html_1 %>%
-  minimal_html() %>%
-  html_element("p") %>%
+raw_html_1 |>
+  minimal_html() |>
+  html_element("p") |>
   html_text2()
 ```
 
@@ -1117,9 +1117,9 @@ raw_html_2
 
 # We use html_elements() to get all of the elements in the HTML file.
 
-td_tags <- raw_html_2 %>%
-             minimal_html() %>%
-             html_element("table") %>%
+td_tags <- raw_html_2 |>
+             minimal_html() |>
+             html_element("table") |>
              html_elements("td")
 td_tags
 ```
@@ -1127,7 +1127,7 @@ td_tags
 Notice that this actually outputs a list of the elements and their text. That means that we can use the this output like a list in order to get the information that we want. Just use the `[[]]` syntax.
 
 ```{r}
-td_tags[[2]] %>%
+td_tags[[2]] |>
   html_text2()
 ```
 
@@ -1237,18 +1237,18 @@ raw_html_3 <- "<html>
                  </p>
                </html>"
 
-raw_html_3 %>%
-  minimal_html() %>%
-  html_elements(".good-info") %>%
+raw_html_3 |>
+  minimal_html() |>
+  html_elements(".good-info") |>
   html_text2()
 ```
 
 You can sort by multiple classes by just chaining them together.
 
 ```{r}
-raw_html_3 %>%
-  minimal_html() %>%
-  html_elements(".good-info.amazing-info") %>%
+raw_html_3 |>
+  minimal_html() |>
+  html_elements(".good-info.amazing-info") |>
   html_text2()
 ```
 
@@ -1299,19 +1299,19 @@ We can try accessing it through the normal methods, like so:
 ```{r}
 raw_html_5 <- '<a href = "https://ppbds.github.io/primer/index.htm" id="abcd1234" class="hello hi">link to primer</a>'
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("#abcd1234") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element(".hello") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element(".hello") |>
   html_text2()
 ```
 
@@ -1321,38 +1321,38 @@ Or we can mix and match them to make an even more narrow search by chaining them
 # Keep in mind that IDs (the # part) are usually unique to that element only, so
 # there's not really a point in filtering it even more when it's already unique.
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a#abcd1234") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a.hello") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a.hello") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a.hello#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a.hello#abcd1234") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element(".hello#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element(".hello#abcd1234") |>
   html_text2()
 
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a.hello.hi#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a.hello.hi#abcd1234") |>
   html_text2()
 ```
 
 We can also get the link that the node refers to rather than the text. In this case, the link is stored in the `href` attribute, so we use `html_attr()` to access it.
 
 ```{r}
-raw_html_5 %>%
-  minimal_html() %>%
-  html_element("a.hello.hi#abcd1234") %>%
+raw_html_5 |>
+  minimal_html() |>
+  html_element("a.hello.hi#abcd1234") |>
   html_attr("href")
 ```
 
@@ -1448,16 +1448,16 @@ Now, earlier we only scraped from pre-written HTML code, but you can do this fro
 ```{r}
 web_url <- "https://www.opensecrets.org/political-action-committees-pacs/foreign-connected-pacs/2020"
 
-web_url %>%
+web_url |>
   read_html()
 ```
 
 In this case, we can use Selector Gadget to find the correct CSS selector "table.DataTable-Partial". We then just proceed as normal, but we need to use `html_table()` because we're trying to bring in a table and use it as a tibble.
 
 ```{r}
-web_url %>%
-  read_html() %>%
-  html_element("table.DataTable-Partial") %>%
+web_url |>
+  read_html() |>
+  html_element("table.DataTable-Partial") |>
   html_table()
 ```
 
@@ -1470,7 +1470,7 @@ First, we need to save the URL and read the HTML code from it into R.
 ```{r}
 wiki_url <- "https://en.wikipedia.org/w/index.php?title=%22,%22Gun_violence_in_the_United_States_by_state%22,%22&direction=prev&oldid=810166167"
 
-wiki_url %>%
+wiki_url |>
   read_html()
 ```
 
@@ -1479,9 +1479,9 @@ We can then use SelectorGadget to find the correct CSS selector. If you can't ea
 We can then save the table provided into a variable known as `raw_data_wiki`.
 
 ```{r}
-raw_data_wiki <- wiki_url %>%
-                   read_html() %>%
-                   html_element("table.wikitable.sortable") %>%
+raw_data_wiki <- wiki_url |>
+                   read_html() |>
+                   html_element("table.wikitable.sortable") |>
                    html_table()
 raw_data_wiki
 ```
@@ -1489,16 +1489,16 @@ raw_data_wiki
 Past this point, you can work with the data just like you would normal data. Here's an example graph of how states that have a denser population experience more consistent gun deaths than states with a less dense population.
 
 ```{r}
-clean_data <- raw_data_wiki %>%
+clean_data <- raw_data_wiki |>
                 rename("population" = "Population (total inhabitants) (2015) [1]",
                        "death_rate" = "Murder and Nonnegligent\nManslaughter Rate(per 100,000 inhabitants) (2015)",
-                       "total_deaths" = "Murders and Nonnegligent\nManslaughter(total deaths) (2015) [2]") %>%
-                        select(population, death_rate) %>%
-                        mutate(population = parse_number(population)) %>%
-                        mutate(pop_tile = ntile(population, 20)) %>%
-                        group_by(pop_tile) %>%
-                        summarize(num_states = n(), sum_rate = sum(death_rate)) %>%
-                        mutate(avg_rate = sum_rate/num_states) %>%
+                       "total_deaths" = "Murders and Nonnegligent\nManslaughter(total deaths) (2015) [2]") |>
+                        select(population, death_rate) |>
+                        mutate(population = parse_number(population)) |>
+                        mutate(pop_tile = ntile(population, 20)) |>
+                        group_by(pop_tile) |>
+                        summarize(num_states = n(), sum_rate = sum(death_rate)) |>
+                        mutate(avg_rate = sum_rate/num_states) |>
                         mutate(percent_rate = avg_rate / sum(avg_rate))
 
 ggplot(clean_data, aes(x = pop_tile, y = percent_rate)) + 
@@ -1569,14 +1569,14 @@ denver <- GET(url = meso_url,
                                  month2 = "6",
                                  day2 = "30",
                                  tz = "America/Denver",
-                                 format = "comma")) %>%
-  content() %>% 
+                                 format = "comma")) |>
+  content() |> 
   read_csv(skip = 5, na = "M")
 
 # There are 9,106 rows of data to look at! Let's just look at subset for our
 # purposes.
 
-denver %>% 
+denver |> 
   slice(1:3)
 
 ```

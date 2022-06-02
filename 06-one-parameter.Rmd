@@ -126,10 +126,10 @@ tactile_sample_urn <- tibble(group = c("Ilyas, Yohan", "Ellie, Terrance", "Mark,
                                           "11", "15", "17", "16", "18", "17", "21",
                                           "15", "20", "11", "21", "15", "16", "23",
                                           "15", "18", "16", "21", "18", "17", "18",
-                                          "15", "21", "21", "16", "19")) %>% 
-  sample_frac() %>% 
-  mutate(red_beads = as.numeric(red_beads)) %>% 
-  mutate(prop_red = red_beads/50) %>% 
+                                          "15", "21", "21", "16", "19")) |> 
+  sample_frac() |> 
+  mutate(red_beads = as.numeric(red_beads)) |> 
+  mutate(prop_red = red_beads/50) |> 
   mutate(group_ID = 1:33)
 
 tactile_sample_urn
@@ -140,7 +140,7 @@ For each `group`, we are given their names, the number of `red_beads` they obtai
 Let's visualize the distribution of these 33 proportions using `geom_histogram()` with `binwidth = 0.05`. This is a computerized and complete version of the partially completed hand-drawn histogram you saw earlier. Setting `boundary = 0.4` indicates that we want a binning scheme such that one of the bins' boundary is at 0.4. `color = "white"` modifies the color of the boundary for visual clarity. 
 
 ```{r}
-tactile_sample_urn %>%
+tactile_sample_urn |>
   ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05, 
                  boundary = 0.4, 
@@ -184,13 +184,13 @@ Virtual sampling requires a virtual urn and a virtual shovel. Create a tibble na
 set.seed(10)
 
 urn <- tibble(color = c(rep("red", 400), 
-                        rep("white", 600))) %>%
+                        rep("white", 600))) |>
   
   # sample_frac() keeps all the rows in the tibble but rearranges their order.
   # We don't need to do this. A virtual urn does not care about the order of the
   # beads. But we find it aesthetically pleasing to mix them up.
   
-  sample_frac() %>% 
+  sample_frac() |> 
   mutate(bead_ID = 1:1000) 
 
 urn  
@@ -208,15 +208,15 @@ Our virtual urn needs a virtual shovel. We use `slice_sample()` and list-column 
 # trial_ID is called within map(), we are performing slice_sample() upon our urn
 # once, and taking a sample of 50 beads. 
 
-tibble(trial_ID = 1) %>% 
+tibble(trial_ID = 1) |> 
   mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50)))
 ```
 
 As usual, map functions and list-columns are powerful but confusing. The `str()` function is a good way to explore a tibble with a list-column.
 
 ```{r}
-tibble(trial_ID = 1) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
+tibble(trial_ID = 1) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
   str()
 ```
 
@@ -228,8 +228,8 @@ Now let's add a column which indicates the number of red beads in the sample tak
 <!-- RS: I think the dollar sign operator should be understood at this point, but was thinking about asking Yuhan to include a way better explanation about the "this" operator in Chapter 5.  -->
 
 ```{r}
-tibble(trial_ID = 1) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
+tibble(trial_ID = 1) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
   
 # To count the number of red beads in each shovel, we can use a lesser 
 # known property of the sum() function: By passing in a comparison 
@@ -245,9 +245,9 @@ How does this work? R evaluates if `color == red`, and treats `TRUE` values like
 Finally, calculate the proportion red by dividing `numb_red` (The number of red beads observed in the shovel), by the shovel size (We are using a shovel of size 50).
 
 ```{r}
-tibble(trial_ID = 1) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
+tibble(trial_ID = 1) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
   mutate(prop_red = numb_red / 50)
 ```
 
@@ -264,9 +264,9 @@ Let's use our virtual sampling to replicate the tactile sampling activity in a v
 ```{r}
 set.seed(9)
 
- virtual_samples <- tibble(trial_ID = 1:33) %>%
-    mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
-    mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>%
+ virtual_samples <- tibble(trial_ID = 1:33) |>
+    mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
+    mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |>
     mutate(prop_red = numb_red / 50) 
 
 virtual_samples
@@ -275,7 +275,7 @@ virtual_samples
 Let's visualize this variation in a histogram:
 
 ```{r}
-virtual_samples %>% 
+virtual_samples |> 
 ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05, 
                  boundary = 0.4, 
@@ -309,15 +309,15 @@ Now we will compare our virtual results with our tactile results from the previo
 # Mutating to create the "type" column allows us to see which pieces of data
 # come from virtual sampling and which come from tactical sampling.
 
-facet_compare <- bind_rows(virtual_samples %>% 
-                              select(trial_ID, prop_red) %>%
+facet_compare <- bind_rows(virtual_samples |> 
+                              select(trial_ID, prop_red) |>
                               mutate(type = "Virtual sampling"), 
-                           tactile_sample_urn %>% 
+                           tactile_sample_urn |> 
                              
   # Set numb_red = red_beads to make the column names in both tibbles the same. 
     
-                              select(trial_ID = group_ID, prop_red) %>% 
-                              mutate(type = "Tactile sampling")) %>% 
+                              select(trial_ID = group_ID, prop_red) |> 
+                              mutate(type = "Tactile sampling")) |> 
   
   # Use mutate() to alter the column factor into a factor column, rather than
   # the default character column. Calling levels() establishes our two
@@ -326,7 +326,7 @@ facet_compare <- bind_rows(virtual_samples %>%
   
   mutate(type = factor(type, 
                        levels = c("Virtual sampling", 
-                                  "Tactile sampling"))) %>% 
+                                  "Tactile sampling"))) |> 
   
 # the boundary argument makes sure that at least one bin borders .4, because 
 # we have the unusual insight in knowing that the population proportion in the urn 
@@ -367,17 +367,17 @@ We can reuse our code from above, making sure to replace 33 trials with 1,000.
 ```{r}
 set.seed(9)
 
- virtual_samples <- tibble(trial_ID = 1:1000) %>%
-    mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
-    mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>%
-    mutate(numb_beads = map_int(shovel, ~ length(.$color))) %>% 
+ virtual_samples <- tibble(trial_ID = 1:1000) |>
+    mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
+    mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |>
+    mutate(numb_beads = map_int(shovel, ~ length(.$color))) |> 
     mutate(prop_red = numb_red / numb_beads) 
 ```
 
 Now we have 1,000 values for `prop_red`, each representing the proportion of 50 beads that are red in a sample. Using the same code as earlier, let’s visualize the distribution of these 1,000 replicates of `prop_red` in a histogram:
 
 ```{r}
-virtual_samples %>% 
+virtual_samples |> 
 ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.01, 
                  boundary = 0.4, 
@@ -405,12 +405,12 @@ Instead of just one shovel, imagine we have three choices of shovels to extract 
 # Within slice_sample(), n = 25 represents our shovel of size 25. We also divide
 # by 25 to compute the proportion red.
 
-virtual_samples_25 <- tibble(trial_ID = 1:1000) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 25))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
+virtual_samples_25 <- tibble(trial_ID = 1:1000) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 25))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
   mutate(prop_red = numb_red / 25)
 
-virtual_samples_25 %>%
+virtual_samples_25 |>
   ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.04, 
                  boundary = 0.4, 
@@ -422,13 +422,13 @@ virtual_samples_25 %>%
 We will repeat this process with a shovel size of **50**. 
 
 ```{r}
-virtual_samples_50 <- tibble(trial_ID = 1:1000) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
+virtual_samples_50 <- tibble(trial_ID = 1:1000) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 50))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
   mutate(prop_red = numb_red / 50)
 
 
-virtual_samples_50  %>%
+virtual_samples_50  |>
   ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.04, 
                  boundary = 0.4, 
@@ -443,13 +443,13 @@ Finally, we will perform the same process with 1000 replicates to map the histog
 
 
 ```{r}
-virtual_samples_100 <- tibble(trial_ID = 1:1000) %>% 
-  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 100))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
+virtual_samples_100 <- tibble(trial_ID = 1:1000) |> 
+  mutate(shovel = map(trial_ID, ~ slice_sample(urn, n = 100))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
   mutate(prop_red = numb_red / 100)
 
 
-virtual_samples_100 %>%
+virtual_samples_100 |>
   ggplot(aes(x = prop_red)) +
   geom_histogram(binwidth = 0.04, 
                  boundary = 0.4, 
@@ -467,11 +467,11 @@ For easy comparison, we present the three resulting histograms in a single row w
 # of samples taken. This makes our data easier to interpret and prevents
 # duplicate elements.
 
-virtual_prop <- bind_rows(virtual_samples_25 %>% 
+virtual_prop <- bind_rows(virtual_samples_25 |> 
                             mutate(n = 25), 
-                          virtual_samples_50 %>% 
+                          virtual_samples_50 |> 
                             mutate(n = 50), 
-                          virtual_samples_100 %>% 
+                          virtual_samples_100 |> 
                             mutate(n = 100))
 
 # Plot our new object with the x-axis showing prop_red. Add elements binwidth,
@@ -499,7 +499,7 @@ Why does variation decrease as sample size increases? If we use a large sample s
 Let's attempt to visualize the concept of *variation* a different way. For each sample size, let's plot the proportion red for *all* 1,000 samples. With 3 different shovel sizes, we will have 3,000 total points, with each point representing an instance of sampling from the urn with a specific shovel size. 
 
 ```{r}
-virtual_prop %>%
+virtual_prop |>
   ggplot(aes(x = n, y = prop_red, color = as.factor(n))) +
   geom_jitter(alpha = .15) + 
   labs(title = "Results of 1,000 samples for 3 different shovel sizes.",
@@ -522,13 +522,13 @@ There is also a third way to understand variation! We can be numerically explici
 # Start by performing group_by(n) to get data separated
 # by our different shovel sizes. 
 
-comparing_n_table <- virtual_prop %>% 
-  group_by(n) %>% 
+comparing_n_table <- virtual_prop |> 
+  group_by(n) |> 
   
   # Take the standard deviation and mean of prop_red
   # using summarize. 
   
-  summarize(sd = sd(prop_red), .groups = 'drop_last') %>% 
+  summarize(sd = sd(prop_red), .groups = 'drop_last') |> 
   
   # Rename using backslashes (with the desired) text
   # on the left and the existing column on the right.
@@ -539,12 +539,12 @@ comparing_n_table <- virtual_prop %>%
 
 # Create a table using gt().
 
-comparing_n_table  %>% 
-  gt() %>% 
+comparing_n_table  |> 
+  gt() |> 
   
   # Use tab_header to add an appropriate title. 
   
-  tab_header(title = "Comparing standard deviations of proportions red for three different shovels") %>% 
+  tab_header(title = "Comparing standard deviations of proportions red for three different shovels") |> 
   
   # Use fmt_number() to adjust the number of desired decimals
   # in the resulting table. 
@@ -564,11 +564,11 @@ knitr::include_graphics("06-one-parameter/images/variance_everywhere_meme.jpeg")
 Let's take a step back from all the variance. The reality is that our code needs to be better optimized, as it is bad practice to make a separate tibble for each sample size. To make comparisons easier, let's attempt to put all 3 shovel sizes in the same tibble using mapping. 
 
 ```{r}
-tibble(trial_ID = 1:1000) %>%
-  mutate(shovel_ID = map(trial_ID, ~c(25, 50, 100))) %>%
-  unnest(shovel_ID) %>%
-  mutate(samples = map(shovel_ID, ~slice_sample(urn, n = .))) %>%
-  mutate(num_red = map_int(samples, ~sum(.$color == "red"))) %>%
+tibble(trial_ID = 1:1000) |>
+  mutate(shovel_ID = map(trial_ID, ~c(25, 50, 100))) |>
+  unnest(shovel_ID) |>
+  mutate(samples = map(shovel_ID, ~slice_sample(urn, n = .))) |>
+  mutate(num_red = map_int(samples, ~sum(.$color == "red"))) |>
   mutate(prop_red = num_red/shovel_ID)
 ```
 
@@ -582,20 +582,20 @@ expand_grid(trial_ID = c(1:3), shovel_size = c(25, 50, 100))
 The above sets the stage for simulating three samples for each of three different shovel sizes. Similar code as above can be used.
 
 ```{r}
-expand_grid(trial_ID = c(1:3), shovel_size = c(25, 50, 100)) %>% 
-  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
+expand_grid(trial_ID = c(1:3), shovel_size = c(25, 50, 100)) |> 
+  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
   mutate(prop_red = numb_red/shovel_size) 
 ```
 
 Again, we changed the second line to use `shovel_size` rather than `trial_ID` as the mapping variable since we can no longer hard code the shovel size into the call to `slice_sample()`. Expand to 1,000 simulations for each value of `shovel_size` and finish with a calculation of standard deviation.
 
 ```{r}
-expand_grid(trial_ID = c(1:1000), shovel_size = c(25, 50, 100)) %>% 
-  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
-  mutate(prop_red = numb_red/shovel_size) %>%
-  group_by(shovel_size) %>% 
+expand_grid(trial_ID = c(1:1000), shovel_size = c(25, 50, 100)) |> 
+  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
+  mutate(prop_red = numb_red/shovel_size) |>
+  group_by(shovel_size) |> 
   summarize(st_dev_p_hat = sd(prop_red))
   
 ```
@@ -616,11 +616,11 @@ library(rayshader)
 
 
 ```{r, cache = TRUE}
-shovels_100 <- expand_grid(trial_ID = c(1:1000), shovel_size = c(1:100)) %>% 
-  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) %>% 
-  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) %>% 
-  mutate(prop_red = numb_red / shovel_size) %>% 
-  group_by(shovel_size) %>% 
+shovels_100 <- expand_grid(trial_ID = c(1:1000), shovel_size = c(1:100)) |> 
+  mutate(shovel = map(shovel_size, ~ slice_sample(urn, n = .))) |> 
+  mutate(numb_red = map_int(shovel, ~ sum(.$color == "red"))) |> 
+  mutate(prop_red = numb_red / shovel_size) |> 
+  group_by(shovel_size) |> 
   summarize(st_dev_p_hat = sd(prop_red))
 
 glimpse(shovels_100)
@@ -629,7 +629,7 @@ glimpse(shovels_100)
 Now, we have the standard deviation of `prop_red` for all shovel sizes from 1 to 100.  Let's plot that value to see how it changes as the shovel gets larger:
 
 ```{r, echo = FALSE, cache = TRUE, fig.cap = "Comparing standard deviations of proportions red for 100 different shovels. The standard deviation decreases at the same rate as the square root of shovel size. The red line shows the standard error."}
-shovels_100 %>%
+shovels_100 |>
  ggplot(aes(x = shovel_size, y = st_dev_p_hat)) +
  geom_point() +
  stat_function(aes(x = 1:100, colour = "red"),
@@ -724,7 +724,7 @@ These types of distributions have a special name: **sampling distributions**; th
 For example, observe the centers of all three sampling distributions: they are all roughly centered around $0.4 = 40\%$. Furthermore, observe that while we are somewhat likely to observe sample proportions of red beads of $0.2 = 20\%$ when using the shovel with 25 slots, we will almost never observe a proportion of 20% when using the shovel with 100 slots. Observe also the effect of sample size on the sampling variation. As the sample size $n$ increases from 25 to 50 to 100, the variation of the sampling distribution decreases and thus the values cluster more and more tightly around the same center of around 40%. We quantified this variation using the standard deviation of our sample proportions, seeing that the standard deviation decreases with the square root of the sample size:
 
 ```{r, echo = FALSE, fig.cap = "Previously seen comparing standard deviations of proportions red for 100 different shovels"}
-shovels_100 %>%
+shovels_100 |>
   ggplot(aes(x = shovel_size, y = st_dev_p_hat)) +
   geom_point() +
   labs(x = "Shovel size",
@@ -748,11 +748,11 @@ The more data points involved in the calculations of the mean, the smaller the s
 To help reinforce these concepts, let's re-display our previous figure but using our new sampling terminology, notation, and definitions:
 
 ```{r, echo = FALSE, fig.cap = "Three sampling distributions of the sample proportion $\\hat{\rho}$. Note the increased concentration on the bins around .4 as our sample size increases."}
-p_hat_compare <- virtual_prop %>% 
+p_hat_compare <- virtual_prop |> 
   mutate(
     n = str_c("n = ", n),
     n = factor(n, levels = c("n = 25", "n = 50", "n = 100"))
-    ) %>% 
+    ) |> 
   ggplot( aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05, boundary = 0.4, color = "white") +
   labs(x = expression(paste("Sample proportion ", hat(rho))), 
@@ -772,7 +772,7 @@ if(knitr::is_latex_output()){
 Furthermore, let's display the graph of standard errors for $n = 1$ to $n = 100$ using our new terminology, notation, and definitions relating to sampling.
 
 ```{r, echo = FALSE, fig.cap = "Standard errors of the sample proportion based on sample sizes of 1 to 100"}
-shovels_100 %>%
+shovels_100 |>
   ggplot(aes(x = shovel_size, y = st_dev_p_hat)) +
   geom_point() +
   labs(x = "Sample size (n)",
@@ -840,13 +840,13 @@ A Preceptor Table is a table with rows and columns, such that, if no data is mis
 tibble(bead_ID = c("1", "2", 
                    "...", "200", "201", "...", "2078", "2079", "..."),
        color = c("white", "white", 
-                   "...", "red", "white", "...", "red", "white", "...")) %>%
-  gt() %>%
-    tab_header(title = "Preceptor Table") %>% 
+                   "...", "red", "white", "...", "red", "white", "...")) |>
+  gt() |>
+    tab_header(title = "Preceptor Table") |> 
     cols_label(bead_ID = "ID",
-               color = "Color") %>%
+               color = "Color") |>
     tab_style(cell_borders(sides = "right"),
-              location = cells_body(columns = c(bead_ID))) %>%
+              location = cells_body(columns = c(bead_ID))) |>
     cols_align(align = "center", columns = everything())
 ```
 
@@ -868,13 +868,13 @@ The data we have, unfortunately, only provides the color for 50 beads.
 tibble(bead_ID = c("2", "...", 
                    "200", "...", "2079", "..."),
        color = c("white", "...", "red", 
-                 "...", "white", "...")) %>%
-  gt() %>%
-    tab_header(title = "Data from Shovel") %>% 
+                 "...", "white", "...")) |>
+  gt() |>
+    tab_header(title = "Data from Shovel") |> 
     cols_label(bead_ID = "ID",
-               color = "Color") %>%
+               color = "Color") |>
     tab_style(cell_borders(sides = "right"),
-              location = cells_body(columns = c(bead_ID))) %>%
+              location = cells_body(columns = c(bead_ID))) |>
     cols_align(align = "center", columns = everything())
 ```
 
@@ -934,22 +934,22 @@ tibble(source = c("Population", "Population", "Population","...",
               "white", "red", "white", "...",
               "?", "red", "?", "...",
               "?", "red", "?", "...",
-              "?", "red", "?")) %>%
+              "?", "red", "?")) |>
 
   # Then, we use the gt function to make it pretty
 
-  gt() %>%
+  gt() |>
   cols_label(source = md("Source"),
              location = md("Location"),
              time = md("Time"),
              id = md("ID"),
-             color = md("Color")) %>%
+             color = md("Color")) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(source))) %>%
+            location = cells_body(columns = c(source))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"),
-            locations = cells_column_labels(columns = c(source))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(source)) %>%
+            locations = cells_column_labels(columns = c(source))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(source)) |>
   fmt_markdown(columns = everything())
 ```
 
@@ -1054,8 +1054,8 @@ Let's recreate our posterior using `posterior_epred()`:
 
 ```{r}
 ppd_for_p <- posterior_epred(fit_1, 
-                newdata = tibble(constant = 1)) %>% 
-  as_tibble() %>%
+                newdata = tibble(constant = 1)) |> 
+  as_tibble() |>
   rename(p = `1`)
   
 # posterior_epred() will unhelpfully name the column of our tibble to "1". We
@@ -1069,7 +1069,7 @@ ppd_for_p
 Because we do not wish to create our distribution conditional on some covariate, we want to pass in a tibble with 1 row into the `newdata` argument. An empty tibble has 0 rows, so we instead pass in a tibble with some junk data. `constant = 1` is completely meaningless. Now we plot the result:   
 
 ```{r}
-ppd_for_p %>% 
+ppd_for_p |> 
   ggplot(aes(x = p)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) + 
@@ -1104,10 +1104,10 @@ For example, what if we wanted to know the probability that $\rho$ is between .3
 Instead, we can work with draws from the posterior. With enough draws we create a close approximation of the posterior which models the counts of our observations. This is an *approximation*; it is not exactly the posterior, but close enough for our purposes. We can easily convert our posterior distribution into a **posterior probability distribution**, by making the area under the graph sum to 1. The posterior probability distribution is often used as a visual aid, as percentages are more easy to conceptualize than raw numbers. One way to convert a posterior distribution into a probability distribution is to group by each value of $\rho$ and turn the counts into probabilities: 
 
 ```{r}
-ppd_for_p %>%
-  round(digits = 2) %>%
-  group_by(p) %>%
-  summarize(prob = n()/nrow(ppd_for_p)) %>%
+ppd_for_p |>
+  round(digits = 2) |>
+  group_by(p) |>
+  summarize(prob = n()/nrow(ppd_for_p)) |>
   arrange(desc(prob))
 ```
 
@@ -1146,7 +1146,7 @@ To predict these future unknown samples, we use `posterior_predict()`. We pass t
 ```{r}
 
 posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) %>% 
+                  newdata = tibble(constant = rep(1, 20))) |> 
   as_tibble()
 ```
 
@@ -1154,13 +1154,13 @@ Each of our 4,000 rows represent one instance of us predicting a future sample f
 
 ```{r}
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) %>% 
-  as_tibble() %>% 
-  mutate(total = rowSums(across(`1`:`20`))) %>% 
+                  newdata = tibble(constant = rep(1, 20))) |> 
+  as_tibble() |> 
+  mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
 
 
-ppd_reds_in_20   %>% 
+ppd_reds_in_20   |> 
   ggplot(aes(x = total)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) +
@@ -1178,12 +1178,12 @@ We have successfully created the posterior probability distribution for the numb
 ```{r, fig.cap = "Using posterior_epred()"}
 
 post_epred <- posterior_epred(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) %>% 
-  as_tibble() %>% 
-  mutate(total = rowSums(across(`1`:`20`))) %>% 
+                  newdata = tibble(constant = rep(1, 20))) |> 
+  as_tibble() |> 
+  mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
 
-post_epred  %>% 
+post_epred  |> 
   ggplot(aes(x = total)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) +
@@ -1200,13 +1200,13 @@ post_epred  %>%
 What happened? `posterior_epred()` shows the distribution of the **entire population**, which is continuous. The expected predictions can be fractional, because `posterior_epred()` returns draws from the posterior (which can be fractional) contingent on some covariate. In our scenario we have no covariates for which to create expected predictions from, so `posterior_epred()` just returns the posterior, but re-scaled to between 0 and 20 beads instead of between 0 and 1 as before. The shape of the distributions are identical: 
 
 ```{r}
-post_epred %>% 
+post_epred |> 
   ggplot(aes(x = total)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) + 
   labs(x = "Number of red beads sampled out of 20",
        y = "Probability") + 
-  ppd_for_p  %>%
+  ppd_for_p  |>
   ggplot(aes(x = p)) + 
   geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) +
@@ -1229,9 +1229,9 @@ Because `posterior_predict()` takes predictive draws for us, we can simply count
 ```{r}
 # Same code as earlier, included as a refresher. 
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) %>% 
-  as_tibble() %>% 
-  mutate(total = rowSums(across(`1`:`20`))) %>% 
+                  newdata = tibble(constant = rep(1, 20))) |> 
+  as_tibble() |> 
+  mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
 
 # Calculating the probability
@@ -1245,10 +1245,10 @@ To visualize this probability graphically, we will reuse our posterior, and add 
 ```{r}
 
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                    newdata = tibble(constant = rep(1, 20))) %>% 
-  as_tibble() %>% 
-  mutate(total = rowSums(across(`1`:`20`))) %>%
-  select(total) %>%
+                    newdata = tibble(constant = rep(1, 20))) |> 
+  as_tibble() |> 
+  mutate(total = rowSums(across(`1`:`20`))) |>
+  select(total) |>
   mutate(above_eight = ifelse(total > 8, TRUE, FALSE))
 
 ppd_reds_in_20
@@ -1257,7 +1257,7 @@ ppd_reds_in_20
 We can then can set the fill of our histogram to when `above_eight == TRUE` to visualize the probability of drawing more than 8 red beads. 
 
 ```{r}
-ppd_reds_in_20   %>% 
+ppd_reds_in_20   |> 
   
   # Set fill as above_eight. 
   

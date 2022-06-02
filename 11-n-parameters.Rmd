@@ -62,21 +62,21 @@ library(tidyverse)
 tibble(ID = c("Citizen 1", "Citizen 2"),
        ytreat = c("0", "1"),
        ycontrol = c("1", "1"),
-       yeffect = c("+1", "0")) %>%
+       yeffect = c("+1", "0")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
+  gt() |>
   cols_label(ID = md("ID"),
                 ytreat = "Behavior in Treatment",
                 ycontrol = "Behavior in Control",
-                yeffect = "Treatment effect") %>%
+                yeffect = "Treatment effect") |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(ID)))  %>%
+            location = cells_body(columns = c(ID)))  |>
   tab_style(style = cell_text(align = "left", v_align = "middle"), 
-            locations = cells_column_labels(columns = c(ID))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(ID)) %>%
+            locations = cells_column_labels(columns = c(ID))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(ID)) |>
   tab_spanner(label = "Outcomes", columns = c(ytreat, ycontrol, yeffect))
 ```
 
@@ -121,7 +121,7 @@ We have not yet discussed the most important variable of them all: `treatment`. 
 <!-- HV: Is it okay to say the first sentence of this paragraph? -->
 
 ```{r}
-shaming %>%
+shaming |>
   count(treatment)
 ```
 
@@ -176,24 +176,24 @@ Let's build a basic visualization for the actual Preceptor Table for this scenar
 tibble(subject = c("Citizen 1", "Citizen 23", "Citizen 40", "Citizen 53", "Citizen 80"),
        ytreat = c("Voted", "Did not vote", "?", "?", "Voted"),
        ycontrol = c("?", "?", "Voted", "Did not vote", "?"),
-       ydiff = c("?", "?", "?", "?", "?")) %>%
+       ydiff = c("?", "?", "?", "?", "?")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
+  gt() |>
   cols_label(subject = md("ID"),
                 ytreat = md("Treatment"),
                 ycontrol = md("Control"),
-                ydiff = md("Treatment - Control")) %>%
-  cols_move(columns = c(ytreat, ycontrol), after = c(subject)) %>%
+                ydiff = md("Treatment - Control")) |>
+  cols_move(columns = c(ytreat, ycontrol), after = c(subject)) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(subject))) %>%
+            location = cells_body(columns = c(subject))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
-            locations = cells_column_labels(columns = c(subject))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(subject)) %>%
-  fmt_markdown(columns = everything())  %>%
-  tab_spanner(label = "Outcomes", c(ytreat, ycontrol))  %>%
+            locations = cells_column_labels(columns = c(subject))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(subject)) |>
+  fmt_markdown(columns = everything())  |>
+  tab_spanner(label = "Outcomes", c(ytreat, ycontrol))  |>
   tab_spanner(label = "$$\\text{Estimand}$$", c(ydiff))
 ```
 
@@ -251,26 +251,26 @@ tibble(source = c("Population", "Population", "...",
                  "?", "?", "...",
                  "?", "?", "...",
                  "?", "?", "...",
-                 "?", "?")) %>%
+                 "?", "?")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
+  gt() |>
   cols_label(source = md("Source"),
              gender = md("Sex"),
              year = md("Year"),
              state = md("State"),
              ytreat = md("Treatment"),
              ycontrol = md("Control"),
-             ydiff = md("Treatment - Control")) %>%
+             ydiff = md("Treatment - Control")) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(source))) %>%
+            location = cells_body(columns = c(source))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
-            locations = cells_column_labels(columns = c(source))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(source)) %>%
-  fmt_markdown(columns = everything())  %>%
-  tab_spanner(label = "Outcomes", c(ytreat, ycontrol))  %>%
+            locations = cells_column_labels(columns = c(source))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(source)) |>
+  fmt_markdown(columns = everything())  |>
+  tab_spanner(label = "Outcomes", c(ytreat, ycontrol))  |>
   tab_spanner(label = "Causal Effect", c(ydiff))
 ```
 
@@ -333,7 +333,7 @@ Now, we will create an object named `object_1` that includes a 3-level factor cl
 * Create a column called `z_age` which is the z-score for `age`. 
 
 ```{r}
-object_1 <- shaming %>% 
+object_1 <- shaming |> 
   
   # Converting the Y/N columns to binaries with the function we made 
   # note that primary_06 is already binary and also that we don't 
@@ -344,14 +344,14 @@ object_1 <- shaming %>%
          p_04 = (primary_04 == "Yes"),
          g_00 = (general_00 == "Yes"),
          g_02 = (general_02 == "Yes"),
-         g_04 = (general_04 == "Yes")) %>% 
+         g_04 = (general_04 == "Yes")) |> 
   
   # A sum of the voting action records across the election cycle columns gives
   # us an idea (though not weighted for when across the elections) of the voters
   # general level of civic involvement.
   
   mutate(civ_engage = p_00 + p_02 + p_04 + 
-                      g_00 + g_02 + g_04) %>% 
+                      g_00 + g_02 + g_04) |> 
   
   # If you look closely at the data, you will note that g_04 is always Yes, so
   # the lowest possible value of civ_engage is 1. The reason for this is that
@@ -364,20 +364,20 @@ object_1 <- shaming %>%
                                  civ_engage %in% c(1, 2) ~ "Rarely Vote"),
          voter_class = factor(voter_class, levels = c("Rarely Vote", 
                                                       "Sometimes Vote", 
-                                                      "Always Vote"))) %>% 
+                                                      "Always Vote"))) |> 
   
   # Centering and scaling the age variable. Note that it would be smart to have
   # some stopifnot() error checks at this point. For example, if civ_engage < 1
   # or > 6, then something has gone very wrong.
   
-  mutate(z_age = as.numeric(scale(age))) %>% 
+  mutate(z_age = as.numeric(scale(age))) |> 
   select(primary_06, treatment, sex, civ_engage, voter_class, z_age)
 ```
 
 Let's inspect our object: 
 
 ```{r}
-object_1 %>% 
+object_1 |> 
   slice(1:3)
 ```
 Great! Now, we will create our first model: the relationship between `primary_06`, which represents whether a citizen voted or not, against sex and treatment. 
@@ -419,14 +419,14 @@ We will now create a table that nicely formats the results of `fit_1` using the 
 ```{r}
 tbl_regression(fit_1, 
                intercept = TRUE, 
-               estimate_fun = function(x) style_sigfig(x, digits = 3)) %>%
+               estimate_fun = function(x) style_sigfig(x, digits = 3)) |>
   
   # Using Beta as the name of the parameter column is weird.
   
-  as_gt() %>%
+  as_gt() |>
   tab_header(title = md("**Likelihood of Voting in the Next Election**"),
-             subtitle = "How Treatment Assignment and Age Predict Likelihood of Voting") %>%
-  tab_source_note(md("Source: Gerber, Green, and Larimer (2008)")) %>% 
+             subtitle = "How Treatment Assignment and Age Predict Likelihood of Voting") |>
+  tab_source_note(md("Source: Gerber, Green, and Larimer (2008)")) |> 
   cols_label(estimate = md("**Parameter**"))
 ```
 
@@ -464,11 +464,11 @@ As we did with our first model, create a regression table to observe our finding
 ```{r}
 tbl_regression(fit_2, 
                intercept = TRUE, 
-               estimate_fun = function(x) style_sigfig(x, digits = 3)) %>%
-  as_gt() %>%
+               estimate_fun = function(x) style_sigfig(x, digits = 3)) |>
+  as_gt() |>
   tab_header(title = md("**Likelihood of Voting in the Next Election**"),
-             subtitle = "How Treatment Assignment and Other Variables Predict Likelihood of Voting") %>%
-  tab_source_note(md("Source: Gerber, Green, and Larimer (2008)")) %>% 
+             subtitle = "How Treatment Assignment and Other Variables Predict Likelihood of Voting") |>
+  tab_source_note(md("Source: Gerber, Green, and Larimer (2008)")) |> 
   cols_label(estimate = md("**Parameter**"))
 ```
 
@@ -524,7 +524,7 @@ voter_class <- c("Always Vote",
 # classifications in the same way that our model displays the interaction term
 # parameters.
 
-newobs <- expand_grid(sex, z_age, treatment, voter_class) %>% 
+newobs <- expand_grid(sex, z_age, treatment, voter_class) |> 
   
   # This is a handy setup for the following piece of code that allows us to
   # mutate the ATE columns with self-contained variable names. This is what
@@ -534,8 +534,8 @@ newobs <- expand_grid(sex, z_age, treatment, voter_class) %>%
   mutate(names = paste(treatment, voter_class, sep = "_"))
 
 pe <- posterior_epred(fit_2,
-                        newdata = newobs) %>% 
-  as_tibble() %>% 
+                        newdata = newobs) |> 
+  as_tibble() |> 
   
   # Here we can stick the names that we created in newobs onto the otherwise
   # unfortunately named posterior_epred() output. 
@@ -552,7 +552,7 @@ Therefore, we will use `mutate()` twelve times, for each of the treatments and v
 
 
 ```{r}
-plot_data <- pe %>% 
+plot_data <- pe |> 
   
   # Using our cleaned naming system, ATE calculations are simple enough. Note
   # how much easier the code reads because we have taken the trouble to line up
@@ -569,7 +569,7 @@ plot_data <- pe %>%
          `Rarely Civic-Duty`    = `Civic Duty_Rarely Vote`     - `No Postcard_Rarely Vote`,
          `Rarely Hawthorne`     = `Hawthorne_Rarely Vote`      - `No Postcard_Rarely Vote`,
          `Rarely Self`          = `Self_Rarely Vote`           - `No Postcard_Rarely Vote`,
-         `Rarely Neighbors`     = `Neighbors_Rarely Vote`      - `No Postcard_Rarely Vote`) %>% 
+         `Rarely Neighbors`     = `Neighbors_Rarely Vote`      - `No Postcard_Rarely Vote`) |> 
   
   # This is a critical step, we need to be able to reference voter
   # classification separately from the treatment assignment, so pivoting in the
@@ -579,7 +579,7 @@ plot_data <- pe %>%
   pivot_longer(names_to = c("Voter Class", "Group"),
                names_sep = " ",
                values_to = "values",
-               cols = `Always Civic-Duty`:`Rarely Neighbors`) %>% 
+               cols = `Always Civic-Duty`:`Rarely Neighbors`) |> 
   
     # Reordering the factors of voter classification forces them to be displayed
     # in a sensible order in the plot later.
@@ -595,7 +595,7 @@ plot_data <- pe %>%
 Finally, we will plot our data! Read the code comments for explanations on aesthetic choices, as well as a helpful discussion on `fct_reorder()`.
 
 ```{r}
-plot_data  %>% 
+plot_data  |> 
   
   # Reordering the y axis values allows a smoother visual interpretation - 
   # you can see the treatments in sequential ATE.

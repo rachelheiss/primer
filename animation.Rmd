@@ -136,8 +136,8 @@ p +
 Data preparation:
 
 ```{r}
-mean.temp <- airquality %>%
-  group_by(Month) %>%
+mean.temp <- airquality |>
+  group_by(Month) |>
   summarise(Temp = mean(Temp), .groups = "drop_last")
 mean.temp
 ```

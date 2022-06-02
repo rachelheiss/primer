@@ -110,7 +110,7 @@ FIGURE 0.1: Analogy of difference between R and RStudio.
 </div>
 <p>Throughout this book, we assume that you are using R via RStudio. R is to RStudio as a car’s engine is to its dashboard.</p>
 <p>More precisely, R is a programming language that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface with many convenient features. Just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier.</p>
-<p>Download and install both R and RStudio (Desktop version) on your computer.</p>
+<p>Download and install R and RStudio (Desktop version) on your computer.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Do this first:</strong> <a href="https://cloud.r-project.org/">Download and install R</a>.</p></li>
 <li><p><strong>Do this second:</strong> <a href="https://rstudio.com/products/rstudio/download/#download">Download and install RStudio Desktop</a> (the free version).</p></li>
@@ -127,7 +127,7 @@ FIGURE 0.2: Icons of R versus RStudio on your computer.
 </p>
 </div>
 <p>Much as we don’t drive a car by interacting directly with the engine but rather by interacting with elements on the car’s dashboard, we won’t be using R directly but rather we will use RStudio’s interface. After you install R and RStudio on your computer, you’ll have two new <em>programs</em> (also called <em>applications</em>) you can open. Always work in RStudio and not directly in the R application.</p>
-<p>Let’s begin with getting familiar with RStudio. Open up RStudio. You should see three <em>panes</em>, or panels, dividing the screen: the <em>Console pane</em>, the <em>Files pane</em>, and the <em>Environment pane</em>.</p>
+<p>Let’s get familiar with RStudio. Open up RStudio. You should see three <em>panes</em>, or panels, dividing the screen: the <em>Console pane</em>, the <em>Files pane</em>, and the <em>Environment pane</em>.</p>
 <div class="inline-figure"><img src="00-getting-started/images/rstudio_box.png" width="100%"></div>
 <p>This is your workspace. Start with the big pane on the left:</p>
 <div class="inline-figure"><img src="00-getting-started/images/left_window.png" width="100%"></div>
@@ -137,9 +137,9 @@ FIGURE 0.2: Icons of R versus RStudio on your computer.
 <p>The main two tabs you’ll be using are Environment and Git (which is not yet visible). The Environment tab shows you the datasets and variables you currently have loaded into R. In this case, we loaded in a dataset with 3407 rows and 5 columns and a variable <code>x</code> equal to 5. For you, the Environment should be empty. Let’s change that. Go to your Console and type:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></code></pre></div>
-<p>This assigned the value 5 to an object, x. <code>&lt;-</code> is the operator used to assign values to objecjts in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command. Look at the bottom right window:</p>
+<p>This assigned the value 5 to an object, x. <code>&lt;-</code> is the operator used to assign values to objects in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command. Look at the bottom right window:</p>
 <div class="inline-figure"><img src="00-getting-started/images/bottom_right_window.png" width="100%"></div>
-<p>The Files tab displays your computer’s file system. When you create a project later, this tab will automatically show the contents of your project’s folder. The Plots tab will show you a preview of any plots you make in RStudio. Help will be <a href="tools.html#how-to-get-help">discussed later</a>.</p>
+<p>The Files tab displays your computer’s file system. When you create a project later, this tab will automatically show the contents of your project’s folder. The Plots tab will show you a preview of any plots you make in RStudio.</p>
 </div>
 <div id="package-installation" class="section level3 unnumbered">
 <h3>Package installation<a class="anchor" aria-label="anchor" href="#package-installation"><i class="fas fa-link"></i></a>
@@ -172,13 +172,17 @@ FIGURE 0.4: Installing versus loading an R package
 <li>
 <em>“Load” the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio. You need to “load” each package you want to use every time you restart RStudio.</li>
 </ol>
-<p>Let’s install three of the packages which we will need in the <em>Primer</em>. At the Console pane within RStudio, type:</p>
+<p>Before installing packages, issue this command:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"remotes"</span>, <span class="st">"tidyverse"</span>, <span class="st">"usethis"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>And press Return/Enter on your keyboard. Note you must include the quotation marks around the names of the packages. Note that these packages depend on other packages, which will be automatically installed.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>pkgType <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></code></pre></div>
+<p>Doing so just makes various errors less likely.</p>
+<p>Install a package which we will need in the <em>Primer</em>. At the Console pane within RStudio, type:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></code></pre></div>
+<p>And press return/enter on your keyboard. Note you must include the quotation marks around the name of the package. A package can depend on other packages, which will be automatically installed if needed.</p>
 <p>One tricky aspect of this process is that R will occasionally ask you:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="getting-started.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Do</span> you want to install from sources the packages which </span>
-<span id="cb3-2"><a href="getting-started.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">need</span> compilation<span class="pp">?</span> <span class="er">(</span><span class="ex">Yes/no/cancel</span><span class="kw">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="getting-started.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Do</span> you want to install from sources the packages which </span>
+<span id="cb4-2"><a href="getting-started.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">need</span> compilation<span class="pp">?</span> <span class="er">(</span><span class="ex">Yes/no/cancel</span><span class="kw">)</span></span></code></pre></div>
 <p>Unless you have a good reason not to, always answer “no” to this question.</p>
 <p>R packages generally live in one of two places:</p>
 <ul>
@@ -191,9 +195,9 @@ FIGURE 0.4: Installing versus loading an R package
 </h3>
 <p>Recall that after you’ve installed a package, you need to “load” it. We do this by using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> command.</p>
 <p>For example, to load the <strong>remotes</strong> package, run the following code in the Console. What do we mean by “run the following code”? Either type or copy-and-paste the code into the Console and then hit the enter/return key.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span></code></pre></div>
-<p>After running the earlier code, a blinking cursor should appear next to the <code>&gt;</code> symbol. (The <code>&gt;</code> is generally referred to as the “prompt.”) This means you were successful and the <strong>remotes</strong> package is now loaded and ready to use. If, however, you get a red “error message” that reads:</p>
+<p>After running the earlier code, a blinking cursor should appear next to the <code>&gt;</code> symbol. (The <code>&gt;</code> is the “prompt.”) This means you were successful and the <strong>remotes</strong> package is now loaded and ready to use. If, however, you get a red “error message” that reads:</p>
 <pre><code>Error in library(remotes) : there is no package called ‘remotes’</code></pre>
 <p>then you haven’t successfully installed the package. If you get this error message, make sure to install the <strong>remotes</strong> package before proceeding.</p>
 <p>For historical reasons <em>packages</em> are also known as <em>libraries</em>, which is why the relevant command for loading them is <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
@@ -206,23 +210,25 @@ FIGURE 0.4: Installing versus loading an R package
 <pre><code>Error: could not find function</code></pre>
 <p>This is a different error message than the one you just saw about a package not having been installed yet. R is telling you that you are trying to use a function in a package that has not yet been loaded. R doesn’t know where to “find” the function you want to use.</p>
 <p>Let’s install a package that is not available from CRAN: <strong>primer.tutorials</strong>. Copy and paste the following to the R Console:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"PPBDS/primer.tutorials"</span><span class="op">)</span></code></pre></div>
-<p>Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste overturn “curly.” In that case, type the commands yourself.</p>
+<p>Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn “curly.” In that case, type the commands yourself.</p>
 <p>Many other new packages will be installed, including <strong>primer.data</strong>, which provides the data sets we use in the <em>Primer</em>. It may take a few minutes. If something gets messed up, it is often useful to use the <code><a href="https://rdrr.io/r/utils/remove.packages.html">remove.packages()</a></code> command to remove the problematic package and then install it again.</p>
 </div>
 <div id="rstudio-set-up" class="section level3 unnumbered">
 <h3>RStudio set up<a class="anchor" aria-label="anchor" href="#rstudio-set-up"><i class="fas fa-link"></i></a>
 </h3>
+<!-- See here https://docs.rstudio.com/ide/server-pro/session_user_settings/session_user_settings.html for other settings we can choose to make. -->
 <p>You will thank us later if you run these commands now:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span>
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_blank_slate.html">use_blank_slate</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This changes the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a <em>reproducible</em> analysis.</p>
-<p>Additionally, go to the Files window, select More, and click “Show Hidden Files”.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi">rstudioapi</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"save_workspace"</span>, <span class="st">"never"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"load_workspace"</span>, <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"insert_native_pipe_operator"</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"show_hidden_files"</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>The first two change the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a <em>reproducible</em> analysis. The third and fourth change some of the default settings for RStudio. Seeing all the hidden files is often helpful. These setting could also be set “by hand” by using the GUI, as in this gif of changing the default to show all hidden files.</p>
 <div class="inline-figure"><img src="00-getting-started/images/hidden_files.gif" width="100%"></div>
-<p>This will show all of the hidden files that R has (in this case, they’re stored in R.proj.user). This becomes useful later on when we want to see all of the files that a folder has without hiding anything.</p>
 </div>
 <div id="creating-r-projects" class="section level3 unnumbered">
 <h3>Creating R projects<a class="anchor" aria-label="anchor" href="#creating-r-projects"><i class="fas fa-link"></i></a>
@@ -239,7 +245,7 @@ FIGURE 0.4: Installing versus loading an R package
 <p>Additionally, do NOT put the folder in OneDrive or a cloud file system. This prevents you from accessing certain files easily. Make sure to save the folder to your local drive.</p>
 </blockquote>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-26"></span>
+<span style="display:block;" id="fig:unnamed-chunk-27"></span>
 <img src="00-getting-started/images/new_folder.gif" alt="Here's how to create a new projects folder on Windows." width="100%"><p class="caption">
 FIGURE 0.5: Here’s how to create a new projects folder on Windows.
 </p>
@@ -247,7 +253,7 @@ FIGURE 0.5: Here’s how to create a new projects folder on Windows.
 <!-- AG: How do we structure menu commands? This is a very small problem but it'd be nice to have something standard. -->
 <p>We can create an R Project by going to File -&gt; New Project and following the dialogues. Make sure to keep your project in the folder that you just created.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<span style="display:block;" id="fig:unnamed-chunk-28"></span>
 <img src="00-getting-started/images/new_r_project.gif" alt="For now, we won't be connecting the projects to GitHub, but you will need to do this for future projects." width="100%"><p class="caption">
 FIGURE 0.6: For now, we won’t be connecting the projects to GitHub, but you will need to do this for future projects.
 </p>
@@ -279,9 +285,9 @@ FIGURE 0.6: For now, we won’t be connecting the projects to GitHub, but you wi
 <p>Finally, you can code in R Markdown by adding a code chunk. This allows you to put R code into your R Markdown file, which then runs like normal R code but displays in the R Markdown report. That means that you can create graphs and then add your own explanations to them within the same file.</p>
 <p>You can see an example of a code chunk in the default R Markdown file.<br>
 It looks like this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="getting-started.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pressure, echo=FALSE}</span></span>
-<span id="cb9-2"><a href="getting-started.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure)</span></span>
-<span id="cb9-3"><a href="getting-started.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="getting-started.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pressure, echo=FALSE}</span></span>
+<span id="cb10-2"><a href="getting-started.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure)</span></span>
+<span id="cb10-3"><a href="getting-started.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>And knits like this:</p>
 <div class="inline-figure"><img src="00-getting-started/images/code_chunk_graph.PNG" width="100%"></div>
 <p>Overall, R Markdown files allow you to generate cool looking reports with special formatting, letting you put both your analysis and your graph together.</p>
@@ -312,7 +318,7 @@ It looks like this:</p>
 <li>
 <em>Functions</em>: these perform tasks by taking an input called an <em>argument</em> and returning an output. Take a look at the example below.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">64</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the console!</p>
@@ -320,7 +326,7 @@ It looks like this:</p>
 <li><p><em>Help files</em>: these provide documentation for functions and datasets. You can bring up help files by adding a <code>?</code> before the name of the object then run this in the console. The <code>ggplot2</code> package is where a lot of the functions we will use for graphing will be located. Run <code>?ggplot2</code> in the console and see what pops up.</p></li>
 <li><p><em>Code comments</em>: these are text placed after a <code>#</code> symbol. Nothing will be run after a <code>#</code> symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.</p></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"00-getting-started/images/code-comment.png"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="00-getting-started/images/code-comment.png" width="100%"></div>
 <ul>
@@ -339,27 +345,30 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <p>You should have done the following:</p>
 <ul>
 <li><p>Installed the <em>latest</em> versions of R and RStudio.</p></li>
-<li><p>Installed, from CRAN, these three packages:</p></li>
+<li><p>Installed, from CRAN, the <strong>remotes</strong> package:</p></li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"remotes"</span>, <span class="st">"tidyverse"</span>, <span class="st">"usethis"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>Installed, from Github, this package:</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"PPBDS/primer.tutorials"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>Set up your RStudio preferences:</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_blank_slate.html">use_blank_slate</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi">rstudioapi</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"save_workspace"</span>, <span class="st">"never"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"load_workspace"</span>, <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"insert_native_pipe_operator"</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"show_hidden_files"</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <ul>
 <li><p>Created a project folder to place your R projects in.</p></li>
 <li><p>Created a new R project and learned how to use R Markdown files.</p></li>
-<li><p>Learned some basic terminology that will help you when you read the rest of the Primer.</p></li>
+<li><p>Learned some basic terminology that will help you when you read the rest of the <em>Primer</em>.</p></li>
 </ul>
 <p>Let’s get started.</p>
-<!-- AG: Added a Star Wars meme at the end to correlate with the Yoda thing at the beginning. It's just a quick edit to make it end better for now, we can make it look better later. -->
 <div class="inline-figure"><img src="00-getting-started/images/ending.gif" width="100%"></div>
 
 </div>

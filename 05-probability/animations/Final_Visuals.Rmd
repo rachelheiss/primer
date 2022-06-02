@@ -41,7 +41,7 @@ tosses <- 20
 
 # create dataframe of all possible combinations of values
 
-x <- crossing(mod, rep) %>% 
+x <- crossing(mod, rep) |> 
   mutate(result = rbinom(n = nrow(.), size = tosses, prob = mod))
 
 ```
@@ -705,7 +705,7 @@ tosses <- 20
 
 # create dataframe of all possible combinations of values
 
-x <- crossing(mod, rep) %>% 
+x <- crossing(mod, rep) |> 
   mutate(result = rbinom(n = nrow(.), size = tosses, prob = mod))
 
 ##  Make the mod and result values factors so they will each be in their own

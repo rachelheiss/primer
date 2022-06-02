@@ -60,7 +60,7 @@ It is easy, however, to *transform* `age` into a variable which makes the interc
 
 
 ```{r}
-trains_2 <- trains %>% 
+trains_2 <- trains |> 
   mutate(c_age = age - mean(age))
 
 fit_1_c <- stan_glm(formula = income ~ c_age, 
@@ -78,7 +78,7 @@ The intercept, `r scales::comma(round(coef(fit_1_c)["(Intercept)"], 0))`, is the
 Centering --- changing a variable via addition/subtraction --- often makes the intercept easier to interpret. Scaling --- changing a variable via multiplication/division --- often makes it easier to interpret coefficients. The most common scaling method is to divide the variable by its standard deviation.
 
 ```{r}
-trains_3 <- trains %>% 
+trains_3 <- trains |> 
   mutate(s_age = age / sd(age))
 
 fit_1_s <- stan_glm(formula = income ~ s_age, 
@@ -101,7 +101,7 @@ But, because we scaled without centering, the intercept is now back to the (nons
 The most common transformation applies both centering and scaling. The base R function `scale()` subtracts the mean and divides by the standard deviation. A variable so transformed is a "*z*-score," meaning a variable with a mean of zero and a standard deviation of one. Using *z*-scores makes interpretation easier, especially when we seek to compare the importance of different predictors.
 
 ```{r}
-trains_4 <- trains %>% 
+trains_4 <- trains |> 
   mutate(z_age = scale(age))
 
 fit_1_z <- stan_glm(formula = income ~ z_age, 
@@ -125,16 +125,16 @@ Note that, when using *z*-scores, we would often phrase this comparison in terms
 It is often helpful to take the log of predictor variables, especially in cases in which their distribution is skewed. You should generally only take the log of variables for which all the values are strictly positive. The log of a negative number is not defined. Consider the number of registered voters (`rv13`) at each of the polling stations in `kenya`. 
 
 ```{r}
-x <- kenya %>% 
+x <- kenya |> 
   filter(rv13 > 0)
 
-rv_p <- x %>% 
+rv_p <- x |> 
   ggplot(aes(rv13)) + 
     geom_histogram(bins = 100) +
     labs(x = "Registered Voters",
          y = NULL) 
 
-log_rv_p <- x %>% 
+log_rv_p <- x |> 
   ggplot(aes(log(rv13))) + 
     geom_histogram(bins = 100) +
     labs(x = "Log of Registered Voters",
@@ -165,8 +165,8 @@ Many of these suggestions apply to every aspect of the modeling process.
 Instead of simply transforming variables, we can add more terms which are transformed versions of a variable. Consider the relation of `height` to `age` in `nhanes`. Let's start by dropping the missing values.
 
 ```{r}
-no_na_nhanes <- nhanes %>% 
-  select(height, age) %>% 
+no_na_nhanes <- nhanes |> 
+  select(height, age) |> 
   drop_na() 
 ```
 
@@ -178,7 +178,7 @@ nhanes_1 <- stan_glm(height ~ age,
                      refresh = 0,
                      seed = 47)
 
-no_na_nhanes %>% 
+no_na_nhanes |> 
   ggplot(aes(x = age, y = height)) +
     geom_point(alpha = 0.1) +
     geom_line(aes(y = fitted(nhanes_1)), 
@@ -201,7 +201,7 @@ nhanes_2 <- stan_glm(height ~ age + I(age^2),
                      refresh = 0,
                      seed = 33)
 
-no_na_nhanes %>% 
+no_na_nhanes |> 
   ggplot(aes(x = age, y = height)) +
     geom_point(alpha = 0.1) +
     geom_line(aes(y = fitted(nhanes_2)), 
@@ -221,7 +221,7 @@ nhanes_3 <- stan_glm(height ~ I(ifelse(age > 18, 18, age)),
                      refresh = 0,
                      seed = 23)
 
-no_na_nhanes %>% 
+no_na_nhanes |> 
   ggplot(aes(x = age, y = height)) +
     geom_point(alpha = 0.1) +
     geom_line(aes(y = fitted(nhanes_3)), 
@@ -438,8 +438,8 @@ The most obvious criteria for comparing models is the accuracy of the prediction
 
 
 ```{r}
-trains %>% 
-  mutate(pred_liberal = fitted(fit_liberal)) %>% 
+trains |> 
+  mutate(pred_liberal = fitted(fit_liberal)) |> 
   ggplot(aes(x = pred_liberal, y = att_end)) +
     geom_jitter(width = 0.05, height = 0.2, alpha = 0.5) +
   
@@ -467,8 +467,8 @@ Because there are only two possible values for `liberal` --- TRUE and FALSE --- 
 Consider our second model, using `att_start` to forecast `att_end`.
 
 ```{r}
-trains %>% 
-  mutate(pred_liberal = fitted(fit_att_start)) %>% 
+trains |> 
+  mutate(pred_liberal = fitted(fit_att_start)) |> 
   ggplot(aes(x = pred_liberal, y = att_end)) +
     geom_jitter(width = 0.05, height = 0.2, alpha = 0.5) +
   
@@ -488,21 +488,21 @@ Because `att_end` takes on `r length(unique(trains$att_end))` unique values, the
 Rather than looking at individual cases, we need to look at the errors for all the predictions. Fortunately, a prediction error is the same thing as a residual, which is easy enough to calculate.
 
 ```{r}
-trains %>% 
-  select(att_end, att_start, liberal) %>% 
-  mutate(pred_lib = fitted(fit_liberal)) %>% 
-  mutate(resid_lib = fitted(fit_liberal) - att_end) %>% 
-  mutate(pred_as = fitted(fit_att_start)) %>% 
+trains |> 
+  select(att_end, att_start, liberal) |> 
+  mutate(pred_lib = fitted(fit_liberal)) |> 
+  mutate(resid_lib = fitted(fit_liberal) - att_end) |> 
+  mutate(pred_as = fitted(fit_att_start)) |> 
   mutate(resid_as = fitted(fit_att_start) - att_end)
 ```
 
 Let's look at the square root of the average squared error. 
 
 ```{r}
-trains %>% 
-  select(att_end, att_start, liberal) %>% 
-  mutate(lib_err = (fitted(fit_liberal) - att_end)^2) %>% 
-  mutate(as_err = (fitted(fit_att_start) - att_end)^2) %>% 
+trains |> 
+  select(att_end, att_start, liberal) |> 
+  mutate(lib_err = (fitted(fit_liberal) - att_end)^2) |> 
+  mutate(as_err = (fitted(fit_att_start) - att_end)^2) |> 
   summarize(lib_sigma = sqrt(mean(lib_err)),
             as_sigma = sqrt(mean(as_err))) 
 ```
@@ -525,7 +525,7 @@ ovrftng <- tibble(x = 1:10,
                   y = c(1.9, 1.9, 4.9, 2.7, 2.6, 
                         5.2, 6.8, 8.9, 9.0, 9.9))
 
-ovrftng %>% 
+ovrftng |> 
   ggplot(aes(x, y)) +
     geom_point() +
     labs(title = "Create a Model which Predicts `y` Given `x`") +
@@ -543,7 +543,7 @@ newdata <- tibble(x = seq(1, 10, by = 0.01),
                   y = predict(one_pred, 
                               newdata = tibble(x = x)))
 
-ovrftng %>% 
+ovrftng |> 
   ggplot(aes(x, y)) +
     geom_point() +
     geom_line(data = newdata, 
@@ -567,7 +567,7 @@ newdata <- tibble(x = seq(1, 10, by = 0.01),
                   y = predict(two_pred, 
                               newdata = tibble(x = x)))
 
-ovrftng %>% 
+ovrftng |> 
   ggplot(aes(x, y)) +
     geom_point() +
     geom_line(data = newdata, 
@@ -590,7 +590,7 @@ newdata <- tibble(x = seq(1, 10, by = 0.01),
                   y = predict(nine_pred, 
                               newdata = tibble(x = x)))
 
-ovrftng %>% 
+ovrftng |> 
   ggplot(aes(x, y)) +
     geom_point() +
     geom_line(data = newdata, 
@@ -826,8 +826,8 @@ To find our intercepts, we will need to tidy our regression using the `tidy()` f
 # First, we will tidy the data from our model and select the term and estimate.
 # This allows us to create our regression lines more easily.
 
-tidy <- fit_1 %>% 
-  tidy() %>% 
+tidy <- fit_1 |> 
+  tidy() |> 
   select(term, estimate)
 
 tidy

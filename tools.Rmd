@@ -395,22 +395,22 @@ Limit your code to 80 characters per line. This fits comfortably on a printed pa
 
 #### Whitespace {-}
 
-`%>%` should always have a space before it, and should usually be followed by a new line. After the first step in the pipe, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.
+`|>` should always have a space before it, and should usually be followed by a new line. After the first step in the pipe, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.
 
 ```{r, eval=FALSE}
 # Good
 
-iris %>%
-  group_by(Species) %>%
-  summarize_if(is.numeric, mean) %>%
-  ungroup() %>%
-  gather(measure, value, -Species) %>%
+iris |>
+  group_by(Species) |>
+  summarize_if(is.numeric, mean) |>
+  ungroup() |>
+  gather(measure, value, -Species) |>
   arrange(value)
 
 # Bad
 
-iris %>% group_by(Species) %>% summarize_all(mean) %>%
-ungroup %>% gather(measure, value, -Species) %>%
+iris |> group_by(Species) |> summarize_all(mean) |>
+ungroup |> gather(measure, value, -Species) |>
 arrange(value)
 ```
 
@@ -419,7 +419,7 @@ arrange(value)
 ```{r, eval=FALSE}
 # Good
 
-diamonds %>% 
+diamonds |> 
   ggplot(aes(x = depth)) +
     geom_histogram(bins = 100) +
     labs(title = "Distribution of Depth",
@@ -428,7 +428,7 @@ diamonds %>%
 
 # Bad
 
-diamonds %>% 
+diamonds |> 
 ggplot(aes(x = depth)) +
 geom_histogram(bins = 100) + labs(title = "Distribution of Depth",
          x = "Depth",
@@ -654,8 +654,8 @@ We set `message=FALSE` in the above code chunk to avoid showing all the ugly not
 Let's pull some data which we will use in our table: 
 
 ```{r}
-x <- trains %>%
-  select(gender, income, att_end) %>%
+x <- trains |>
+  select(gender, income, att_end) |>
   slice(1:5)
 x
 ```
@@ -663,7 +663,7 @@ x
 Create the simplest table with `gt()`, the key command:
 
 ```{r}
-x %>% 
+x |> 
   gt()
 ```
 
@@ -678,8 +678,8 @@ knitr::include_graphics("other/images/gt_features.png")
 You can add a title and subtitle using `tab_header()`: 
 
 ```{r}
-x %>% 
-  gt() %>%
+x |> 
+  gt() |>
    tab_header(title = "Enos Data Observations", 
               subtitle = "Gender, Income, and End Attitude from the Trains Data")
 ```
@@ -689,8 +689,8 @@ x %>%
 By default, titles and other text can not be formatted. If you want formatting, you must wrap the character string in a call to `md()`, where *md* stands for (M)ark(d)own. For example, here is a bolded title.
 
 ```{r}
-x %>% 
-  gt()%>%
+x |> 
+  gt()|>
    tab_header(title = md("**Enos Data Observations**"), 
               subtitle = "Gender, Income, and End Attitude from the Trains Data")
 ```
@@ -700,10 +700,10 @@ x %>%
 We can use `tab_spanner()` to add spanner columns. The `c()` argument takes in the variables that the spanner column will cover.
 
 ```{r}
-x %>% 
-  gt()%>%
+x |> 
+  gt()|>
    tab_header(title = md("**Enos Data Observations**"), 
-              subtitle = "Gender, Income, and End Attitude from the Trains Data") %>% 
+              subtitle = "Gender, Income, and End Attitude from the Trains Data") |> 
    tab_spanner(label = "Name of Spanner Column Here", c(gender, income))
 ```
 
@@ -715,10 +715,10 @@ From here on, our current table will not include a spanner column. If you wish t
 You can change the column names using `cols_label()`:
 
 ```{r}
-x %>% 
-  gt()%>%
+x |> 
+  gt()|>
     tab_header(title = md("**Enos Data Observations**"), 
-               subtitle = "Gender, Income, and End Attitude from the Trains Data") %>%
+               subtitle = "Gender, Income, and End Attitude from the Trains Data") |>
     cols_label(gender = "Gender",
                income = "Income", 
                att_end = "End Attitude")
@@ -729,13 +729,13 @@ x %>%
 Use `tab_source_note()` to cite the source of the data or to create a caption. This function is not exclusively for providing a source --- though it's a handy way to do so --- and can be used to display any text you'd like:
 
 ```{r}
-x %>% 
-  gt()%>%
+x |> 
+  gt()|>
    tab_header(title = md("**Enos Data Observations**"), 
-              subtitle = "Gender, Income, and End Attitude from the Trains Data") %>%
+              subtitle = "Gender, Income, and End Attitude from the Trains Data") |>
   cols_label(gender = "Gender",
              income = "Income", 
-             att_end = "End Attitude") %>% 
+             att_end = "End Attitude") |> 
   tab_source_note("Source: Ryan Enos")
 ```
 
@@ -744,13 +744,13 @@ x %>%
 Using `md()` again, we can italicize the name of the Enos study in the caption:
 
 ```{r}
-x %>% 
-  gt()%>%
+x |> 
+  gt()|>
    tab_header(title = md("**Enos Data Observations**"), 
-              subtitle = "Gender, Income, and End Attitude from the Trains Data") %>%
+              subtitle = "Gender, Income, and End Attitude from the Trains Data") |>
   cols_label(gender = "Gender",
              income = "Income", 
-             att_end = "End Attitude") %>% 
+             att_end = "End Attitude") |> 
   tab_source_note(md("Source: Ryan Enos, *Causal Effect of Intergroup Contact on Exclusionary Attitudes*"))
 ```
 
@@ -760,15 +760,15 @@ Now that the table structure looks good, we want to format the numbers themselve
 
 
 ```{r}
-x %>% 
-  gt() %>%
+x |> 
+  gt() |>
     tab_header(title = md("**Enos Data Observations**"), 
-               subtitle = "Gender, Income, and End Attitude from the Trains Data")%>%
+               subtitle = "Gender, Income, and End Attitude from the Trains Data")|>
     cols_label(gender = "Gender",
                income = "Income", 
-               att_end = "End Attitude") %>% 
+               att_end = "End Attitude") |> 
     tab_source_note(md("Source: Ryan Enos, *Causal Effect of Intergroup 
-                       Contact on Exclusionary Attitudes*")) %>%
+                       Contact on Exclusionary Attitudes*")) |>
     fmt_currency(columns = c(income), 
                  decimals = 0) 
 ```
@@ -790,10 +790,10 @@ fit2 <- stan_glm(att_end ~ party, data = trains, refresh = 0)
 
 tbl_regression(fit2, 
                intercept = TRUE, 
-               estimate_fun = function(x) style_sigfig(x, digits = 2)) %>%
-  as_gt() %>%
+               estimate_fun = function(x) style_sigfig(x, digits = 2)) |>
+  as_gt() |>
     tab_header(title = "Regression of Attitudes about Immigration", 
-               subtitle = "The Effect of Party on End Attitude") %>%
+               subtitle = "The Effect of Party on End Attitude") |>
     tab_source_note(md("Source: Ryan Enos, *Causal Effect of Intergroup 
                         Contact on Exclusionary Attitudes*"))
 ```

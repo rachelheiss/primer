@@ -90,6 +90,8 @@ knitr::include_graphics("00-getting-started/images/install_vs_load.jpg")
 
 Before installing packages, issue this command:
 
+<!-- Is this necessary? Is there a better way to handle it? -->
+
 ```{r, eval = FALSE}
 options(pkgType = "binary")
 ```

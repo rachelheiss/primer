@@ -88,11 +88,11 @@ library(gt)
 
 tibble(ID = c("Person 1", "Person 2", "...", "Person 45000", "Person 45001", "..."),
        sex = c("Male", "Male", "...", "Male", "Male", "..."),
-       height = c("150", "172", "...", "160", "142", "...")) %>%
+       height = c("150", "172", "...", "160", "142", "...")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
+  gt() |>
   cols_label(ID = md("ID"),
                 sex = "Sex",
                 height = "Height (cm)") 
@@ -114,15 +114,15 @@ glimpse(nhanes)
 `nhanes` includes `r ncol(nhanes)` variables, including physical attributes like weight and height. Let's restrict our attention to a subset, focusing on age, gender and height. 
 
 ```{r}
-nhanes %>% 
+nhanes |> 
   select(age, gender, height)
 ```
 
 Now, let's examine a random sample of our data:
 
 ```{r}
-nhanes %>% 
-  select(age, gender, height) %>% 
+nhanes |> 
+  select(age, gender, height) |> 
   slice_sample(n = 5)
 ```
 
@@ -131,8 +131,8 @@ Notice how there is a decimal in the `height` column of `ch7`. This is because `
 Let's also run `glimpse()` on our new data.
 
 ```{r}
-nhanes %>% 
-  select(age, gender, height) %>% 
+nhanes |> 
+  select(age, gender, height) |> 
   glimpse()
 ```
 
@@ -143,17 +143,17 @@ Be on the lookout for anything suspicious. Are there any NA's in your data set? 
 In addition to `glimpse()`, we can run `skim()`, from the **skimr** package, to calculate some summary statistics. 
 
 ```{r}
-nhanes %>% 
-  select(age, gender, height) %>% 
+nhanes |> 
+  select(age, gender, height) |> 
   skim()
 ```
 
 Interesting! There are `r sum(is.na(nhanes$height))` missing values of height in our subset of data. Just using `glimpse()` does not show us that.  Let's filter out the NA's using `drop_na()`. This will delete the rows in which the value of any variable is missing. Because we want to examine height in men (not boys, nor females), let's limit our data to only include adult males. 
 
 ```{r}
-ch7 <- nhanes %>% 
-  filter(gender == "Male", age >= 18) %>% 
-  select(height) %>% 
+ch7 <- nhanes |> 
+  filter(gender == "Male", age >= 18) |> 
+  select(height) |> 
   drop_na()
 ```
 
@@ -162,7 +162,7 @@ Let's plot this data using `geom_density()` and `geom_histogram()`.
 <!-- DK: Add discussion about 95% interval. Connect to posterior_predict later. More or less: posterior_predict makes the same histogram as the raw data. Teach that! -->
 
 ```{r}
-ch7 %>%
+ch7 |>
   ggplot(aes(x = height)) + 
   geom_density(color = "black",
                fill = "red",
@@ -197,14 +197,14 @@ We'll be focusing on a subset of the `nhanes` data, designed to answer our quest
 
 ```{r}
 
-ch7_all <- nhanes %>%
-  filter(gender == "Male", age >= 18) %>%
-  select(height) %>%
+ch7_all <- nhanes |>
+  filter(gender == "Male", age >= 18) |>
+  select(height) |>
   drop_na() 
 
 set.seed(9)
 
-ch7 <- ch7_all %>% 
+ch7 <- ch7_all |> 
   slice_sample(n = 50)
 ```
 
@@ -271,21 +271,21 @@ tibble(source = c("Preceptor Table", "Preceptor Table", "...",
                 "?", "?", "?"),
        height = c("?", "?", "...",
                  "180", "160", "168", "...",
-                 "?", "?", "?")) %>%
+                 "?", "?", "?")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
+  gt() |>
   cols_label(source = md("Source"),
              gender = md("Sex"),
              year = md("Year"),
-             height = md("Height")) %>%
+             height = md("Height")) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(source))) %>%
+            location = cells_body(columns = c(source))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
-            locations = cells_column_labels(columns = c(source))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(source)) %>%
+            locations = cells_column_labels(columns = c(source))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(source)) |>
   fmt_markdown(columns = everything())  
 ```
 
@@ -445,14 +445,14 @@ Now that we understand the meaning of Median and MAD_SD in the above display, we
 ## ways for pulling at the median and mad_sd directly, rather than calculating
 ## them ourselves? Please investigate.
 
-median_fit <- fit_obj %>% 
-  as_tibble() %>% 
-  pull(`(Intercept)`) %>% 
+median_fit <- fit_obj |> 
+  as_tibble() |> 
+  pull(`(Intercept)`) |> 
   median()
 
-mad_sd <- fit_obj %>% 
-  as_tibble() %>% 
-  pull(`(Intercept)`) %>% 
+mad_sd <- fit_obj |> 
+  as_tibble() |> 
+  pull(`(Intercept)`) |> 
   mad()
 ```
 
@@ -466,7 +466,7 @@ Instead of doing this math in our heads, we can display both posterior probabili
 <!-- as_tibble() is just trying to make things "pretty", for certain meanings of that word. This causes the decimals for the intercept to vanish when this chapter is knit. The decimals are present when I run it here. Worth worrying about? -->
 
 ```{r}
-fit_obj %>% 
+fit_obj |> 
   as_tibble()
 ```
 
@@ -476,8 +476,8 @@ These 4,000 rows are draws from the estimated posteriors, each in its own column
 
 
 ```{r}
-fit_obj %>% 
-  as_tibble() %>% 
+fit_obj |> 
+  as_tibble() |> 
   ggplot(aes(x = `(Intercept)`)) +
   
 # Recall that after_stat() allows us to work with "stat variables" that have
@@ -505,8 +505,8 @@ Always go back to first principles. There is some *truth*, an unknown number, a 
 ```{r}
 # The same plot as above, but for sigma instead of mu.
 
-fit_obj %>% 
-  as_tibble() %>% 
+fit_obj |> 
+  as_tibble() |> 
   ggplot(aes(x = sigma)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    bins = 100) +
@@ -561,7 +561,7 @@ If we had the Preceptor Table, one with a row for every man alive, and with thei
 newobs <- tibble(constant = 1)
 
 pe <- posterior_epred(object = fit_obj,
-                      newdata = newobs) %>% 
+                      newdata = newobs) |> 
         as_tibble()
 
 pe
@@ -576,7 +576,7 @@ We use `as_tibble()` to convert the matrix which is returned by `posterior_epred
 Converting these 4,000 draws into a posterior probability distribution is straightforward.
 
 ```{r}
-pe %>% 
+pe |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -612,7 +612,7 @@ With expected values or averages, we can ignore the $\epsilon_i$ term in this fo
 newobs <- tibble(constant = 1)
 
 pp <- posterior_predict(object = fit_obj,
-                        newdata = newobs) %>% 
+                        newdata = newobs) |> 
         as_tibble()
 
 pp
@@ -622,7 +622,7 @@ pp
 As before, it is straightforward to turn draws from the posterior probability distribution into a graphic:
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -672,8 +672,8 @@ If you need to predict X individuals, then you need a tibble with X rows, regard
 
 ```{r}
 pp <- posterior_predict(object = fit_obj,
-                        newdata = newobs) %>% 
-        as_tibble() %>% 
+                        newdata = newobs) |> 
+        as_tibble() |> 
         mutate_all(as.numeric)
 ```
 
@@ -689,15 +689,15 @@ The next step is to calculate the number of interest. We can not, directly, draw
 # First part of the code is the same as we did above.
 
 pp <- posterior_predict(object = fit_obj,
-                        newdata = newobs) %>% 
-        as_tibble() %>% 
-        mutate_all(as.numeric) %>% 
+                        newdata = newobs) |> 
+        as_tibble() |> 
+        mutate_all(as.numeric) |> 
   
         # Second part of the code requires some trickery.
   
-        rowwise() %>% 
-        mutate(tallest = max(c_across())) %>% 
-        mutate(shortest = min(c_across())) %>% 
+        rowwise() |> 
+        mutate(tallest = max(c_across())) |> 
+        mutate(shortest = min(c_across())) |> 
         mutate(diff = tallest - shortest) 
         
 pp        
@@ -711,7 +711,7 @@ Once we have random draws from the posterior distribution we care about, graphin
 
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = diff)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -744,10 +744,10 @@ The same approach will work for almost any question.
 newobs <- tibble(constant = rep(1, 100))
 
 pp <- posterior_predict(object = fit_obj,
-                        newdata = newobs) %>% 
-  as_tibble() %>% 
-  mutate_all(as.numeric) %>% 
-  rowwise() %>% 
+                        newdata = newobs) |> 
+  as_tibble() |> 
+  mutate_all(as.numeric) |> 
+  rowwise() |> 
   mutate(third_tallest = sort(c_across(), 
                               decreasing = TRUE)[3])
 ```
@@ -755,7 +755,7 @@ pp <- posterior_predict(object = fit_obj,
 Explore the `pp` object. It has `r ncol(pp)` columns: one hundred for the 100 individual heights and one column for the 3rd tallest among them. Having done the hard work, plotting is easy:
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = third_tallest, y = after_stat(count / sum(count)))) +
     geom_histogram(bins = 100) +
     labs(title = "Posterior for Height of 3rd Tallest Man from Next 100",
@@ -810,18 +810,18 @@ Variables with well-behaved, continuous ranges are the easiest to handle. We sta
 
 
 ```{r}
-ch7_b <- nhanes %>% 
-  select(age, gender, height) %>%
-  mutate(female = ifelse(gender == "Female", 1, 0)) %>% 
-  filter(age >= 18) %>% 
-  select(female, height) %>% 
+ch7_b <- nhanes |> 
+  select(age, gender, height) |>
+  mutate(female = ifelse(gender == "Female", 1, 0)) |> 
+  filter(age >= 18) |> 
+  select(female, height) |> 
   drop_na()
 
 ch7_b
 ```
 
 ```{r}
-ch7_b %>% 
+ch7_b |> 
   ggplot(aes(x = height, y = female)) +
   geom_jitter(height = 0.1, alpha = 0.05) +
   labs(title = "Gender and Height",
@@ -852,7 +852,7 @@ print(fit_gender_linear, digits = 2)
 Comparing two individuals who differ in `height` by 1 cm, we expect the taller individual to have a 3% lower probability of being female. That is not unreasonable. The problems show up at the extremes. Consider the fitted values across the range of our data.
 
 ```{r}
-ch7_b %>% 
+ch7_b |> 
   ggplot(aes(x = height, y = female)) +
   geom_jitter(height = 0.1, alpha = 0.05) +
   geom_smooth(aes(y = fitted(fit_gender_linear)),
@@ -911,10 +911,10 @@ Fortunately, parameters are not what we care about. They are epiphenomenon, unic
 ```{r}
 newobs <- tibble(height = 180)
 
-pe <- posterior_epred(fit_2, newdata = newobs) %>% 
+pe <- posterior_epred(fit_2, newdata = newobs) |> 
   as_tibble()
 
-pe %>% 
+pe |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -940,8 +940,8 @@ Another major difference with logistic models is that `posterior_epred()` and `p
 ```{r}
 newobs <- tibble(height = rep(180, 100))
 
-pp <- posterior_predict(fit_2, newdata = newobs) %>% 
-  as_tibble() %>% 
+pp <- posterior_predict(fit_2, newdata = newobs) |> 
+  as_tibble() |> 
   mutate_all(as.numeric) 
 
 pp[, 1:4]
@@ -955,10 +955,10 @@ We show just the first 4 columns for convenience. Each column is 4,000 draws fro
 We can manipulate this object on a row-by-row basis.
 
 ```{r}
-pp <- posterior_predict(fit_2, newdata = newobs) %>% 
-  as_tibble() %>% 
-  mutate_all(as.numeric) %>% 
-  rowwise() %>% 
+pp <- posterior_predict(fit_2, newdata = newobs) |> 
+  as_tibble() |> 
+  mutate_all(as.numeric) |> 
+  rowwise() |> 
   mutate(total = sum(c_across()))
 
 pp[, c("1", "2", "100", "total")]
@@ -971,7 +971,7 @@ pp[, c("1", "2", "100", "total")]
 
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = total)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +

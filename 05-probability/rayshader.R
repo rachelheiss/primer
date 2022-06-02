@@ -19,8 +19,8 @@ library(rgl)
 mydata <- tibble(die.1 = sample(1:6, size = 1000, prob =
                                   c(0.1,0.1,0.1,0.1,0.1,0.5), replace = TRUE),
                  die.2 = sample(1:6, size = 1000, prob =
-                                  c(0.1,0.1,0.1,0.1,0.5,0.1), replace = TRUE)) %>%
-          group_by(die.1, die.2) %>%
+                                  c(0.1,0.1,0.1,0.1,0.5,0.1), replace = TRUE)) |>
+          group_by(die.1, die.2) |>
           summarize(total = n())
 
 die1_factor <- as.factor(mydata$die.1)
@@ -68,24 +68,24 @@ set.seed(123)
 
 sims <- 100000
 
-jd_disease <- tibble(ID = 1:sims) %>%
+jd_disease <- tibble(ID = 1:sims) |>
                 mutate(have_disease = map_int(ID, ~ rbinom(n = 1,
                                                            size = 1,
-                                                           prob = 0.01))) %>%
+                                                           prob = 0.01))) |>
 
                 mutate(test_positive = map_int(have_disease, ~ ifelse(rbinom(n = 1,
                                                                              size = 1,
                                                                              prob = 0.95),
                                                                       ., ! .)))
 
-jd_sum <- jd_disease %>%
-            group_by(test_positive, have_disease) %>%
+jd_sum <- jd_disease |>
+            group_by(test_positive, have_disease) |>
             summarize(total = n())
 
 
 ## Step 2: Create a ggplot object.
 
-gg <- jd_sum %>%
+gg <- jd_sum |>
         ggplot(aes(x = as.factor(test_positive),
                    y = as.factor(have_disease),
                    color = total)) +
@@ -130,9 +130,9 @@ rgl.close()
 
 ## Step 1: Create any required objects
 
-x <- tibble(p = rep(seq(0, 1, 0.5), 1000)) %>%
-       mutate(white_marbles = map_int(p, ~ rbinom(n = 1, size = 3, p = .))) %>%
-       group_by(p,white_marbles) %>%
+x <- tibble(p = rep(seq(0, 1, 0.5), 1000)) |>
+       mutate(white_marbles = map_int(p, ~ rbinom(n = 1, size = 3, p = .))) |>
+       group_by(p,white_marbles) |>
        summarize(total = n())
 
 p_factor <- as.factor(x$p)
@@ -180,9 +180,9 @@ rgl.close()
 
 set.seed(10)
 
-x <- tibble(p = rep(seq(0, 1, 0.1), 1000)) %>%
-        mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) %>%
-        group_by(p,heads) %>%
+x <- tibble(p = rep(seq(0, 1, 0.1), 1000)) |>
+        mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) |>
+        group_by(p,heads) |>
         summarize(total = n())
 
 p_factor <- as.factor(x$p)

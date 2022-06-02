@@ -112,14 +112,14 @@ There are other ways of storing the data in this vector. Instead of reporting ev
 
 # Really ought to submit a reprex to R Studio Community.
 
-tibble(outcome = ten_rolls) %>% 
-  group_by(outcome) %>% 
-  count() %>% 
-  ungroup() %>% 
-  mutate(portion = n / sum(n)) %>% 
-  gt() %>% 
+tibble(outcome = ten_rolls) |> 
+  group_by(outcome) |> 
+  count() |> 
+  ungroup() |> 
+  mutate(portion = n / sum(n)) |> 
+  gt() |> 
     tab_header(title = "Distribution of Ten Rolls of a Fair Die",
-               subtitle = "Counts and percentages reflect the same information") %>% 
+               subtitle = "Counts and percentages reflect the same information") |> 
     cols_label(outcome = "Outcome",
                n = "Count",
                portion = "Percentage") 
@@ -131,14 +131,14 @@ In this case, with only 10 values, it is actually less efficient to store the da
 ```{r, echo = FALSE}
 set.seed(89)
 
-tibble(outcome = sample(1:6, size = 1000, replace = TRUE)) %>% 
-  group_by(outcome) %>% 
-  count() %>% 
-  ungroup() %>% 
-  mutate(portion = n / sum(n)) %>% 
-  gt() %>% 
+tibble(outcome = sample(1:6, size = 1000, replace = TRUE)) |> 
+  group_by(outcome) |> 
+  count() |> 
+  ungroup() |> 
+  mutate(portion = n / sum(n)) |> 
+  gt() |> 
     tab_header(title = "Distribution of One Thousand Rolls of a Fair Die",
-               subtitle = "Counts and percentages reflect the same information") %>% 
+               subtitle = "Counts and percentages reflect the same information") |> 
     cols_label(outcome = "Outcome",
                n = "Count",
                portion = "Percentage") 
@@ -154,14 +154,14 @@ more_rolls <- rep(ten_rolls, 100)
 
 
 ```{r, echo = FALSE}
-rolls_p <- tibble(value = ten_rolls) %>% 
+rolls_p <- tibble(value = ten_rolls) |> 
   ggplot(aes(value)) +
     geom_bar(aes(y = after_stat(count))) +
     labs(title = "Distribution of 10 Rolls",
          y = "Count") 
 
 
-more_rolls_p <- tibble(value = more_rolls) %>% 
+more_rolls_p <- tibble(value = more_rolls) |> 
   ggplot(aes(value)) +
     geom_bar(aes(y = after_stat(count))) +
     labs(title = "Distribution of 1,000 Rolls",
@@ -178,14 +178,14 @@ The two graphs have the exact same shape because, even though the vectors are of
 If two distributions have the same shape, then they only differ by the labels on the y-axis. There are various ways of "normalizing" distributions to make them all the same scale. The most common scale is one in which the area under the distribution adds to 1, e.g.,  100%. For example, we can transform the plots above to look like:
 
 ```{r, echo = FALSE}
-rolls_p <- tibble(value = ten_rolls) %>% 
+rolls_p <- tibble(value = ten_rolls) |> 
   ggplot(aes(x = value)) +
     geom_bar(aes(y = after_stat(count/sum(count)))) +
     labs(title = "Distribution of 10 Rolls",
          y = "Percentage") +
     scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
-more_rolls_p <- tibble(value = more_rolls) %>% 
+more_rolls_p <- tibble(value = more_rolls) |> 
   ggplot(aes(value)) +
     geom_bar(aes(y = after_stat(count/sum(count)))) +
     labs(title = "Distribution of 1,000 Rolls",
@@ -267,7 +267,7 @@ In this simulation, there are 56 heads and 44 tails. The outcome will vary every
 
 set.seed(3)
 
-tibble(results = sample(c(0, 1), 100, replace = TRUE)) %>% 
+tibble(results = sample(c(0, 1), 100, replace = TRUE)) |> 
   ggplot(aes(x = results)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 0.5, 
@@ -290,7 +290,7 @@ A *mathematical distribution* is based on a mathematical formula. Assuming that 
 # The mathematical case with the expected 50/50 outcome hard-coded.
 
 tibble(results = c(rep(0, 50),
-                   rep(1, 50))) %>% 
+                   rep(1, 50))) |> 
 ggplot(aes(x = results)) +
   geom_histogram(aes(y = after_stat(count/sum(count))), 
                  binwidth = 0.5, 
@@ -340,7 +340,7 @@ In the case of the coin toss, the posterior distribution changes depending on yo
 # Hard-code the creation of the posterior.
 
 tibble(results = c(rep(0, 95),
-                   rep(1, 5))) %>% 
+                   rep(1, 5))) |> 
 ggplot(aes(x = results)) +
   geom_histogram(aes(y = after_stat(count/sum(count))), 
                  binwidth = 0.5, 
@@ -378,8 +378,8 @@ Because the flips are independent, we can consider each row to be a draw from th
 ```{r}
 tibble(toss_1 = rbinom(n = 1000, size = 1, prob = 0.5),
        toss_2 = rbinom(n = 1000, size = 1, prob = 0.5),
-       toss_3 = rbinom(n = 1000, size = 1, prob = 0.5)) %>% 
-  mutate(three_heads = toss_1 + toss_2 + toss_3 == 3) %>% 
+       toss_3 = rbinom(n = 1000, size = 1, prob = 0.5)) |> 
+  mutate(three_heads = toss_1 + toss_2 + toss_3 == 3) |> 
   summarize(chance = mean(three_heads))
 ```
 
@@ -401,10 +401,10 @@ We get an *empirical distribution* by rolling two dice a hundred times, either b
 
 set.seed(1)
 
-emp_dist_dice <- tibble(ID = 1:100) %>% 
-  mutate(die_1 = map_dbl(ID, ~ sample(c(1:6), size = 1))) %>% 
-  mutate(die_2 = map_dbl(ID, ~ sample(c(1:6), size = 1))) %>% 
-  mutate(sum = die_1 + die_2) %>% 
+emp_dist_dice <- tibble(ID = 1:100) |> 
+  mutate(die_1 = map_dbl(ID, ~ sample(c(1:6), size = 1))) |> 
+  mutate(die_2 = map_dbl(ID, ~ sample(c(1:6), size = 1))) |> 
+  mutate(sum = die_1 + die_2) |> 
   ggplot(aes(x = sum)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 1, 
@@ -433,7 +433,7 @@ tibble(sum = c(rep(c(2, 12), 1),
                rep(c(4, 10), 3), 
                rep(c(5,  9), 4),
                rep(c(6,  8), 5),
-               rep(c(7), 6))) %>% 
+               rep(c(7), 6))) |> 
   ggplot(aes(x = sum)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 1, 
@@ -460,7 +460,7 @@ The *posterior distribution* for rolling two dice a hundred times depends on you
 tibble(results = c(rep(2, 15), rep(3, 15), rep(4, 7), 
                    rep(5, 7), rep(6, 7), rep(7, 4),
                    rep(8, 7), rep(9, 7), rep(10, 7), 
-                   rep(11, 3), rep(12, 15))) %>% 
+                   rep(11, 3), rep(12, 15))) |> 
   ggplot(aes(x = results)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 1, 
@@ -562,9 +562,9 @@ read_csv("./05-probability/data/election-forecasts-2020/prez_1.csv",
                           evprob_3rd = col_logical(),
                           total_ev = col_double(),
                           timestamp = col_character(),
-                          simulations = col_double())) %>%
-  select(evprob_chal, total_ev)  %>% 
-  rename(prob = evprob_chal, electoral_votes = total_ev) %>% 
+                          simulations = col_double())) |>
+  select(evprob_chal, total_ev)  |> 
+  rename(prob = evprob_chal, electoral_votes = total_ev) |> 
   ggplot(aes(electoral_votes, prob)) +
     geom_bar(stat = 'identity') +
     labs(title = "Posterior Probability Distribution",
@@ -619,10 +619,10 @@ The *empirical distribution* involves using data from the National Health and Nu
 ```{r echo = FALSE}
 # Use nhanes dataset for this exercise, filter out Adult Male.
 
-nhanes %>%
-  filter(gender == "Male", age >= 18) %>%
-  select(height)%>%
-  drop_na() %>%
+nhanes |>
+  filter(gender == "Male", age >= 18) |>
+  select(height)|>
+  drop_na() |>
   ggplot(aes(x = height)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                  binwidth = 1, 
@@ -647,7 +647,7 @@ Mathematical Distribution:
 
 # Greater the n size, the smoother the graph. Shouldn't we use geom_density?
 
-tibble(height = rnorm(1000000, mean = 175, sd = 9)) %>% 
+tibble(height = rnorm(1000000, mean = 175, sd = 9)) |> 
   ggplot(aes(x = height)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                  binwidth = 1, 
@@ -680,7 +680,7 @@ tibble(height = c(rep(170, 2), rep(173, 3), rep(175, 8),
                   rep(186, 10), rep(190, 18), rep(193, 23), 
                   rep(197, 20),rep(200, 21), rep(205, 20), 
                   rep(207, 15),rep(210, 15), rep(213, 16), 
-                  rep(218, 14),rep(220, 8), rep(228, 4)))%>% 
+                  rep(218, 14),rep(220, 8), rep(228, 4)))|> 
     ggplot(aes(x = height)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 5, 
@@ -734,8 +734,8 @@ Let's say that you are rolling two six-sided dice simultaneously. Die 1 is weigh
 mydata <- tibble(die.1 = sample(1:6, size = 1000, prob =
                                   c(0.1, 0.1, 0.1, 0.1, 0.1, 0.5), replace = TRUE),
                  die.2 = sample(1:6, size = 1000, prob =
-                                  c(0.1, 0.1, 0.1, 0.1, 0.5, 0.1), replace = TRUE)) %>%
-          group_by(die.1, die.2) %>%
+                                  c(0.1, 0.1, 0.1, 0.1, 0.5, 0.1), replace = TRUE)) |>
+          group_by(die.1, die.2) |>
           summarize(total = n(),
                     .groups = "drop")
 
@@ -830,7 +830,7 @@ A list column is a column of your data which is a [list](https://adv-r.hadley.nz
 
 ```{r}
 # tibble() is what we use to generate a tibble, it acts sort of like the mutate(), but mutate() needs a data frame to add new column, tibble can survive on itself.
-tibble(col_1 = list(range(x))) %>%
+tibble(col_1 = list(range(x))) |>
   str()
 ```
 
@@ -839,8 +839,8 @@ We can use `map_*` functions to both create a list-column and then, much more im
 
 ```{r}
 # .x is col_1 from tibble and ~ sum(.) is the formula
-tibble(col_1 = list(range(x))) %>%
-  mutate(col_2 = map_dbl(col_1, ~ sum(.))) %>% 
+tibble(col_1 = list(range(x))) |>
+  mutate(col_2 = map_dbl(col_1, ~ sum(.))) |> 
   str()
 ```
 
@@ -852,11 +852,11 @@ To summarise `map` function and `map_`* functions could both convert an data (ve
 
 
 ```{r}
-tibble(ID = 1) %>% 
-  mutate(col_1 = map(ID, ~range(rnorm(10)))) %>%
-  mutate(col_2 = map_dbl(col_1, ~ sum(.))) %>% 
-  mutate(col_3 = map_int(col_1, ~ length(.))) %>% 
-  mutate(col_4 = map_chr(col_1, ~ sum(.))) %>% 
+tibble(ID = 1) |> 
+  mutate(col_1 = map(ID, ~range(rnorm(10)))) |>
+  mutate(col_2 = map_dbl(col_1, ~ sum(.))) |> 
+  mutate(col_3 = map_int(col_1, ~ length(.))) |> 
+  mutate(col_4 = map_chr(col_1, ~ sum(.))) |> 
   str()
 ```
 
@@ -871,21 +871,21 @@ Consider a more detailed example:
 # rows. Once it is working, we increase the number of rows to a thousand or
 # million or whatever we need.
 
-tibble(ID = 1:3) %>% 
+tibble(ID = 1:3) |> 
   
   # The big convenience is being able to store a list in each row of the tibble.
   # Note that we are not using the value of ID in the call to rnorm(). (That is
   # why we don't have a "." anywhere.) But we are still using ID as a way of
   # iterating through each row; ID is keeping count for us, in a sense.
   
-  mutate(draws = map(ID, ~ rnorm(10))) %>% 
+  mutate(draws = map(ID, ~ rnorm(10))) |> 
   
   # Each succeeding step of the pipe works with columns already in the tibble
   # while, in general, adding more columns. The next step calculates the max
   # value in each of the draw vectors. We use map_dbl() because we know that
   # max() will returns a single number.
   
-  mutate(max = map_dbl(draws, ~ max(.))) %>% 
+  mutate(max = map_dbl(draws, ~ max(.))) |> 
   
   # We will often need to calculate more than one item from a given column like
   # draws. For example, in addition to knowing the max value, we would like to
@@ -943,7 +943,7 @@ set.seed(9)
 
 sims <- 10000
 
-jd_disease <- tibble(ID = 1:sims, have_disease = rep(c(TRUE, FALSE), 5000)) %>%
+jd_disease <- tibble(ID = 1:sims, have_disease = rep(c(TRUE, FALSE), 5000)) |>
   mutate(positive_test =
            if_else(have_disease,
                    map_int(have_disease, ~ rbinom(n = 1, size = 1, p = 0.99)),
@@ -962,7 +962,7 @@ Plot the joint distribution:
 
 # Use discrete for FALSE and TRUE
 
-jd_disease %>% 
+jd_disease |> 
   ggplot(aes(x = as.factor(positive_test), 
              y = as.factor(have_disease))) +
   geom_point() +
@@ -986,10 +986,10 @@ Below is a joint distribution displayed in 3D. Instead of using the "jitter" fea
 # group_by and summarize use for count, and pile up the dots in one point.
 # Later use for rayshader
 
-jd_disease_plot <- jd_disease %>%
-  group_by(have_disease, positive_test) %>%
+jd_disease_plot <- jd_disease |>
+  group_by(have_disease, positive_test) |>
   summarize(total = n(),
-            .groups = "drop") %>% 
+            .groups = "drop") |> 
   ggplot(aes(x = as.factor(positive_test),
              y = as.factor(have_disease),
              color = total)) +
@@ -1038,7 +1038,7 @@ We want to analyze these plots by looking at different slices. For instance, let
 
 
 ```{r}
-jd_disease %>% 
+jd_disease |> 
   filter(positive_test == 1)
 ```
 
@@ -1049,8 +1049,8 @@ jd_disease %>%
 # geom_col won't work because need two aesthetic both x and y
 # geom_bar work
 
-jd_disease %>% 
-  filter(positive_test == 1) %>% 
+jd_disease |> 
+  filter(positive_test == 1) |> 
   ggplot(aes(have_disease)) +
     geom_bar() +
     labs(title = "Disease Status Given Positive Test",
@@ -1071,8 +1071,8 @@ Turn this unnormalized distribution into a posterior probability distribution:
 
 # Use discrete for TRUE and FALSE
 
-jd_disease %>% 
-  filter(positive_test == 1) %>% 
+jd_disease |> 
+  filter(positive_test == 1) |> 
   ggplot(aes(have_disease)) +
     geom_bar(aes(y = after_stat(count/sum(count))), 
                    color = "white") +
@@ -1098,20 +1098,20 @@ Now let's consider the manipulation of this posterior, here is another question.
 Question : *10 people walks up to testing center, 5 of them tested negative, 5 of them tested positive, what is the probability of at least 6 people is actually healthy? *
 
 ```{r}
-tibble(test = 1:100000) %>%
-  mutate(person1 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) %>%
-  mutate(person2 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) %>%
-  mutate(person3 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) %>%
-  mutate(person4 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) %>%
-  mutate(person5 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) %>%
-  mutate(person6 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) %>%
-  mutate(person7 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) %>%
-  mutate(person8 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) %>%
-  mutate(person9 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) %>%
-  mutate(person10 = map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) %>%
-  select(!test) %>%
+tibble(test = 1:100000) |>
+  mutate(person1 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) |>
+  mutate(person2 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) |>
+  mutate(person3 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) |>
+  mutate(person4 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) |>
+  mutate(person5 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.3))) |>
+  mutate(person6 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) |>
+  mutate(person7 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) |>
+  mutate(person8 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) |>
+  mutate(person9 =  map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) |>
+  mutate(person10 = map_int(test, ~ rbinom(n = 1, size = 1, p = 0.7))) |>
+  select(!test) |> 
   
-mutate(sum = rowSums(.))%>%
+mutate(sum = rowSums(across(person1:person10))) |>
   
 ggplot(aes(sum)) +
   geom_histogram(aes(y = after_stat(count/sum(count))),
@@ -1136,7 +1136,7 @@ knitr::include_app("https://www.youtube.com/embed/by3_weGwnMg")
 
 ## Three models
 
-<!-- Handy? jd_marbles %>% filter(in_bag == 1) %>% group_by(in_sample) %>% count() -->
+<!-- Handy? jd_marbles |> filter(in_bag == 1) |> group_by(in_sample) |> count() -->
 
 <!-- DK: Should this be in terms of p or number of white marbles or both? -->
 
@@ -1166,14 +1166,14 @@ sims <- 10000
 
 # We also start off with a tibble. It just makes things easier
 
-jd_marbles <- tibble(ID = 1:sims) %>% 
+jd_marbles <- tibble(ID = 1:sims) |> 
   
   # For each row, we (randomly!) determine the number of white marbles in the
   # bag. We do not know why the `as.integer()` hack is necessary. Shouldn't
   # `map_int()` automatically coerce the result of `sample()` into an integer?
   
   mutate(in_bag = map_int(ID, ~ as.integer(sample(c(0, 1, 2), 
-                                                  size = 1)))) %>%
+                                                  size = 1)))) |>
   
   # Depending on the number of white marbles in the bag, we randomly draw out 0,
   # 1, 2, or 3 white marbles in our experiment. We need `p = ./2` to transform
@@ -1194,7 +1194,7 @@ Step 2: Plot the joint distribution:
 # "bucket." Although it is never stated clearly, we are assuming that there is
 # an equal likelihood of 0, 1 or 2 white marbles in the bag.
 
-jd_marbles %>%
+jd_marbles |>
   ggplot(aes(x = in_sample, y = in_bag)) +
     geom_jitter(alpha = 0.5) +
     labs(title = "Black and White Marbles",
@@ -1213,11 +1213,11 @@ Here is the 3D visualization:
 # Same process, first condense point plot to a single point, then use plot_gg make it 3d and 
 # give height.
 
-jd_marbles_plot <- jd_marbles %>%
-  group_by(in_bag, in_sample) %>%
-  summarize(total = n(), .groups = "drop") %>% 
-  mutate(in_sample = as.factor(in_sample)) %>% 
-  mutate(in_bag = as.factor(in_bag)) %>% 
+jd_marbles_plot <- jd_marbles |>
+  group_by(in_bag, in_sample) |>
+  summarize(total = n(), .groups = "drop") |> 
+  mutate(in_sample = as.factor(in_sample)) |> 
+  mutate(in_bag = as.factor(in_bag)) |> 
   ggplot(aes(x=in_sample, y=in_bag, color = total)) +
     geom_point() +
     scale_color_continuous(limits = c(0, 3500)) +
@@ -1260,8 +1260,8 @@ Step 3: Plot the unnormalized conditional distribution.
 # specific value. A conditional distribution is a "slice" of the joint
 # distribution, and we take that slice with filter().
 
-jd_marbles %>% 
-  filter(in_sample == 3) %>% 
+jd_marbles |> 
+  filter(in_sample == 3) |> 
   ggplot(aes(in_bag)) +
     geom_histogram(binwidth = 0.5, color = "white") +
     labs(title = "Unnormalized Conditional Distribution",
@@ -1278,8 +1278,8 @@ Step 4: Plot the normalize posterior distribution.
 Next, let's normalize the distribution.
 
 ```{r}
-jd_marbles %>% 
-  filter(in_sample == 3) %>% 
+jd_marbles |> 
+  filter(in_sample == 3) |> 
   ggplot(aes(in_bag)) +
     geom_histogram(aes(y = after_stat(count/sum(count))), 
                    binwidth = 0.5, 
@@ -1332,7 +1332,7 @@ sims <- 1000
 
 x <- tibble(ID = 1: sims, heads = rbinom(n = 1000, size = 20, p = 0.4)) 
 
-x %>% 
+x |> 
   ggplot(aes(heads)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) + 
@@ -1350,7 +1350,7 @@ First, notice that many different things can happen! Even if we *know*, for cert
 
 ```{r, echo = FALSE}
 
-x %>%
+x |>
   ggplot(aes(heads)) +
      geom_histogram(bins = 50) + 
     labs(title = "Total Count of the Number of Heads Out of 20 Tosses",
@@ -1373,10 +1373,10 @@ set.seed(10)
 
 sims <- 11000
 
-jd_coin <- tibble(ID = 1:sims, p = rep(seq(0, 1, 0.1), 1000)) %>%
+jd_coin <- tibble(ID = 1:sims, p = rep(seq(0, 1, 0.1), 1000)) |>
   mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .)))
 
-jd_coin %>%
+jd_coin |>
   ggplot(aes(y = p, x = heads)) +
     geom_jitter(alpha = 0.1) +
     labs(title = "Empirical Distribution of Number of Heads",
@@ -1394,11 +1394,11 @@ Here is the 3D version of the same plot.
 
 #Condese point and make rayshader plot.
 
-jd_coin_plot <- jd_coin %>% 
-  group_by(p, heads) %>%
-  summarize(total = n(), .groups = "drop") %>% 
-  mutate(p = as.factor(p)) %>% 
-  mutate(heads = as.factor(heads)) %>% 
+jd_coin_plot <- jd_coin |> 
+  group_by(p, heads) |>
+  summarize(total = n(), .groups = "drop") |> 
+  mutate(p = as.factor(p)) |> 
+  mutate(heads = as.factor(heads)) |> 
   ggplot() +
     geom_point(aes(x = heads, y = p, color = total)) +
     scale_color_continuous(limits = c(0, 1000)) +
@@ -1532,8 +1532,8 @@ This is the only part of the joint distribution that we care about. We aren't in
 As we would expect, most of the time when 8 coin tosses came up heads, the value of $p$ was 0.4. But, on numerous occasions, it was not. It is quite common for a value of $p$ like 0.3 or 0.5 to generate 8 heads. Consider:
 
 ```{r, echo = FALSE}
-jd_coin %>% 
-  filter(heads == 8) %>% 
+jd_coin |> 
+  filter(heads == 8) |> 
   ggplot(aes(p)) +
     geom_bar() +
     labs(title = expression(paste("Values of ", rho[h], " Associated with 8 Heads")),
@@ -1546,8 +1546,8 @@ jd_coin %>%
 Yet this is a distribution of raw counts. It is an unnormalized density. To turn it into a proper probability density (i.e., one in which the sum of the probabilities across possible outcomes sums to one) we just divide everything by the total number of observations.
 
 ```{r, echo = FALSE}
-jd_coin %>% 
-  filter(heads == 8) %>% 
+jd_coin |> 
+  filter(heads == 8) |> 
   ggplot(aes(x = p)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 50) + 
@@ -1575,8 +1575,8 @@ The first *wrong* way to do this is assuming that $\rho_h$ is certain because we
 
 sims <- 10000000
 
-odds <- tibble(sim_ID = 1:sims) %>%
-  mutate(heads = map_int(sim_ID, ~ rbinom(n = 1, size = 20, p = .4))) %>% 
+odds <- tibble(sim_ID = 1:sims) |>
+  mutate(heads = map_int(sim_ID, ~ rbinom(n = 1, size = 20, p = .4))) |> 
   mutate(above_ten = if_else(heads >= 10, TRUE, FALSE))
 
 odds
@@ -1584,7 +1584,7 @@ odds
 ```
 
 ```{r}
-odds %>%
+odds |>
   ggplot(aes(x=heads,fill=above_ten))+
            geom_histogram(aes(y = after_stat(count/sum(count))),bins = 50)+
   scale_fill_manual(values = c('grey50', 'red'))+
@@ -1601,7 +1601,7 @@ odds %>%
 Using this Posterior distribution derived from the (wrong way) simulated data, the probability results in 10 or more head is
 
 ```{r}
-odds %>%
+odds |>
   summarize(success = sum(above_ten)/sims)
 ```
 
@@ -1611,12 +1611,12 @@ The second method involves sampling the whole posterior distribution vector we p
 
 ```{r}
 
-p_draws <- tibble(p = rep(seq(0, 1, 0.1), 1000)) %>%
-  mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) %>%
+p_draws <- tibble(p = rep(seq(0, 1, 0.1), 1000)) |>
+  mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) |>
   filter(heads == 8)
   
-odds_2nd <- tibble(p = sample(p_draws$p, size = sims, replace = TRUE)) %>%
-  mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) %>% 
+odds_2nd <- tibble(p = sample(p_draws$p, size = sims, replace = TRUE)) |>
+  mutate(heads = map_int(p, ~ rbinom(n = 1, size = 20, p = .))) |> 
   mutate(above_ten = if_else(heads >= 10, TRUE, FALSE)) 
 
 odds_2nd
@@ -1625,7 +1625,7 @@ odds_2nd
 ```
 
 ```{r}
-odds_2nd %>%
+odds_2nd |>
   ggplot(aes(x = heads,fill = above_ten))+
            geom_histogram(aes(y = after_stat(count/sum(count))),bins = 50)+
   scale_fill_manual(values = c('grey50', 'red'))+
@@ -1641,7 +1641,7 @@ odds_2nd %>%
 Using this Posterior distribution derived from the (right way 1st) simulated data, the probability results in 10 or more head is
 
 ```{r}
-odds_2nd %>%
+odds_2nd |>
   summarize(success = sum(above_ten)/sims)
 ```
 about 32.8%
@@ -1691,12 +1691,12 @@ z <- read_csv("https://raw.githubusercontent.com/PPBDS/primer/master/05-probabil
                                total_ev = col_double(),
                                timestamp = col_character(),
                                simulations = col_double()
-                               )) %>%
-       select(evprob_chal, total_ev)  %>% 
-       rename(prob = evprob_chal, electoral_votes = total_ev) %>% 
-       mutate(obs = round(prob * 1000000))  %>% 
-       select(-prob) %>% 
-       uncount(weights = obs) %>% 
+                               )) |>
+       select(evprob_chal, total_ev)  |> 
+       rename(prob = evprob_chal, electoral_votes = total_ev) |> 
+       mutate(obs = round(prob * 1000000))  |> 
+       select(-prob) |> 
+       uncount(weights = obs) |> 
        pull(electoral_votes)
 
 
@@ -1730,7 +1730,7 @@ The elements of these vectors are all "draws" from the specified probability dis
 ```{r}
 # recall mean, media, standard deviation and mad functions.
 
-key_stats <- draws %>% 
+key_stats <- draws |> 
   summarize(mn = mean(electoral_votes),
             md = median(electoral_votes),
             sd = sd(electoral_votes),

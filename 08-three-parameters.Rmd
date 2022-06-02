@@ -61,25 +61,25 @@ tibble(ID = c("Commuter 1", "Commuter 2", "...", "Commuter 1000", "Commuter 1001
        liberal = c("Liberal", "Not Liberal", "...", "Liberal", "Liberal", "..."),
        attitude_after_control = c("3", "7", "...", "4", "9", "..."),
        attitude_after_treated = c("8", "7", "...", "8", "7", "...")
-       ) %>%
+       ) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
-  tab_header(title = "Preceptor Table") %>% 
+  gt() |>
+  tab_header(title = "Preceptor Table") |> 
   cols_label(ID = md("ID"),
              age = md("Age"),
              party = md("Party"),
              income = md("Income"),
              liberal = md("Liberal"),
              attitude_after_control = md("Control Ending Attitude"),
-             attitude_after_treated = md("Treated Ending Attitude")) %>%
+             attitude_after_treated = md("Treated Ending Attitude")) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(ID))) %>%
+            location = cells_body(columns = c(ID))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
-            locations = cells_column_labels(columns = c(ID))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(ID)) %>%
+            locations = cells_column_labels(columns = c(ID))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(ID)) |>
   fmt_markdown(columns = everything())
 ```
 
@@ -109,28 +109,28 @@ The data include information about each respondent's gender, political affiliati
 Let's restrict attention to a subset of the variables we need to answer our questions, as specified in the Preceptor Table. `age` is the age of the respondent; `party` is their political party affiliation; `liberal` is whether they are liberal or not; `income` is the income of the respondent; `treatment` specifies whether the respondent was given the treatment of being exposed to Spanish-speakers in the train station; and `att_end` tell us about the respondent's attitude on immigration after the treatment, . 
 
 ```{r}
-ch8 <- trains %>% 
+ch8 <- trains |> 
   select(age, att_end, party, income, treatment, liberal)
 ```
 
 It is always smart to look at a some random slices of the data:
 
 ```{r}
-ch8 %>% 
+ch8 |> 
   slice_sample(n = 5)
 ```
 
 `att_end` is a measure of person's attitude toward immigration. A higher number means more conservative, i.e., a more exclusionary stance toward immigration into the United States. 
 
 ```{r}
-ch8 %>% 
+ch8 |> 
   glimpse()
 ```
 
 Pay attention to the variable types. Do they make sense? Perhaps. But there are certainly grounds for suspicion. Why is  `att_end` a double rather than an integer? All the values in the data appear to be integers, so there is no benefit to having these variables be doubles. Why is `party` a character variable and `treatment` a factor variable? It could be that these are intentional choices made by the creator of the tibble, i.e., us. Or, these could be mistakes. Most likely, these choices are a mixture of sensible and arbitrary. Regardless, it is your responsibility to notice them. You can't make a good model without looking closely at the data which you are using.
 
 ```{r}
-ch8 %>% 
+ch8 |> 
   skim()
 ```
 
@@ -226,12 +226,12 @@ tibble(source = c("Population", "Population", "...",
                  "?", "2", "...",
                  "?", "?", "...", 
                  "?", "?", "...",
-                 "?", "?")) %>%
+                 "?", "?")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
-  tab_header(title = "Population Table") %>% 
+  gt() |>
+  tab_header(title = "Population Table") |> 
   cols_label(source = md("Source"),
              city = md("City"),
              year = md("Year"),
@@ -240,13 +240,13 @@ tibble(source = c("Population", "Population", "...",
              income = md("Income"),
              liberal = md("Liberal"),
              att_treat = md("Treatment"),
-             att_control = md("Control")) %>%
+             att_control = md("Control")) |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(source))) %>%
+            location = cells_body(columns = c(source))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
-            locations = cells_column_labels(columns = c(source))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(source)) %>%
+            locations = cells_column_labels(columns = c(source))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(source)) |>
   fmt_markdown(columns = everything())  
 ```
 
@@ -301,19 +301,19 @@ A good way at looking at this is with a Preceptor Table, as seen below. Unlike t
 tibble(ID = c("1", "2", "...", "473", "474",
               "...", "3,258", "3,259", "...", "N"),
        Party = c("D", "?", "...", "D", "?", "...", "?", "R", "...", "?"),
-      Age = c("31", "?", "...", "58", "?", "...", "?", "49", "...", "?")) %>%
+      Age = c("31", "?", "...", "58", "?", "...", "?", "49", "...", "?")) |>
   
   # Then, we use the gt function to make it pretty
   
-  gt() %>%
-  cols_label(ID = md("ID"),Party = "Political Party", Age = "Age") %>%
+  gt() |>
+  cols_label(ID = md("ID"),Party = "Political Party", Age = "Age") |>
   tab_style(cell_borders(sides = "right"),
-            location = cells_body(columns = c(ID))) %>%
+            location = cells_body(columns = c(ID))) |>
   tab_style(style = cell_text(align = "left", v_align = "middle"), 
-            locations = cells_column_labels(columns = c(ID))) %>%
-  cols_align(align = "center", columns = everything()) %>%
-  cols_align(align = "left", columns = c(ID)) %>%
-  tab_spanner(label = "Outcome", columns = c(Age)) %>%
+            locations = cells_column_labels(columns = c(ID))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(ID)) |>
+  tab_spanner(label = "Outcome", columns = c(Age)) |>
   tab_spanner(label = "Predictor", columns = c(Party))
 ```
 
@@ -401,13 +401,13 @@ fit_1
 
 
 ```{r}
-fit_1 %>% 
-  as_tibble() %>% 
-  select(-sigma) %>% 
-  mutate(Democrat = partyDemocrat, Republican = partyRepublican) %>%
+fit_1 |> 
+  as_tibble() |> 
+  select(-sigma) |> 
+  mutate(Democrat = partyDemocrat, Republican = partyRepublican) |>
   pivot_longer(cols = Democrat:Republican,
                names_to = "parameter",
-               values_to = "age") %>% 
+               values_to = "age") |> 
   ggplot(aes(x = age, fill = parameter)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    alpha = 0.5, 
@@ -437,18 +437,18 @@ The unknown parameters $\beta_1$ (partyDemocrat) and $\beta_2$ (partyRepublican)
 Consider a table which shows a sample of 8 individuals.
 
 ```{r, echo = FALSE}
-trains %>% 
-  select(age, party) %>% 
-  mutate(fitted = fitted(fit_1)) %>% 
-  mutate(residual = residuals(fit_1)) %>% 
-  slice(1:8) %>% 
-  gt() %>%
+trains |> 
+  select(age, party) |> 
+  mutate(fitted = fitted(fit_1)) |> 
+  mutate(residual = residuals(fit_1)) |> 
+  slice(1:8) |> 
+  gt() |>
   cols_label(age = md("**Age**"),
              party = md("**Party**"),
              fitted = md("**Fitted**"),
-             residual = md("**Residual**")) %>%
-  fmt_number(columns = c(fitted), decimals = 2) %>% 
-  tab_header("8 Observations from Trains Dataset") %>%
+             residual = md("**Residual**")) |>
+  fmt_number(columns = c(fitted), decimals = 2) |> 
+  tab_header("8 Observations from Trains Dataset") |>
   cols_align(align = "center", columns = everything()) 
 
 
@@ -465,20 +465,20 @@ The following three histograms show the actual outcomes, fitted values, and resi
 
 
 ```{r}
-outcome <- ch8 %>% 
+outcome <- ch8 |> 
   ggplot(aes(age)) +
     geom_histogram(bins = 100) +
     labs(x = "Age",
          y = "Count") 
 
-fitted <- tibble(age = fitted(fit_1)) %>% 
+fitted <- tibble(age = fitted(fit_1)) |> 
   ggplot(aes(age)) +
     geom_bar() +
     labs(x = "Fitted Values",
          y = NULL) +
     scale_x_continuous(limits = c(20, 70)) 
 
-res <- tibble(resids = residuals(fit_1)) %>% 
+res <- tibble(resids = residuals(fit_1)) |> 
   ggplot(aes(resids)) +
     geom_histogram(bins = 100) +
     labs(x = "Residuals",
@@ -528,8 +528,8 @@ Use `posterior_predict()` to create draws from the posterior for this scenario. 
 `posterior_predict()` takes two arguments: the model for which the simulations should be run, and a tibble indicating for which and how many parameters we want to run these simulations. In this case, the model is the one from Courage and the tibble is the one we just created.
 
 ```{r}
-pp <- posterior_predict(fit_1, newdata = new_obs) %>%
-    as_tibble() %>%
+pp <- posterior_predict(fit_1, newdata = new_obs) |>
+    as_tibble() |>
     mutate_all(as.numeric)
 
 head(pp, 10)
@@ -543,7 +543,7 @@ The result are draws from the posterior distribution of the age of a Democrat. I
 
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100)  +
@@ -572,8 +572,8 @@ As before we start by creating a tibble with the desired input. Note that the na
 newobs <- tibble(party = c("Democrat", "Democrat", "Democrat", 
                         "Republican", "Republican","Republican"))
 
-posterior_predict(fit_1, newdata = newobs) %>%
-    as_tibble() %>%
+posterior_predict(fit_1, newdata = newobs) |>
+    as_tibble() |>
     mutate_all(as.numeric)
 ```
 
@@ -587,9 +587,9 @@ We have 6 columns: one for each person. `posterior_predict()` does not name the 
 
 
 ```{r}
-pp <- posterior_predict(fit_1, newdata = newobs) %>%
-    as_tibble() %>%
-    mutate_all(as.numeric) %>% 
+pp <- posterior_predict(fit_1, newdata = newobs) |>
+    as_tibble() |>
+    mutate_all(as.numeric) |> 
   
     # We don't need to rename the columns, but doing so makes the subsequest
     # code much easier to understand. We could just have worked with columns 1,
@@ -597,8 +597,8 @@ pp <- posterior_predict(fit_1, newdata = newobs) %>%
     # the covariates in newobs to the columns in the posterior_predict object.
   
     set_names(c("dem_1", "dem_2", "dem_3", 
-                "rep_1", "rep_2", "rep_3")) %>% 
-    rowwise() %>% 
+                "rep_1", "rep_2", "rep_3")) |> 
+    rowwise() |> 
   
   # Creating three new columns. The first two are the highest age among
   # Democrats and the lowest age among Republicans, respectively. The third one
@@ -615,7 +615,7 @@ The plotting code is similar to what we have seen before:
 
 ```{r}
 
-pp %>%  
+pp |>  
   ggplot(aes(x = age_diff)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -744,12 +744,12 @@ Let's look at the full posteriors for both $\beta_1$ and $\beta_2$.
 <!-- DK: Change Parameter levels to something nice. -->
 
 ```{r}
-fit_2 %>% 
-  as_tibble() %>% 
-  select(-sigma) %>% 
+fit_2 |> 
+  as_tibble() |> 
+  select(-sigma) |> 
   pivot_longer(cols = treatmentTreated:treatmentControl,
                names_to = "Parameter",
-               values_to = "attitude") %>% 
+               values_to = "attitude") |> 
   ggplot(aes(x = attitude, fill = Parameter)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    alpha = 0.5, 
@@ -769,13 +769,13 @@ We can decompose the the dependent variable, `att_end` into two parts: the fitte
 
 
 ```{r, echo = FALSE}
-outcome <- trains %>% 
+outcome <- trains |> 
   ggplot(aes(att_end)) +
     geom_histogram(bins = 50) +
     labs(x = "Attitude toward Immigration",
          y = "Count") 
 
-fitted <- tibble(height = fitted(fit_2)) %>% 
+fitted <- tibble(height = fitted(fit_2)) |> 
   ggplot(aes(height)) +
     geom_bar(width = 0.2) +
     labs(x = "Fitted Values",
@@ -783,7 +783,7 @@ fitted <- tibble(height = fitted(fit_2)) %>%
     scale_x_continuous(limits = c(3.5, 15),
                        breaks = c(4, 8, 12))
 
-res <- tibble(resids = residuals(fit_2)) %>% 
+res <- tibble(resids = residuals(fit_2)) |> 
   ggplot(aes(resids)) +
     geom_histogram(bins = 50) +
     labs(x = "Residuals",
@@ -813,9 +813,9 @@ Recall the first question with which we began this section:
 Chapter \@ref(rubin-causal-model) defined the *average treatment effect*. One simple estimator of the average treatment effect is the difference between $\beta_1$ and $\beta_2$. After all, the definition of $\beta_1$ is the average attitude toward immigration, of the population, for anyone, under exposure to the treatment. So, $\beta_1 - \beta_2$ is the average treatment effect for the population, roughly 1.5. However, estimating the posterior probability distribution for this parameter is tricky, unless we make use of the posterior distributions of $\beta_1$ and $\beta_2$. With that information, the problem is simple:
 
 ```{r}
-fit_2 %>% 
-  as_tibble() %>% 
-  mutate(ate = treatmentTreated - treatmentControl) %>% 
+fit_2 |> 
+  as_tibble() |> 
+  mutate(ate = treatmentTreated - treatmentControl) |> 
   ggplot(aes(x = ate)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -836,8 +836,8 @@ We can use `posterior_epred()` to answer this question. Create a tibble and use 
 ```{r}
 newobs <- tibble(treatment = c("Treated", "Control"))
 
-pe <- posterior_epred(fit_2, newobs) %>% 
-    as_tibble() %>% 
+pe <- posterior_epred(fit_2, newobs) |> 
+    as_tibble() |> 
     mutate(ate = `1` - `2`)
 
 pe
@@ -846,7 +846,7 @@ pe
 The posterior probability distribution created with `posterior_epred()` is the same as the one produced by manipulating the parameters directly.
 
 ```{r}
-pe %>% 
+pe |> 
   ggplot(aes(x = ate)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100) +
@@ -874,9 +874,9 @@ Consider the result of `posterior_predict()` for two people, one treated and one
 
 ```{r}
 pp <- posterior_predict(fit_2, 
-                        newdata = newobs) %>%
-    as_tibble() %>%
-    mutate_all(as.numeric) %>% 
+                        newdata = newobs) |>
+    as_tibble() |>
+    mutate_all(as.numeric) |> 
     mutate(te = `1` - `2`)
   
 pp
@@ -885,7 +885,7 @@ pp
 Create a graphic:
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = te)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100)  +
@@ -988,21 +988,21 @@ The above is a good summary of the models.
 Consider our usual decomposition of the outcome into two parts: the model and the error term.
 
 ```{r, echo = FALSE}
-outcome <- trains %>% 
+outcome <- trains |> 
   ggplot(aes(income)) +
     geom_histogram(bins = 50) +
     labs(x = "Income  in $1,000's",
          y = "Count") +
     scale_x_continuous(labels = scales::dollar_format(scale = 1/1000))
 
-fitted <- tibble(fits = fitted(fit_3)) %>% 
+fitted <- tibble(fits = fitted(fit_3)) |> 
   ggplot(aes(fits)) +
     geom_histogram(bins = 50) +
     labs(x = "Fitted Values in $1,000's",
          y = NULL) +
     scale_x_continuous(labels = scales::dollar_format(scale = 1/1000))
 
-res <- tibble(resids = residuals(fit_3)) %>% 
+res <- tibble(resids = residuals(fit_3)) |> 
   ggplot(aes(resids)) +
     geom_histogram(bins = 50) +
     labs(x = "Residuals in $1,000's",
@@ -1036,7 +1036,7 @@ Given that we are looking for an expected value, we use `posterior_epred()`.
 ```{r}
 newobs <- tibble(age = 40)
 
-pe <- posterior_epred(fit_3, newdata = newobs) %>% 
+pe <- posterior_epred(fit_3, newdata = newobs) |> 
   as_tibble() 
 
 pe
@@ -1046,7 +1046,7 @@ Plotting is the same as always.
 
 
 ```{r}
-pe %>% 
+pe |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100)  +
@@ -1134,14 +1134,14 @@ Although our model is now logistic, all the steps in answering a question like t
 newobs <- tibble(income = 100000)
 
 pe <- posterior_epred(fit_4, 
-                      newdata = newobs) %>% 
+                      newdata = newobs) |> 
   as_tibble()
 ```
 
 `pe` is a tibble with a single vector. That vector is 4,000 draws from the posterior distribution of proportion of people, among those who make $100,000, who are liberal. The population proportion is the same thing as the probability for any single individual.
 
 ```{r}
-pe %>% 
+pe |> 
   ggplot(aes(x = `1`)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100)  +
@@ -1168,10 +1168,10 @@ newobs <- tibble(income = c(rep(100000, 2),
                  
 
 pp <- posterior_predict(fit_4, 
-                        newdata = newobs) %>% 
-  as_tibble() %>% 
-  mutate_all(as.numeric) %>% 
-  rowwise() %>% 
+                        newdata = newobs) |> 
+  as_tibble() |> 
+  mutate_all(as.numeric) |> 
+  rowwise() |> 
   mutate(total = sum(c_across()))
 
 pp
@@ -1191,7 +1191,7 @@ Graphically we have:
 
 
 ```{r}
-pp %>% 
+pp |> 
   ggplot(aes(x = total)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
                    bins = 100)  +

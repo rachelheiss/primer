@@ -60,28 +60,28 @@ tibble(x = c(4, 16, 9))
 It is easy to use mutate to create a new variable, `sq_root`, which is the square root of each value of x.
 
 ```{r}
-tibble(x = c(4, 16, 9)) %>% 
+tibble(x = c(4, 16, 9)) |> 
   mutate(sq_root = sqrt((x)))
 ```
 
 `map_*` functions provide another approach. A `map_*` function takes two required arguments. First is the object over which you want to iterate. This will generally be a column in the tibble in which you are working. Second is the function which you want to run for each row in the tibble.
 
 ```{r}
-tibble(x = c(4, 16, 9)) %>% 
+tibble(x = c(4, 16, 9)) |> 
   mutate(sq_root = map_dbl(x, ~ sqrt(.)))
 ```
 
 `map_dbl()` (pronounced "map-double") took the function `sqrt()` and applied it to each element of `x`. There are two tricky parts to the use of map_* functions. First, you need to put the tilde symbol --- the "~" --- before the name of  the function which you want to call. Without the `~`, you will get an error:
 
 ```{r, error = TRUE}
-tibble(x = c(4, 16, 9)) %>% 
+tibble(x = c(4, 16, 9)) |> 
   mutate(sq_root = map_dbl(x, sqrt(.)))
 ```
 
 Second, you need to include a period --- the "." --- in the spot where the variable goes. Using the name of the variable --- `x` in this case --- will generate an error.
 
 ```{r, error = TRUE}
-tibble(x = c(4, 16, 9)) %>% 
+tibble(x = c(4, 16, 9)) |> 
   mutate(sq_root = map_dbl(x, ~ sqrt(x)))
 ```
 
@@ -136,7 +136,7 @@ Notice this is a 1x1 tibble with one observation, which is a list of one element
 A list column is a column of your data which is a [list](https://adv-r.hadley.nz/vectors-chap.html#lists) rather than an atomic vector.  Like with lists, you can pipe to `str()` to examine the column.
 
 ```{r message=FALSE}
-tibble(col_1 = list(range(x))) %>%
+tibble(col_1 = list(range(x))) |>
   str()
 ```
 
@@ -153,21 +153,21 @@ We can use `map_*` functions to both create a list-column and then, much more im
 # rows. Once it is working, we increase the number of rows to a thousand or
 # million or whatever we need.
 
-tibble(ID = 1:3) %>% 
+tibble(ID = 1:3) |> 
   
   # The big convenience is being able to store a list in each row of the tibble.
   # Note that we are not using the value of ID in the call to rnorm(). (That is
   # why we don't have a "." anywhere.) But we are still using ID as a way of
   # iterating through each row; ID is keeping count for us, in a sense.
   
-  mutate(draws = map(ID, ~ rnorm(10))) %>% 
+  mutate(draws = map(ID, ~ rnorm(10))) |> 
   
   # Each succeeding step of the pipe works with columns already in the tibble
   # while, in general, adding more columns. The next step calculates the max
   # value in each of the draw vectors. We use map_dbl() because we know that
   # max() will returns a single number.
   
-  mutate(max = map_dbl(draws, ~ max(.))) %>% 
+  mutate(max = map_dbl(draws, ~ max(.))) |> 
   
   # We will often need to calculate more than one item from a given column like
   # draws. For example, in addition to knowing the max value, we would like to
@@ -191,9 +191,9 @@ library(primer.data)
 Select the relevant variables, and group by `gender`. We are grouping because we are curious as to how `height` is distributed in between `gender`. We drop any rows with missing data.
 
 ```{r}
-nhanes %>%
-  select(gender, height) %>%
-  drop_na() %>% 
+nhanes |>
+  select(gender, height) |>
+  drop_na() |> 
   group_by(gender)
 ```
 
@@ -201,10 +201,10 @@ There are two approaches. In the first, we are happy to have an output tibble wi
 
 
 ```{r}
-nhanes %>%
-  select(gender, height) %>%
-  drop_na() %>% 
-  group_by(gender) %>% 
+nhanes |>
+  select(gender, height) |>
+  drop_na() |> 
+  group_by(gender) |> 
   summarise(q_height = list(quantile(height)),
             .groups = "drop")
 ```
@@ -212,12 +212,12 @@ nhanes %>%
 Note that there was no need to use `map_*` functions in this case. The simple **dplyr** approach works fine. The only "trick" is the use of `list()` to wrap the output of `quantile()`. Use `str()` to examine the exact values.
 
 ```{r}
-nhanes %>%
-  select(gender, height) %>%
-  drop_na() %>% 
-  group_by(gender) %>% 
+nhanes |>
+  select(gender, height) |>
+  drop_na() |> 
+  group_by(gender) |> 
   summarise(q_height = list(quantile(height)),
-            .groups = "drop") %>% 
+            .groups = "drop") |> 
   str()
 ```
 
@@ -226,10 +226,10 @@ Men are taller than women throughout the distribution, but the smallest individu
 The second case involves a scenario in which we do not want to "lose" any rows in our tibble. We want a `q_height` column for all the rows, even if the values included are repetitive.  A common scenario is that we want to use `q_height` to perform a calculation for each individual. To do this, we need a `map_*` function.
 
 ```{r}
-nhanes %>%
-  select(gender, height) %>%
-  drop_na() %>% 
-  group_by(gender) %>% 
+nhanes |>
+  select(gender, height) |>
+  drop_na() |> 
+  group_by(gender) |> 
   summarize(q_height = map(height, ~ quantile(.)),
             .groups = "drop")
 ```
@@ -301,9 +301,9 @@ You can use anonymous functions in conjunction with the `map_*` family of functi
 You can call an anonymous function using a `~` operator and then using a `.` to represent the current element. Consider these three approaches: 
 
 ```{r}
-tibble(old = c(4, 16, 9)) %>% 
-  mutate(new_1 = old + 6) %>% 
-  mutate(new_2 = map_dbl(old, ~ add_six_to_something(.))) %>% 
+tibble(old = c(4, 16, 9)) |> 
+  mutate(new_1 = old + 6) |> 
+  mutate(new_2 = map_dbl(old, ~ add_six_to_something(.))) |> 
   mutate(new_3 = map_dbl(old, ~ (. + 6)))
 ```
 
@@ -316,7 +316,7 @@ set.seed(999)
 ```
 
 ```{r}
-tibble(ID = 1:3) %>% 
+tibble(ID = 1:3) |> 
   mutate(x = rnorm(1))
 ```
 
@@ -327,8 +327,8 @@ set.seed(999)
 ```
 
 ```{r}
-tibble(ID = 1:3) %>% 
-  mutate(x = rnorm(1)) %>% 
+tibble(ID = 1:3) |> 
+  mutate(x = rnorm(1)) |> 
   mutate(y = map_dbl(ID, ~ rnorm(1)))
 ```
 
@@ -336,7 +336,7 @@ tibble(ID = 1:3) %>%
 Note that the parentheses in the anonymous function are not necessary. As long as everything after the `~` works as R code, the anonymous function should work, each time replacing the `.` with the value in the relevant row from the `.x` variable --- which is `old` in this case.
 
 ```{r}
-tibble(old = c(4, 16, 9)) %>% 
+tibble(old = c(4, 16, 9)) |> 
   mutate(new = map_dbl(old, ~ . + 1))
 ```
 
@@ -376,9 +376,9 @@ That works, but, first, it is ugly code. And, second, it is hard to extend when 
 The first step in function creation is to write code in a normal pipe which does what you want the function to do. In this case, that code would look like:
 
 ```{r}
-nhanes %>% 
-  drop_na() %>%
-  slice_sample(n = 10) %>% 
+nhanes |> 
+  drop_na() |>
+  slice_sample(n = 10) |> 
   pull(height)
 ```
 
@@ -386,9 +386,9 @@ We start with `nhanes`, use `drop_na()` to remove rows with missing values for a
 
 ```{r}
 no_NA_sampler <- function(){
-  nhanes %>% 
-    drop_na() %>%
-    slice_sample(n = 10) %>% 
+  nhanes |> 
+    drop_na() |>
+    slice_sample(n = 10) |> 
     pull(height)
 }
 
@@ -401,9 +401,9 @@ The first version, however, "hard codes" a lot of options which we might want to
 
 ```{r}
 no_NA_sampler <- function(n){
-  nhanes %>% 
-    drop_na() %>%
-    slice_sample(n = n) %>% 
+  nhanes |> 
+    drop_na() |>
+    slice_sample(n = n) |> 
     pull(height)
 }
 
@@ -415,9 +415,9 @@ What if we want to sample from a different variable than `height` or from a diff
 
 ```{r}
 no_NA_sampler <- function(tbl, var, n){
-  tbl %>% 
-    drop_na() %>%
-    slice_sample(n = n) %>% 
+  tbl |> 
+    drop_na() |>
+    slice_sample(n = n) |> 
     pull({{var}})
 }
 
@@ -448,14 +448,14 @@ no_NA_sampler <- function(tbl, var, n){
   stopifnot(is_tibble(tbl))
   stopifnot(is_double(n))
 
-  tbl %>% 
-    drop_na() %>%
+  tbl |> 
+    drop_na() |>
     
     # What happens if n is "too large"? That is, I need to think harder about a)
     # whether or not I am sampling with or without replacement and b) which I
     # should be doing.
     
-    slice_sample(n = n) %>% 
+    slice_sample(n = n) |> 
     pull({{var}})
 }
 ```
@@ -577,7 +577,7 @@ replicate(5, prediction_game(guesses = c(500, 600), kenya, rv13))
 In general, we will want to store the results in a tibble, which makes later analysis and plotting easier.
 
 ```{r}
-tibble(ID = 1:3) %>% 
+tibble(ID = 1:3) |> 
   mutate(result = map_chr(ID, ~ 
                             prediction_game(guesses = c(500, 600),
                                             kenya, 
@@ -592,11 +592,11 @@ set.seed(9)
 
 
 ```{r}
-tibble(ID = 1:1000) %>% 
+tibble(ID = 1:1000) |> 
   mutate(result = map_chr(ID, ~ 
                             prediction_game(guesses = c(500, 600),
                                             kenya, 
-                                            rv13))) %>% 
+                                            rv13))) |> 
   ggplot(aes(result)) +
     geom_bar()
 ```
@@ -606,11 +606,11 @@ It is hardly surprising that 500 wins more often than 600 since the mean of `rv1
 To test whether the mean or the median is a better guess, we will use our created `prediction_game` function with the guesses of 442 (the median) and 539 (the mean) and plot the results. 
 
 ```{r}
-tibble(ID = 1:1000) %>% 
+tibble(ID = 1:1000) |> 
   mutate(result = map_chr(ID, 
                           ~ prediction_game(c(442, 539),
                                             kenya,
-                                            rv13))) %>% 
+                                            rv13))) |> 
   ggplot(aes(result)) +
     geom_bar()
 ```
@@ -622,18 +622,18 @@ The mean is not a bad prediction. But the best prediction is (surprisingly?) the
 In other cases, it is more convenient to play portions of the Prediction Game within a tibble. Imagine that we are trying to guess the biggest value out of 10 random samples. 
 
 ```{r}
-tibble(ID = 1:3, guess_1 = 800, guess_2 = 900) %>% 
+tibble(ID = 1:3, guess_1 = 800, guess_2 = 900) |> 
   mutate(result = map(ID, ~ no_NA_sampler(kenya, rv13, 10)))
 ```
 
 We can now manipulate the `result` column and then see which prediction did better. Using the same structure as before, we subtract our guesses from the variable we were guessing; in this case, the biggest value in 10 random samples.  
 
 ```{r}
-tibble(ID = 1:3, guess_1 = 800, guess_2 = 900) %>% 
-  mutate(result = map(ID, ~ no_NA_sampler(kenya, rv13, 10))) %>% 
-  mutate(biggest = map_dbl(result, ~ max(.))) %>% 
-  mutate(error_1 = abs(guess_1 - biggest)) %>% 
-  mutate(error_2 = abs(guess_2 - biggest)) %>% 
+tibble(ID = 1:3, guess_1 = 800, guess_2 = 900) |> 
+  mutate(result = map(ID, ~ no_NA_sampler(kenya, rv13, 10))) |> 
+  mutate(biggest = map_dbl(result, ~ max(.))) |> 
+  mutate(error_1 = abs(guess_1 - biggest)) |> 
+  mutate(error_2 = abs(guess_2 - biggest)) |> 
   mutate(winner = case_when(error_1 < error_2 ~ "Guess one wins!",
                             error_1 > error_2 ~ "Guess two wins!",
                             TRUE ~ "A tie!"))
@@ -642,14 +642,14 @@ tibble(ID = 1:3, guess_1 = 800, guess_2 = 900) %>%
 Run the test 1,000 times.
 
 ```{r}
-tibble(ID = 1:1000, guess_1 = 800, guess_2 = 900) %>% 
-  mutate(result = map(ID, ~ no_NA_sampler(kenya, rv13, 10))) %>% 
-  mutate(biggest = map_dbl(result, ~ max(.))) %>% 
-  mutate(error_1 = abs(guess_1 - biggest)) %>% 
-  mutate(error_2 = abs(guess_2 - biggest)) %>% 
+tibble(ID = 1:1000, guess_1 = 800, guess_2 = 900) |> 
+  mutate(result = map(ID, ~ no_NA_sampler(kenya, rv13, 10))) |> 
+  mutate(biggest = map_dbl(result, ~ max(.))) |> 
+  mutate(error_1 = abs(guess_1 - biggest)) |> 
+  mutate(error_2 = abs(guess_2 - biggest)) |> 
   mutate(winner = case_when(error_1 < error_2 ~ "Guess one wins!",
                             error_1 > error_2 ~ "Guess two wins!",
-                            TRUE ~ "A tie!")) %>% 
+                            TRUE ~ "A tie!")) |> 
   ggplot(aes(winner)) +
     geom_bar()
 ```

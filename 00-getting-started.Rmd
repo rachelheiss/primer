@@ -12,7 +12,7 @@ Throughout this book, we assume that you are using R via RStudio. R is to RStudi
 
 More precisely, R is a programming language that runs computations, while RStudio is an *integrated development environment (IDE)* that provides an interface with many convenient features. Just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier. 
 
-Download and install both R and RStudio (Desktop version) on your computer. 
+Download and install R and RStudio (Desktop version) on your computer. 
 
 1. **Do this first:** [Download and install R](https://cloud.r-project.org/). 
 
@@ -29,7 +29,7 @@ knitr::include_graphics("00-getting-started/images/R_vs_RStudio.png")
 Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new *programs* (also called *applications*) you can open. Always work in RStudio and not directly in the R application. 
 
 
-Let's begin with getting familiar with RStudio. Open up RStudio. You should see three *panes*, or panels, dividing the screen: the *Console pane*, the *Files pane*, and the *Environment pane*. 
+Let's get familiar with RStudio. Open up RStudio. You should see three *panes*, or panels, dividing the screen: the *Console pane*, the *Files pane*, and the *Environment pane*. 
 
 
 ```{r, echo = FALSE}
@@ -56,15 +56,13 @@ The main two tabs you'll be using are Environment and Git (which is not yet visi
 x <- 5
 ```
 
-This assigned the value 5 to an object, x. `<-` is the operator used to assign values to objecjts in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command. Look at the bottom right window:
+This assigned the value 5 to an object, x. `<-` is the operator used to assign values to objects in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command. Look at the bottom right window:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/bottom_right_window.png")
 ```
 
-
-The Files tab displays your computer's file system. When you create a project later, this tab will automatically show the contents of your project's folder. The Plots tab will show you a preview of any plots you make in RStudio. Help will be [discussed later](#how-to-get-help).
-
+The Files tab displays your computer's file system. When you create a project later, this tab will automatically show the contents of your project's folder. The Plots tab will show you a preview of any plots you make in RStudio.
 
 ### Package installation {-}
 
@@ -90,13 +88,21 @@ knitr::include_graphics("00-getting-started/images/install_vs_load.jpg")
 1. *Install the package*: This is like installing an app on your phone. Most packages are not installed by default when you install R and RStudio. Thus if you want to use a package for the first time, you need to install it. Once you've installed a package, you likely won't install it again unless you want to update it to a newer version.
 1. *"Load" the package*: "Loading" a package is like opening an app on your phone. Packages are not "loaded" by default when you start RStudio. You need to "load" each package you want to use every time you restart RStudio.
 
-Let's install three of the packages which we will need in the *Primer*. At the Console pane within RStudio, type: 
+Before installing packages, issue this command:
 
 ```{r, eval = FALSE}
-install.packages(c("remotes", "tidyverse", "usethis"))
+options(pkgType = "binary")
 ```
 
-And press Return/Enter on your keyboard. Note you must include the quotation marks around the names of the packages. Note that these packages depend on other packages, which will be automatically installed.
+Doing so just makes various errors less likely.
+
+Install a package which we will need in the *Primer*. At the Console pane within RStudio, type: 
+
+```{r, eval = FALSE}
+install.packages("remotes")
+```
+
+And press return/enter on your keyboard. Note you must include the quotation marks around the name of the package. A package can depend on other packages, which will be automatically installed if needed.
 
 One tricky aspect of this process is that R will occasionally ask you:
 
@@ -124,7 +130,7 @@ For example, to load the **remotes** package, run the following code in the Cons
 library(remotes)
 ```
 
-After running the earlier code, a blinking cursor should appear next to the `>` symbol. (The `>`  is generally referred to as the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you get a red "error message" that reads:
+After running the earlier code, a blinking cursor should appear next to the `>` symbol. (The `>` is the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you get a red "error message" that reads:
 
 ```
 Error in library(remotes) : there is no package called ‘remotes’
@@ -153,28 +159,31 @@ library(remotes)
 remotes::install_github("PPBDS/primer.tutorials")
 ```
 
-Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste overturn "curly." In that case, type the commands yourself.
+Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn "curly." In that case, type the commands yourself.
 
 Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*.  It may take a few minutes. If something gets messed up, it is often useful to use the `remove.packages()` command to remove the problematic package and then install it again. 
 
 ### RStudio set up {-}
 
+<!-- See here https://docs.rstudio.com/ide/server-pro/session_user_settings/session_user_settings.html for other settings we can choose to make. -->
+
 You will thank us later if you run these commands now:
 
 ```{r, eval = FALSE}
-library(usethis)
-use_blank_slate()
+library(rstudioapi)
+writeRStudioPreference("save_workspace", "never")
+writeRStudioPreference("load_workspace", FALSE)
+writeRStudioPreference("insert_native_pipe_operator", TRUE)
+writeRStudioPreference("show_hidden_files", TRUE)
 ```
 
-This changes the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a *reproducible* analysis. 
+The first two change the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a *reproducible* analysis. The third and fourth change some of the default settings for RStudio. Seeing all the hidden files is often helpful. These setting could also be set "by hand" by using the GUI, as in this gif of changing the default to show all hidden files.
 
-Additionally, go to the Files window, select More, and click "Show Hidden Files".
 
 ```{r, echo=FALSE}
 knitr::include_graphics("00-getting-started/images/hidden_files.gif")
 ```
 
-This will show all of the hidden files that R has (in this case, they're stored in R.proj.user). This becomes useful later on when we want to see all of the files that a folder has without hiding anything.
 
 ### Creating R projects {-}
 
@@ -329,34 +338,35 @@ You should have done the following:
 
 * Installed the *latest* versions of R and RStudio. 
 
-* Installed, from CRAN, these three packages:
+* Installed, from CRAN, the **remotes** package:
 
 ```{r, eval = FALSE}
-install.packages(c("remotes", "tidyverse", "usethis"))
+install.packages("remotes")
 ```
 
 * Installed, from Github, this package:
 
 ```{r, eval = FALSE}
 remotes::install_github("PPBDS/primer.tutorials")
-
 ```
 
 * Set up your RStudio preferences:
 
 ```{r, eval = FALSE}
-usethis::use_blank_slate()
+library(rstudioapi)
+writeRStudioPreference("save_workspace", "never")
+writeRStudioPreference("load_workspace", FALSE)
+writeRStudioPreference("insert_native_pipe_operator", TRUE)
+writeRStudioPreference("show_hidden_files", TRUE)
 ```
 
 * Created a project folder to place your R projects in.
 
 * Created a new R project and learned how to use R Markdown files.
 
-* Learned some basic terminology that will help you when you read the rest of the Primer.
+* Learned some basic terminology that will help you when you read the rest of the *Primer*.
 
 Let's get started.
-
-<!-- AG: Added a Star Wars meme at the end to correlate with the Yoda thing at the beginning. It's just a quick edit to make it end better for now, we can make it look better later. -->
 
 ```{r, echo=FALSE}
 knitr::include_graphics("00-getting-started/images/ending.gif")

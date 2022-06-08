@@ -186,6 +186,16 @@ The first two change the default value of RStudio to start each session afresh, 
 knitr::include_graphics("00-getting-started/images/hidden_files.gif")
 ```
 
+Finally, type this command:
+
+```{r, eval = FALSE}
+library(primer.tutorials)
+primer.tutorials::install_only_binary_packages()
+```
+
+This ensures that you will not, in general, attempt to compile programs. Don't worry if you don't know what that means.
+
+
 
 ### Creating R projects {-}
 
@@ -321,7 +331,7 @@ sqrt(64)
 
 * *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.
 
-```{r}
+```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/code-comment.png")
 ```
 

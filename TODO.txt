@@ -1,17 +1,7 @@
 # Priorities
 
-## Students
+Fix chapter 5 so cool 3D graphics appear.
 
-Atilla 9/25
-
-Sophia 1/1
-Ajay 1/1 
-Anmay 1/1
-
-Atilla (plots) -- chapter 2
-Anmay -- chapter 3
-Sophia (shaming) -- chapter 4
-Ajay -- rtweet (https://cran.r-project.org/web/packages/rtweet/)? tidytext (https://github.com/juliasilge/tidytext) (https://www.tidytextmining.com/) 
 
 ## Important topics for this summer
 

@@ -173,6 +173,7 @@ FIGURE 0.4: Installing versus loading an R package
 <em>“Load” the package</em>: “Loading” a package is like opening an app on your phone. Packages are not “loaded” by default when you start RStudio. You need to “load” each package you want to use every time you restart RStudio.</li>
 </ol>
 <p>Before installing packages, issue this command:</p>
+<!-- Is this necessary? Is there a better way to handle it? -->
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>pkgType <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></code></pre></div>
 <p>Doing so just makes various errors less likely.</p>
@@ -229,6 +230,11 @@ FIGURE 0.4: Installing versus loading an R package
 <span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"show_hidden_files"</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>The first two change the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a <em>reproducible</em> analysis. The third and fourth change some of the default settings for RStudio. Seeing all the hidden files is often helpful. These setting could also be set “by hand” by using the GUI, as in this gif of changing the default to show all hidden files.</p>
 <div class="inline-figure"><img src="00-getting-started/images/hidden_files.gif" width="100%"></div>
+<p>Finally, type this command:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.tutorials</span><span class="op">)</span>
+<span class="fu">primer.tutorials</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/primer.tutorials/man/install_only_binary_packages.html">install_only_binary_packages</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This ensures that you will not, in general, attempt to compile programs. Don’t worry if you don’t know what that means.</p>
 </div>
 <div id="creating-r-projects" class="section level3 unnumbered">
 <h3>Creating R projects<a class="anchor" aria-label="anchor" href="#creating-r-projects"><i class="fas fa-link"></i></a>
@@ -245,7 +251,7 @@ FIGURE 0.4: Installing versus loading an R package
 <p>Additionally, do NOT put the folder in OneDrive or a cloud file system. This prevents you from accessing certain files easily. Make sure to save the folder to your local drive.</p>
 </blockquote>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<span style="display:block;" id="fig:unnamed-chunk-28"></span>
 <img src="00-getting-started/images/new_folder.gif" alt="Here's how to create a new projects folder on Windows." width="100%"><p class="caption">
 FIGURE 0.5: Here’s how to create a new projects folder on Windows.
 </p>
@@ -253,7 +259,7 @@ FIGURE 0.5: Here’s how to create a new projects folder on Windows.
 <!-- AG: How do we structure menu commands? This is a very small problem but it'd be nice to have something standard. -->
 <p>We can create an R Project by going to File -&gt; New Project and following the dialogues. Make sure to keep your project in the folder that you just created.</p>
 <div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<span style="display:block;" id="fig:unnamed-chunk-29"></span>
 <img src="00-getting-started/images/new_r_project.gif" alt="For now, we won't be connecting the projects to GitHub, but you will need to do this for future projects." width="100%"><p class="caption">
 FIGURE 0.6: For now, we won’t be connecting the projects to GitHub, but you will need to do this for future projects.
 </p>
@@ -285,9 +291,9 @@ FIGURE 0.6: For now, we won’t be connecting the projects to GitHub, but you wi
 <p>Finally, you can code in R Markdown by adding a code chunk. This allows you to put R code into your R Markdown file, which then runs like normal R code but displays in the R Markdown report. That means that you can create graphs and then add your own explanations to them within the same file.</p>
 <p>You can see an example of a code chunk in the default R Markdown file.<br>
 It looks like this:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="getting-started.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pressure, echo=FALSE}</span></span>
-<span id="cb10-2"><a href="getting-started.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure)</span></span>
-<span id="cb10-3"><a href="getting-started.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="getting-started.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pressure, echo=FALSE}</span></span>
+<span id="cb11-2"><a href="getting-started.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure)</span></span>
+<span id="cb11-3"><a href="getting-started.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>And knits like this:</p>
 <div class="inline-figure"><img src="00-getting-started/images/code_chunk_graph.PNG" width="100%"></div>
 <p>Overall, R Markdown files allow you to generate cool looking reports with special formatting, letting you put both your analysis and your graph together.</p>
@@ -318,7 +324,7 @@ It looks like this:</p>
 <li>
 <em>Functions</em>: these perform tasks by taking an input called an <em>argument</em> and returning an output. Take a look at the example below.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">64</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the console!</p>
@@ -326,8 +332,6 @@ It looks like this:</p>
 <li><p><em>Help files</em>: these provide documentation for functions and datasets. You can bring up help files by adding a <code>?</code> before the name of the object then run this in the console. The <code>ggplot2</code> package is where a lot of the functions we will use for graphing will be located. Run <code>?ggplot2</code> in the console and see what pops up.</p></li>
 <li><p><em>Code comments</em>: these are text placed after a <code>#</code> symbol. Nothing will be run after a <code>#</code> symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.</p></li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"00-getting-started/images/code-comment.png"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="00-getting-started/images/code-comment.png" width="100%"></div>
 <ul>
 <li>

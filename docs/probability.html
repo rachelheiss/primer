@@ -99,6 +99,9 @@
 <h1>
 <span class="header-section-number">5</span> Probability<a class="anchor" aria-label="anchor" href="#probability"><i class="fas fa-link"></i></a>
 </h1>
+<!-- Yuhan: Once I try to renv:restore terra package didn't seems to work. -->
+<!-- Yuhan: In addition, when I try to download the package rgl it doesn't seems to work. Maybe this is the problem? -->
+<!-- Yuhan: testing for git push. -->
 <!-- For some reason, this now fails regularly with an error like "Error: C stack usage  8727068 is too close to the limit". Something has changed since June 2021. Highest priority is fixing this. Googling around it seems like others have seen this problem. Google also suggests that the cause is a recursive function call of some kind. For now, I have commented out the three or four places where plot_gg() is used. That has made the problem go away, but at the cost of losing our cool 3D plots. -->
 <!-- Major change is that each example needs to have a simple question. Then it needs a DGM. Then we use the DGM to answer the question.  -->
 <!-- Topics we don't currently address in the chapter but which we might add: population, Preceptor Table, Population Table. -->
@@ -138,7 +141,7 @@
 <p>We usually use capital letters for random variables. So, <span class="math inline">\(C\)</span> might be our symbol for the random variable which is a coin toss and <span class="math inline">\(D\)</span> might be our symbol for the random variable which is the sum of two dice. When discussing random variables in general, or when we grow tired of coming up with new symbols, we will use <span class="math inline">\(Y\)</span>.</p>
 <p>Small letters refer to a single outcome or result from a random variable. <span class="math inline">\(c\)</span> is the outcome from one coin toss. <span class="math inline">\(d\)</span> is the result from one throw of the dice. The value of the outcome must come from the sample space. So, <span class="math inline">\(c\)</span> can only take on two possible values: heads or tails. When discussing random variables in general, we use <span class="math inline">\(y\)</span> to refer to one outcome of the random variable <span class="math inline">\(Y\)</span>. If there are multiple outcomes — if we have, for example, flipped the coin multiple times — then we use subscripts to indicate the separate outcomes: <span class="math inline">\(y_1\)</span>, <span class="math inline">\(y_2\)</span>, and so on. The symbol for an arbitrary outcome is <span class="math inline">\(y_i\)</span>, where <span class="math inline">\(i\)</span> ranges from 1 through <span class="math inline">\(N\)</span>, the total number of events or experiments for which an outcome <span class="math inline">\(y\)</span> was produced.</p>
 <p>The only package we need in this chapter is <strong>tidyverse</strong>.</p>
-<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>To understand probability more fully, we first need to understand distributions.</p>
 <div id="distributions" class="section level2" number="5.1">
@@ -151,7 +154,7 @@
 <span class="header-section-number">5.1.1</span> Scaling distributions<a class="anchor" aria-label="anchor" href="#scaling-distributions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consider the vector which is the result of rolling one die 10 times.</p>
-<div class="sourceCode" id="cb538"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ten_rolls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">6</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <p>There are other ways of storing the data in this vector. Instead of reporting every observation, we could record the number of times each value appears and the percentage of the total which this number accounts for.</p>
 <div id="agtkogyswh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1072,7 +1075,7 @@
 </div>
 <p>Instead of keeping around a vector of length 1,000, we can just keep 12 values — the 6 possible outcomes and their frequency — without losing any information.</p>
 <p>Two distributions can be identical even if they are of very different lengths. Let’s compare our original distribution of 10 rolls of the die with another distribution which just features 100 copies of those 10 rolls.</p>
-<div class="sourceCode" id="cb539"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">more_rolls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">ten_rolls</span>, <span class="fl">100</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-371-1.png" width="100%"></div>
 <p>The two graphs have the exact same shape because, even though the vectors are of different lengths, the relative proportions of the outcomes are identical. In some sense, both vectors are from the same distribution. <em>Relative proportions, not the total counts, are what matter.</em></p>
@@ -1132,7 +1135,7 @@ FIGURE 5.1: Bruno de Finetti, an Italian statistician who wrote a famous treatis
 <p>All data science problems start with a question. Example: <em>What are the chances of getting three heads in a row when flipping a fair coin?</em> All questions are answered with the help of probability distributions.</p>
 <p>An <em>empirical distribution</em> is based on data. You can think of this as the probability distribution created by running a simulation. In theory, if we increase the number of coins we flip in our simulation, the empirical distribution will look more and more similar to the mathematical distribution. The mathematical distribution is the Platonic form. The empirical distribution will often look like the mathematical probability distribution, but it will rarely be exactly the same.</p>
 <p>In this simulation, there are 56 heads and 44 tails. The outcome will vary every time we run the simulation, but the proportion of heads to tails should not be too different if this coin is fair.</p>
-<div class="sourceCode" id="cb540"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># We are flipping one fair coin a hundreds times. We need to get the same result</span>
 <span class="co"># each time we create this graphic because we want the results to match the</span>
 <span class="co"># description in the text. Using set.seed() guarantees that the random results</span>
@@ -1176,11 +1179,11 @@ All five of these versions mean the same thing! The first four describe the math
 <p>The full terminology is mathematical (or empirical or posterior) <em>probability</em> distribution. But we will often shorten this to just mathematical (or empirical or posterior) distribution. The word “probability” is understood, even if it is not present.</p>
 <!-- DK: Not sure I like this. Maybe use `rbinom(n = 10, size = 13, prob = 0.5)` instead? Maybe show both? -->
 <p>Recall the question with which we started this section: <em>What are the chances of getting three heads in a row when flipping a fair coin?</em> To answer this question, we need to use a probability distribution as our <em>data generating mechanism</em>. Fortunately, the <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code> function allows us to generate the results for coin flips. For example:</p>
-<div class="sourceCode" id="cb541"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb542"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] 1 1 0 1 1 0 0 0 0 0</code></pre>
 <p>generates the results of 10 coin flips, where a result of heads is presented as <code>1</code> and tails as <code>0</code>. With this tool, we can generate 1,000 draws from our experiment:</p>
-<div class="sourceCode" id="cb543"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb544"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>toss_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
        toss_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
        toss_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -1199,7 +1202,7 @@ All five of these versions mean the same thing! The first four describe the math
 ## 10      0      1      1
 ## # … with 990 more rows</code></pre>
 <p>Because the flips are independent, we can consider each row to be a draw from the experiment. Then, we simply count up the proportion of experiments in which resulted in three heads.</p>
-<div class="sourceCode" id="cb545"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb546"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>toss_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
        toss_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,
        toss_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> |&gt; 
@@ -1217,7 +1220,7 @@ All five of these versions mean the same thing! The first four describe the math
 <span class="header-section-number">5.2.2</span> Rolling two dice<a class="anchor" aria-label="anchor" href="#rolling-two-dice"><i class="fas fa-link"></i></a>
 </h3>
 <p>We get an <em>empirical distribution</em> by rolling two dice a hundred times, either by hand or with a computer simulation. The result is not identical to the mathematical distribution because of the inherent randomness of the real world and/or of simulation.</p>
-<div class="sourceCode" id="cb547"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># In the coin example, we create the vector ahead of time, and then assigned</span>
 <span class="co"># that vector to a tibble. There was nothing wrong with that approach. And we</span>
 <span class="co"># could do the same thing here. But the use of map_* functions is more powerful,</span>
@@ -1340,7 +1343,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <span class="header-section-number">5.3</span> List-columns and map functions<a class="anchor" aria-label="anchor" href="#list-columns-and-map-functions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Before working with probability models, we need to expand our collection of R tricks by understanding list-columns and <code>map_*</code> functions. Recall that a list is different from an atomic vector. In atomic vectors, each element of the vector has one value. Lists, however, can contain vectors, and even more complex objects, as elements.</p>
-<div class="sourceCode" id="cb548"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb549"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">16</span>, <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"Z"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x</span></code></pre></div>
 <pre><code>## [[1]]
@@ -1349,11 +1352,11 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 ## [[2]]
 ## [1] "A" "Z"</code></pre>
 <p><code>x</code> is a list with two elements. The first element is a numeric vector of length 3. The second element is a character vector of length 2. We use <code>[[]]</code> to extract specific elements.</p>
-<div class="sourceCode" id="cb550"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb551"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1]  4 16  9</code></pre>
 <p>There are a number of built-in R functions that output lists. For example, the <strong><em>ggplot</em></strong> objects you have been making store all of the plot information in lists. Any function that returns multiple values can be used to create a list output by wrapping that returned object with <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>.</p>
-<div class="sourceCode" id="cb552"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb553"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
 
 <span class="co"># range() returns the min and max of the argument </span>
@@ -1366,7 +1369,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <p>Notice this is a 1-by-1 tibble with one observation, which is a list of one element. Voila! You have just created a <strong>list-column</strong>.</p>
 <p><em>If a function returns multiple values as a vector, like <code><a href="https://rdrr.io/r/base/range.html">range()</a></code> does, you must use <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> as a wrapper if you want to create a list-column.</em></p>
 <p>A list column is a column of your data which is a <a href="https://adv-r.hadley.nz/vectors-chap.html#lists">list</a> rather than an atomic vector. As with stand-alone list objects, you can pipe to <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> to examine the column.</p>
-<div class="sourceCode" id="cb554"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb555"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># tibble() is what we use to generate a tibble, it acts sort of like the mutate(), but mutate() needs a data frame to add new column, tibble can survive on itself.</span>
 <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>col_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -1374,7 +1377,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 ##  $ col_1:List of 1
 ##   ..$ : num [1:2] -1.01 1.42</code></pre>
 <p>We can use <code>map_*</code> functions to both create a list-column and then, much more importantly, work with that list-column afterwards.</p>
-<div class="sourceCode" id="cb556"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb557"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># .x is col_1 from tibble and ~ sum(.) is the formula</span>
 <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>col_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>col_2 <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">col_1</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt; 
@@ -1386,7 +1389,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <p><code>map_*</code> functions, like <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> in this example, take two key arguments, <code>.x</code> (the data which will be acted on) and <code>.f</code> (the function which will act on this data). Here, <code>.x</code> is the data in <code>col_1</code>, which is a list-column. <code>.f</code> is the function <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>. However, we can not simply write <code>map_dbl(col_1, sum)</code>. Instead, each use of <code>map_*</code> functions requires the use of a tilde — a <code>~</code> — to indicate the start of the function and the use of a dot — a <code>.</code> — to specify where the data goes in the function.</p>
 <p><code>map_*</code> functions are a family of functions, with the suffix specifying the type of the object to be returned. <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> itself returns a list. <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code> returns a double. <code><a href="https://purrr.tidyverse.org/reference/map.html">map_int()</a></code> returns an integer. <code><a href="https://purrr.tidyverse.org/reference/map.html">map_chr()</a></code> returns a character, and so on.</p>
 <p>To summarise <code>map</code> function and <code>map_</code>* functions could both convert an data (vector or list) with the specific denoted functions or formula you set, and always results in list we called the “list Column”. There are two arguments in the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function as well as <code>map_*()</code> function the <code>.x</code> and <code>.f</code>, the <code>.x</code> and <code>.f</code> placed in the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> functions and <code>map_*()</code>functions like this <code>map(.x,.f)</code>, where <code>.x</code> could either be a list or a vector, and <code>.f</code> either be a direct function like <code>.f=mean</code>, or an formula like <code>.f= ~mean(.x)</code>, remember to put the <code>~</code> if you are using <code>.f</code> an formula, the difference between <code>map</code> and <code>map_*</code> function is when you know and want the outcome of the data to be specific data vector like (<code>double</code>, <code>logical</code>,<code>character</code>,<code>integer</code>) rather than an general <code>list</code> in <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>, you can use <code>map_*</code> instead of <code>map</code> to organized your list column.</p>
-<div class="sourceCode" id="cb558"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb559"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>col_1 <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">ID</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>col_2 <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">col_1</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt; 
@@ -1401,7 +1404,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 ##  $ col_3: int 2
 ##  $ col_4: chr "-0.142989"</code></pre>
 <p>Consider a more detailed example:</p>
-<div class="sourceCode" id="cb560"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb561"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># This simple example demonstrates the workflow which we will often follow.</span>
 <span class="co"># Start by creating a tibble which will be used to store the results. (Or start</span>
 <span class="co"># with a tibble which already exists and to which you will be adding more</span>
@@ -1456,7 +1459,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <p>To answer this question, we need to use the tools of joint and conditional probability from earlier in the Chapter. We begin by building, by hand, the joint distribution of the possible models (you have the Probophobia or you do not) and of the possible outcomes (you test positive or negative). Building the joint distribution involves <em>assuming</em> that each model is true and then creating the distribution of outcomes which might occur if that assumption is true.</p>
 <p>For example, assume you have Probophobia. There is then a 50% chance that you test positive and a 50% chance you test negative. Similarly, if we assume that the second model is true — that you don’t have Probophobia — then there is 1% chance you test positive and a 99% you chance negative. Of course, for you (or any individual) we do not know for sure what is happening. We do not know if you have the disease. We do not know what your test will show. But we can use these relationships to construct the joint distribution.</p>
 <!-- DK: Redo this analysis, and perhaps other similar examples below. First, column of tibble is the state of the world. Or list of all possible models. In this case, this would be `have_disease` which should be either TRUE or FALSE.  -->
-<div class="sourceCode" id="cb562"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb563"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Pipes generally start with tibbles, so we start with a tibble which just</span>
 <span class="co"># includes an ID variable. We don't really use ID. It is just handy for getting</span>
 <span class="co"># organized. We call this object `jd_disease`, where the `jd` stands for</span>
@@ -1496,7 +1499,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <p>This Section is called “Two Models” because, for each person, <em>there are two possible states of the world: have the disease or not have the disease.</em> By assumption, there are no other outcomes. We call these two possible states of the world “models,” even though they are very simple models.</p>
 <p>In addition to the two models, we have two possible results of our experiment on a given person: test positive or test negative. Again, this is an assumption. We do not allow for any other outcome. In coming sections, we will look at more complex situations where we consider more than two models and more than two possible results of the experiment. In the meantime, we have built the <em>unnormalized joint distribution for models and results</em>. This is a key point! Look back earlier in this Chapter for discussions about both unnormalized distributions and joint distributions.</p>
 <p>We want to analyze these plots by looking at different slices. For instance, let’s say that you have tested positive for the disease. Since the test is not always accurate, you cannot be 100% certain that you have it. We isolate the slice where the test result equals 1 (meaning positive).</p>
-<div class="sourceCode" id="cb564"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb565"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jd_disease</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">positive_test</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7,484 × 3
@@ -1525,7 +1528,7 @@ FIGURE 5.2: Watch the makers of these two models throw shade at each other on Tw
 <em>With a positive test, you can be almost 70% sure that you have Probophobia, however there is a good chance about 30% that you receive a false positive, so don’t worry too much there is still about a third of hope that you get the wrong result</em></p>
 <p>Now let’s consider the manipulation of this posterior, here is another question.
 Question : <em>10 people walks up to testing center, 5 of them tested negative, 5 of them tested positive, what is the probability of at least 6 people is actually healthy? </em></p>
-<div class="sourceCode" id="cb566"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100000</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>person1 <span class="op">=</span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">test</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">1</span>, p <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>person2 <span class="op">=</span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">test</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">1</span>, p <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
@@ -1568,7 +1571,7 @@ Question : <em>10 people walks up to testing center, 5 of them tested negative, 
 Just as during the <em>Probophobia</em> models, in order to answer this question, we need to start up with the simulated data and then graphing out the joint distribution of this sinerio because we need to considered all possible outcomes of this model, and then based on the joint distribution we can slice out the the part we want (Conditional distribution) in the end making an posterior graph as well as normalizing it to see the probability.</p>
 <p>Step 1: Simulate the data into an tibble</p>
 <p>Let’s say you take a marble out of the bag, record whether it’s black or white, then return it to the bag. You repeat this three times, observing the number of white marbles you see out of three trials. You could get three whites, two whites, one white, or zero whites as a result of this trial. We have three models (three different proportions of white marbles in the bag) and four possible experimental results. Let’s create 3,000 draws from this joint distribution:</p>
-<div class="sourceCode" id="cb567"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb568"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create the joint distribution of the number of white marbles in the bag</span>
 <span class="co"># (in_bag) and the number of white marbles pulled out in the sample (in_sample),</span>
 <span class="co"># one-by-one. in_bag takes three possible values: 0, 1 and 2, corresponding to</span>
@@ -1613,7 +1616,7 @@ Just as during the <em>Probophobia</em> models, in order to answer this question
 ## 10    10      1         2
 ## # … with 9,990 more rows</code></pre>
 <p>Step 2: Plot the joint distribution:</p>
-<div class="sourceCode" id="cb569"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># The distribution is unnormalized. All we see is the number of outcomes in each</span>
 <span class="co"># "bucket." Although it is never stated clearly, we are assuming that there is</span>
 <span class="co"># an equal likelihood of 0, 1 or 2 white marbles in the bag.</span>
@@ -1632,7 +1635,7 @@ Just as during the <em>Probophobia</em> models, in order to answer this question
 <p>The y-axes of both the scatterplot and the 3D visualization are labeled “Number of White Marbles in the Bag.” <em>Each value on the y-axis is a model, a belief about the world.</em> For instance, when the model is 0, we have no white marbles in the bag, meaning that none of the marbles we pull out in the sample will be white.</p>
 <p>Now recalls the question, we essentially only care about the fourth column in the joint distribution (x-axis=3) because the question is asking us to create a conditional distribution <em>given</em> that fact that 3 marbles were selected. Therefore, we could isolate the slice where the result of the simulation involves three white marbles and zero black ones. Here is the unnormalized probability distribution.</p>
 <p>Step 3: Plot the unnormalized conditional distribution.</p>
-<div class="sourceCode" id="cb570"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># The key step is the filter. Creating a conditional distribution from a joint</span>
 <span class="co"># distribution is the same thing as filtering that joint distribution for a</span>
 <span class="co"># specific value. A conditional distribution is a "slice" of the joint</span>
@@ -1652,7 +1655,7 @@ Just as during the <em>Probophobia</em> models, in order to answer this question
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-414-1.png" width="100%"></div>
 <p>Step 4: Plot the normalize posterior distribution.
 Next, let’s normalize the distribution.</p>
-<div class="sourceCode" id="cb571"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb572"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jd_marbles</span> |&gt; 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">in_sample</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">in_bag</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -1797,7 +1800,7 @@ a range of observations to red/blue, the z-values of these observations will be 
 <p>You might be wondering: what is the use of a model? Well, let’s say we toss the coin 20 times and get 8 heads again. Given this result, we can ask: <em>What is the probability that future samples of 20 flips will result in 10 or more heads?</em></p>
 <p>There are three main ways you could go about solving this problem with simulations.</p>
 <p>The first <em>wrong</em> way to do this is assuming that <span class="math inline">\(\rho_h\)</span> is certain because we observed 8 heads after 20 tosses. We would conclude that 8/20 gives us 0.4. The big problem with this is that you are ignoring your uncertainty when estimating <span class="math inline">\(\rho_h\)</span>. This would lead us to the following code.</p>
-<div class="sourceCode" id="cb572"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb573"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sims</span> <span class="op">&lt;-</span> <span class="fl">10000000</span>
 
 <span class="va">odds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>sim_ID <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">sims</span><span class="op">)</span> |&gt;
@@ -1819,7 +1822,7 @@ a range of observations to red/blue, the z-values of these observations will be 
 ##  9      9     9 FALSE    
 ## 10     10     9 FALSE    
 ## # … with 9,999,990 more rows</code></pre>
-<div class="sourceCode" id="cb574"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">odds</span> |&gt;
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">heads</span>,fill<span class="op">=</span><span class="va">above_ten</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,bins <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">+</span>
@@ -1834,7 +1837,7 @@ a range of observations to red/blue, the z-values of these observations will be 
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="book_temp_files/figure-html/unnamed-chunk-424-1.png" width="100%"></div>
 <p>Using this Posterior distribution derived from the (wrong way) simulated data, the probability results in 10 or more head is</p>
-<div class="sourceCode" id="cb575"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb576"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">odds</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>success <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">above_ten</span><span class="op">)</span><span class="op">/</span><span class="va">sims</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
@@ -1843,7 +1846,7 @@ a range of observations to red/blue, the z-values of these observations will be 
 ## 1   0.245</code></pre>
 <p>about 24.5%.</p>
 <p>The second method involves sampling the whole posterior distribution vector we previously created. This would lead to the following correct code.</p>
-<div class="sourceCode" id="cb577"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb578"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p_draws</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>heads <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="va">p</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">20</span>, p <span class="op">=</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">heads</span> <span class="op">==</span> <span class="fl">8</span><span class="op">)</span>
@@ -1867,7 +1870,7 @@ a range of observations to red/blue, the z-values of these observations will be 
 ##  9   0.5    10 TRUE     
 ## 10   0.4     8 FALSE    
 ## # … with 9,999,990 more rows</code></pre>
-<div class="sourceCode" id="cb579"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb580"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">odds_2nd</span> |&gt;
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">heads</span>,fill <span class="op">=</span> <span class="va">above_ten</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,bins <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">+</span>
@@ -1883,7 +1886,7 @@ a range of observations to red/blue, the z-values of these observations will be 
 <div class="inline-figure">
 <img src="book_temp_files/figure-html/unnamed-chunk-427-1.png" width="100%">
 Using this Posterior distribution derived from the (right way 1st) simulated data, the probability results in 10 or more head is</div>
-<div class="sourceCode" id="cb580"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb581"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">odds_2nd</span> |&gt;
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>success <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">above_ten</span><span class="op">)</span><span class="op">/</span><span class="va">sims</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
@@ -1905,7 +1908,7 @@ Using this Posterior distribution derived from the (right way 1st) simulated dat
 </h2>
 <!-- DK: Does this really belong here? Maybe at the end? -->
 <p>A probability distribution is not always easy to work with. It is a complex object. And, in many contexts, we don’t really care about all that complexity. So, instead of providing the full probability distribution, we often just use a summary measure, a number or two or three which captures those aspects of the entire distribution which are relevant to the matter at hand. Let’s explore these issues using the 538 posterior probability distribution, as of August 13, 2020, for the number of electoral votes which will be won by Joe Biden. Here is a tibble with 1,000,000 draws from that distribution:</p>
-<div class="sourceCode" id="cb582"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb583"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">draws</span></code></pre></div>
 <pre><code>## # A tibble: 1,000,000 × 2
 ##       ID electoral_votes
@@ -1924,14 +1927,14 @@ Using this Posterior distribution derived from the (right way 1st) simulated dat
 <p><em>A distribution and a sample of draws from that distribution are different things.</em> But, if you squint, they are sort of the same thing, at least for our purposes. For example, if you want to know the mean of the distribution, then the mean of the draws will be a fairly good estimate, especially if the number of draws is large enough.</p>
 <!-- DK: Need more here. Connect to the discussion in Section 2.9 -->
 <p>Recall from Chapter <a href="wrangling.html#wrangling">2</a> how we can draw randomly from specified probability distributions:</p>
-<div class="sourceCode" id="cb584"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb585"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1]  2.234  2.232 -0.624 -0.014  2.370  0.428 -0.556  0.688 -0.632  0.556</code></pre>
-<div class="sourceCode" id="cb586"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb587"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] 0.86 0.94 0.41 0.67 0.29 0.21 0.54 0.37 0.48 0.80</code></pre>
 <p>The elements of these vectors are all “draws” from the specified probability distributions. In most applied situations, our tools will produce draws rather than summary objects. Fortunately, a vector of draws is very easy to work with. Start with summary statistics:</p>
-<div class="sourceCode" id="cb588"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb589"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># recall mean, media, standard deviation and mad functions.</span>
 
 <span class="va">key_stats</span> <span class="op">&lt;-</span> <span class="va">draws</span> |&gt; 
@@ -1946,16 +1949,16 @@ Using this Posterior distribution derived from the (right way 1st) simulated dat
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1  325.   326  86.9  101.</code></pre>
 <p>Calculate a 95% interval directly:</p>
-<div class="sourceCode" id="cb590"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb591"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">draws</span><span class="op">$</span><span class="va">electoral_votes</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##  2.5% 97.5% 
 ##   172   483</code></pre>
 <p>Approximate the 95% interval in two ways:</p>
-<div class="sourceCode" id="cb592"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb593"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">key_stats</span><span class="op">$</span><span class="va">mn</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">key_stats</span><span class="op">$</span><span class="va">sd</span>, 
   <span class="va">key_stats</span><span class="op">$</span><span class="va">mn</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">key_stats</span><span class="op">$</span><span class="va">sd</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 152 499</code></pre>
-<div class="sourceCode" id="cb594"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb595"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">key_stats</span><span class="op">$</span><span class="va">md</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">key_stats</span><span class="op">$</span><span class="va">mad</span>, 
   <span class="va">key_stats</span><span class="op">$</span><span class="va">md</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">key_stats</span><span class="op">$</span><span class="va">mad</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 124 528</code></pre>

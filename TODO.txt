@@ -2,6 +2,7 @@
 
 Fix chapter 5 so cool 3D graphics appear.
 
+Varun Was Here!
 
 ## Important topics for this summer
 
@@ -27,7 +28,7 @@ Fix chapter 5 so cool 3D graphics appear.
 
 * Related to the above is the latest version of the posteriors package and the new rvars data type. This looks like good stuff that will form the skeleton of Bayesian analysis going forward. But do we want to discuss this in the Primer? Maybe? Con is that it is too much. Just let students use tidybayes or some similar high level approach. Pro is that random variables are a key concept. The rvars allows you to do some fun stuff, stuff which reinforces the conceptual knowledge we want students to have. Also makes certain things, like manipulating draws to calculating causal effects much (?) easier.
 
-* Maybe the best approach is to experiment a bit with the new version of tidybayes . . . Should also consider switching away from rstanarm and to brms, which seems more actively maintained. But I am very nervous that because "brms is based on Stan, a C++ compiler is required." But I really like the categorical() family in brms. Why doesn't rstanarm have something similar? It is in stan itself: https://mc-stan.org/docs/2_27/stan-users-guide/multi-logit-section.html. 
+* Maybe the best approach is to experiment a bit with the new version of tidybayes . . . Should also consider switching away from rstanarm and to brms, which seems more actively maintained. But I am very nervous that because "brms is based on Stan, a C++ compiler is required." But I really like the categorical() family in brms. Why doesn't rstanarm have something similar? It is in stan itself: https://mc-stan.org/docs/2_27/stan-users-guide/multi-logit-section.html.
 
 * https://github.com/stan-dev/rstanarm/issues/540
 
@@ -305,7 +306,7 @@ https://rstudio-education.github.io/tidyverse-cookbook/. I love this image: http
 
 Take a look at drat.
 
-https://community.rstudio.com/t/native-pipe-with-lm/110956 Pipe bend might be important. 
+https://community.rstudio.com/t/native-pipe-with-lm/110956 Pipe bend might be important.
 
 ### Quotes to add:
 
@@ -335,7 +336,7 @@ draws <- rnorm(100, mean = 2, sd = 1)
 
 This is a case in which there is no distinction between the *true distribution* and the *estimated distribution*. We know, by assumption, what the truth is.
 
-Even though we know, because we wrote the code, that the draws come from a normal distribution with a mean of 2 and a standard deviation of 1, the calculated results will not match those values exactly because the draws themselves are random. 
+Even though we know, because we wrote the code, that the draws come from a normal distribution with a mean of 2 and a standard deviation of 1, the calculated results will not match those values exactly because the draws themselves are random.
 
 ```{r}
 mean(draws)
@@ -364,7 +365,7 @@ Note that these draws come from a distribution which is centered around 2 rather
 
 <!-- DK: Discuss confidence intervals. -->
 
-Note how cavalier we are in sometimes using the word "distribution" and sometimes the word "draws." These are two different things! The distribution is the underlying reality, which we will only know for certain when we create it ourselves, as in this example. The draws are a vector of numbers which, we assume, are "drawn" from some underlying distribution which, in general, we do not know. 
+Note how cavalier we are in sometimes using the word "distribution" and sometimes the word "draws." These are two different things! The distribution is the underlying reality, which we will only know for certain when we create it ourselves, as in this example. The draws are a vector of numbers which, we assume, are "drawn" from some underlying distribution which, in general, we do not know.
 
 By assumption, we can analyze the draws to make inferences about the distribution.
 
@@ -374,14 +375,14 @@ Although distributions (and the draws therefrom) are complex, we can often treat
 n <- 100000
 tibble(Normal = rnorm(n, mean = 1),
        Uniform = runif(n, min = 2, max = 3),
-       Combined = Normal + Uniform) %>% 
+       Combined = Normal + Uniform) %>%
   pivot_longer(cols = everything(),
                names_to = "Distribution",
-               values_to = "draw") %>% 
+               values_to = "draw") %>%
   ggplot(aes(x = draw, fill = Distribution)) +
     geom_histogram(aes(y = after_stat(count/sum(count))),
-                   alpha = 0.5, 
-                   bins = 100, 
+                   alpha = 0.5,
+                   bins = 100,
                    position = "identity") +
     labs(title = "Two Distributions and Their Sum",
          subtitle = "You can sum distributions just like you sum numbers",
@@ -396,11 +397,11 @@ It is obvious that B will win this game more often than A. It is also obvious th
 
 ```{r}
 set.seed(56)
-games <- 1000 
+games <- 1000
 
 tibble(A_heads = rbinom(n = games, size = 3, prob = 0.5),
-       B_heads = rbinom(n = games, size = 6, prob = 0.5)) %>% 
-  mutate(A_wins = if_else(A_heads > B_heads, 1, 0)) %>% 
+       B_heads = rbinom(n = games, size = 6, prob = 0.5)) %>%
+  mutate(A_wins = if_else(A_heads > B_heads, 1, 0)) %>%
   summarize(A_chances = mean(A_wins))
 ```
 
@@ -413,7 +414,7 @@ In data science, the most important kind of distribution is a *probability distr
 
 This makes the *dual nature of distributions* more clear. A distribution is the "thing" you see in this plot. A mathematical object with several different parts, including a set of possible values (1 through 6, in this case) and a record of the number of times each value appears. A distribution is *also* the simple vector of numbers we used to create this plot.
 
-In general, we travel back-and-forth between *distribution as a thing* and *distribution as a vector of draws* from the thing, depending on what we are trying to accomplish. 
+In general, we travel back-and-forth between *distribution as a thing* and *distribution as a vector of draws* from the thing, depending on what we are trying to accomplish.
 
 
 

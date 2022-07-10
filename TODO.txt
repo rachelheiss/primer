@@ -1,6 +1,14 @@
 # Priorities
 
+Shotcut key in tutorials produces %>% instead of |> 
+
+Lots of tutorials, like Webscraping, don't provide the button for easy use of previous answer.
+
+I dislike it when Run Code does not produce anything even when the answer is correct. How should we deal with this? Might at least warn students that no output is expected.
+
 Fix chapter 5 so cool 3D graphics appear.
+
+as_tibble() now has a warning if we don't use .name_repair argument. Deal with this.
 
 
 ## Important topics for this summer
@@ -14,6 +22,8 @@ Fix chapter 5 so cool 3D graphics appear.
 * Should validity be moved to Wisdom? You need to establish valdity before you can presume to consider the Preceptor Table and the data to have come from the same population. Yes!
 
 * Add rowSums() explanation to Chapter 2.
+
+* Check out Frank Herrell book: http://hbiostat.org/rflow/
 
 * Use rvar.
 

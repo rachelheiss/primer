@@ -272,10 +272,10 @@
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.26",
+      "Version": "0.27",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "65ebdc552e88fc98c596f4797c5415ad",
+      "Hash": "249ccee87c5a8def5cb459fd0809cca4",
       "Requirements": [
         "htmltools",
         "jquerylib",
@@ -568,20 +568,21 @@
     },
     "dbplyr": {
       "Package": "dbplyr",
-      "Version": "2.1.1",
+      "Version": "2.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1f37fa4ab2f5f7eded42f78b9a887182",
+      "Hash": "a6e4cc7b658d043806bc559ef42a1d2a",
       "Requirements": [
         "DBI",
         "R6",
         "assertthat",
         "blob",
+        "cli",
         "dplyr",
-        "ellipsis",
         "glue",
         "lifecycle",
         "magrittr",
+        "pillar",
         "purrr",
         "rlang",
         "tibble",
@@ -1710,10 +1711,10 @@
     },
     "parallelly": {
       "Package": "parallelly",
-      "Version": "1.31.1",
+      "Version": "1.32.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "115faaa1a50897c3e2339d1cb7d3d493",
+      "Hash": "022489ebce2ef2438db4583fae118240",
       "Requirements": []
     },
     "patchwork": {
@@ -1901,10 +1902,10 @@
     },
     "processx": {
       "Package": "processx",
-      "Version": "3.5.3",
+      "Version": "3.6.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8bbae1a548d0d3fdf6647bdd9d35bf6d",
+      "Hash": "4acae60adac4791e8c8833d8494f270d",
       "Requirements": [
         "R6",
         "ps"

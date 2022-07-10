@@ -36,7 +36,7 @@ Begin with a static plot:
 
 ```{r}
 p <- ggplot(gapminder,
-            aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)) +
+            aes(x = gdpPercap, y=lifeExp, size = pop, color = country)) +
       geom_point(show.legend = FALSE, alpha = 0.7) +
       scale_color_viridis_d() +
       scale_size(range = c(2, 12)) +

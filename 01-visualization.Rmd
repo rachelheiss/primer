@@ -71,7 +71,7 @@ If that happens, you need to install the package:
 install.packages("tidyverse")
 ```
 
-Then, run `library(tidyverse)` once again.
+Then, run `library(tidyverse)` again.
 
 
 ### Examining `trains`
@@ -102,18 +102,18 @@ The `n` argument to `print()` tells R the number of rows you want to see. `width
 print(trains, n = Inf, width = Inf)
 ```
 
-`Inf` is an R object which means "infinity".
+`Inf` is an R object which means infinity.
 
 ### Exploring tibbles
 
-There are many ways to get a feel for the data contained in a tibble like `trains`. 
+There are many ways to get a feel for the data contained in a tibble. 
 
 
 #### `view()`
 
 Run `view(trains)` in the Console in RStudio. Explore this tibble in the resulting pop up viewer. 
 
-`view()` allows us to explore the different variables listed in the columns. Observe that there are many different types of variables.  Some of the variables are *quantitative*. These variables are numerical in nature.  Other variables here, including `gender` and  `treatment`, are *categorical*. Categorical variables can only take on one of a limited possibility, like educational level can only be one of limited possibilities like high school, elementary school, university, etc.
+Observe that there are many different types of variables.  Some of the variables are *quantitative*. These variables are numerical in nature.  Other variables here, including `gender` and  `treatment`, are *categorical*. Categorical variables take on one of a limited set of possible values.
 
 #### `glimpse()`
 
@@ -125,7 +125,7 @@ glimpse(trains)
 
 We see the first few values for each variable in a row after the variable name.  In addition, the *data type* of the variable is given immediately after each variable's name, inside `< >`. 
 
-`dbl` refers to "double", which is computer terminology for quantitative/numerical variables. `int` is for  "integer." `fct` is refers to a "factor," a variable that is "nominal," meaning a member of a smallish number of categories. `chr` is for character data.
+`dbl` refers to "double", which is computer terminology for quantitative/numerical variables. `int` is for  "integer." `fct` is refers to a "factor," a variable use for catagorical or nominal data. `chr` is for character data.
 
 
 #### `summary()`
@@ -164,7 +164,7 @@ ggplot(data = trains,
 
 Notice how `data` and `aes` are specified in the call to `ggplot()`, followed by our choice of geom.
 
-Plots are composed of *layers*, combined using the `+` sign. The most essential layer specifies which type of `geom`etric object we want the plot to involve: points, lines, bars, and others. In our graph above, the geom we used is `geom_point()`.  
+Plots are composed of *layers*, combined using the `+` sign. The most essential layer specifies which type of `geom`etric object we want the plot to use. In our graph above, the geom we used is `geom_point()`.  
 
 The `+` sign comes at the end of the code line and not at the beginning. When adding layers to a plot, start a new line after the `+` so that the code for each layer is on a new line.
 
@@ -224,13 +224,15 @@ ggplot(data = trains,
        caption = "Data source: Enos (2014)")
 ```
 
-Note that like with `geom`s, we add a layer using `+` when creating `labs()`for our plot. In general, every plot should give a title and axes labels. You should also add a `subtitle`, the purpose of which is to give a short "main point" of the graphic. What do you want the viewer to notice? You should also provide the source for the data, usually via the `caption` argument.
+Note that, as with `geom`'s, we add a layer using `+` when creating `labs()`for our plot. In general, every plot should give a title and axes labels. You should also add a `subtitle`, the purpose of which is to give a short "main point" of the graphic. What do you want the viewer to notice? You should also provide the source for the data, usually via the `caption` argument.
 
 Let's now take a tour of some of the more useful geoms.
 
-### Colour and Fill
+### Color and Fill
 
-Before we take a look at the other useful geoms, let's first talk about colour and fill. These are two arguments we can use to change the colour of geoms we have. 
+<!-- DK: This whole section is sloppy, and maybe not necessary. -->
+
+Before we take a look at the other useful geoms, let's first talk about color and fill. These are two arguments we can use to change the color of geoms we have. 
 
 Let's take a look at this plot below.
 
@@ -246,35 +248,35 @@ ggplot(data = trains,
        y = "Income",
        caption = "Data source: Enos (2014)")
 ```
-You'll notice that the plot is the exact same as the plot in the previous section, with one key exception: we've added colours that separate the commuters by party. How did we do this? You'll notice in the `mapping = aes()` function, we've added another argument. This argument, `color = `, can change the colour of the dots by a certain value. In this case, we changed the colour by party.
 
-You can also change the dots to another colour. For instance, take this plot below:
+Notice that the plot is the exact same as the plot in the previous section, with one key change: we've added colors that separate the commuters by party. How did we do this? You'll notice in the `mapping = aes()` function, we've added another argument. This argument, `color = `, can change the color of the dots. In this case, we changed the color by party.
+
+You can also change the dots to all being a different.
 
 ```{r}
 ggplot(data = trains, 
        mapping = aes(x = age, 
-                     y = income,
-                     color = "steel blue")) + 
-  # for some reason this is always this colour regardless of what i change it to, like steel blue isn't blue?
-  geom_point() +
+                     y = income)) + 
+  geom_point(color = "steelblue") +
   labs(title = "Age and Income Among Boston Commuters",
        subtitle = "Older commuters don't seem to make more money",
        x = "Age",
        y = "Income",
        caption = "Data source: Enos (2014)")
 ```
-By setting the color argument equal to `steelblue`, we could change the dots to blue. R has 657 built-in color names, which you can view if you run the command `grDevices::colors()`. Give it a try in your console! If a colour you want isn't in the 657 inbuilt ones, you can also change the colour with a HEX colour code.
 
-#### Difference Between Fill and Colour
+Because we set the `color` argument in the call to `geom_point()` directly, all the points are steel blue. (There are hundreds of other colors we could have chosen.) Note the difference between setting `color` as an aesthetic (with `aes()`) and as an argument to `geom_point().`
 
-There is another argument you can use, called `fill`. The key difference between fill and colour is that fill defines the colour with which a geom is filled, whereas colour moreso defines the outline of a particular geom. For example:
+
+There is another argument you can use, called `fill`. The key difference between `fill` and `color` is that fill defines the color with which a geom is filled, whereas `color` sets the outline of a geom. 
 
 ```{r}
 ggplot(data = trains,
        mapping = aes(x = race)) +
   geom_bar(color = "pink")
 ```
-You can see here that `color` has only changed the very outline of the bars. Comparatively, if we used `fill`:
+
+You can see here that `color` has only changed the very outline of the bars. If we used `fill`:
 
 ```{r}
 ggplot(data = trains,
@@ -282,11 +284,9 @@ ggplot(data = trains,
   geom_bar(fill = "pink")
 ```
 
-You get pink bars instead. You can change the fill and color of all the geoms we show you below, so happy colouring!
+
 
 ### `geom_jitter()`
-
-<!-- Liam: Clarification on below. -->
 
 Consider a different scatter plot using the `trains` data.
 
@@ -309,8 +309,6 @@ The problem with this display is "overplotting." Because attitudes are measured 
 
 We can change the transparency/opacity of the points by using the `alpha` argument within `geom_point()`. The `alpha` argument can be set to any value between `0` and `1`, where `0` sets the points to be 100% transparent and `1` sets the points to be 100% opaque. By default, `alpha` is set to `1`. 
 
-Use a new `alpha` value to the scatterplot. 
-
 ```{r}
 ggplot(data = trains, 
        mapping = aes(x = att_start, 
@@ -329,7 +327,7 @@ Note that there is no `aes()` surrounding `alpha = 0.2`. This is because we are 
 
 We can also decide to jitter the points on the plot. We do this by replacing `geom_point()` with `geom_jitter()`. Keep in mind that jittering is strictly a visualization tool; even after creating a jittered scatterplot, the original values saved in the data frame remain unchanged. 
 
-In order to specify how much jitter to add, we use the `width` and `height` arguments to `geom_jitter()`. This corresponds to how hard you'd like to shake the plot in horizontal x-axis units and vertical y-axis units, respectively. It is important to add just enough jitter to break any overlap in points, but not to the extent where you alter the original pattern in points.
+In order to specify how much jitter to add, we use the `width` and `height` arguments to `geom_jitter()`. This corresponds to how hard you'd like to shake the plot in horizontal x-axis units and vertical y-axis units, respectively. It is important to add just enough jitter to break any overlap in the points, but not to the extent where you alter the original pattern.
 
 ```{r}
 ggplot(data = trains, 
@@ -1111,7 +1109,7 @@ ggplot(gapminder_filt,
 ```
 Let's break this down. We used the `breaks` argument to create the breaks on the scale. We used the `c()` function to specify what breaks we wanted. Then, we used `labels` to modify the labels on the x-axis. The `::` allows us to extract a function from a specific package, if the function exists in multiple packages. So, we specifically extract the `dollar_format` function from the `scales` package to change the labels of the x-axis. 
 
-There is another function called `scale_x_discrete/scale_y_discrete`. This function is similar enough to `scale_y/x_continuous` that we will not give it its own section. The only difference in the usage of the discrete vs. continuous function is that the discrete function is applied to **discrete variables**. Discrete variables are those that are countable (i.e. the number of tables in a room) with nothing in between, whereas continuous variables have infinite possibilities (i.e. height has infinite possibilities). 
+There is another function called `scale_x_discrete/scale_y_discrete`. This function is similar enough to `scale_y/x_continuous` that we will not give it its own section. The only difference in the usage of the discrete vs. continuous function is that the discrete function is applied to **discrete variables**. Discrete variables are those that are countable (i.e. the number of tables in a room) with nothing in between, whereas continuous variables have infinite possibilities (i.e. height has an infinite number of possible values). 
 
 ### Text
 

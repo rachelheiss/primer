@@ -6,7 +6,7 @@
 #    and confirm/push any changes in renv.lock if needed.
 # 3. Change output_dir to "docs".
 # 4. Uncomment desired rmd_files line, but add in a tab.
-# 5. Restart R.
+# 5. Restart R so that new out_dir setting is gotten. Necessary?
 # 6. library(bookdown); clean_book(TRUE)
 # 7. Press "Build Book" in Build pane.
 # 8. Revert _bookdown.yml after chunks start processing.

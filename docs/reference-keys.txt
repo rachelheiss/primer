@@ -90,8 +90,7 @@ summary-1
 operator
 basic-plots
 geom_point
-colour-and-fill
-difference-between-fill-and-colour
+color-and-fill
 geom_jitter
 geom_line
 geom_histogram

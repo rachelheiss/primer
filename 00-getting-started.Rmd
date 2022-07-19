@@ -18,6 +18,10 @@ Download and install R and RStudio (Desktop version) on your computer.
 
 2. **Do this second:** [Download and install RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) (the free version).
 
+<!-- DK: Sure would be nice if this was not necessary. Maybe R-universe would make it so? -->
+
+3. If you are using Windows, [download and install R Tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html). Again, this is only for Windows users. The Rtools42 installer in what you want. The link is in the fifth paragraph of [that page](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html).
+
 If you want a slower introduction than we are providing here, check out the short book, [*Getting Used to R, RStudio, and R Markdown*](https://rbasics.netlify.com/). @usedtor2016 include screencast recordings that you can follow along and pause as you learn. They include an introduction to R Markdown, a tool used for reproducible research in R.
 
 ### Using R via RStudio {-}

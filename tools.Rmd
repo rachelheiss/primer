@@ -586,54 +586,6 @@ knitr::include_graphics("other/images/rpubs-10.png")
 ```
 
 
-## How to get help {-}
-
-*The best data science superpower is knowing how to ask a question.* -- Mara Averick
-
-
-### Searching for Help with R {-}
-
-Google is your best friend. If you have a question about doing something in R, someone has probably had the same question and someone else has probably answered it online. [Stack Overflow](stackoverflow.com/) and [RStudio Community](https://community.rstudio.com/) are two of the best forums for finding and asking questions/solutions. Adding "R" and/or "tidyverse" in your keyword search helps find more relevant results to your exact question. Be as specific as possible in wording your question!
-
-### Reproducible Examples {-}
-
-If you don't find an answer to your question and you're still stuck, then you should ask your own question on these forums! In order to get the best response, sharing a reproducible example with the community allows others to easily start where you left off. The **reprex** package allows you to do this easily.
-
-First, install the **reprex** package. Then, load the package.
-
-```{r, eval=FALSE}
-install.packages("reprex")
-library(reprex)
-```
-
-<!-- DK: Switch this to use a built in data set. -->
-
-Let's now look at some problematic code. The data set "murders" from the package "dslabs" provides murder statistics, as well as population counts, for all states. Suppose we want to calculate the rate of murders in each state per 100k residents (number of murders/population * 10^6). However, in the code below we have misspelled "population", resulting in this error: 
-
-```{r, echo = FALSE, out.width="110%"}
-knitr::include_graphics("other/images/reprex-2.gif")
-```
-
-To use **reprex**, highlight the code *and* the necessary packages. Then copy the highlighted code by pressing Ctrl/Cmd + c. The code is now in the clipboard. In the Console, type reprex() and hit Enter/Return. **reprex** then automatically creates a reproducible example and places it in your clipboard. 
-
-```{r, echo = FALSE, out.width="110%"}
-knitr::include_graphics("other/images/reprex-3.gif")
-```
-
-Now all you have to do now is go to your favorite R forum and paste your reproducible example into your question! Here is an example of how you would post it into Slack. 
-
-```{r, echo = FALSE, out.width="110%"}
-knitr::include_graphics("other/images/reprex-4.gif")
-```
-
-And here is how you would post it to RStudio community. 
-
-```{r, echo = FALSE, out.width="110%"}
-knitr::include_graphics("other/images/reprex-5.gif")
-```
-
-The first time you post to RStudio Community, be sure to keep the window open for a few seconds after you have pasted your question into the window. (Doing to will prevent your post from being sent to Moderation out of concern that you are a bot.)
-
 
 ## How to make a table {-}
 

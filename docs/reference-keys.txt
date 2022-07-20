@@ -79,7 +79,7 @@ fig:unnamed-chunk-710
 fig:unnamed-chunk-716
 fig:unnamed-chunk-719
 fig:unnamed-chunk-728
-fig:unnamed-chunk-826
+fig:unnamed-chunk-821
 visualization
 looking-at-data
 examining-trains

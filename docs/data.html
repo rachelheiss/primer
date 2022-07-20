@@ -725,7 +725,7 @@ FIGURE 3.2: DROP TABLE is a particularly infamous SQL command
 <span class="header-section-number">3.3.1</span> Reading data from a SQLite database<a class="anchor" aria-label="anchor" href="#reading-data-from-a-sqlite-database"><i class="fas fa-link"></i></a>
 </h3>
 <p>SQLite is probably the simplest relational database that one can use in combination with R. SQLite databases are self-contained and usually stored and accessed locally on one computer, instead of on the internet or through the cloud. Data is usually stored in a file with a <code>.db</code> extension. Similar to Excel files, these are not plain text files and cannot be read in a plain text editor.</p>
-<p>The first thing you need to do to read data into R from a database is to connect to the database. We do that using <code><a href="https://rdrr.io/pkg/DBI/man/dbConnect.html">dbConnect()</a></code> function from the <strong>DBI</strong> (database interface) package. This does not read in the data, but simply tells R where the database is and opens up a communication channel.</p>
+<p>The first thing you need to do to read data into R from a database is to connect to the database. We do that using <code><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect()</a></code> function from the <strong>DBI</strong> (database interface) package. This does not read in the data, but simply tells R where the database is and opens up a communication channel.</p>
 <div class="sourceCode" id="cb433"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span>
@@ -735,10 +735,10 @@ FIGURE 3.2: DROP TABLE is a particularly infamous SQL command
 <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/PPBDS/primer/blob/master/03-data/data/can_lang.db?raw=true"</span>,
               destfile <span class="op">=</span> <span class="st">"example_db.db"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
 
-<span class="va">con_lang_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"example_db.db"</span><span class="op">)</span></code></pre></div>
-<p>Often relational databases have many tables, and their power comes from the useful ways they can be joined. Thus anytime you want to access data from a relational database, you need to know the table names. You can get the names of all the tables in the database using <code><a href="https://rdrr.io/pkg/DBI/man/dbListTables.html">dbListTables()</a></code>.</p>
+<span class="va">con_lang_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"example_db.db"</span><span class="op">)</span></code></pre></div>
+<p>Often relational databases have many tables, and their power comes from the useful ways they can be joined. Thus anytime you want to access data from a relational database, you need to know the table names. You can get the names of all the tables in the database using <code><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables()</a></code>.</p>
 <div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con_lang_data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con_lang_data</span><span class="op">)</span>
 <span class="va">tables</span></code></pre></div>
 <pre><code>## [1] "lang"</code></pre>
 <p>We only get one table name returned, which tells us that there is only one table in this database. To reference a table in the database to do things like select columns and filter rows, we use the <code><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl()</a></code> function from the <strong>dbplyr</strong> package. The package <strong>dbplyr</strong> allows us to work with data stored in databases as if they were local data frames, which is useful because we can do a lot with big datasets without actually having to bring these vast amounts of data into your computer!</p>
@@ -819,9 +819,9 @@ FIGURE 3.2: DROP TABLE is a particularly infamous SQL command
 ## 4 Aboriginal langua… Tsimshi…           200           30           10        410
 ## 5 Aboriginal langua… Wakasha…            10            0            0         25
 ## 6 Aboriginal langua… Woods C…          1840          800           75       2665</code></pre>
-<p>In order to delete and stop using an SQLite server, you need to first disconnect the file from the connection be using <code><a href="https://rdrr.io/pkg/DBI/man/dbDisconnect.html">dbDisconnect()</a></code> and passing in the connection object as an argument. You can then safely delete the database file from your computer by using <code><a href="https://rdrr.io/r/base/files.html">file.remove()</a></code>.</p>
+<p>In order to delete and stop using an SQLite server, you need to first disconnect the file from the connection be using <code><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect()</a></code> and passing in the connection object as an argument. You can then safely delete the database file from your computer by using <code><a href="https://rdrr.io/r/base/files.html">file.remove()</a></code>.</p>
 <div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con_lang_data</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con_lang_data</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="st">"example_db.db"</span><span class="op">)</span></code></pre></div>
 <p>Additionally, some operations will not work to extract columns or single values from the reference given by the <code>tbl</code> function. Thus, once you have finished your data wrangling of the <code><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl()</a></code> database reference object, it is advisable to bring it into your local machine’s memory using <code><a href="https://dplyr.tidyverse.org/reference/compute.html">collect()</a></code> as a data frame.</p>
 <blockquote>
@@ -844,10 +844,10 @@ FIGURE 3.2: DROP TABLE is a particularly infamous SQL command
 <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://github.com/PPBDS/primer/blob/master/03-data/data/chinook.db?raw=true"</span>,
              dest <span class="op">=</span> <span class="st">"chinook.db"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span>
 
-<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"chinook.db"</span><span class="op">)</span></code></pre></div>
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"chinook.db"</span><span class="op">)</span></code></pre></div>
 <p>First off, look at what data this database holds.</p>
 <div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "albums"          "artists"         "customers"       "employees"      
 ##  [5] "genres"          "invoice_items"   "invoices"        "media_types"    
 ##  [9] "playlist_track"  "playlists"       "sqlite_sequence" "sqlite_stat1"   
@@ -1119,12 +1119,12 @@ You can run <code><a href="https://dplyr.tidyverse.org/reference/explain.html">s
 <p>However, you can’t do everything from SQL through the <code>dbplyr</code> package. For example, you can’t use the <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code> command.</p>
 <pre><code>slice(band_albums, 1:10)</code></pre>
 <pre><code>## Error: slice() is not supported on database backends</code></pre>
-<p>This is possible in an SQL database. There are a couple of ways to run SQL code in R, but the easiest way is by using the <code><a href="https://rdrr.io/pkg/DBI/man/dbGetQuery.html">dbGetQuery()</a></code> function from the <strong>DBI</strong> library.</p>
+<p>This is possible in an SQL database. There are a couple of ways to run SQL code in R, but the easiest way is by using the <code><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery()</a></code> function from the <strong>DBI</strong> library.</p>
 <div class="sourceCode" id="cb466"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># This code is just copy-pasted and reformatted from the earlier dbplyr code so</span>
 <span class="co"># you can best understand it.</span>
 
-<span class="fu"><a href="https://rdrr.io/pkg/DBI/man/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"
+<span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"
 SELECT `artist_id`,
        `artist_name`,
        `num_albums`

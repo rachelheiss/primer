@@ -198,10 +198,10 @@ FIGURE 0.4: Installing versus loading an R package
 <h3>Package loading<a class="anchor" aria-label="anchor" href="#package-loading"><i class="fas fa-link"></i></a>
 </h3>
 <p>Recall that after you’ve installed a package, you need to “load” it. We do this by using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> command.</p>
-<p>For example, to load the <strong>remotes</strong> package, run the following code in the Console. What do we mean by “run the following code”? Either type or copy-and-paste the code into the Console and then hit the enter/return key.</p>
+<p>For example, to load the <strong>remotes</strong> package, run the following code in the Console. What do we mean by “run the following code”? Type or copy-and-paste the code into the Console and then hit the enter/return key.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span></code></pre></div>
-<p>After running the earlier code, a blinking cursor should appear next to the <code>&gt;</code> symbol. (The <code>&gt;</code> is the “prompt.”) This means you were successful and the <strong>remotes</strong> package is now loaded and ready to use. If, however, you get a red “error message” that reads:</p>
+<p>After running this code, a blinking cursor should appear next to the <code>&gt;</code> symbol. (The <code>&gt;</code> is the “prompt.”) This means you were successful and the <strong>remotes</strong> package is now loaded and ready to use. If, however, you get a red “error message” that reads:</p>
 <pre><code>Error in library(remotes) : there is no package called ‘remotes’</code></pre>
 <p>then you haven’t successfully installed the package. If you get this error message, make sure to install the <strong>remotes</strong> package before proceeding.</p>
 <p>For historical reasons <em>packages</em> are also known as <em>libraries</em>, which is why the relevant command for loading them is <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
@@ -220,103 +220,20 @@ FIGURE 0.4: Installing versus loading an R package
 <p>Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn “curly.” In that case, type the commands yourself.</p>
 <p>Many other new packages will be installed, including <strong>primer.data</strong>, which provides the data sets we use in the <em>Primer</em>. It may take a few minutes. If something gets messed up, it is often useful to use the <code><a href="https://rdrr.io/r/utils/remove.packages.html">remove.packages()</a></code> command to remove the problematic package and then install it again.</p>
 </div>
-<div id="rstudio-set-up" class="section level3 unnumbered">
-<h3>RStudio set up<a class="anchor" aria-label="anchor" href="#rstudio-set-up"><i class="fas fa-link"></i></a>
-</h3>
-<!-- See here https://docs.rstudio.com/ide/server-pro/session_user_settings/session_user_settings.html for other settings we can choose to make. -->
-<p>You will thank us later if you run these commands now:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi">rstudioapi</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"save_workspace"</span>, <span class="st">"never"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"load_workspace"</span>, <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"insert_native_pipe_operator"</span>, <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"show_hidden_files"</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>The first two change the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a <em>reproducible</em> analysis. The third and fourth change some of the default settings for RStudio. Seeing all the hidden files is often helpful. These setting could also be set “by hand” by using the GUI, as in this gif of changing the default to show all hidden files.</p>
-<div class="inline-figure"><img src="00-getting-started/images/hidden_files.gif" width="100%"></div>
-<p>Finally, type this command:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.tutorials</span><span class="op">)</span>
-<span class="fu">primer.tutorials</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/primer.tutorials/man/install_only_binary_packages.html">install_only_binary_packages</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This ensures that you will not, in general, attempt to compile programs. Don’t worry if you don’t know what that means.</p>
-</div>
-<div id="creating-r-projects" class="section level3 unnumbered">
-<h3>Creating R projects<a class="anchor" aria-label="anchor" href="#creating-r-projects"><i class="fas fa-link"></i></a>
-</h3>
-<p>Let’s go over the basics of R coding.</p>
-<p>R is a programming language commonly used to analyze data. We can code in R in 2 ways:</p>
-<ul>
-<li><p>By running R commands in the Console.</p></li>
-<li><p>By creating an R project and running our R commands off of that.</p></li>
-</ul>
-<p>So far, we’ve been using R commands without creating a project since we only needed to run a couple of R commands at a time. However, this isn’t very practical for more complicated projects that might need hundreds of lines of code. This is where we use R projects.</p>
-<p>First off, create a new folder to put your projects in. Feel free to name it what you want, but <strong>make sure that there are no spaces or special characters</strong>. This creates problems down the line when we’re working with files.</p>
-<blockquote>
-<p>Additionally, do NOT put the folder in OneDrive or a cloud file system. This prevents you from accessing certain files easily. Make sure to save the folder to your local drive.</p>
-</blockquote>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-28"></span>
-<img src="00-getting-started/images/new_folder.gif" alt="Here's how to create a new projects folder on Windows." width="100%"><p class="caption">
-FIGURE 0.5: Here’s how to create a new projects folder on Windows.
-</p>
-</div>
-<!-- AG: How do we structure menu commands? This is a very small problem but it'd be nice to have something standard. -->
-<p>We can create an R Project by going to File -&gt; New Project and following the dialogues. Make sure to keep your project in the folder that you just created.</p>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-29"></span>
-<img src="00-getting-started/images/new_r_project.gif" alt="For now, we won't be connecting the projects to GitHub, but you will need to do this for future projects." width="100%"><p class="caption">
-FIGURE 0.6: For now, we won’t be connecting the projects to GitHub, but you will need to do this for future projects.
-</p>
-</div>
-</div>
-<div id="r-markdown-files" class="section level3 unnumbered">
-<h3>R Markdown Files<a class="anchor" aria-label="anchor" href="#r-markdown-files"><i class="fas fa-link"></i></a>
-</h3>
-<!-- AG: This may be a bit too complicated and too long for getting started. -->
-<p>Now, we often use R to make graphs and other visualizations in order to find patterns within the data. However, it’s not very useful to just create a graph and then not explain what it’s actually showing. This is where R Markdown files come in.</p>
-<p>R Markdown files, or .Rmd files, are a type of file that can generate <em>reports</em> from R code. Basically, you can write both the graph and the explanation about the graph within the same file. You can then <em>knit</em> the file in order to render the text and make it all look nice. Most of the time, we’ll be knitting the file to create HTML files that we can then use to create websites that contain our code.</p>
-<p>You can learn more about how to write R Markdown files <a href="https://rmarkdown.rstudio.com/articles_intro.html">here</a>.</p>
-<p>First, create an R Markdown file by going to File -&gt; New File -&gt; New R Markdown. Feel free to title it whatever you wish and set the output format to “HTML”. This creates a new R Markdown file with some filler information.</p>
-<div class="inline-figure"><img src="00-getting-started/images/new_r_markdown.gif" width="100%"></div>
-<p>This may look like a lot, but if you look closely you can see that it’s mostly just plain text but with a few special markings in between. These markings designate what the text actually does and what section it’s in. Here’s a basic breakdown of an R Markdown file.</p>
-<div class="inline-figure"><img src="00-getting-started/images/rmd_example.png" width="100%"></div>
-<p>Each section is important.</p>
-<ul>
-<li><p>The YAML header is the basic information about the document, like your name, the date, and what it’s supposed to output.</p></li>
-<li><p>The Setup code chunk is a section of R code that sets certain options about the file, such as whether it should show code chunks or not.</p></li>
-<li><p>The R Markdown Header makes the text bigger and look like a title.</p></li>
-<li><p>The R Markdown Text is the basic text information that you want in your report.</p></li>
-<li><p>And finally, the R code chunk allows you to put R code into your report.</p></li>
-</ul>
-<p>All of these sections combine to create a nice looking R report. Just knit your document by pressing the blue “Knit” button in the top left.</p>
-<div class="inline-figure"><img src="00-getting-started/images/knit.PNG" width="100%"></div>
-<p>This creates a cool looking webpage that has all of the things your R Markdown file had, but rendered so that it looks nicer.</p>
-<p>You can also add formatting to your text in R Markdown files by <strong>bolding</strong> (**), <em>italicizing</em> (*), or <del>striking through</del> (~) the text. You can find a full R Markdown cheatsheet <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here</a>.</p>
-<p>Finally, you can code in R Markdown by adding a code chunk. This allows you to put R code into your R Markdown file, which then runs like normal R code but displays in the R Markdown report. That means that you can create graphs and then add your own explanations to them within the same file.</p>
-<p>You can see an example of a code chunk in the default R Markdown file.<br>
-It looks like this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="getting-started.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pressure, echo=FALSE}</span></span>
-<span id="cb11-2"><a href="getting-started.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure)</span></span>
-<span id="cb11-3"><a href="getting-started.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>And knits like this:</p>
-<div class="inline-figure"><img src="00-getting-started/images/code_chunk_graph.PNG" width="100%"></div>
-<p>Overall, R Markdown files allow you to generate cool looking reports with special formatting, letting you put both your analysis and your graph together.</p>
-</div>
 <div id="tutorials" class="section level3 unnumbered">
 <h3>Tutorials<a class="anchor" aria-label="anchor" href="#tutorials"><i class="fas fa-link"></i></a>
 </h3>
 <p>For each chapter of the textbook, there are one or more tutorials available in the <strong>primer.tutorials</strong> package. In order to access these tutorials, you should run <code><a href="https://rdrr.io/r/base/library.html">library(primer.tutorials)</a></code> in the R Console.</p>
 <div class="inline-figure"><img src="00-getting-started/images/run_ppbds.PNG" width="100%"></div>
-<p>You can access the tutorials via the Tutorial pane in the top right tab in RStudio. Click “Start tutorial” for the “Getting Started” tutorial. If you don’t see any tutorials, try clicking the “Home” button – the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the “Session” menu and select “Restart R”.</p>
+<p>You can access the tutorials via the Tutorial pane in the top right tab in RStudio. If you don’t see any tutorials, try clicking the “Home” button – the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the “Session” menu and select “Restart R”.</p>
 <div class="inline-figure"><img src="00-getting-started/images/tutorial_new.gif" width="100%"></div>
 <p>In order to expand the window, you can drag and enlarge the tutorial pane inside RStudio. In order to open a pop-up window, click the “Show in New Window” icon next to the home icon.</p>
 <p>You may notice that the Jobs tab in the lower left will create output as the tutorial is starting up. This is because RStudio is running the code to create the tutorial. If you accidentally clicked “Start Tutorial” and would like to stop the job from running, you can click the back arrow in the Jobs tab, and then press the red stop sign icon.</p>
-<p><strong>Your work will be saved between RStudio sessions</strong>. You can complete the tutorial in multiple sittings. Once you have completed the tutorial, follow the instructions on the tutorial <strong>Submit</strong> panel and upload the resulting file to Canvas.</p>
-<p>Tutorials are graded pass/fail. It is very hard to fail. As long as you make an honest attempt, you will pass easily. All of the tutorials associated with the book have prefix numbers in their identification strings: <code>primer.tutorials: 000-getting-started</code>, <code>primer.tutorials: 011-rstudio-and-friends</code>, <code>primer.tutorials: 022-wrangling-overview</code>, and so on. The initial two numbers in the string — <code>01</code>, <code>02</code>, et cetera — indicate the chapter in the <em>Primer</em> with which that tutorial is associated.</p>
+<p><strong>Your work will automatically be saved between RStudio sessions</strong>. You can complete the tutorial in multiple sittings.</p>
 <p>Now what? There are a few ways you can close out of a tutorial safely so you can quit your RStudio session.</p>
 <ul>
-<li>If you clicked “Show in new window” and were working on the tutorial in a pop-up window, simply X out of the pop-up window.<br>
-</li>
-<li>If you were working on the tutorial inside the Tutorial pane of RStudio, simply press the red stop sign icon.</li>
+<li><p>If you clicked “Show in new window” and were working on the tutorial in a pop-up window, simply X out of the pop-up window.</p></li>
+<li><p>If you were working on the tutorial inside the Tutorial pane of RStudio, simply press the red stop sign icon.</p></li>
 </ul>
 </div>
 <div id="basic-commands" class="section level3 unnumbered">
@@ -325,26 +242,24 @@ It looks like this:</p>
 <p>Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.</p>
 <ul>
 <li>
-<em>Functions</em>: these perform tasks by taking an input called an <em>argument</em> and returning an output. Take a look at the example below.</li>
+<em>Functions</em>: these perform tasks by taking an input called an <em>argument</em> and returning an output.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">64</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<p><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the console!</p>
+<p><code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the Console!</p>
 <ul>
-<li><p><em>Help files</em>: these provide documentation for functions and datasets. You can bring up help files by adding a <code>?</code> before the name of the object then run this in the console. The <code>ggplot2</code> package is where a lot of the functions we will use for graphing will be located. Run <code>?ggplot2</code> in the console and see what pops up.</p></li>
-<li><p><em>Code comments</em>: these are text placed after a <code>#</code> symbol. Nothing will be run after a <code>#</code> symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.</p></li>
+<li><p><em>Help files</em>: these provide documentation for functions and datasets. You can bring up help files by adding a <code>?</code> before the name of the object in the Console. Run <code><a href="https://rdrr.io/r/base/MathFun.html">?sqrt</a></code> to see an example.</p></li>
+<li><p><em>Code comments</em>: these are text placed after a <code>#</code> symbol. Nothing will be run after a <code>#</code> symbol, which is useful when you include comments in your code, as you always should.</p></li>
 </ul>
 <div class="inline-figure"><img src="00-getting-started/images/code-comment.png" width="100%"></div>
 <ul>
 <li>
-<p><em>Errors, warnings, and messages</em>: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don’t prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning:</p>
+<em>Errors, warnings, and messages</em>: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don’t prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning:</li>
+</ul>
 <pre><code>Warning message:
 Removed 2 rows containing missing values (geom_point).  </code></pre>
 <p>Messages are similar. In both cases, you should fix the underlying issue until the warning/message goes away.</p>
-</li>
-</ul>
-<!-- DK: Need a better way to end this chapter. -->
 </div>
 <div id="summary" class="section level2 unnumbered">
 <h2>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
@@ -354,26 +269,15 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <li><p>Installed the <em>latest</em> versions of R and RStudio.</p></li>
 <li><p>Installed, from CRAN, the <strong>remotes</strong> package:</p></li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>Installed, from Github, this package:</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"PPBDS/primer.tutorials"</span><span class="op">)</span></code></pre></div>
 <ul>
-<li>Set up your RStudio preferences:</li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi">rstudioapi</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"save_workspace"</span>, <span class="st">"never"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"load_workspace"</span>, <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"insert_native_pipe_operator"</span>, <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/writeRStudioPreference.html">writeRStudioPreference</a></span><span class="op">(</span><span class="st">"show_hidden_files"</span>, <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<ul>
-<li><p>Created a project folder to place your R projects in.</p></li>
-<li><p>Created a new R project and learned how to use R Markdown files.</p></li>
-<li><p>Learned some basic terminology that will help you when you read the rest of the <em>Primer</em>.</p></li>
+<li>Learned some basic terminology that will help you when you read the rest of the <em>Primer</em>.</li>
 </ul>
 <p>Let’s get started.</p>
 <div class="inline-figure"><img src="00-getting-started/images/ending.gif" width="100%"></div>
@@ -393,9 +297,6 @@ Removed 2 rows containing missing values (geom_point).  </code></pre>
 <li><a class="nav-link" href="#package-installation">Package installation</a></li>
 <li><a class="nav-link" href="#package-loading">Package loading</a></li>
 <li><a class="nav-link" href="#package-use">Package use</a></li>
-<li><a class="nav-link" href="#rstudio-set-up">RStudio set up</a></li>
-<li><a class="nav-link" href="#creating-r-projects">Creating R projects</a></li>
-<li><a class="nav-link" href="#r-markdown-files">R Markdown Files</a></li>
 <li><a class="nav-link" href="#tutorials">Tutorials</a></li>
 <li><a class="nav-link" href="#basic-commands">Basic Commands</a></li>
 </ul>

@@ -130,13 +130,13 @@ R packages generally live in one of two places:
 
 Recall that after you've installed a package, you need to "load" it. We do this by using the `library()` command.
 
-For example, to load the **remotes** package, run the following code in the Console. What do we mean by "run the following code"? Either type or copy-and-paste the code into the Console and then hit the enter/return key. 
+For example, to load the **remotes** package, run the following code in the Console. What do we mean by "run the following code"? Type or copy-and-paste the code into the Console and then hit the enter/return key. 
 
 ```{r, eval = FALSE}
 library(remotes)
 ```
 
-After running the earlier code, a blinking cursor should appear next to the `>` symbol. (The `>` is the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you get a red "error message" that reads:
+After running this code, a blinking cursor should appear next to the `>` symbol. (The `>` is the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you get a red "error message" that reads:
 
 ```
 Error in library(remotes) : there is no package called ‘remotes’
@@ -171,70 +171,6 @@ Many other new packages will be installed, including **primer.data**, which prov
 
 
 
-
-### R Markdown Files {-}
-
-<!-- AG: This may be a bit too complicated and too long for getting started. -->
-
-Now, we often use R to make graphs and other visualizations in order to find patterns within the data. However, it's not very useful to just create a graph and then not explain what it's actually showing. This is where R Markdown files come in.
-
-R Markdown files, or .Rmd files, are a type of file that can generate *reports* from R code. Basically, you can write both the graph and the explanation about the graph within the same file. You can then *knit* the file in order to render the text and make it all look nice. Most of the time, we'll be knitting the file to create HTML files that we can then use to create websites that contain our code.
-
-You can learn more about how to write R Markdown files [here](https://rmarkdown.rstudio.com/articles_intro.html).
-
-First, create an R Markdown file by going to File -> New File -> New R Markdown. Feel free to title it whatever you wish and set the output format to "HTML". This creates a new R Markdown file with some filler information.
-
-```{r, echo = FALSE}
-knitr::include_graphics("00-getting-started/images/new_r_markdown.gif")
-```
-
-This may look like a lot, but if you look closely you can see that it's mostly just plain text but with a few special markings in between. These markings designate what the text actually does and what section it's in. Here's a basic breakdown of an R Markdown file.
-
-```{r, echo = FALSE}
-knitr::include_graphics("00-getting-started/images/rmd_example.png")
-```
-
-Each section is important.
-
-* The YAML header is the basic information about the document, like your name, the date, and what it's supposed to output.
-
-* The Setup code chunk is a section of R code that sets certain options about the file, such as whether it should show code chunks or not.
-
-* The R Markdown Header makes the text bigger and look like a title.
-
-* The R Markdown Text is the basic text information that you want in your report.
-
-* And finally, the R code chunk allows you to put R code into your report.
-
-All of these sections combine to create a nice looking R report. Just knit your document by pressing the blue "Knit" button in the top left.
-
-```{r, echo=FALSE}
-knitr::include_graphics("00-getting-started/images/knit.png")
-```
-
-This creates a cool looking webpage that has all of the things your R Markdown file had, but rendered so that it looks nicer.
-
-You can also add formatting to your text in R Markdown files by **bolding** (\*\*), *italicizing* (\*), or ~~striking through~~ (~) the text. You can find a full R Markdown cheatsheet [here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
-
-Finally, you can code in R Markdown by adding a code chunk. This allows you to put R code into your R Markdown file, which then runs like normal R code but displays in the R Markdown report. That means that you can create graphs and then add your own explanations to them within the same file. 
-
-You can see an example of a code chunk in the default R Markdown file.  
-It looks like this:
-
-````markdown
-```{r pressure, echo=FALSE}`r ''`
-plot(pressure)
-```
-````
-
-And knits like this:
-
-```{r, echo=FALSE}
-knitr::include_graphics("00-getting-started/images/code_chunk_graph.png")
-```
-
-Overall, R Markdown files allow you to generate cool looking reports with special formatting, letting you put both your analysis and your graph together.
-
 ### Tutorials {-}
 
 For each chapter of the textbook, there are one or more tutorials available in the **primer.tutorials** package. In order to access these tutorials, you should run `library(primer.tutorials)` in the R Console.
@@ -243,7 +179,7 @@ For each chapter of the textbook, there are one or more tutorials available in t
 knitr::include_graphics("00-getting-started/images/run_ppbds.png")
 ```
 
-You can access the tutorials via the Tutorial pane in the top right tab in RStudio. Click "Start tutorial" for the "Getting Started" tutorial. If you don't see any tutorials, try clicking the "Home" button -- the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the "Session" menu and select "Restart R".
+You can access the tutorials via the Tutorial pane in the top right tab in RStudio. If you don't see any tutorials, try clicking the "Home" button -- the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the "Session" menu and select "Restart R".
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/tutorial_new.gif")
@@ -253,43 +189,41 @@ In order to expand the window, you can drag and enlarge the tutorial pane inside
 
 You may notice that the Jobs tab in the lower left will create output as the tutorial is starting up. This is because RStudio is running the code to create the tutorial. If you accidentally clicked "Start Tutorial" and would like to stop the job from running, you can click the back arrow in the Jobs tab, and then press the red stop sign icon.
 
-**Your work will be saved between RStudio sessions**. You can complete the tutorial in multiple sittings. Once you have completed the tutorial, follow the instructions on the tutorial **Submit** panel and upload the resulting file to Canvas.
-
-Tutorials are graded pass/fail. It is very hard to fail. As long as you make an honest attempt, you will pass easily. All of the tutorials associated with the book have prefix numbers in their identification strings: `primer.tutorials: 000-getting-started`, `primer.tutorials: 011-rstudio-and-friends`, `primer.tutorials: 022-wrangling-overview`, and so on. The initial two numbers in the string --- `01`, `02`, et cetera --- indicate the chapter in the *Primer* with which that tutorial is associated.
+**Your work will automatically be saved between RStudio sessions**. You can complete the tutorial in multiple sittings. 
 
 Now what? There are a few ways you can close out of a tutorial safely so you can quit your RStudio session.
 
 * If you clicked "Show in new window" and were working on the tutorial in a pop-up window, simply X out of the pop-up window.  
+
 * If you were working on the tutorial inside the Tutorial pane of RStudio, simply press the red stop sign icon.   
 
 ### Basic Commands {-}
 
 Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.
 
-* *Functions*: these perform tasks by taking an input called an *argument* and returning an output. Take a look at the example below.
+* *Functions*: these perform tasks by taking an input called an *argument* and returning an output. 
 
 ```{r}
 sqrt(64)
 ```
 
-`sqrt()` is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the console!
+`sqrt()` is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the Console!
 
-* *Help files*: these provide documentation for functions and datasets. You can bring up help files by adding a `?` before the name of the object then run this in the console. The `ggplot2` package is where a lot of the functions we will use for graphing will be located. Run `?ggplot2` in the console and see what pops up.
+* *Help files*: these provide documentation for functions and datasets. You can bring up help files by adding a `?` before the name of the object in the Console. Run `?sqrt` to see an example.
 
-* *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. The image below shows what a code comment looks like.
+* *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. 
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/code-comment.png")
 ```
 
 * *Errors, warnings, and messages*: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning: 
-  ````
-  Warning message:
-  Removed 2 rows containing missing values (geom_point).  
-  ````
-  Messages are similar. In both cases, you should fix the underlying issue until the warning/message goes away.    
 
-<!-- DK: Need a better way to end this chapter. -->
+````
+Warning message:
+Removed 2 rows containing missing values (geom_point).  
+````
+Messages are similar. In both cases, you should fix the underlying issue until the warning/message goes away.    
 
 ## Summary {-}
 
@@ -308,20 +242,6 @@ install.packages("remotes")
 ```{r, eval = FALSE}
 remotes::install_github("PPBDS/primer.tutorials")
 ```
-
-* Set up your RStudio preferences:
-
-```{r, eval = FALSE}
-library(rstudioapi)
-writeRStudioPreference("save_workspace", "never")
-writeRStudioPreference("load_workspace", FALSE)
-writeRStudioPreference("insert_native_pipe_operator", TRUE)
-writeRStudioPreference("show_hidden_files", TRUE)
-```
-
-* Created a project folder to place your R projects in.
-
-* Created a new R project and learned how to use R Markdown files.
 
 * Learned some basic terminology that will help you when you read the rest of the *Primer*.
 

@@ -169,65 +169,8 @@ Depending on your computer/browser/locale, this might fail, especially if the qu
 
 Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*.  It may take a few minutes. If something gets messed up, it is often useful to use the `remove.packages()` command to remove the problematic package and then install it again. 
 
-### RStudio set up {-}
-
-<!-- See here https://docs.rstudio.com/ide/server-pro/session_user_settings/session_user_settings.html for other settings we can choose to make. -->
-
-You will thank us later if you run these commands now:
-
-```{r, eval = FALSE}
-library(rstudioapi)
-writeRStudioPreference("save_workspace", "never")
-writeRStudioPreference("load_workspace", FALSE)
-writeRStudioPreference("insert_native_pipe_operator", TRUE)
-writeRStudioPreference("show_hidden_files", TRUE)
-```
-
-The first two change the default value of RStudio to start each session afresh, with no junk leftover from your last session. This makes it much easier to create a *reproducible* analysis. The third and fourth change some of the default settings for RStudio. Seeing all the hidden files is often helpful. These setting could also be set "by hand" by using the GUI, as in this gif of changing the default to show all hidden files.
 
 
-```{r, echo=FALSE}
-knitr::include_graphics("00-getting-started/images/hidden_files.gif")
-```
-
-Finally, type this command:
-
-```{r, eval = FALSE}
-library(primer.tutorials)
-primer.tutorials::install_only_binary_packages()
-```
-
-This ensures that you will not, in general, attempt to compile programs. Don't worry if you don't know what that means.
-
-
-
-### Creating R projects {-}
-
-Let's go over the basics of R coding.
-
-R is a programming language commonly used to analyze data. We can code in R in 2 ways:
-
-* By running R commands in the Console.
-
-* By creating an R project and running our R commands off of that.
-
-So far, we've been using R commands without creating a project since we only needed to run a couple of R commands at a time. However, this isn't very practical for more complicated projects that might need hundreds of lines of code. This is where we use R projects.
-
-First off, create a new folder to put your projects in. Feel free to name it what you want, but **make sure that there are no spaces or special characters**. This creates problems down the line when we're working with files.
-
-> Additionally, do NOT put the folder in OneDrive or a cloud file system. This prevents you from accessing certain files easily. Make sure to save the folder to your local drive.
-
-```{r, echo = FALSE, fig.cap = "Here's how to create a new projects folder on Windows."}
-knitr::include_graphics("00-getting-started/images/new_folder.gif")
-```
-
-<!-- AG: How do we structure menu commands? This is a very small problem but it'd be nice to have something standard. -->
-
-We can create an R Project by going to File -> New Project and following the dialogues. Make sure to keep your project in the folder that you just created.
-
-```{r, echo = FALSE, fig.cap = "For now, we won't be connecting the projects to GitHub, but you will need to do this for future projects."}
-knitr::include_graphics("00-getting-started/images/new_r_project.gif")
-```
 
 ### R Markdown Files {-}
 

@@ -8,21 +8,21 @@ The world confronts us. Make decisions we must.
 knitr::include_graphics("00-getting-started/images/R_vs_RStudio_1.png")
 ```
 
-Throughout this book, we assume that you are using R via RStudio. R is to RStudio as a car's engine is to its dashboard.
+We use use **R** via **RStudio**. R is to RStudio as a car's engine is to its dashboard.
 
 More precisely, R is a programming language that runs computations, while RStudio is an *integrated development environment (IDE)* that provides an interface with many convenient features. Just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier. 
 
 Download and install R and RStudio (Desktop version) on your computer. 
 
-1. **Do this first:** [Download and install R](https://cloud.r-project.org/). 
+1. [Download and install R](https://cloud.r-project.org/). 
 
-2. **Do this second:** [Download and install RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) (the free version).
+2. [Download and install RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) (the free version).
 
 <!-- DK: Sure would be nice if this was not necessary. Maybe R-universe would make it so? -->
 
-3. If you are using Windows, [download and install R Tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html). Again, this is only for Windows users. The Rtools42 installer in what you want. The link is in the fifth paragraph of [that page](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html).
+3. If you are using Windows, [download and install R Tools](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html). Again, this is only for Windows users. The Rtools42 installer is what you want. The link is in the fifth paragraph of [that page](https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html).
 
-If you want a slower introduction than we are providing here, check out the short book, [*Getting Used to R, RStudio, and R Markdown*](https://rbasics.netlify.com/). @usedtor2016 include screencast recordings that you can follow along and pause as you learn. They include an introduction to R Markdown, a tool used for reproducible research in R.
+If you want a slower introduction than that which we are providing here, check out the short book, [*Getting Used to R, RStudio, and R Markdown*](https://rbasics.netlify.com/). @usedtor2016 include screencast recordings that you can follow along and pause as you learn. They include an introduction to R Markdown, a tool used for reproducible research in R.
 
 ### Using R via RStudio {-}
 
@@ -30,10 +30,9 @@ If you want a slower introduction than we are providing here, check out the shor
 knitr::include_graphics("00-getting-started/images/R_vs_RStudio.png")
 ```
 
-Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly but rather we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new *programs* (also called *applications*) you can open. Always work in RStudio and not directly in the R application. 
+Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly. Instead, we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new *programs* (also called *applications*) you can open. Always work in RStudio and not directly in the R application. 
 
-
-Let's get familiar with RStudio. Open up RStudio. You should see three *panes*, or panels, dividing the screen: the *Console pane*, the *Files pane*, and the *Environment pane*. 
+Open up RStudio. You should see three *panes*, or panels, dividing the screen: the *Console pane*, the *Environment pane*, and the *Files pane*. 
 
 
 ```{r, echo = FALSE}
@@ -66,7 +65,7 @@ This assigned the value 5 to an object, x. `<-` is the operator used to assign v
 knitr::include_graphics("00-getting-started/images/bottom_right_window.png")
 ```
 
-The Files tab displays your computer's file system. When you create a project later, this tab will automatically show the contents of your project's folder. The Plots tab will show you a preview of any plots you make in RStudio.
+The Files tab displays your computer's file system. When you create a project later, this tab will automatically show the contents of your project's folder. The Plots tab will display any plots you make in RStudio.
 
 ### Package installation {-}
 
@@ -136,17 +135,17 @@ For example, to load the **remotes** package, run the following code in the Cons
 library(remotes)
 ```
 
-After running this code, a blinking cursor should appear next to the `>` symbol. (The `>` is the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you get a red "error message" that reads:
+After running this code, a blinking cursor should appear next to the `>` symbol. (The `>` is the "prompt.") This means you were successful and the **remotes** package is now loaded and ready to use. If, however, you might get a red "error message" that reads:
 
 ```
 Error in library(remotes) : there is no package called ‘remotes’
 ```
 
-then you haven't successfully installed the package. If you get this error message, make sure to install the **remotes** package before proceeding. 
+This error message means that you haven't successfully installed the package. If you get this error message, make sure to install the **remotes** package before proceeding. 
 
 For historical reasons *packages* are also known as *libraries*, which is why the relevant command for loading them is `library()`.
 
-Note that R will occasionally ask you if you want to install some packages. Almost all the time you do want to, otherwise R would not be asking you. 
+Note that R will occasionally ask you if you want to install some packages. You almost always want to, otherwise R would not be asking you. 
 
 ### Package use {-} 
 
@@ -165,9 +164,9 @@ library(remotes)
 remotes::install_github("PPBDS/primer.tutorials")
 ```
 
-Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn "curly." In that case, type the commands yourself.
+Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn "curly." In that case, type the commands yourself from scratch.
 
-Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*.  It may take a few minutes. If something gets messed up, it is often useful to use the `remove.packages()` command to remove the problematic package and then install it again. 
+Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*.  It may take a few minutes. If something gets messed up, it is often useful to use read the error messages and see if a specific package is at fault. If so,  use the `remove.packages()` command to remove the problematic package and then install it again. 
 
 
 
@@ -179,7 +178,7 @@ For each chapter of the textbook, there are one or more tutorials available in t
 knitr::include_graphics("00-getting-started/images/run_ppbds.png")
 ```
 
-You can access the tutorials via the Tutorial pane in the top right tab in RStudio. If you don't see any tutorials, try clicking the "Home" button -- the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the "Session" menu and select "Restart R".
+You can access the tutorials via the Tutorial tab in the top right pane in RStudio. If you don't see any tutorials, try clicking the "Home" button -- the little house symbol with the thin red roof in the upper right. You may need to restart your R session. Click on the "Session" menu and select "Restart R".
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/tutorial_new.gif")
@@ -187,7 +186,7 @@ knitr::include_graphics("00-getting-started/images/tutorial_new.gif")
 
 In order to expand the window, you can drag and enlarge the tutorial pane inside RStudio. In order to open a pop-up window, click the "Show in New Window" icon next to the home icon.
 
-You may notice that the Jobs tab in the lower left will create output as the tutorial is starting up. This is because RStudio is running the code to create the tutorial. If you accidentally clicked "Start Tutorial" and would like to stop the job from running, you can click the back arrow in the Jobs tab, and then press the red stop sign icon.
+You may notice that the Jobs tab in the lower left pane will create output as the tutorial is starting up. This is because RStudio is running the code to create the tutorial. 
 
 **Your work will automatically be saved between RStudio sessions**. You can complete the tutorial in multiple sittings. 
 
@@ -199,7 +198,7 @@ Now what? There are a few ways you can close out of a tutorial safely so you can
 
 ### Basic Commands {-}
 
-Before we get started, there are a few terms, tips, and tricks that you should know before getting started with R.
+There are a few terms, tips, and tricks that you should know before getting started with R.
 
 * *Functions*: these perform tasks by taking an input called an *argument* and returning an output. 
 
@@ -209,7 +208,7 @@ sqrt(64)
 
 `sqrt()` is a function that gives us the square root of the argument. 64 is the argument. Therefore, the output should be 8. Try it for yourself in the Console!
 
-* *Help files*: these provide documentation for functions and datasets. You can bring up help files by adding a `?` before the name of the object in the Console. Run `?sqrt` to see an example.
+* *Help files*: these provide documentation for packages, functions and datasets. You can bring up help files by adding a `?` before the name of the object in the Console. Run `?sqrt`.
 
 * *Code comments*: these are text placed after a `#` symbol. Nothing will be run after a `#` symbol, which is useful when you include comments in your code, as you always should. 
 
@@ -217,7 +216,7 @@ sqrt(64)
 knitr::include_graphics("00-getting-started/images/code-comment.png")
 ```
 
-* *Errors, warnings, and messages*: these generally reported in a red font. When there is an error, the code will not run. Read (and/or Google) the message and try fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning: 
+* *Errors, warnings, and messages*: these are important communications from R to you. When there is an error, the code will not run. Read (and/or Google) the message and try to fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning: 
 
 ````
 Warning message:
@@ -237,7 +236,7 @@ You should have done the following:
 install.packages("remotes")
 ```
 
-* Installed, from Github, this package:
+* Installed, from Github, the **primer.tutorials** package:
 
 ```{r, eval = FALSE}
 remotes::install_github("PPBDS/primer.tutorials")

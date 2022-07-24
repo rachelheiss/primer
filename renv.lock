@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.0",
+    "Version": "4.2.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -1198,20 +1198,6 @@
         "xfun"
       ]
     },
-    "hipread": {
-      "Package": "hipread",
-      "Version": "0.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1f30194eb4899d6f6abee5db2bbbd61f",
-      "Requirements": [
-        "BH",
-        "R6",
-        "Rcpp",
-        "rlang",
-        "tibble"
-      ]
-    },
     "hms": {
       "Package": "hms",
       "Version": "1.1.1",
@@ -1316,27 +1302,6 @@
       "Repository": "CRAN",
       "Hash": "1deaf1de3eac7e1d3377954b3a283652",
       "Requirements": []
-    },
-    "ipumsr": {
-      "Package": "ipumsr",
-      "Version": "0.4.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0ef39e9cf7cef7292d511816a0397c66",
-      "Requirements": [
-        "R6",
-        "dplyr",
-        "haven",
-        "hipread",
-        "purrr",
-        "raster",
-        "readr",
-        "rlang",
-        "tibble",
-        "tidyselect",
-        "xml2",
-        "zeallot"
-      ]
     },
     "isoband": {
       "Package": "isoband",
@@ -2978,14 +2943,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "458bb38374d73bf83b1bb85e353da200",
-      "Requirements": []
-    },
-    "zeallot": {
-      "Package": "zeallot",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "ee9b643aa8331c45d8d82eb3a137c9bc",
       "Requirements": []
     },
     "zip": {

@@ -4,12 +4,11 @@ The world confronts us. Make decisions we must.
 
 ### Installing R and RStudio {-}
 
-
-We use use **R** via **RStudio**. R is to RStudio as a car's engine is to its dashboard.
-
 ```{r, echo = FALSE, fig.cap = "Analogy of difference between R and RStudio."}
 knitr::include_graphics("00-getting-started/images/R_vs_RStudio_1.png")
 ```
+
+We use **R** via **RStudio**. R is to RStudio as a car's engine is to its dashboard.
 
 More precisely, R is a programming language that runs computations, while RStudio is an *integrated development environment (IDE)* that provides an interface with many convenient features. Just as having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio's interface makes using R much easier. 
 

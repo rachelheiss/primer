@@ -39,10 +39,7 @@ bib/packages.bib
 
 !docs/*
 
-# Need to think more clearly about how to handle big data. For now, I 
-# just ignore them.
 
-IPUMS/extracts/*/*dat
 
 
 

@@ -1,6 +1,5 @@
 # Probability {#probability}
 
-<!-- TM: We uncommented all of the 3-d plot code and changed solidDepth to -0.5 and it is working on our end (both when knitting and running in Console). We never encountered the "C stack usage" error mentioned below. -->
 
 <!-- Yuhan: Once I try to renv:restore terra package didn't seems to work. -->
 

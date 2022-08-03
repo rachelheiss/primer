@@ -36,7 +36,7 @@ library(janitor)
 You can find most of the files that we use for this chapter [here](https://github.com/PPBDS/primer.tutorials/raw/master/inst/tutorials/031-data-files/data/). We can also access these files by saving the URL to R and then using it so that we can download and access the files located on the internet.
 
 ```{r}
-github_url <- "https://raw.githubusercontent.com/PPBDS/primer.tutorials/master/inst/tutorials/033-data-files/data/"
+github_url <- "https://raw.githubusercontent.com/PPBDS/primer/master/03-data/data/"
 ```
 
 ## Reading and writing files
@@ -713,7 +713,7 @@ While you shouldn't need to write SQL code in this primer, it's very common to r
 SQL runs through something known as a *query*, a line of code that pulls in information from the database. This is effectively asking the database for a specific set of data. This is what's known as a `SELECT` command, which "selects" data from the database and brings it into your computer for your use.
 
 ```{sql, connection = con}
--- This code is written in SQL syntax, so it won't work if you just put it into R. 
+-- This code is written in SQL syntax, so it won't work if you just put it into R.
 -- We'll be going over how to write SQL in R later in this section.
 
 SELECT AlbumId,
@@ -813,7 +813,7 @@ You can code in SQL by changing the chunk to look like this:
 
 ```
 ## ```{sql, connection = con, output.var = "your_variable_name"}
-## 
+##
 ## ```
 ```
 
@@ -828,7 +828,7 @@ This allows you to write SQL code in genuine SQL syntax and save the output to a
 -- SQL uses a semicolon to show the end of the statements
 -- However, you don't need to include that for the dbGetQuery() statement
 
-SELECT * 
+SELECT *
 FROM albums;
 ```
 
@@ -840,7 +840,7 @@ head(your_variable_name)
 Coding in SQL allows you to do the things that the **dbplyr** package doesn't, such as only using certain rows. If you add `LIMIT 10;` at the end of the query (the first `SELECT` statement), you can limit the query to only the first 10 rows.
 
 ```{sql, connection = con, output.var = "band_albums_sql"}
--- We're writing this code using the sql code chunk method. 
+-- We're writing this code using the sql code chunk method.
 -- This is because it allows you to see what's highlighted and what's not.
 -- SQL code is also inconvenient because you can't just add a new line,
 -- Instead, you need to treat all of these lines of code as a single statement
@@ -901,7 +901,7 @@ Now, we worked with an SQLite database within this tutorial due to its simplicit
 
 *But why should we bother with databases at all?*
 
-Opening a database stored in a `.db` file involved a lot more effort than just opening a `.csv`, `.tsv`, or any of the other plain text or Excel formats. It was a bit of a pain to use a database in that setting since we had to use `dbplyr` to translate `tidyverse`-like commands (`filter`, `select`, `head`, etc.) into SQL commands that the database understands. Not all `tidyverse` commands can currently be translated with SQLite databases, like we showed with `slice()`. So you might be wondering, why should we use databases at all? 
+Opening a database stored in a `.db` file involved a lot more effort than just opening a `.csv`, `.tsv`, or any of the other plain text or Excel formats. It was a bit of a pain to use a database in that setting since we had to use `dbplyr` to translate `tidyverse`-like commands (`filter`, `select`, `head`, etc.) into SQL commands that the database understands. Not all `tidyverse` commands can currently be translated with SQLite databases, like we showed with `slice()`. So you might be wondering, why should we use databases at all?
 
 Databases are beneficial in a large-scale setting:
 
@@ -909,7 +909,7 @@ Databases are beneficial in a large-scale setting:
 - they allow multiple users to access them simultaneously and remotely without conflicts and errors
 - they provide mechanisms for ensuring data integrity and validating input
 - they provide security to keep data safe
-For example, [there are billions of Google searches conducted daily](https://www.internetlivestats.com/google-search-statistics/). 
+For example, [there are billions of Google searches conducted daily](https://www.internetlivestats.com/google-search-statistics/).
 
 This makes databases extremely useful for a business where they'll have employees doing thousands or millions of operations daily. This makes knowing what SQL databases are extremely vital from both a data science and a general usage perspective.
 

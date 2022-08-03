@@ -116,6 +116,8 @@ readLines(file_2)
 
 As you can see, there is text at the top of this file. Often times information about how data was collected, or other relevant information, is included at the top of the data file. However, `read_csv()` can't differentiate between this text and the data that we want to read, causing it to fail and output gibberish.
 
+<!-- DK: Handle this warning in a cooler way. -->
+
 ```{r}
 # You can also get a csv file by using the URL of the file. This won't work for
 # all file types though.

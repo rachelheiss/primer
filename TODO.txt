@@ -1,5 +1,7 @@
 # Priorities
 
+Add str_remove() to chapter 3 so that we can use it when working with ec.rds data and counties like Westchester, New York.
+
 Shotcut key in tutorials produces %>% instead of |>
 
 Lots of tutorials, like Webscraping, don't provide the button for easy use of previous answer.

@@ -1,0 +1,99 @@
+# To build quarto book locally...
+
+# Move to the build tab and press render book (figuring out difference between preview annd render)
+# Or you could run the "quarto preview" command in terminal
+# (optionally add a file name such as index.qmd to the end of the command to render a specific file)
+
+# This will render the entire website locally in quarto.
+
+# If there are no errors in the files then this should locally preview the entire primer
+# Take a look around to make sure that you're changes are working (even if there are no errors)
+
+# Need to check if we can set junk to output-dir instead of docs like for bookdown
+
+# Below is the code for the quarto.yml (mostly taken by referencing example books)
+# Good example book: https://github.com/jjallaire/hopr
+# Specifically referenced the "_quarto.yml" file
+
+
+project:
+  type: book
+  output-dir: docs
+
+# Tryed to use pre-render for quarto instead of before_chapter script which was previously used in bookdown
+# Gave up on finding quarto eqivalent of before_chapter_script and after
+# pre/post-render work differently from bookdown before_chapter_script (not working)
+# For more info see: https://community.rstudio.com/t/cannot-get-quarto-pre-render-to-work/143566
+# Or my RS Community query: https://community.rstudio.com/t/quarto-book-start-equivalent/144196
+# For now I added a "hidden libraries" code chunk at the beginning of most chapters to replace book_start (hopefully temporarily)
+
+
+# Most items below taken from old bookdown primer's index.rmd yml header (needs to be here instead for quarto)
+# All general info under the book header
+
+# Still working on references in bibliography/references page
+# Tryed adding code (for bib) from book_end to end of each file--not all references loaded
+
+book:
+  title: "Preceptor's Primer for Bayesian Data Science"
+  author: "David Kane"
+  biblio-style: apalike
+  link-citations: yes
+  nocite: '@*'
+  colorlinks: yes
+  lot: false
+  lof: false
+  always_allow_html: yes
+  graphics: yes
+  search: true
+  repo-url: https://github.com/PPBDS/primer/
+  repo-actions: [edit]
+  downloads: [pdf, epub]
+  chapters:
+    - index.qmd
+    - preamble.qmd
+    - 00-getting-started.qmd
+    - 01-visualization.qmd
+    - 02-wrangling.qmd
+    - 03-data.qmd
+    - 04-rubin-causal-model.qmd
+    - 05-probability.qmd
+    - 06-one-parameter.qmd
+    - 07-two-parameters.qmd
+    - 08-three-parameters.qmd
+    - 09-four-parameters.qmd
+    - 10-five-parameters.qmd
+    - 11-n-parameters.qmd
+    - 12-case-studies.qmd
+    - tools.qmd
+    - functions.qmd
+    - animation.qmd
+    - set-up.qmd
+    - references.qmd
+
+# No special chapter's inside of others currently
+
+# Numbers show up highlighted in file names?
+# Added downloads as pdf and epub. Not working?
+# Bib files used to kept in a bib subdirectory but I got a render error.
+# For now I took them out of the directory and it is working
+
+bibliography:
+  - references.bib
+  - packages.bib
+
+# Default quarto formatting for books/other documents below
+# Change theme to more closely match current primer? Need to check available themes
+
+# Optionally add more formatting options/code-link?
+
+# Trying to add option to download as a pdf/epub doc but not sure if this is working
+
+format:
+  html:
+    theme: cosmo
+    code-link: true
+  # pdf:
+  #   documentclass: krantz
+  #   keep-tex: true
+  #   cite-method: natbib

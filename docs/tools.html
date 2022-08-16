@@ -1,0 +1,5180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Preceptor’s Primer for Bayesian Data Science - Tools</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./functions.html" rel="next">
+<link href="./12-case-studies.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Tools</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Preceptor’s Primer for Bayesian Data Science</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/PPBDS/primer/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+<li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preamble.html" class="sidebar-item-text sidebar-link">Preamble</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-getting-started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Visualization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-wrangling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Wrangling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-rubin-causal-model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Rubin Causal Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-one-parameter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">One Parameter</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-two-parameters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Two Parameters</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-three-parameters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Three Parameters</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-four-parameters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Four Parameters</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-five-parameters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Five Parameters</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-n-parameters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">N Parameters</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-case-studies.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Case Studies</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tools.html" class="sidebar-item-text sidebar-link active">Tools</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">Functions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./animation.html" class="sidebar-item-text sidebar-link">Animation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./set-up.html" class="sidebar-item-text sidebar-link">Set Up for Working on The Primer</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#absolute-and-relative-file-paths" id="toc-absolute-and-relative-file-paths" class="nav-link active" data-scroll-target="#absolute-and-relative-file-paths">Absolute and relative file paths</a></li>
+  <li>
+<a href="#working-with-the-terminal" id="toc-working-with-the-terminal" class="nav-link" data-scroll-target="#working-with-the-terminal">Working with the terminal</a>
+  <ul class="collapse">
+<li><a href="#pwd-working-directory" id="toc-pwd-working-directory" class="nav-link" data-scroll-target="#pwd-working-directory"><code>pwd</code>: Working directory</a></li>
+  <li><a href="#ls-seeing-items-in-the-directory" id="toc-ls-seeing-items-in-the-directory" class="nav-link" data-scroll-target="#ls-seeing-items-in-the-directory"><code>ls</code>: Seeing items in the directory</a></li>
+  <li><a href="#cd-changing-directories" id="toc-cd-changing-directories" class="nav-link" data-scroll-target="#cd-changing-directories"><code>cd</code>: Changing directories</a></li>
+  <li><a href="#mkdir-and-rmdir-make-and-remove-a-directory" id="toc-mkdir-and-rmdir-make-and-remove-a-directory" class="nav-link" data-scroll-target="#mkdir-and-rmdir-make-and-remove-a-directory"><code>mkdir</code> and <code>rmdir</code>: Make and remove a directory</a></li>
+  <li><a href="#touch-creating-files" id="toc-touch-creating-files" class="nav-link" data-scroll-target="#touch-creating-files"><code>touch:</code> Creating files</a></li>
+  <li><a href="#mv-moving-files" id="toc-mv-moving-files" class="nav-link" data-scroll-target="#mv-moving-files"><code>mv</code>: Moving files</a></li>
+  <li><a href="#cp-copying-files" id="toc-cp-copying-files" class="nav-link" data-scroll-target="#cp-copying-files"><code>cp</code>: Copying files</a></li>
+  <li><a href="#rm-removing-files" id="toc-rm-removing-files" class="nav-link" data-scroll-target="#rm-removing-files"><code>rm</code>: Removing files</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#git-github-and-rstudio" id="toc-git-github-and-rstudio" class="nav-link" data-scroll-target="#git-github-and-rstudio">Git, GitHub, and RStudio</a>
+  <ul class="collapse">
+<li><a href="#installing-git" id="toc-installing-git" class="nav-link" data-scroll-target="#installing-git">Installing Git</a></li>
+  <li><a href="#github-accounts" id="toc-github-accounts" class="nav-link" data-scroll-target="#github-accounts">GitHub accounts</a></li>
+  <li><a href="#github-repositories" id="toc-github-repositories" class="nav-link" data-scroll-target="#github-repositories">GitHub repositories</a></li>
+  <li><a href="#connecting-github-to-rstudio" id="toc-connecting-github-to-rstudio" class="nav-link" data-scroll-target="#connecting-github-to-rstudio">Connecting GitHub to RStudio</a></li>
+  <li><a href="#updating-.gitignore" id="toc-updating-.gitignore" class="nav-link" data-scroll-target="#updating-.gitignore">Updating <code>.gitignore</code></a></li>
+  <li><a href="#commit-and-push" id="toc-commit-and-push" class="nav-link" data-scroll-target="#commit-and-push">Commit and Push</a></li>
+  </ul>
+</li>
+  <li><a href="#pdf" id="toc-pdf" class="nav-link" data-scroll-target="#pdf">PDF</a></li>
+  <li>
+<a href="#style-guide" id="toc-style-guide" class="nav-link" data-scroll-target="#style-guide">Style guide</a>
+  <ul class="collapse">
+<li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#graphics" id="toc-graphics" class="nav-link" data-scroll-target="#graphics">Graphics</a></li>
+  <li><a href="#formating" id="toc-formating" class="nav-link" data-scroll-target="#formating">Formating</a></li>
+  <li><a href="#messageswarningserrors" id="toc-messageswarningserrors" class="nav-link" data-scroll-target="#messageswarningserrors">Messages/Warnings/Errors</a></li>
+  </ul>
+</li>
+  <li><a href="#how-to-use-rpubs" id="toc-how-to-use-rpubs" class="nav-link" data-scroll-target="#how-to-use-rpubs">How to use Rpubs</a></li>
+  <li>
+<a href="#how-to-make-a-table" id="toc-how-to-make-a-table" class="nav-link" data-scroll-target="#how-to-make-a-table">How to make a table</a>
+  <ul class="collapse">
+<li><a href="#regression-tables" id="toc-regression-tables" class="nav-link" data-scroll-target="#regression-tables">Regression tables</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/PPBDS/primer/edit/main/tools.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">Tools</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header><!-- Fix images in UNIX section so that they use 1005 instead, to match the new text. --><!-- Explain importance of scripting versus click-and-drag and copy-pasting. Add section about useful keyboard shortcuts. --><!-- Add material about file organization. --><!-- Find a place to mention all the high quality sources listed below. Maybe with a webshot of their title pages?  --><!-- Happy Git for the R User. --><!-- Anything associated with RStudio. --><!-- [The UNIX Workbench](https://seankross.com/the-unix-workbench/), but with all the work done form the terminal window in RStudio.  --><!-- [What They Forgot to Teach You About R](https://rstats.wtf/) --><!-- https://usethis.r-lib.org/articles/articles/usethis-setup. Might just pull out the key sections of this. We can't just link to it since some of it --- like devtools --- is too confusing. --><!-- https://merely-useful.github.io/py-rse/ --><!-- Consider making the **fs** package a major part of the presentation. This helps avoid dealing with cross-OS issues ourselves. Also teaches students that there is more than one way to interact with the file system. --><!-- Add some optional videos, especially the ones from RStudio which give nice tours of RStudio stuff. --><!-- Buttons we press should be bolded, not wrapped with backticks. --><p>The chapter will be broken into the following sections. Read whichever ones are relevant.</p>
+<ul>
+<li><a href="#absolute-and-relative-file-paths">Absolute and relative file paths</a></li>
+<li><a href="#working-with-the-terminal">Working with the terminal</a></li>
+<li><a href="#git-github-and-rstudio">Git, GitHub, and RStudio</a></li>
+<li><a href="#pdf">PDF</a></li>
+<li>
+<a href="#style-guide">Style guide</a><br>
+</li>
+<li>
+<a href="#how-to-use-rpubs">How to use Rpubs</a><br>
+</li>
+<li><a href="#how-to-get-help">How to get help</a></li>
+<li><a href="#how-to-make-a-table">How to make a table</a></li>
+</ul>
+<section id="absolute-and-relative-file-paths" class="level2"><h2 class="anchored" data-anchor-id="absolute-and-relative-file-paths">Absolute and relative file paths</h2>
+<!-- DK: Move this section to tools.Rmd. -->
+<!-- AG: I added this as another section because it's important enough to stand on its own. This also serves as a great way to introduce the Terminal.-->
+<p>When you read data into R, you first need to tell R where that data lives. Most times, the data will be in a file. The file could live on your computer (local) or somewhere on the internet (remote).</p>
+<p>The place where the file lives on your computer is called the “path”. You can think of the path as directions to the file. The path includes both the location of the file and the name of the file itself. There are two kinds of paths: relative and absolute. A <em>relative</em> path describes the location of the file relative to where you currently are on the computer. An <em>absolute</em> path is where the file is in respect to the base (or root) folder of the computer’s filesystem. Absolute paths always start with a forward slash, a “/”.</p>
+<p>Consider a file called <code>report.csv</code>. Read the file using a relative path:</p>
+<pre><code>x &lt;- read_csv("data/report.csv")</code></pre>
+<p>Read <code>report.csv</code> using an absolute path:</p>
+<pre><code>x &lt;- read_csv("/home/preceptor/desktop/projects/data/report.csv")</code></pre>
+<p>To ensure your code can be run on a different computer, you should use relative paths. An added bonus is that it’s also less typing! This is because the absolute path of a file (the names of folders between the computer’s root <code>/</code> and the file) isn’t usually the same across different computers. For example, suppose Fatima and Jayden are working on a project together on the <code>report.csv</code> data. Fatima’s file is stored at</p>
+<p><code>/home/Fatima/files/report.csv</code>,</p>
+<p>while Jayden’s is stored at</p>
+<p><code>/home/Jayden/files/report.csv</code>.</p>
+<p>Even though Fatima and Jayden stored their files in the same place on their computers, the absolute paths are different due to their different usernames. If Jayden has code that loads the <code>report.csv</code> data using an absolute path, the code won’t work on Fatima’s computer. But the relative path from inside the <code>files</code> folder (<code>files/report.csv</code>) is the same on both computers; any code that uses relative paths will work on both!</p>
+<!-- Include a section about how you're supposed to put \ whenever there's a space, since 90% of people will have a space in their file name. However, because we don't have a section about it, we get a lot of confusion about why somebody's thing isn't working. Fixed - AG -->
+<p>One important part of using paths is recognizing when there are spaces in the file name. For example, trying to use the path</p>
+<p><code>/home/preceptor/desktop/projects/important data/report.csv</code></p>
+<p>does not work because it includes a space the file name, with “important data”. Instead, the path</p>
+<p><code>/home/preceptor/desktop/projects/important\ data/report.csv</code></p>
+<p>is valid and allows you to access the <code>report.csv</code> data. This is because the <code>\</code> tells the computer to treat the next character only as a character instead of something special. For example, the space character is normally used to show a break in the code, so the computer treats it as a break point whenever it sees a space. However, <code>\</code> tells the computer that the space isn’t a break point and is instead part of the file path, solving the issue.</p>
+<!-- DK: Video includes a bunch of good stuff, like ~, ., .., and /. All that should be mentioned here and connected to the terminal tutorial. -->
+<p>See this video for another explanation:</p>
+<iframe width="840" height="473" src="https://www.youtube.com/embed/ephId3mYu9o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p><em>Source: <a href="https://www.udacity.com/course/linux-command-line-basics--ud595">Udacity course “Linux Command Line Basics”</a></em></p>
+</section><section id="working-with-the-terminal" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="working-with-the-terminal">Working with the terminal</h2>
+<!-- DK: Could rework everything to use this:  -->
+<!-- https://merely-useful.github.io/py-rse/bash-basics.html -->
+<p>The Terminal is a very powerful window because it allows you to interact with your computer’s filesystem directly, and it uses file paths to find the files that you want to interact with.</p>
+<p>Let’s open up the Terminal tab on the left window and start learning how to use the Terminal.</p>
+<section id="pwd-working-directory" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="pwd-working-directory">
+<code>pwd</code>: Working directory</h3>
+<p>The first question you may have about working in the Terminal might be: If I can’t see the folders, how do I know where I am? Well that’s a great place to start learning the Terminal. To see what our current folder is, we type <code>pwd</code> (<strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory):</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/pwd.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>We are currently in a directory (or folder) called <code>Yao</code>, which is itself in a directory named <code>/Users</code>. The forward slash in front of “Users” tells is that this directory is at the lowest possible level.</p>
+</section><section id="ls-seeing-items-in-the-directory" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="ls-seeing-items-in-the-directory">
+<code>ls</code>: Seeing items in the directory</h3>
+<p>To see the items in our current folder, we use the command <code>ls</code> (<strong>l</strong>i<strong>s</strong>t). Type <code>ls</code> in the terminal and hit return/enter. You should see something like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/ls.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>Notice that this lists exactly the same items as the bottom right window in RStudio. The Terminal is just another way to interact with your computer’s filesystem. Anything you can do normally with your mouse/trackpad, like opening a folder, you can also do in the Terminal.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/ls_icons.png" class="img-fluid" width="654"></p>
+</div>
+</div>
+</section><section id="cd-changing-directories" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="cd-changing-directories">
+<code>cd</code>: Changing directories</h3>
+<p>To move from one directory to another, we use <code>cd</code> (<strong>c</strong>hange <strong>d</strong>irectory). We’ll be using <code>cd</code> to change into the Desktop folder.</p>
+<p>To change into the Desktop directory, we type <code>cd Desktop/</code>. A helpful hint, after you type the first few letters of a folder or file name, you can hit tab and the computer will auto complete the name. Try it! Type <code>cd Desk</code> and then hit tab to auto complete the name!</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/cd_desktop.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>If you type <code>ls</code> again, you can see all the item on your Desktop listed.</p>
+<p>To go back to the previous folder (aka the directory above), we can type <code>cd ..</code> The two periods represent one level above. You can see this hierarchy in this view on a Mac:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/directory_hierarchy.png" class="img-fluid" width="882"></p>
+</div>
+</div>
+</section><section id="mkdir-and-rmdir-make-and-remove-a-directory" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="mkdir-and-rmdir-make-and-remove-a-directory">
+<code>mkdir</code> and <code>rmdir</code>: Make and remove a directory</h3>
+<p>Now that we’re in the Desktop folder, let’s get set-up to stay organized for Gov 1005. Staying organized is critical when working with many data projects. So, using <code>mkdir Gov-1005</code> (make directory) we can create a folder exclusively for Gov 1005 like so:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/mkdir.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>Now, when we type <code>ls</code>, we can see our new folder created. Note that we used a hyphen between Gov and 1005. This is because the Terminal can’t recognize spaces unless you put <code>\</code> before it, like so: <code>mkdir Gov\ 1005</code>. <em>Never use spaces or other weird characters in file or directory names.</em></p>
+<p>To remove a folder, use <code>rmdir</code> (remove directory). We won’t be using this right now because we don’t need to remove anything.</p>
+</section><section id="touch-creating-files" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="touch-creating-files">
+<code>touch:</code> Creating files</h3>
+<p>In order to experiment with the next few commands in the Terminal, we’ll need a test file. Type <code>touch text.txt</code> to create a test file.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/touch.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>And, of course, we can see that the <code>test.txt</code> file has been created using <code>ls</code>.</p>
+</section><section id="mv-moving-files" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="mv-moving-files">
+<code>mv</code>: Moving files</h3>
+<p>Oh no! We created our <code>test.txt</code> file, but it should be in our <code>Gov-1005</code> folder, right now it’s on the desktop. This happened because while we created the <code>Gov-1005</code> folder using <code>mkdir</code>, we forgot to move into it by using <code>cd Gov-1005/</code>. But no worries, we can move the file to that folder using <code>mv</code>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/mv.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>When using <code>mv</code> the first thing you type after <code>mv</code> is the file you want to move. The next thing is the location where you want to move it to. In our case we want to move <code>test.txt</code> to <code>Gov-1005/</code>, so we type <code>mv test.txt Gov-1005/</code>. After we do this, we can use <code>cd</code> to enter the <code>Gov-1005</code> folder and then use <code>ls</code> to see that our <code>test.txt</code> file successfully was moved into the <code>Gov-1005</code> directory.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/mv_confirm.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+</section><section id="cp-copying-files" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="cp-copying-files">
+<code>cp</code>: Copying files</h3>
+<p>Copying files is very similar to moving files in the Terminal. Using the previous example, if we wanted to copy test.txt into the Gov-1005 folder but not delete the original test.txt file, we just replace <code>mv</code> with <code>cp</code> (copy paste):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cp test.txt Gov<span class="dv">-1005</span><span class="sc">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="rm-removing-files" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="rm-removing-files">
+<code>rm</code>: Removing files</h3>
+<p>Ok, we are at the last Terminal command that this book will be teaching you. So, we’re done with this test.txt file. Let’s remove it with <code>rm</code> (remove):</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/mv_confirm.png" class="img-fluid" width="779"></p>
+</div>
+</div>
+<p>Make sure you are the in Gov-1005 folder before you type <code>rm test.txt</code>! Using <code>ls</code>, we can see that our test file is now gone.</p>
+<p>Congrats! You are now able to do most basic tasks with the Terminal! If you want to learn more Terminal commands, check out Sean Kross’s <a href="https://seankross.com/the-unix-workbench/">The Unix Workbench</a>.</p>
+</section></section><section id="git-github-and-rstudio" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="git-github-and-rstudio">Git, GitHub, and RStudio</h2>
+<p>This next section focuses on connecting GitHub with RStudio using Git. Why do we care about GitHub? Think of it as a Google Drive for all your R code and projects. If your computer blows up, GitHub will save all your R work just as Google Drive saves your paper.</p>
+<section id="installing-git" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="installing-git">Installing Git</h3>
+<p>The first step to using GitHub is installing Git on your computer. But first, you may already have Git installed on your computer. To check, go to your Terminal and type <code>git --version</code>. If you already have Git, this command will return the Git version you have installed. If you get an error, you can download and install git <a href="https://git-scm.com/downloads">here</a>.</p>
+</section><section id="github-accounts" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="github-accounts">GitHub accounts</h3>
+<!-- DK: Add Happy advice on  this and other topics? -->
+<p>After installing Git, you’ll need a <a href="https://github.com/join">GitHub</a> account. This is like a Google account. However, the one difference with GitHub is that your account is visible to the public. You want to pick a name carefully. It should be professional since you will be sending potential employers a link to your GitHub account in the near future. Check out some former Gov 1005 students’ GitHub profiles for inspiration:</p>
+<ul>
+<li><p><a href="https://github.com/caievelyn">Evelyn Cai</a></p></li>
+<li><p><a href="https://github.com/jessie9111">Jessica Edwards</a></p></li>
+<li><p><a href="https://github.com/BeauMeche">Beau Meche</a></p></li>
+</ul>
+<p>Once you have a GitHub account, you are ready to connect Git and RStudio to this account. Type the following two commands in your Terminal pane. Replace <code>Your Name</code> with your name and <code>your@email.com</code> with the email you used to sign up for GitHub.</p>
+<pre data-eval="FALSE," data-echo="TRUE"><code>git config --global user.name "Your Name"
+git config --global user.email "your@email.com"</code></pre>
+</section><section id="github-repositories" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="github-repositories">GitHub repositories</h3>
+<p>You are now ready to create a GitHub repository (repo). The GitHub repo is similar to a Google Drive folder. To make your first repo, make sure you are signed in and then go to the GitHub <a href="https://github.com/">homepage</a> and click on the green <code>new</code> button on the left.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure"><p><img src="other/images/new_repo.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You will then want to choose a good name for the repo and add a brief description. Here we will use <code>productivity</code>. You can choose to make the repo public or private, but we recommend that you only make a repo public if it is important for the world to see. This keeps your public GitHub profile clean and professional. This repo should probably be private. Let’s also add a README file for our repo. This is a document where you can add more information.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/repo_details.png" class="img-fluid" width="722"></p>
+</div>
+</div>
+<p>You now have your first repo on GitHub. The next step will be to download it to your computer — a process often known as “cloning” — and start editing and syncing using Git. To do this, we’ll need to copy the link to the repo and then use it in RStudio. Once again, the green button is your friend. Click on it and then copy the link shown. You can use the clipboard button on the right to automatically copy it.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/repo_clone.png" class="img-fluid" width="1411"></p>
+</div>
+</div>
+</section><section id="connecting-github-to-rstudio" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="connecting-github-to-rstudio">Connecting GitHub to RStudio</h3>
+<p>We are now ready to connect your <code>productivity</code> repo to RStudio. With the link to the productivity repo copied, we can go back to RStudio and begin with a new project. Go to File, then New Project:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/new_project.png" class="img-fluid" width="781"></p>
+</div>
+</div>
+<p>Next, you’ll need to go through these steps to create the project: Version Control to Git to paste your link from GitHub and click Create Project.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/new_project.gif" class="img-fluid"></p>
+</div>
+</div>
+<p>Congrats! You’ve linked your <code>productivity</code> repo to RStudio. Note that Github will ask you for a location in which to place this and other projects. <em>We recommend creating a folder on your desktop called “projects” and placing all your RStudio projects there.</em> Don’t just scatter them across your computer in a mess. There will be dozens of them. Be organized!</p>
+<!-- DK: Create a gif which walks through the above process. -->
+</section><section id="updating-.gitignore" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="updating-.gitignore">Updating <code>.gitignore</code>
+</h3>
+<p>The first thing you should always do when working with a new repo is updating the <code>.gitignore</code> file. You can open this file from the bottom right window under the Files tab. This file includes all the files that you don’t want to be uploaded to GitHub. This can come in handy when you are working with big datasets or files with private information. In our case, we want to add the <code>productivityl.Rproj</code> file to the <code>.gitignore</code> list.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rproj_git.png" class="img-fluid" width="653"></p>
+</div>
+</div>
+<p>This file is your private project file and usually you don’t want this uploaded to GitHub. So, in <code>.gitignore</code>, you’ll want to add <code>*.Rproj</code> The * tells your computer that we want to prevent all files ending in <code>.Rproj</code> from being uploaded. We could also just add <code>productivity.Rproj</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rproj.png" class="img-fluid" width="265"></p>
+</div>
+</div>
+<p>Save the <code>.gitignore</code> file and you should see the <code>productivity.Rproj</code> file disappear from your Git tab in the top right window. If you don’t see any changes, click on the refresh button in the upper left.</p>
+<p>The symbols in the Git tab are part a “conversation” between you and Git. The “?” is Git’s way of saying: “There is a new file here. What do you want to do with it?” Adding a line to the <code>.gitignore</code> is your way of replying “Ignore that file.”</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/updated_gitignore.png" class="img-fluid" width="653"></p>
+</div>
+</div>
+</section><section id="commit-and-push" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="commit-and-push">Commit and Push</h3>
+<p>Now that we’ve updated our <code>.gitignore</code> file, we want to upload this new version to GitHub. To do this, first select the <code>.gitignore</code> file and then click on the <code>Commit</code> button in the Git window:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/commit.png" class="img-fluid" width="653"></p>
+</div>
+</div>
+<p>This will open a new window where you will write a commit message. This message is a very short note on what you’re adding/changing in the repo. In our case, we’ve updated the <code>.gitignore</code> so let’s write just that:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/commit_push.png" class="img-fluid" width="395"></p>
+</div>
+</div>
+<p>Press <code>commit</code>. This is your way of telling Git “Yes these are the files I want to upload. I’m committed.” Next, press <strong>Push</strong>. This pushes or uploads the files to GitHub. (You can probably guess what pull does, but we won’t be using that yet)</p>
+<p>Now, if you go to your GitHub repo and refresh the page, you can see that the <code>.gitignore</code> file has been uploaded with your commit message:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/github_updating.gif" class="img-fluid"></p>
+</div>
+</div>
+<p>Congrats! You just uploaded your first file to GitHub.</p>
+<p>One tricky aspect is the caching of your Github ID and password. Most likely, you had to type these things in when you did your first push. Doing so was not too bad. And, after all, Github needs to know who you are, otherwise other people could mess with your repo. But you will be doing hundreds of commits/pushes. You don’t want to type in your ID/password each time! Follow <a href="https://usethis.r-lib.org/articles/articles/git-credentials.html">these instructions</a>. Key steps:</p>
+<ol type="1">
+<li><p>Turn on two-factor authentication for your GitHub account under <a href="https://github.com/settings/security">Settings -&gt; Security</a>.</p></li>
+<li><p>Create a token:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/github-token.html">create_github_token</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will, after logging in, bring you back to Github. Accept the defaults and press the <strong>Generate token</strong> button at the bottom. (You may need to change the <strong>Note</strong> if you have generated tokens before.) Copy the token which has been created. It will look something like:</p>
+<p>8be3e800891425f8462c4491d9a4dbb5b1c1f35c</p>
+<p>Then, issue this R command:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">gitcreds</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gitcreds/man/gitcreds_get.html">gitcreds_set</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Provide your token. After you start a new RStudio instance, Github should not ask you for your login/password again. Or it might just ask one more time. Seek help if this does not work.</p>
+<!-- DK: Could use a gif for the above as well. -->
+<p><a href="https://happygitwithr.com/"><em>Happy Git and GitHub for the useR</em></a> is the best source for when Git or Github problems arise.</p>
+</section></section><section id="pdf" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="pdf">PDF</h2>
+<p>Generating PDF files from RStudio is both easy and hard. It is easy because R markdown is designed to produce files in a variety of output formats, <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html">including PDF</a>. It is hard because, for RStudio to make PDF files, your computer set up must be set up with a <a href="https://en.wikipedia.org/wiki/LaTeX">LaTeX</a> installation. You have four options:</p>
+<ol type="1">
+<li><p>Making PDF files may just “work,” especially if you are using a Mac. Give it a try!</p></li>
+<li><p>If it doesn’t just work, we <em>strongly</em> recommend using the <strong><a href="https://yihui.org/tinytex/">tinytex</a></strong> R package. First, install the R package.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tinytex'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second, use the R package to install the underlying LaTeX distribution.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Depending on your operating system, this may not work. But there should be an error message providing further instructions. Follow those instructions.</p>
+<p>Restart R and everything should just work.</p>
+<ol start="3" type="1">
+<li><p>You can just generate an html file, open it in Chrome, select <em>Print . . .</em> from the drop-down menu. You will get a pop-up window. Click the down arrow to the right of <em>Destination</em> and choose <em>Save as PDF</em> in the drop-down menu. You’ll see a preview. Choose the <em>Save as PDF</em> option. This is not a convenient workflow but, if disaster strikes and the problem set is due in 10 minutes, it is a reasonable option.</p></li>
+<li><p>You can install a full LaTeX installation yourself. Good luck! Don’t come to us for help.</p></li>
+</ol></section><section id="style-guide" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="style-guide">Style guide</h2>
+<p>Much of this material comes from the <em><a href="https://style.tidyverse.org/index.html">Tidyverse Style Guide</a></em>. We will take off points on work submitted which violates these guidelines. <em>In extremis</em>, you may go against this advice, if you add a code comment in your work explaining your decision to do so.</p>
+<section id="comments" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="comments">Comments</h3>
+<p>Include comments in your code. Easy-to-understand chunks of code should not have comments. The code is the comment. But other code will merit many, many lines of comments, more lines than the code itself. In a given file, <em>you should have about as many total lines of comments as you have lines of code</em>.</p>
+<p>Make your comments meaningful. They should not be a simple description of what your code does. The best comments are descriptions about why you did what you did and which other approaches you tried or considered. (The code already tells us what you did.) Good comments often have a “Dear Diary” quality: “I did this. Then I tried that. I finally chose this other thing because of reasons X, Y and Z. If I work on this again, I should look into this other approach.” Because of this, the structure is often a paragraph of comments followed by several lines of code.</p>
+<p>Each line of a comment should begin with the comment symbol (a “hash”) followed by a single space: <code>#</code>. Code comments must be separated from code by one empty line on both sides. Format your code comments neatly. Ctrl-Shift-/ is the easiest way to do that. Name your R code chunks, without using weird characters or spaces. <code>download_data</code> is a good R code chunk name. <code>Plot #1</code> is not.</p>
+<p>Spelling matters. Comments should be constructed as sentences, with appropriate capitalization and punctuation.</p>
+</section><section id="graphics" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="graphics">Graphics</h3>
+<p>Use captions, titles, axis labels and so on to make it clear what your tables and graphics mean.</p>
+<p>Anytime you make a graphic without a title (explaining what the graphic is), a subtitle (highlighting a key conclusion to draw), a caption (with some information about the source of the data) and axis labels (with information about your variables), you should justify that decision in a code comment. We (try to) always include these items but there are situations in which that makes less sense. Ultimately, these decisions are yours, but we need to understand your reasoning.</p>
+<p>Use your best judgment. For example, sometimes axis labels are unnecessary. Read <em><a href="https://socviz.co/">Data Visualization: A practical introduction</a></em> by Kieran Healy for guidance on making high quality graphics.</p>
+</section><section id="formating" class="level3"><h3 class="anchored" data-anchor-id="formating">Formating</h3>
+<section id="long-lines" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="long-lines">Long Lines</h4>
+<p>Limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font. When calling functions, you can omit the argument names for very common arguments (i.e.&nbsp;for arguments that are used in almost every invocation of the function). Short unnamed arguments can also go on the same line as the function name, even if the whole function call spans multiple lines.</p>
+</section><section id="whitespace" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="whitespace">Whitespace</h4>
+<p><code>|&gt;</code> should always have a space before it, and should usually be followed by a new line. After the first step in the pipe, each line should be indented by two spaces. This structure makes it easier to add new steps (or rearrange existing steps) and harder to overlook a step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_if</span>(is.numeric, mean) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(value)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Species) <span class="sc">|&gt;</span> <span class="fu">summarize_all</span>(mean) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ungroup <span class="sc">|&gt;</span> <span class="fu">gather</span>(measure, value, <span class="sc">-</span>Species) <span class="sc">|&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>ggplot2</strong> code is handled in a similar fashion. All commands after the initial invocation of <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> are indented.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span></span>
+<span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">depth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Depth"</span>,</span>
+<span>         x <span class="op">=</span> <span class="st">"Depth"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span></span>
+<span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">depth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span> <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Depth"</span>,</span>
+<span>         x <span class="op">=</span> <span class="st">"Depth"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="commas" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="commas">Commas</h4>
+<p>Always put a space after a comma, never before, just like in regular English.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">x</span><span class="op">[</span> ,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">x</span><span class="op">[</span> , <span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="parentheses" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="parentheses">Parentheses</h4>
+<p>Do not put spaces inside or outside parentheses for regular function calls.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span> <span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span> <span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="infix-operators" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="infix-operators">Infix operators</h4>
+<p>Most infix operators (<code>=</code>, <code>==</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, <code>~</code>, et cetera) should be surrounded by one space.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span></span>
+<span><span class="va">height</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">feet</span> <span class="op">*</span> <span class="fl">12</span><span class="op">)</span> <span class="op">+</span> <span class="va">inches</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">~</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span></span>
+<span><span class="va">height</span><span class="op">&lt;-</span><span class="va">feet</span><span class="op">*</span><span class="fl">12</span><span class="op">+</span><span class="va">inches</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">y</span><span class="op">~</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Other operators — like <code>::</code>, <code>:::</code>, <code>$</code>, <code>@</code>, <code>[</code>, <code>[[</code>, <code>^</code>, and <code>:</code> — should never be surrounded by spaces.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Good</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">y</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">z</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span></span>
+<span><span class="co"># Bad</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">x</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">+</span> <span class="va">y</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">$</span> <span class="va">z</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">:</span> <span class="fl">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You may add extra spaces if it improves alignment of <code>=</code> or <code>&lt;-</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>total <span class="op">=</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span>,</span>
+<span>     mean <span class="op">=</span> <span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">+</span> <span class="va">c</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Do not add extra spaces to places where space is not usually allowed.</p>
+</section></section><section id="messageswarningserrors" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="messageswarningserrors">Messages/Warnings/Errors</h3>
+<p>R messages/warnings/errors should never appear in a submitted document. The right way to deal with these issues is to find out their cause and then fix the underlying problem. Students sometimes use “hacks” to make these messages/warnings/errors disappear. The most common hacks involve using code chunk options like <code>message = FALSE</code>, <code>warning = FALSE</code>, <code>results = "hide"</code>, <code>include = FALSE</code> and others. Don’t do this, in general. A message/warning/error is worth understanding and then fixing. Don’t close your eyes (metaphorically) and pretend that the problem doesn’t exist. There are some situations, however, in which, no matter what you try, you can’t fix the problem. In those few cases, you can use one of these hacks, but you must make a code comment directly below it, explaining the situation. The only exception is the “setup” chunk (included by default in every new Rmd) which comes with <code>include = FALSE</code>. In that chunk, no explanation is necessary, by convention.</p>
+</section></section><section id="how-to-use-rpubs" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="how-to-use-rpubs">How to use Rpubs</h2>
+<p><a href="https://rpubs.com/">Rpubs</a> provides a free hosting service for your R work. To use it:</p>
+<ol type="1">
+<li>Begin by creating a new repository on GitHub. Then clone it to your computer. We are calling the repository “rpubs_example.” As before, put *Rproj in your <code>.gitignore</code> file. This is to prevent your private project file from being uploaded to GitHub.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-1.png" class="img-fluid" width="1436"></p>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Start a new R Markdown file. Go to File –&gt; New File –&gt; R Markdown. For simplicity, leave the name “Untitled” and hit “OK.”</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-2.png" class="img-fluid" width="572"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Save this file, again, as “Untitled” in your project directory.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-3.png" class="img-fluid" width="379"></p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Knit. You should see the following.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-4.png" class="img-fluid" width="1434"></p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Notice a blue icon in the upper right-hand corner that reads “Publish.” Click it.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-5.png" class="img-fluid" width="1181"></p>
+</div>
+</div>
+<ol start="6" type="1">
+<li>You will be asked whether you want to publish to RPubs or RStudio Connect. Choose RPubs. You will get a reminder that all documents you publish on RPubs are publicly visible. Click “Publish.”</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-6.png" class="img-fluid" width="582"></p>
+</div>
+</div>
+<ol start="7" type="1">
+<li>This will take you to the RPubs website. You will need to create an account. Follow the steps as prompted.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-7.png" class="img-fluid" width="851"></p>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Add document details. Name your document. Add a meaningful slug – otherwise you will end up with an ugly, long address you didn’t choose and can’t remember. You can leave the Description blank for simplicity of the exercise.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-8.png" class="img-fluid" width="856"></p>
+</div>
+</div>
+<ol start="9" type="1">
+<li>Hit “Continue”, et voilá! You have published your first document to Rpubs!</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-9.png" class="img-fluid" width="1425"></p>
+</div>
+</div>
+<ol start="10" type="1">
+<li>There is one more important step. “rsconnect” contains files specific to your computer that you do not want to push to GitHub. Therefore, as with .Rproj files before, we want to add the rsconnect folder to the <code>.gitignore</code> file. Click on <code>.gitignore</code>, add it there and hit “Save.” You will see it disappear from your GitHub in the top right window. If you don’t see any changes, hit the Refresh button in the top right corner. Since you’ve updated your <code>.gitignore</code> file, now is a good time to commit and push your changes to your GitHub repository.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/rpubs-10.png" class="img-fluid" width="1191"></p>
+</div>
+</div>
+</section><section id="how-to-make-a-table" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="how-to-make-a-table">How to make a table</h2>
+<p><strong>gt</strong> is an R package for creating elegant tables. First, we’ll create a <strong>gt</strong> summary table of some observations from the data. Second, we’ll run a regression and display the outcome using <strong>gtsummary</strong>, a companion package to <strong>gt</strong> which specializes in presenting the results of statistical models.</p>
+<p>If you want to learn more about <strong>gt</strong> check <a href="https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/">this</a> fantastic guide. Go <a href="https://gt.rstudio.com">here</a> for the official <strong>gt</strong> package website. See <a href="https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html">here</a> for an extensive guide to <strong>gtsummary</strong>.</p>
+<p>Load the necessary libraries.</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.data</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We set <code>message=FALSE</code> in the above code chunk to avoid showing all the ugly notes when these libraries are loaded.</p>
+<p>Let’s pull some data which we will use in our table:</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">trains</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gender</span>, <span class="va">income</span>, <span class="va">att_end</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  gender income att_end
+  &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Female 135000      11
+2 Female 105000      10
+3 Male   135000       5
+4 Male   300000      11
+5 Male   135000       5</code></pre>
+</div>
+</div>
+<p>Create the simplest table with <code><a href="https://gt.rstudio.com/reference/gt.html">gt()</a></code>, the key command:</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="lfhmwgzdov" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lfhmwgzdov .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lfhmwgzdov .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lfhmwgzdov .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lfhmwgzdov .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lfhmwgzdov .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lfhmwgzdov .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lfhmwgzdov .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lfhmwgzdov .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lfhmwgzdov .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lfhmwgzdov .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lfhmwgzdov .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lfhmwgzdov .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lfhmwgzdov .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lfhmwgzdov .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lfhmwgzdov .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lfhmwgzdov .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lfhmwgzdov .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lfhmwgzdov .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lfhmwgzdov .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lfhmwgzdov .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lfhmwgzdov .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lfhmwgzdov .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lfhmwgzdov .gt_left {
+  text-align: left;
+}
+
+#lfhmwgzdov .gt_center {
+  text-align: center;
+}
+
+#lfhmwgzdov .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lfhmwgzdov .gt_font_normal {
+  font-weight: normal;
+}
+
+#lfhmwgzdov .gt_font_bold {
+  font-weight: bold;
+}
+
+#lfhmwgzdov .gt_font_italic {
+  font-style: italic;
+}
+
+#lfhmwgzdov .gt_super {
+  font-size: 65%;
+}
+
+#lfhmwgzdov .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#lfhmwgzdov .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#lfhmwgzdov .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lfhmwgzdov .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#lfhmwgzdov .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#lfhmwgzdov .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">att_end</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Now let’s make this more professional. <strong>gt</strong> offers a variety of functions to add features like these<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="other/images/gt_features.png" class="img-fluid" width="638"></p>
+</div>
+</div>
+<p>You can add a title and subtitle using <code><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Enos Data Observations"</span>, </span>
+<span>              subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="nofiqupkuq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nofiqupkuq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nofiqupkuq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nofiqupkuq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nofiqupkuq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nofiqupkuq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nofiqupkuq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nofiqupkuq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nofiqupkuq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nofiqupkuq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nofiqupkuq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nofiqupkuq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nofiqupkuq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nofiqupkuq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofiqupkuq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nofiqupkuq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nofiqupkuq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofiqupkuq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nofiqupkuq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofiqupkuq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nofiqupkuq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofiqupkuq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nofiqupkuq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofiqupkuq .gt_left {
+  text-align: left;
+}
+
+#nofiqupkuq .gt_center {
+  text-align: center;
+}
+
+#nofiqupkuq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nofiqupkuq .gt_font_normal {
+  font-weight: normal;
+}
+
+#nofiqupkuq .gt_font_bold {
+  font-weight: bold;
+}
+
+#nofiqupkuq .gt_font_italic {
+  font-style: italic;
+}
+
+#nofiqupkuq .gt_super {
+  font-size: 65%;
+}
+
+#nofiqupkuq .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#nofiqupkuq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#nofiqupkuq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nofiqupkuq .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#nofiqupkuq .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#nofiqupkuq .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style="">Enos Data Observations</th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">att_end</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>By default, titles and other text can not be formatted. If you want formatting, you must wrap the character string in a call to <code><a href="https://gt.rstudio.com/reference/md.html">md()</a></code>, where <em>md</em> stands for (M)ark(d)own. For example, here is a bolded title.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>              subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="mgxlcduhlb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mgxlcduhlb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mgxlcduhlb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mgxlcduhlb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mgxlcduhlb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mgxlcduhlb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mgxlcduhlb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mgxlcduhlb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mgxlcduhlb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mgxlcduhlb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mgxlcduhlb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mgxlcduhlb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mgxlcduhlb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mgxlcduhlb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgxlcduhlb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mgxlcduhlb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mgxlcduhlb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgxlcduhlb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mgxlcduhlb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgxlcduhlb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mgxlcduhlb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgxlcduhlb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgxlcduhlb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgxlcduhlb .gt_left {
+  text-align: left;
+}
+
+#mgxlcduhlb .gt_center {
+  text-align: center;
+}
+
+#mgxlcduhlb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mgxlcduhlb .gt_font_normal {
+  font-weight: normal;
+}
+
+#mgxlcduhlb .gt_font_bold {
+  font-weight: bold;
+}
+
+#mgxlcduhlb .gt_font_italic {
+  font-style: italic;
+}
+
+#mgxlcduhlb .gt_super {
+  font-size: 65%;
+}
+
+#mgxlcduhlb .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#mgxlcduhlb .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mgxlcduhlb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mgxlcduhlb .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mgxlcduhlb .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mgxlcduhlb .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">att_end</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>We can use <code><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner()</a></code> to add spanner columns. The <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> argument takes in the variables that the spanner column will cover.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>              subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_spanner.html">tab_spanner</a></span><span class="op">(</span>label <span class="op">=</span> <span class="st">"Name of Spanner Column Here"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">gender</span>, <span class="va">income</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="senjhroqyz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#senjhroqyz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#senjhroqyz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#senjhroqyz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#senjhroqyz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#senjhroqyz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#senjhroqyz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#senjhroqyz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#senjhroqyz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#senjhroqyz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#senjhroqyz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#senjhroqyz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#senjhroqyz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#senjhroqyz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#senjhroqyz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#senjhroqyz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#senjhroqyz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#senjhroqyz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#senjhroqyz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#senjhroqyz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#senjhroqyz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#senjhroqyz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#senjhroqyz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#senjhroqyz .gt_left {
+  text-align: left;
+}
+
+#senjhroqyz .gt_center {
+  text-align: center;
+}
+
+#senjhroqyz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#senjhroqyz .gt_font_normal {
+  font-weight: normal;
+}
+
+#senjhroqyz .gt_font_bold {
+  font-weight: bold;
+}
+
+#senjhroqyz .gt_font_italic {
+  font-style: italic;
+}
+
+#senjhroqyz .gt_super {
+  font-size: 65%;
+}
+
+#senjhroqyz .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#senjhroqyz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#senjhroqyz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#senjhroqyz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#senjhroqyz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#senjhroqyz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings">
+<tr>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner">Name of Spanner Column Here</span>
+      </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="2" colspan="1">att_end</th>
+    </tr>
+<tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">income</th>
+    </tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>From here on, our current table will not include a spanner column. If you wish to see more examples of spanner columns, go to <a href="https://ppbds.github.io/primer/rubin-causal-model.html#a-single-value-for-tau">Chapter 4</a>.</p>
+<p>&nbsp;</p>
+<p>You can change the column names using <code><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>               subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="st">"Gender"</span>,</span>
+<span>               income <span class="op">=</span> <span class="st">"Income"</span>, </span>
+<span>               att_end <span class="op">=</span> <span class="st">"End Attitude"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="cxeynvhzno" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cxeynvhzno .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cxeynvhzno .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cxeynvhzno .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cxeynvhzno .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cxeynvhzno .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cxeynvhzno .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cxeynvhzno .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cxeynvhzno .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cxeynvhzno .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cxeynvhzno .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cxeynvhzno .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cxeynvhzno .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cxeynvhzno .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cxeynvhzno .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cxeynvhzno .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cxeynvhzno .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cxeynvhzno .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cxeynvhzno .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cxeynvhzno .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cxeynvhzno .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cxeynvhzno .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cxeynvhzno .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cxeynvhzno .gt_left {
+  text-align: left;
+}
+
+#cxeynvhzno .gt_center {
+  text-align: center;
+}
+
+#cxeynvhzno .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cxeynvhzno .gt_font_normal {
+  font-weight: normal;
+}
+
+#cxeynvhzno .gt_font_bold {
+  font-weight: bold;
+}
+
+#cxeynvhzno .gt_font_italic {
+  font-style: italic;
+}
+
+#cxeynvhzno .gt_super {
+  font-size: 65%;
+}
+
+#cxeynvhzno .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#cxeynvhzno .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#cxeynvhzno .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cxeynvhzno .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#cxeynvhzno .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#cxeynvhzno .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">End Attitude</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Use <code><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note()</a></code> to cite the source of the data or to create a caption. This function is not exclusively for providing a source — though it’s a handy way to do so — and can be used to display any text you’d like:</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>              subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="st">"Gender"</span>,</span>
+<span>             income <span class="op">=</span> <span class="st">"Income"</span>, </span>
+<span>             att_end <span class="op">=</span> <span class="st">"End Attitude"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note</a></span><span class="op">(</span><span class="st">"Source: Ryan Enos"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="zrnbbzgilr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zrnbbzgilr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zrnbbzgilr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zrnbbzgilr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zrnbbzgilr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zrnbbzgilr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zrnbbzgilr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zrnbbzgilr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zrnbbzgilr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zrnbbzgilr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zrnbbzgilr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zrnbbzgilr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zrnbbzgilr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zrnbbzgilr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrnbbzgilr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zrnbbzgilr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zrnbbzgilr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrnbbzgilr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zrnbbzgilr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrnbbzgilr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zrnbbzgilr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrnbbzgilr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zrnbbzgilr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zrnbbzgilr .gt_left {
+  text-align: left;
+}
+
+#zrnbbzgilr .gt_center {
+  text-align: center;
+}
+
+#zrnbbzgilr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zrnbbzgilr .gt_font_normal {
+  font-weight: normal;
+}
+
+#zrnbbzgilr .gt_font_bold {
+  font-weight: bold;
+}
+
+#zrnbbzgilr .gt_font_italic {
+  font-style: italic;
+}
+
+#zrnbbzgilr .gt_super {
+  font-size: 65%;
+}
+
+#zrnbbzgilr .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#zrnbbzgilr .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#zrnbbzgilr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zrnbbzgilr .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#zrnbbzgilr .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#zrnbbzgilr .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">End Attitude</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+<tfoot class="gt_sourcenotes"><tr>
+<td class="gt_sourcenote" colspan="3">Source: Ryan Enos</td>
+    </tr></tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Using <code><a href="https://gt.rstudio.com/reference/md.html">md()</a></code> again, we can italicize the name of the Enos study in the caption:</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>              subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="st">"Gender"</span>,</span>
+<span>             income <span class="op">=</span> <span class="st">"Income"</span>, </span>
+<span>             att_end <span class="op">=</span> <span class="st">"End Attitude"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note</a></span><span class="op">(</span><span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"Source: Ryan Enos, *Causal Effect of Intergroup Contact on Exclusionary Attitudes*"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="vrdwtvignm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#vrdwtvignm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vrdwtvignm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vrdwtvignm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vrdwtvignm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vrdwtvignm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vrdwtvignm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vrdwtvignm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vrdwtvignm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vrdwtvignm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vrdwtvignm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vrdwtvignm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vrdwtvignm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vrdwtvignm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vrdwtvignm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vrdwtvignm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vrdwtvignm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vrdwtvignm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vrdwtvignm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vrdwtvignm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vrdwtvignm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vrdwtvignm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vrdwtvignm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vrdwtvignm .gt_left {
+  text-align: left;
+}
+
+#vrdwtvignm .gt_center {
+  text-align: center;
+}
+
+#vrdwtvignm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vrdwtvignm .gt_font_normal {
+  font-weight: normal;
+}
+
+#vrdwtvignm .gt_font_bold {
+  font-weight: bold;
+}
+
+#vrdwtvignm .gt_font_italic {
+  font-style: italic;
+}
+
+#vrdwtvignm .gt_super {
+  font-size: 65%;
+}
+
+#vrdwtvignm .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#vrdwtvignm .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#vrdwtvignm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vrdwtvignm .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#vrdwtvignm .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#vrdwtvignm .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">End Attitude</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">105000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">300000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">135000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+<tfoot class="gt_sourcenotes"><tr>
+<td class="gt_sourcenote" colspan="3">Source: Ryan Enos, <em>Causal Effect of Intergroup Contact on Exclusionary Attitudes</em>
+</td>
+    </tr></tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Now that the table structure looks good, we want to format the numbers themselves. Let’s add some dollar signs to the income column using <code><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency()</a></code>. This function also adds commas (if you want commas without dollar signs use <code><a href="https://gt.rstudio.com/reference/fmt_number.html">fmt_number()</a></code>). The <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> within <code><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency()</a></code> denotes the variable being formatted as a currency:</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"**Enos Data Observations**"</span><span class="op">)</span>, </span>
+<span>               subtitle <span class="op">=</span> <span class="st">"Gender, Income, and End Attitude from the Trains Data"</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="st">"Gender"</span>,</span>
+<span>               income <span class="op">=</span> <span class="st">"Income"</span>, </span>
+<span>               att_end <span class="op">=</span> <span class="st">"End Attitude"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note</a></span><span class="op">(</span><span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"Source: Ryan Enos, *Causal Effect of Intergroup </span></span>
+<span><span class="st">                       Contact on Exclusionary Attitudes*"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, </span>
+<span>                 decimals <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="dbvqpyeeig" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dbvqpyeeig .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dbvqpyeeig .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dbvqpyeeig .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dbvqpyeeig .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dbvqpyeeig .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dbvqpyeeig .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dbvqpyeeig .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dbvqpyeeig .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbvqpyeeig .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbvqpyeeig .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dbvqpyeeig .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dbvqpyeeig .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dbvqpyeeig .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbvqpyeeig .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dbvqpyeeig .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dbvqpyeeig .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbvqpyeeig .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dbvqpyeeig .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbvqpyeeig .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dbvqpyeeig .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbvqpyeeig .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbvqpyeeig .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbvqpyeeig .gt_left {
+  text-align: left;
+}
+
+#dbvqpyeeig .gt_center {
+  text-align: center;
+}
+
+#dbvqpyeeig .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dbvqpyeeig .gt_font_normal {
+  font-weight: normal;
+}
+
+#dbvqpyeeig .gt_font_bold {
+  font-weight: bold;
+}
+
+#dbvqpyeeig .gt_font_italic {
+  font-style: italic;
+}
+
+#dbvqpyeeig .gt_super {
+  font-size: 65%;
+}
+
+#dbvqpyeeig .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#dbvqpyeeig .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#dbvqpyeeig .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dbvqpyeeig .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#dbvqpyeeig .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#dbvqpyeeig .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style=""><strong>Enos Data Observations</strong></th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">Gender, Income, and End Attitude from the Trains Data</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Income</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">End Attitude</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">$135,000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">$105,000</td>
+<td class="gt_row gt_right">10</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">$135,000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">$300,000</td>
+<td class="gt_row gt_right">11</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">$135,000</td>
+<td class="gt_row gt_right">5</td>
+</tr>
+</tbody>
+<tfoot class="gt_sourcenotes"><tr>
+<td class="gt_sourcenote" colspan="3">Source: Ryan Enos, <em>Causal Effect of Intergroup
+Contact on Exclusionary Attitudes</em>
+</td>
+    </tr></tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Note that the line return in the title between “Intergroup” and “Contact” does not effect or break up the title displayed by <code><a href="https://gt.rstudio.com/reference/md.html">md()</a></code>.</p>
+<section id="regression-tables" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="regression-tables">Regression tables</h3>
+<p>We can making a <strong>gt</strong> table with a <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> regression object. Key to this is the <strong>gtsummary</strong> package and its <code><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html">tbl_regression()</a></code> function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/">rstanarm</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bbolker/broom.mixed">broom.mixed</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm</a></span><span class="op">(</span><span class="va">att_end</span> <span class="op">~</span> <span class="va">party</span>, data <span class="op">=</span> <span class="va">trains</span>, refresh <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html">tbl_regression</a></span><span class="op">(</span><span class="va">fit2</span>, </span>
+<span>               intercept <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>               estimate_fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/style_sigfig.html">style_sigfig</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://www.danieldsjoberg.com/gtsummary/reference/as_gt.html">as_gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_header.html">tab_header</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Regression of Attitudes about Immigration"</span>, </span>
+<span>               subtitle <span class="op">=</span> <span class="st">"The Effect of Party on End Attitude"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://gt.rstudio.com/reference/tab_source_note.html">tab_source_note</a></span><span class="op">(</span><span class="fu"><a href="https://gt.rstudio.com/reference/md.html">md</a></span><span class="op">(</span><span class="st">"Source: Ryan Enos, *Causal Effect of Intergroup </span></span>
+<span><span class="st">                        Contact on Exclusionary Attitudes*"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `fmt_missing()` function is deprecated and will soon be removed
+* Use the `sub_missing()` function instead
+
+Warning: The `fmt_missing()` function is deprecated and will soon be removed
+* Use the `sub_missing()` function instead
+
+Warning: The `fmt_missing()` function is deprecated and will soon be removed
+* Use the `sub_missing()` function instead</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div id="komjqpuqwd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#komjqpuqwd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#komjqpuqwd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#komjqpuqwd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#komjqpuqwd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#komjqpuqwd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#komjqpuqwd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#komjqpuqwd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#komjqpuqwd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#komjqpuqwd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#komjqpuqwd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#komjqpuqwd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#komjqpuqwd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#komjqpuqwd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#komjqpuqwd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#komjqpuqwd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#komjqpuqwd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#komjqpuqwd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#komjqpuqwd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#komjqpuqwd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#komjqpuqwd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#komjqpuqwd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#komjqpuqwd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#komjqpuqwd .gt_left {
+  text-align: left;
+}
+
+#komjqpuqwd .gt_center {
+  text-align: center;
+}
+
+#komjqpuqwd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#komjqpuqwd .gt_font_normal {
+  font-weight: normal;
+}
+
+#komjqpuqwd .gt_font_bold {
+  font-weight: bold;
+}
+
+#komjqpuqwd .gt_font_italic {
+  font-style: italic;
+}
+
+#komjqpuqwd .gt_super {
+  font-size: 65%;
+}
+
+#komjqpuqwd .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#komjqpuqwd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#komjqpuqwd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#komjqpuqwd .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#komjqpuqwd .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#komjqpuqwd .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_header">
+<tr>
+<th colspan="3" class="gt_heading gt_title gt_font_normal" style="">Regression of Attitudes about Immigration</th>
+    </tr>
+<tr>
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">The Effect of Party on End Attitude</th>
+    </tr>
+</thead>
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+<strong>95% CI</strong><sup class="gt_footnote_marks">1</sup>
+</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td class="gt_row gt_left">(Intercept)</td>
+<td class="gt_row gt_center">8.8</td>
+<td class="gt_row gt_center">8.2, 9.4</td>
+</tr>
+<tr>
+<td class="gt_row gt_left">party</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+</tr>
+<tr>
+<td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Democrat</td>
+<td class="gt_row gt_center">—</td>
+<td class="gt_row gt_center">—</td>
+</tr>
+<tr>
+<td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Republican</td>
+<td class="gt_row gt_center">2.2</td>
+<td class="gt_row gt_center">0.73, 3.6</td>
+</tr>
+</tbody>
+<tfoot class="gt_sourcenotes"><tr>
+<td class="gt_sourcenote" colspan="3">Source: Ryan Enos, <em>Causal Effect of Intergroup
+Contact on Exclusionary Attitudes</em>
+</td>
+    </tr></tfoot>
+<tfoot class="gt_footnotes"><tr>
+<td class="gt_footnote" colspan="3">
+<sup class="gt_footnote_marks">1</sup> CI = Credible Interval</td>
+    </tr></tfoot>
+</table>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+
+
+</section></section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>source: https://gt.rstudio.com<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./12-case-studies.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Case Studies</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./functions.html" class="pagination-link">
+        <span class="nav-page-text">Functions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

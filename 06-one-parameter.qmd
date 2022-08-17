@@ -1057,7 +1057,7 @@ Let's recreate our posterior using `posterior_epred()`:
 
 ```{r}
 ppd_for_p <- posterior_epred(fit_1, 
-                newdata = tibble(constant = 1)) |> 
+                newdata = tibble(.rows = 1)) |> 
   as_tibble() |>
   rename(p = `1`)
   
@@ -1149,7 +1149,7 @@ To predict these future unknown samples, we use `posterior_predict()`. We pass t
 ```{r}
 
 posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) |> 
+                  newdata = tibble(.rows = 20)) |> 
   as_tibble()
 ```
 
@@ -1157,7 +1157,7 @@ Each of our 4,000 rows represent one instance of us predicting a future sample f
 
 ```{r}
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) |> 
+                  newdata = tibble(.rows = 20)) |> 
   as_tibble() |> 
   mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
@@ -1181,7 +1181,7 @@ We have successfully created the posterior probability distribution for the numb
 ```{r, fig.cap = "Using posterior_epred()"}
 
 post_epred <- posterior_epred(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) |> 
+                  newdata = tibble(.rows = 20)) |> 
   as_tibble() |> 
   mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
@@ -1232,7 +1232,7 @@ Because `posterior_predict()` takes predictive draws for us, we can simply count
 ```{r}
 # Same code as earlier, included as a refresher. 
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                  newdata = tibble(constant = rep(1, 20))) |> 
+                  newdata = tibble(.rows = 20)) |> 
   as_tibble() |> 
   mutate(total = rowSums(across(`1`:`20`))) |> 
   select(total)
@@ -1248,7 +1248,7 @@ To visualize this probability graphically, we will reuse our posterior, and add 
 ```{r}
 
 ppd_reds_in_20 <- posterior_predict(fit_1, 
-                    newdata = tibble(constant = rep(1, 20))) |> 
+                    newdata = tibble(.rows = 20)) |> 
   as_tibble() |> 
   mutate(total = rowSums(across(`1`:`20`))) |>
   select(total) |>

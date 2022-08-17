@@ -702,6 +702,14 @@ These are the functions that we're already familiar with using, and they work ju
 
 However, there are cases where you will have to use SQL code to accomplish certain tasks.
 
+```{r}
+#| echo: false
+#| 
+
+invisible(file.remove("chinook.db"))
+```
+
+
 <!-- #### Using SQL code -->
 
 <!-- First off, let's try to understand what SQLite and SQL really is. -->

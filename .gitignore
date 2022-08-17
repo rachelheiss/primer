@@ -14,8 +14,6 @@ site_libs/
 
 renv
 
-chinook.db
-
 primer.Rproj
 
 # No matter what happens above, everything in docs/ must be checked in

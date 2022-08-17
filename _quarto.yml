@@ -11,16 +11,17 @@
 
 # We used the _quarto.yml file from https://github.com/jjallaire/hopr. 
 
+# Tried to use pre-render field for Quarto instead of the before_chapter_script field, 
+# which was previously used in bookdown. Alas, there seens to be no eqivalent of 
+# before_chapter_script and after_chapter_script in Quarto. Each chapter must be self-contained.
+# For more info see: https://community.rstudio.com/t/cannot-get-quarto-pre-render-to-work/143566
+
+
+
 project:
   type: book
   output-dir: docs
 
-# Tryed to use pre-render for quarto instead of before_chapter script which was previously used in bookdown
-# Gave up on finding quarto eqivalent of before_chapter_script and after
-# pre/post-render work differently from bookdown before_chapter_script (not working)
-# For more info see: https://community.rstudio.com/t/cannot-get-quarto-pre-render-to-work/143566
-# Or my RS Community query: https://community.rstudio.com/t/quarto-book-start-equivalent/144196
-# For now I added a "hidden libraries" code chunk at the beginning of most chapters to replace book_start.
 
 book:
   title: "Preceptor's Primer for Bayesian Data Science"

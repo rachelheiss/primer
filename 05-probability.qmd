@@ -1719,7 +1719,7 @@ draws
 
 <!-- DK: Need more here. Connect to the discussion in Section 2.9 -->
 
-Recall from @wrangling how we can draw randomly from specified probability distributions:
+Recall from @sec-wrangling how we can draw randomly from specified probability distributions:
 
 ```{r}
 rnorm(10)

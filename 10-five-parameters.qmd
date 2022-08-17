@@ -448,7 +448,7 @@ Either way, $\beta_0$ is the "intercept" of the regression, the average value fo
 
 $\beta_1$ is the "coefficient" of  $election\_age$. When comparing two individuals, the first with an $election\_age$ one year older than the second,  we expect the first to have a $lived\_after$ value $\beta_1$ different from the second. In other words, we expect the older to have fewer years remaining, because $\beta_1$ is negative. Again, this is the value for the population from which our data is drawn.  
 
-There are three unknown parameters --- $\beta_0$, $\beta_1$ and $\sigma$ --- just as with the models we used in @three-parameters. Before we get to the five parameter case, it is useful to review this earlier material.
+There are three unknown parameters --- $\beta_0$, $\beta_1$ and $\sigma$ --- just as with the models we used in @sec-three-parameters. Before we get to the five parameter case, it is useful to review this earlier material.
 
 You may recall from middle school algebra that the equation of a line is $y = m x + b$. There are two parameters: $m$ and $b$. The intercept $b$ is the value of $y$ when $x = 0$. The slope coefficient $m$ for $x$ is the increase in $y$ for every one unit increase in $x$. When defining a regression line, we use slightly different notation but the fundamental relationship is the same. 
 
@@ -481,11 +481,11 @@ ch10 %>%
     theme_classic()
 ```
 
-As we discussed in @three-parameters, the most common term for a model like this is a "regression." We have "regressed" `lived_after`, our dependent variable, on `election_age`, our (only) independent variable.
+As we discussed in @sec-three-parameters, the most common term for a model like this is a "regression." We have "regressed" `lived_after`, our dependent variable, on `election_age`, our (only) independent variable.
 
 Consider someone who is about 40 years old on Election Day. We have a score or more data points for candidates around that age. This area is highlighted by the red box on our plot. As we can see, two died soon after the election. Some of them lived for 50 or more years after the election. *Variation fills the world.* However, the fitted line tells us that, on average, we would expect a candidate that age to live about 37 years after the election. 
 
-This is a descriptive model, not a causal model. Remember our motto from Chapter @rubin-causal-model: *No causation without manipulation.* There is no way, for person $i$, to change the years that she has been alive on Election Day. On the day of this election, she is X years old. So, there are not two (or more) potential outcomes. Without more than one potential outcome, there can not be a causal effect.
+This is a descriptive model, not a causal model. Remember our motto from Chapter @sec-rubin-causal-model: *No causation without manipulation.* There is no way, for person $i$, to change the years that she has been alive on Election Day. On the day of this election, she is X years old. So, there are not two (or more) potential outcomes. Without more than one potential outcome, there can not be a causal effect.
 
 Given that, it is important to monitor our language. We do not believe that that changes in `election_age` "cause" changes in `lived_after`. That is obvious. But there are some words and phrases --- like "associated with" and "change by" --- which are too close to causal. (And which we are guilty of using just a few paragraphs ago!) Be wary of their use. *Always think in terms of comparisons when using a predictive model.* We can't change `election_age` for an individual candidate. We can only compare two candidates (or two groups of candidates).
 
@@ -518,7 +518,7 @@ fit_1 %>%
 
 ### election_age and sex
 
-In this model, our outcome variable continues to be `lived_after`, but now we will have two different explanatory variables: `election_age` and `sex`. Note that `sex` is a categorical explanatory variable and `election_age` is a continuous explanatory variable. This is the same type of model --- parallel slopes --- as we saw in @four-parameters.
+In this model, our outcome variable continues to be `lived_after`, but now we will have two different explanatory variables: `election_age` and `sex`. Note that `sex` is a categorical explanatory variable and `election_age` is a continuous explanatory variable. This is the same type of model --- parallel slopes --- as we saw in @sec-four-parameters.
 
 Math: 
 
@@ -745,7 +745,7 @@ This posterior distribution shows the average slope values for men and women. Yo
 
 ### Interaction model
 
-Recall the parallel slopes model that we created in @four-parameters. Another visualization we can create, one that also uses slopes and intercepts for our model, is the interaction model. In this model, the slopes for our two groups **are different**, creating a non-parallel visualization. 
+Recall the parallel slopes model that we created in @sec-four-parameters. Another visualization we can create, one that also uses slopes and intercepts for our model, is the interaction model. In this model, the slopes for our two groups **are different**, creating a non-parallel visualization. 
 
 The process for creating the interaction model is similar to creating the parallel slopes model. Let us begin the same way --- by tidying our data and inspecting it. 
 
@@ -760,7 +760,7 @@ tidy <- fit_4 %>%
 tidy
 ```
 
-After tidying our data, we will extract values and assign sensible names for later use. Note that this is identical to the process from @four-parameters, with the addition of a fourth term (the interaction term):
+After tidying our data, we will extract values and assign sensible names for later use. Note that this is identical to the process from @sec-four-parameters, with the addition of a fourth term (the interaction term):
 
 ```{r}
 # Extract and name the columns of our tidy object. By calling tidy$estimate[1],
@@ -857,7 +857,7 @@ Recall the questions with which we began the chapter:
 
 *How long will two political candidates --- one male and one female, both 10 years older than the average candidate --- live after the election? How different will their lifespans be?*
 
-These questions are, purposely, less precise than the ones we tackled in Chapters @two-parameters and @three-parameters, written more in a conversational style. This is how normal people talk.
+These questions are, purposely, less precise than the ones we tackled in Chapters @sec-two-parameters and @sec-three-parameters, written more in a conversational style. This is how normal people talk.
 
 However, as data scientists, our job is to bring precision to these questions. There are two commonsense interpretations. First, we could be curious about the *expected values* for these questions. If we averaged the data for a thousand candidates like these, what would the answer be? Second, we could be curious about two specific individuals. How long will they live? *Averages involve questions about parameters. The fates of individuals require predictions.* Those are general claims, violated too often to be firm rules. Yet, they highlight a key point: *expected values are less variable than individual predictions*.
 

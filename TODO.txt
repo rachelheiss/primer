@@ -3,7 +3,17 @@
 #one-parameter to #sec-one-paramater. Use @one-parameter to produce Chapter 6. See 
 https://quarto.org/docs/books/book-crossrefs.html#creating-references
 
-Fix warning about date in primer.data.
+Fix warning about date in primer.data:
+
+Warning messages:
+1: In utils::citation(..., lib.loc = lib.loc) :
+  no date field in DESCRIPTION file of package 'primer.data'
+2: In utils::citation(..., lib.loc = lib.loc) :
+  could not determine year for 'primer.data' from package DESCRIPTION file
+
+Also this: 
+
+[WARNING] Citeproc: Citation with no printed form: 
 
 Need to list all packages used in the book. Not sure how.
 

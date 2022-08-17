@@ -19,7 +19,7 @@
 
 ## Introduction
 
-A function is a piece of code that is packaged in a way that makes it easy to reuse. Functions make it easy for you to `filter()`, `arrange()`, `select()`, and create a `tibble()`, as you have seen in @visualization and @wrangling. Functions also allow you to transform variables and perform mathematical calculations. We use functions like `rnorm()` and `runif()` to generate random draws from a distribution.
+A function is a piece of code that is packaged in a way that makes it easy to reuse. Functions make it easy for you to `filter()`, `arrange()`, `select()`, and create a `tibble()`, as you have seen in @sec-visualization and @sec-wrangling. Functions also allow you to transform variables and perform mathematical calculations. We use functions like `rnorm()` and `runif()` to generate random draws from a distribution.
 
 Every time we reference a function in this *Primer*, we include the parentheses. You call a function by including its parentheses and any necessary arguments within those parentheses. This is a correct call of `rnorm()`:
 

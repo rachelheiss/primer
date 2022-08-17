@@ -343,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </iframe>
 </div>
 <p><em>The Hunger Games</em> is a dystopian novel in which children are chosen via lottery to fight to the death. Primrose Everdeen is selected from the urn. Why does she have the misfortune of being selected? Or, as we data scientists say, <em>sampled</em>?</p>
-<p>In Chapter @ref(probability), we learned about probability, the framework for quantifying uncertainty. In this chapter, we will learn about <em>sampling</em>, the beginning of our journey toward inference. When we sample, we take some <em>units</em> from a <em>population</em>, calculate statistics based on those units, and make inferences about unknown <em>parameters</em> associated with the population.</p>
+<p>In Chapter <span class="citation" data-cites="probability">(<a href="references.html#ref-probability" role="doc-biblioref"><strong>probability?</strong></a>)</span>, we learned about probability, the framework for quantifying uncertainty. In this chapter, we will learn about <em>sampling</em>, the beginning of our journey toward inference. When we sample, we take some <em>units</em> from a <em>population</em>, calculate statistics based on those units, and make inferences about unknown <em>parameters</em> associated with the population.</p>
 <p>The urn below has a certain number of red and a certain number of white beads all of equal size, mixed well together. What proportion, <span class="math inline">\(\rho\)</span>, of this urn’s beads are red?</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -441,16 +441,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code># A tibble: 33 × 4
    group           red_beads prop_red group_ID
    &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;    &lt;int&gt;
- 1 Yao, Kate              23     0.46        1
- 2 Aayush, Karen          15     0.3         2
- 3 Maeve, Josh            18     0.36        3
- 4 Mark, Jane             21     0.42        4
- 5 Damani, Melissa        15     0.3         5
- 6 Yuki, Harry            21     0.42        6
- 7 Esther, Henry          17     0.34        7
- 8 Ishan, Cass            15     0.3         8
- 9 Sophie, Brian          21     0.42        9
-10 Mak, Sophie            17     0.34       10
+ 1 Sanjana, Yuko          19     0.38        1
+ 2 Conrad, Vlad           16     0.32        2
+ 3 Ishan, Cass            15     0.3         3
+ 4 Siobhan, Jane          11     0.22        4
+ 5 Sophie, Brian          21     0.42        5
+ 6 Damani, Melissa        15     0.3         6
+ 7 Claire, Cloud          16     0.32        7
+ 8 Ian, Iman              18     0.36        8
+ 9 Caroline, Edna         15     0.3         9
+10 Maeve, Josh            18     0.36       10
 # … with 23 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
@@ -3323,7 +3323,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 </section><section id="stan_glm" class="level4" data-number="6.4.3.2"><h4 data-number="6.4.3.2" class="anchored" data-anchor-id="stan_glm">
 <span class="header-section-number">6.4.3.2</span> stan_glm()</h4>
 <p>Given a data set to use and a mathematical formula to work with, the next step is to write some code. We will use the <strong>rstanarm</strong> package, which provides a user friendly interface to work with the statistical language Stan.</p>
-<p><strong>rstanarm</strong> and Stan are appealing because they are powerful. Functions such as <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> can do everything we did by hand in Chapter 5 in a few lines of code. Because we will use a professional statistical library, the objects we make will become more complex. In this Chapter, we provide the steps for answering our questions. Chapter @ref(two-parameters) will provide a more detailed explanation of the objects we will make. <em>To be clear, you do not need to fully understand this section or how this code works. This is an introduction, not a formal lesson.</em></p>
+<p><strong>rstanarm</strong> and Stan are appealing because they are powerful. Functions such as <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> can do everything we did by hand in Chapter 5 in a few lines of code. Because we will use a professional statistical library, the objects we make will become more complex. In this Chapter, we provide the steps for answering our questions. Chapter <span class="citation" data-cites="two-parameters">(<a href="references.html#ref-two-parameters" role="doc-biblioref"><strong>two-parameters?</strong></a>)</span> will provide a more detailed explanation of the objects we will make. <em>To be clear, you do not need to fully understand this section or how this code works. This is an introduction, not a formal lesson.</em></p>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/rstanarm/">rstanarm</a></span><span class="op">)</span></span>
 <span></span>
@@ -3354,7 +3354,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 * For info on the priors used see ?prior_summary.stanreg</code></pre>
 </div>
 </div>
-<p>We will learn the meaning of this output in Chapter @ref(two-parameters). Once we have the <code>fit_1</code> object, it is easy to answer two sorts of questions: the posterior probability distribution for <span class="math inline">\(\rho\)</span> and predictions for new draws from the urn. The key new functions are <code><a href="https://mc-stan.org/rstantools/reference/posterior_epred.html">posterior_epred()</a></code> for the former and <code><a href="https://mc-stan.org/rstantools/reference/posterior_predict.html">posterior_predict()</a></code> for the latter.</p>
+<p>We will learn the meaning of this output in Chapter <span class="citation" data-cites="two-parameters">(<a href="references.html#ref-two-parameters" role="doc-biblioref"><strong>two-parameters?</strong></a>)</span>. Once we have the <code>fit_1</code> object, it is easy to answer two sorts of questions: the posterior probability distribution for <span class="math inline">\(\rho\)</span> and predictions for new draws from the urn. The key new functions are <code><a href="https://mc-stan.org/rstantools/reference/posterior_epred.html">posterior_epred()</a></code> for the former and <code><a href="https://mc-stan.org/rstantools/reference/posterior_predict.html">posterior_predict()</a></code> for the latter.</p>
 <p>Let’s recreate our posterior using <code><a href="https://mc-stan.org/rstantools/reference/posterior_epred.html">posterior_epred()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppd_for_p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mc-stan.org/rstantools/reference/posterior_epred.html">posterior_epred</a></span><span class="op">(</span><span class="va">fit_1</span>, </span>
@@ -3643,7 +3643,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 </div>
 </div>
 <p>The red bars illustrate the area under a specific section of the curve, as compared to the <em>entire</em> area under the curve. <em>Each question requires looking at a new area under the curve.</em> When someones asks you a question, they are doing two things. First, they are providing instructions as to the posterior your should create. Here, the results with a shovel of 20 slots. Second, they are asking a question about the area under the curve in a specific region. Here, the region where the number of red beads is greater than 8 is highlighted in red. Therefore, the area below the curve that <strong>is red</strong> is how we get our estimate.</p>
-<p>See Chapter @ref(two-parameters) for a thorough discussion of the use of <strong>rstanarm</strong>. This package will be our main tool for the rest of the <em>Primer</em>.</p>
+<p>See Chapter <span class="citation" data-cites="two-parameters">(<a href="references.html#ref-two-parameters" role="doc-biblioref"><strong>two-parameters?</strong></a>)</span> for a thorough discussion of the use of <strong>rstanarm</strong>. This package will be our main tool for the rest of the <em>Primer</em>.</p>
 </section><section id="assesing-uncertainty" class="level4" data-number="6.4.4.2"><h4 data-number="6.4.4.2" class="anchored" data-anchor-id="assesing-uncertainty">
 <span class="header-section-number">6.4.4.2</span> Assesing uncertainty</h4>
 <p>The process Cardinal Virtues process may seem tedious, but we use them for good reason. In Wisdom we determined what data we need to answer our question, and in Justice we analyzed whether or not the data we have can answer our question. If we had skipped these steps, we would be at risk of creating models with “bad data” in Courage and Temperance, and draw misleading conclusions.</p>
@@ -3815,7 +3815,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 <span class="header-section-number">6.6.4</span> Cardinal Virtues</h3>
 <ul>
 <li>
-<code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> can create a joint distribution and then estimate the posterior probability distribution, conditional on the data which was passed in to the data argument. This is a much easier way to create the posterior distribution, and will be explored in more detail in Chapter @ref(two-parameters).</li>
+<code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> can create a joint distribution and then estimate the posterior probability distribution, conditional on the data which was passed in to the data argument. This is a much easier way to create the posterior distribution, and will be explored in more detail in Chapter <span class="citation" data-cites="two-parameters">(<a href="references.html#ref-two-parameters" role="doc-biblioref"><strong>two-parameters?</strong></a>)</span>.</li>
 <li>We use the posterior distribution to answer our questions.</li>
 </ul></section><section id="case-study-polls" class="level3" data-number="6.6.5"><h3 data-number="6.6.5" class="anchored" data-anchor-id="case-study-polls">
 <span class="header-section-number">6.6.5</span> Case study: Polls</h3>

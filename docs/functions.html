@@ -298,12 +298,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 
 </header><!-- Get rid of nhanes example as too confusing? --><!-- Get rid of anonymous function section as too confusing? Or save it for final section of Advanced stuff? --><!-- The functions created here should be more tightly connected to the functions created in the tutorial. Recall that we will be merging the tutorial into the chapter this summer, I hope! --><!-- And we also want to lay the groundwork for the problem set (and exam) which require writing a function. And, finally, all these exercises should be teaching something which is then referenced in probability and in stan_glm. Yet it is not clear what those would be. Maybe some simulations? --><!-- If the Democrats have a 50% chance of winning each seat in the Senate, what are the odds of them getting 60 seats (to beat the filibuster) at any one time? How much does their advantage have to be to have a 20% chance of getting 60? Do this first while pretending that all senates run each two years. Then do it staggered. Or is all that too complex? --><!-- Maybe an advanced form of the guessing game in which we are allowed to provide a function. The goal of inference is to come up with a function which wins the prediction game. --><!-- This is currently in problem set #3: Change the objective function. The simplest form of the Guessing Game just counts each contest separately. A more advanced for would give you a penalty which varies depending on how wrong you are. (This, obviously, is one way to think about minimizing the squared residuals.) This is very fun because there are many different penalty functions, each of which may lead to a different function winning the Guessing Game. --><!-- Another form of the Guessing Game is like a casino. One person (the Casino) gives a 50% confidence interval. The other person gets to pick either inside or outside. Then there is a draw. The Casino wins if the second person can't consistently win. --><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>A function is a piece of code that is packaged in a way that makes it easy to reuse. Functions make it easy for you to <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and create a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code>, as you have seen in Chapters @ref(visualization) and @ref(wrangling). Functions also allow you to transform variables and perform mathematical calculations. We use functions like <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> and <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> to generate random draws from a distribution.</p>
+<p>A function is a piece of code that is packaged in a way that makes it easy to reuse. Functions make it easy for you to <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and create a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code>, as you have seen in Chapters @ref(visualization) and <span class="citation" data-cites="wrangling">(<a href="references.html#ref-wrangling" role="doc-biblioref"><strong>wrangling?</strong></a>)</span>. Functions also allow you to transform variables and perform mathematical calculations. We use functions like <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> and <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> to generate random draws from a distribution.</p>
 <p>Every time we reference a function in this <em>Primer</em>, we include the parentheses. You call a function by including its parentheses and any necessary arguments within those parentheses. This is a correct call of <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.943593</code></pre>
+<pre><code>[1] 0.05200154</code></pre>
 </div>
 </div>
 <p>If you run the function name without its parentheses, R will return the code that makes up the function.</p>
@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>function (n, mean = 0, sd = 1) 
 .Call(C_rnorm, n, mean, sd)
-&lt;bytecode: 0x12162eb38&gt;
+&lt;bytecode: 0x14a55b900&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
@@ -320,14 +320,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>Functions can also take in other functions as arguments. For example, <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> takes an expression and repeats it <code>n</code> times. What if we replicated the rolling of a die ten times?</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 5 1 2 3 4 3 3 6 6</code></pre>
+<pre><code> [1] 3 3 3 5 4 5 1 5 4 4</code></pre>
 </div>
 </div>
 <p>An especially useful type of function is the family of <code>map_*</code> functions, from the <strong>purrr</strong> package, which is automatically loaded with <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>. These functions apply some other function to every row in a tibble.</p>
@@ -442,7 +442,7 @@ Caused by error in `stop_bad_type()`:
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.193765  1.274563</code></pre>
+<pre><code>[1] -0.866548  2.219635</code></pre>
 </div>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>col_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -461,7 +461,7 @@ Caused by error in `stop_bad_type()`:
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [1 × 1] (S3: tbl_df/tbl/data.frame)
  $ col_1:List of 1
-  ..$ : num [1:2] -1.19 1.27</code></pre>
+  ..$ : num [1:2] -0.867 2.22</code></pre>
 </div>
 </div>
 <p>We can use <code>map_*</code> functions to both create a list-column and then, much more importantly, work with that list-column afterwards. Example:</p>
@@ -500,9 +500,9 @@ Caused by error in `stop_bad_type()`:
 <pre><code># A tibble: 3 × 4
      ID draws        max min_max  
   &lt;int&gt; &lt;list&gt;     &lt;dbl&gt; &lt;list&gt;   
-1     1 &lt;dbl [10]&gt;  1.20 &lt;dbl [2]&gt;
-2     2 &lt;dbl [10]&gt;  2.23 &lt;dbl [2]&gt;
-3     3 &lt;dbl [10]&gt;  1.56 &lt;dbl [2]&gt;</code></pre>
+1     1 &lt;dbl [10]&gt;  1.05 &lt;dbl [2]&gt;
+2     2 &lt;dbl [10]&gt;  1.61 &lt;dbl [2]&gt;
+3     3 &lt;dbl [10]&gt;  1.35 &lt;dbl [2]&gt;</code></pre>
 </div>
 </div>
 <p>This flexibility is only possible via the use of list-columns and <code>map_*</code> functions. This workflow is extremely common. We start with an empty tibble, using ID to specify the number of rows. With that skeleton, each step of the pipe adds a new column, working off a column which already exists.</p>

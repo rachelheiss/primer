@@ -325,13 +325,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- Take ownership of Temperance section. There is some sloppy writing there! Own it. -->
 <!-- Show posterior_interval() -->
 <!-- Chapter 7 should introduce, gently, the concept of in-sample and out-of-sample. As well as predictive accuracy as being a good way to judge how good your model is. What are some useful measures of predictive accuracy? Discuss our objective functions; minimize what? when would median be better than mean? Find a skewed data set and show how guessing the median works better than guessing the mean, if you care about absolute difference. (Can we estimate the median with stan_glm()?) Bias/Variance == Underfitting/Overfitting -->
-<p>In Chapter @ref(one-parameter), we learned how to do inference. We created a joint distribution of the models under consideration and the data which might be observed. Once we observed the data, we went from the joint distribution to the conditional distribution of possible models given the data which we did, in fact, observe. That conditional distribution, suitably normalized, was our posterior probability distribution over the space of possible models. With that distribution, we can answer any question we might (reasonably) ask.</p>
+<p>In Chapter -<span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span>, we learned how to do inference. We created a joint distribution of the models under consideration and the data which might be observed. Once we observed the data, we went from the joint distribution to the conditional distribution of possible models given the data which we did, in fact, observe. That conditional distribution, suitably normalized, was our posterior probability distribution over the space of possible models. With that distribution, we can answer any question we might (reasonably) ask.</p>
 <!-- Need a gif here. Like Hunger Games in Chapter 6. -->
 <p><em>But what a pain in the ass that whole process was!</em> Do professionals actually go through all those steps every time they work on a data science problem? No! That would be absurd. Instead, professionals use standard tools which, in an automated fashion, take care of those steps, taking us directly from assumptions and data to the posterior:</p>
 <p><span class="math display">\[\text{Prob}(\text{models} | \text{data} = \text{data we observed})\]</span></p>
 <p>Even then, however, the relative likelihood of different models is not that important. Models are invisible, mental entities with no more physical presence than unicorns or leprechauns. In the world itself, we make and test predictions. <em>People with better models make better predictions. That is what matters.</em></p>
-<p>In addition to a change in tools, there are two key differences in this chapter. First, Chapter @ref(one-parameter) used models with just one parameter: the number of red beads, which we can also transform into a parameter, <span class="math inline">\(p\)</span>, the number of red beads divided by 1,000. The model in Chapter @ref(one-parameter) was binomial, and there is only one unknown parameter <span class="math inline">\(p\)</span> in such models. In this chapter, we have two unknown parameters: the mean <span class="math inline">\(\mu\)</span> height in the US and the standard deviation, <span class="math inline">\(\sigma\)</span>, of the normally distributed error term.</p>
-<p>Second, Chapter @ref(one-parameter) dealt with a limited set of specific models: 1,001 of them, to be precise. The procedure used was just what we saw in Chapter @ref(probability). In this chapter, on the other hand, we have continuous parameters.</p>
+<p>In addition to a change in tools, there are two key differences in this chapter. First, Chapter <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span> used models with just one parameter: the number of red beads, which we can also transform into a parameter, <span class="math inline">\(p\)</span>, the number of red beads divided by 1,000. The model in Chapter <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span> was binomial, and there is only one unknown parameter <span class="math inline">\(p\)</span> in such models. In this chapter, we have two unknown parameters: the mean <span class="math inline">\(\mu\)</span> height in the US and the standard deviation, <span class="math inline">\(\sigma\)</span>, of the normally distributed error term.</p>
+<p>Second, Chapter <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span> dealt with a limited set of specific models: 1,001 of them, to be precise. The procedure used was just what we saw in Chapter <span class="citation" data-cites="probability">(<a href="references.html#ref-probability" role="doc-biblioref"><strong>probability?</strong></a>)</span>. In this chapter, on the other hand, we have continuous parameters.</p>
 <p>By this point, we should understand that the reason for making models is not, primarily, that making models is fun (although it is)! The reason is that, when confronted with a question, we face decisions. We must decide between variables X or Y. We must choose from datasets A, B and C. Confronted by a decision, we need to make a model of the world to help us.</p>
 <!-- Add back reference to ch 12 when it shows up again. -->
 <p>The real world is complex. Any substantive decision problem includes a great deal of complexity and requires even more context. We do not have the time to get into that level of detail now. So, we simplify. We are going to create a model of height for adult men. We will then use that model to answer four questions:</p>
@@ -365,12 +365,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 
-<div id="vbkygmsuda" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cdmfszjgkz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vbkygmsuda .gt_table {
+#cdmfszjgkz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -395,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_heading {
+#cdmfszjgkz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -407,7 +407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_title {
+#cdmfszjgkz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -419,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#vbkygmsuda .gt_subtitle {
+#cdmfszjgkz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -431,13 +431,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#vbkygmsuda .gt_bottom_border {
+#cdmfszjgkz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_col_headings {
+#cdmfszjgkz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -452,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_col_heading {
+#cdmfszjgkz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -472,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vbkygmsuda .gt_column_spanner_outer {
+#cdmfszjgkz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,15 +484,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#vbkygmsuda .gt_column_spanner_outer:first-child {
+#cdmfszjgkz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vbkygmsuda .gt_column_spanner_outer:last-child {
+#cdmfszjgkz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vbkygmsuda .gt_column_spanner {
+#cdmfszjgkz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -504,7 +504,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#vbkygmsuda .gt_group_heading {
+#cdmfszjgkz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -529,7 +529,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#vbkygmsuda .gt_empty_group_heading {
+#cdmfszjgkz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -544,15 +544,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#vbkygmsuda .gt_from_md > :first-child {
+#cdmfszjgkz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vbkygmsuda .gt_from_md > :last-child {
+#cdmfszjgkz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vbkygmsuda .gt_row {
+#cdmfszjgkz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,7 +571,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vbkygmsuda .gt_stub {
+#cdmfszjgkz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -584,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vbkygmsuda .gt_stub_row_group {
+#cdmfszjgkz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -598,11 +598,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#vbkygmsuda .gt_row_group_first td {
+#cdmfszjgkz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vbkygmsuda .gt_summary_row {
+#cdmfszjgkz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -612,16 +612,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vbkygmsuda .gt_first_summary_row {
+#cdmfszjgkz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_first_summary_row.thick {
+#cdmfszjgkz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vbkygmsuda .gt_last_summary_row {
+#cdmfszjgkz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -631,7 +631,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_grand_summary_row {
+#cdmfszjgkz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -641,7 +641,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vbkygmsuda .gt_first_grand_summary_row {
+#cdmfszjgkz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -651,11 +651,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_striped {
+#cdmfszjgkz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vbkygmsuda .gt_table_body {
+#cdmfszjgkz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -664,7 +664,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_footnotes {
+#cdmfszjgkz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -678,7 +678,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_footnote {
+#cdmfszjgkz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -687,7 +687,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vbkygmsuda .gt_sourcenotes {
+#cdmfszjgkz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -701,7 +701,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vbkygmsuda .gt_sourcenote {
+#cdmfszjgkz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -709,36 +709,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vbkygmsuda .gt_left {
+#cdmfszjgkz .gt_left {
   text-align: left;
 }
 
-#vbkygmsuda .gt_center {
+#cdmfszjgkz .gt_center {
   text-align: center;
 }
 
-#vbkygmsuda .gt_right {
+#cdmfszjgkz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vbkygmsuda .gt_font_normal {
+#cdmfszjgkz .gt_font_normal {
   font-weight: normal;
 }
 
-#vbkygmsuda .gt_font_bold {
+#cdmfszjgkz .gt_font_bold {
   font-weight: bold;
 }
 
-#vbkygmsuda .gt_font_italic {
+#cdmfszjgkz .gt_font_italic {
   font-style: italic;
 }
 
-#vbkygmsuda .gt_super {
+#cdmfszjgkz .gt_super {
   font-size: 65%;
 }
 
-#vbkygmsuda .gt_two_val_uncert {
+#cdmfszjgkz .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -747,31 +747,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#vbkygmsuda .gt_footnote_marks {
+#cdmfszjgkz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vbkygmsuda .gt_asterisk {
+#cdmfszjgkz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vbkygmsuda .gt_slash_mark {
+#cdmfszjgkz .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#vbkygmsuda .gt_fraction_numerator {
+#cdmfszjgkz .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#vbkygmsuda .gt_fraction_denominator {
+#cdmfszjgkz .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -880,11 +880,11 @@ $ sleep          &lt;int&gt; 4, 4, 4, NA, 8, NA, NA, 8, 8, 8, 7, 5, 4, NA, 5, 7,
 <pre><code># A tibble: 5 × 3
     age gender height
   &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt;
-1    33 Female   164.
-2    20 Male     170.
-3    44 Female   160 
-4    19 Male     178.
-5    10 Male     138 </code></pre>
+1     9 Male     139 
+2    80 Female   152.
+3    20 Female   160.
+4    78 Male     173.
+5    40 Male     170.</code></pre>
 </div>
 </div>
 <p>Notice how there is a decimal in the <code>height</code> column of <code>ch7</code>. This is because <code>height</code> is a <code>&lt;dbl&gt;</code> and not an <code>&lt;int&gt;</code>.</p>
@@ -1720,12 +1720,12 @@ $ height &lt;dbl&gt; 164.7, 164.7, 164.7, 105.4, 168.4, 133.1, 130.6, 166.7, 166
 <p><span class="math inline">\(\epsilon_i\)</span> is normally distributed with a mean of 0 and a standard deviation of <span class="math inline">\(\sigma\)</span>. The mean being 0 relates to our concept of <strong>accuracy</strong>; we are assuming that our data is representative enough to be accurate, and so we can expect our average error to be 0. The standard deviation, on the other hand, relates to our concept of <strong>precision</strong>; the smaller <span class="math inline">\(\sigma\)</span> is, the more precise our data is, and the larger <span class="math inline">\(\sigma\)</span> is, the less precise our data is.</p>
 <p>This is the simplest model we can construct. Note:</p>
 <ul>
-<li>The model has two unknown parameters: <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Before we can do anything else we need to estimate the values of these parameters. Can we ever know their exact value? No! Perfection lies only in God’s own R code. But, by using a Bayesian approach similar to what we used in Chapters @ref(probability) and @ref(one-parameter), we will be able to create a <em>posterior probability distribution</em> for each parameter.</li>
+<li>The model has two unknown parameters: <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Before we can do anything else we need to estimate the values of these parameters. Can we ever know their exact value? No! Perfection lies only in God’s own R code. But, by using a Bayesian approach similar to what we used in Chapters <span class="citation" data-cites="probability">(<a href="references.html#ref-probability" role="doc-biblioref"><strong>probability?</strong></a>)</span> and <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span>, we will be able to create a <em>posterior probability distribution</em> for each parameter.</li>
 </ul>
 <!-- Add Dr. Box quote. All models are wrong, some are useful. And a photo. --><ul>
 <li><p>The model is wrong, as are all models.</p></li>
 <li><p>The parameter we most care about is <span class="math inline">\(\mu\)</span>. That is the parameter with a substantively meaningful interpretation. Not only is the meaning of <span class="math inline">\(\sigma\)</span> difficult to describe, we also don’t particular care about its value. Parameters like <span class="math inline">\(\sigma\)</span> in this context are <em>nuisance</em> or <em>auxiliary</em> parameters. We still estimate their posterior distributions, but we don’t really care what those posteriors look like.</p></li>
-<li><p><span class="math inline">\(\mu\)</span> is not the average height of the men in the sample. We can calculate that directly. It is 175.606. No estimation required! Instead, <span class="math inline">\(\mu\)</span> is the average height of men in the <em>population</em>. Recall from the discussions in Chapter @ref(one-parameter) that the population is the universe of people/units/whatever about which we seek to draw conclusions. On some level, this seems simple. On a deeper level, it is very subtle. For example, if we are walking around Copenhagen, then the population we really care about, in order to answer our three questions, is the set of adult men which we might meet today. This is not the same as the population of adult men in the US in 2010. But is it close enough? Is it better than nothing? We want to assume that both men from <code>nhanes</code> (the data we have) and men we meet in Copenhagen today (the data we want to have) are drawn from the same <em>population</em>. Each case is a different and the details matter.</p></li>
+<li><p><span class="math inline">\(\mu\)</span> is not the average height of the men in the sample. We can calculate that directly. It is 175.606. No estimation required! Instead, <span class="math inline">\(\mu\)</span> is the average height of men in the <em>population</em>. Recall from the discussions in Chapter <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span> that the population is the universe of people/units/whatever about which we seek to draw conclusions. On some level, this seems simple. On a deeper level, it is very subtle. For example, if we are walking around Copenhagen, then the population we really care about, in order to answer our three questions, is the set of adult men which we might meet today. This is not the same as the population of adult men in the US in 2010. But is it close enough? Is it better than nothing? We want to assume that both men from <code>nhanes</code> (the data we have) and men we meet in Copenhagen today (the data we want to have) are drawn from the same <em>population</em>. Each case is a different and the details matter.</p></li>
 <li><p><span class="math inline">\(\sigma\)</span> is an estimate for the standard deviation of the errors, i.e., variability in height after accounting for the mean.</p></li>
 </ul>
 <!-- You can show students the sample estimate of that with something like this (or sd(resid(fit_obj)) --><p>Consider:</p>
@@ -1763,7 +1763,7 @@ $ height &lt;dbl&gt; 164.7, 164.7, 164.7, 105.4, 168.4, 133.1, 130.6, 166.7, 166
 <li><p>If you don’t set <code>refresh = 0</code>, the model will puke out many lines of confusing output. You can learn more about that output by reading the help page for <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code>. The output provides details on the fitting process as it runs as well as diagnostics about the final result. All of those details are beyond the scope of this book.</p></li>
 <li><p>You should always assign the result of the call of <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> to an object, as we do above. By convention, the name of that object will often include the word “fit” to indicate that it is a <em>fitted</em> model object.</p></li>
 <li><p>There is a direct connection between the mathematical form of the model created under Justice and the code we use to fit the model under Courage. <code>height ~ 1</code> is the code equivalent of <span class="math inline">\(y_i = \mu\)</span>.</p></li>
-<li><p>The default value for <code>family</code> is <code>gaussian</code>, so we did not need to include it in the call above. From the Justice section, the assumption that <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> is equivalent to using <code>gaussian</code>. If <span class="math inline">\(\epsilon_i\)</span> had a different distribution, we would need to use a different <code>family</code>. We saw an example of such a situation at the end of Chapter @ref(one-parameter) when we performed the urn analysis using <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> and setting <code>family = binomial</code>.</p></li>
+<li><p>The default value for <code>family</code> is <code>gaussian</code>, so we did not need to include it in the call above. From the Justice section, the assumption that <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> is equivalent to using <code>gaussian</code>. If <span class="math inline">\(\epsilon_i\)</span> had a different distribution, we would need to use a different <code>family</code>. We saw an example of such a situation at the end of Chapter <span class="citation" data-cites="one-parameter">(<a href="references.html#ref-one-parameter" role="doc-biblioref"><strong>one-parameter?</strong></a>)</span> when we performed the urn analysis using <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code> and setting <code>family = binomial</code>.</p></li>
 <li><p>Although you can use the standalone function <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> in order to make your code reproducible, it is more convenient to use the <code>seed</code> argument within <code><a href="https://mc-stan.org/rstanarm/reference/stan_glm.html">stan_glm()</a></code>. Even though the fitting process, unavoidably, contains a random component, you will get the exact same answer if we set <code>seed = 9</code> and rerun this code. It does not matter what number you use for the seed.</p></li>
 </ul>
 <section id="printed-model" class="level5" data-number="7.3.0.1.1"><h5 data-number="7.3.0.1.1" class="anchored" data-anchor-id="printed-model">
@@ -2454,9 +2454,9 @@ height      -0.257  0.006
 <p><em>Temperance</em> guides the final step. With a model, we can finally get back to the decision which motivated the exercise in the first place. We can use the model to make statements about the world, both to confirm that the model is consistent with the world and to use the model to make predictions about numbers which we do not know.</p>
 <p>Let’s practice this process another dozen or so times.</p>
 <!-- ## Probability to bootstrap to Bayesian models -->
-<!-- Most textbooks would, at this stage, provide a more mathematical explanation of the transition we are making from Chapter \@ref(probability) to this chapter. In both Chapters \@ref(probability) and \@ref(one-parameter) we dealt with a discrete set of possible models. We began with examples in which there were only two or three possible "true" states of the world. You were either infected or not infected. There were either zero, one or two white marbles in the bag. These examples grew more and more complex, both by increasing the number of models under consideration and by increasing the number of possible outcomes of the experiment. In the case of the urn, there were 2,401 possible models: either zero or one or two or . . . 2,400 red beads in the urn.  -->
+<!-- Most textbooks would, at this stage, provide a more mathematical explanation of the transition we are making from Chapter @probability to this chapter. In both Chapters @probability and @one-parameter we dealt with a discrete set of possible models. We began with examples in which there were only two or three possible "true" states of the world. You were either infected or not infected. There were either zero, one or two white marbles in the bag. These examples grew more and more complex, both by increasing the number of models under consideration and by increasing the number of possible outcomes of the experiment. In the case of the urn, there were 2,401 possible models: either zero or one or two or . . . 2,400 red beads in the urn.  -->
 <!-- The transition from a discrete set of possible models to an infinite set of possible models is mathematically complex but easy on the intuition. Just wave you hands, imagine lots more models, and invoke the aesthetic appeal of smoothness. In the case of height, there are an infinite number of possible models: average height of adult American men in 2010 could be 175, 175.1, 175.14, 175.148, 175.1482, and so on. There are an infinite number of possible values since height is continuous. Yet, almost miraculously, the same intuition applies.  -->
-<!-- Let's use $\mu$ as the parameter for the unknown average height of all the adult men in America in 2010. This is exactly analogous to the parameter $p$ from Chapter \@ref(one-parameter), the proportion of red beans in the urn. The only difference is that there are an infinite number of values which $\mu$ might take. We restricted $p$ to only 2,401 possible values: $0$, $1/2400$, $2/2400$, ..., $2399/2400$, $1$.  -->
+<!-- Let's use $\mu$ as the parameter for the unknown average height of all the adult men in America in 2010. This is exactly analogous to the parameter $p$ from Chapter @one-parameter, the proportion of red beans in the urn. The only difference is that there are an infinite number of values which $\mu$ might take. We restricted $p$ to only 2,401 possible values: $0$, $1/2400$, $2/2400$, ..., $2399/2400$, $1$.  -->
 <!-- Although a bootstrap can create a posterior distribution, as above, there are much simpler ways to do so. The most common involves the function `stan_glm()` from the **rstanarm** library. Halfway through the book, we are now ready for our first full scale data science project. Let us be guided by the cardinal virtues. -->
 <div class="cell">
 

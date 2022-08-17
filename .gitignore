@@ -16,6 +16,6 @@ renv
 
 primer.Rproj
 
-# No matter what happens above, everything in docs/ must be checked in
+# No matter what happens above, everything in docs/ must be checked in and pushed.
 
 !docs/*

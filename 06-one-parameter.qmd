@@ -37,7 +37,7 @@ knitr::include_app("https://www.youtube.com/embed/e3PJ3Du_zDc")
 
 *The Hunger Games* is a dystopian novel in which children are chosen via lottery to fight to the death. Primrose Everdeen is selected from the urn. Why does she have the misfortune of being selected? Or, as we data scientists say, *sampled*?
 
-In Chapter \@ref(probability), we learned about probability, the framework for quantifying uncertainty. In this chapter, we will learn about *sampling*, the beginning of our journey toward inference. When we sample, we take some *units* from a *population*, calculate statistics based on those units, and make inferences about unknown *parameters* associated with the population. 
+In Chapter @probability, we learned about probability, the framework for quantifying uncertainty. In this chapter, we will learn about *sampling*, the beginning of our journey toward inference. When we sample, we take some *units* from a *population*, calculate statistics based on those units, and make inferences about unknown *parameters* associated with the population. 
 
 The urn below has a certain number of red and a certain number of white beads all of equal size, mixed well together. What proportion, $\rho$, of this urn's beads are red? 
 
@@ -1026,7 +1026,7 @@ This is equivalent to taking a 2 dimensional slice of the 3 dimensional model. W
 
 Given a data set to use and a mathematical formula to work with, the next step is to write some code. We will use the **rstanarm** package, which provides a user friendly interface to work with the statistical language Stan. 
 
-**rstanarm** and Stan are appealing because they are powerful. Functions such as `stan_glm()` can do everything we did by hand in Chapter 5 in a few lines of code. Because we will use a professional statistical library, the objects we make will become more complex. In this Chapter, we provide the steps for answering our questions. Chapter \@ref(two-parameters) will provide a more detailed explanation of the objects we will make. *To be clear, you do not need to fully understand this section or how this code works. This is an introduction, not a formal lesson.*
+**rstanarm** and Stan are appealing because they are powerful. Functions such as `stan_glm()` can do everything we did by hand in Chapter 5 in a few lines of code. Because we will use a professional statistical library, the objects we make will become more complex. In this Chapter, we provide the steps for answering our questions. Chapter @two-parameters will provide a more detailed explanation of the objects we will make. *To be clear, you do not need to fully understand this section or how this code works. This is an introduction, not a formal lesson.*
 
 
 ```{r, message = FALSE}
@@ -1051,7 +1051,7 @@ We use `refresh = 0` to suppress the behavior of printing to the console, and `s
 fit_1
 ```
 
-We will learn the meaning of this output in Chapter \@ref(two-parameters). Once we have the `fit_1` object, it is easy to answer two sorts of questions: the posterior probability distribution for $\rho$ and predictions for new draws from the urn. The key new functions are `posterior_epred()` for the former and `posterior_predict()` for the latter.
+We will learn the meaning of this output in Chapter @two-parameters. Once we have the `fit_1` object, it is easy to answer two sorts of questions: the posterior probability distribution for $\rho$ and predictions for new draws from the urn. The key new functions are `posterior_epred()` for the former and `posterior_predict()` for the latter.
  
 Let's recreate our posterior using `posterior_epred()`:
 
@@ -1285,7 +1285,7 @@ ppd_reds_in_20   |>
 
 The red bars illustrate the area under a specific section of the curve, as compared to the *entire* area under the curve. *Each question requires looking at a new area under the curve.* When someones asks you a question, they are doing two things. First, they are providing instructions as to the posterior your should create. Here, the results with a shovel of 20 slots. Second, they are asking a question about the area under the curve in a specific region. Here, the region where the number of red beads is greater than 8 is highlighted in red. Therefore, the area below the curve that **is red** is how we get our estimate. 
 
-See Chapter \@ref(two-parameters) for a thorough discussion of the use of **rstanarm**. This package will be our main tool for the rest of the *Primer*.
+See Chapter @two-parameters for a thorough discussion of the use of **rstanarm**. This package will be our main tool for the rest of the *Primer*.
 
 #### Assesing uncertainty
 
@@ -1487,7 +1487,7 @@ Other highlights:
 
 ### Cardinal Virtues
 
-- `stan_glm()` can create a joint distribution and then estimate the posterior probability distribution, conditional on the data which was passed in to the data argument. This is a much easier way to create the posterior distribution, and will be explored in more detail in Chapter \@ref(two-parameters). 
+- `stan_glm()` can create a joint distribution and then estimate the posterior probability distribution, conditional on the data which was passed in to the data argument. This is a much easier way to create the posterior distribution, and will be explored in more detail in Chapter @two-parameters. 
 - We use the posterior distribution to answer our questions. 
 
 ### Case study: Polls

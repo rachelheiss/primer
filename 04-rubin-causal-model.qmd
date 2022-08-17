@@ -1,4 +1,4 @@
-# Rubin Causal Model {#rubin-causal-model}
+# Rubin Causal Model {#sec-rubin-causal-model}
 
 ```{r hidden-libraries, message=FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)

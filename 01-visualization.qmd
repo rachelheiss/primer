@@ -1,4 +1,4 @@
-# Visualization
+# Visualization {#sec-visualization}
 
 ```{r hidden-libraries, include = FALSE, message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
@@ -451,7 +451,7 @@ ggplot(data = trains,
 
 #### Two categorical variables
 
-Another use of barplots is to visualize the *joint* distribution of two categorical variables. (See Chapter @probability for the definition of a joint distribution.) Let's look at `race`, as well as `treatment`, in the `trains` data by using the `fill` argument inside the `aes()` aesthetic mapping. Recall the `fill` aesthetic corresponds to the color used to fill the bars.
+Another use of barplots is to visualize the *joint* distribution of two categorical variables. (See @probability for the definition of a joint distribution.) Let's look at `race`, as well as `treatment`, in the `trains` data by using the `fill` argument inside the `aes()` aesthetic mapping. Recall the `fill` aesthetic corresponds to the color used to fill the bars.
 
 
 ```{r}
@@ -546,7 +546,7 @@ ggplot(trains,
               formula = y ~ x)
 ```
 
-Notice the gray section surrounding the line we plotted. This area is called the confidence interval, which is set to 95% by default. We will learn about confidence intervals in Chapter @probability. You can make the shaded area disappear by adding `se = FALSE` as another argument to `geom_smooth()`.
+Notice the gray section surrounding the line we plotted. This area is called the confidence interval, which is set to 95% by default. We will learn about confidence intervals in @probability. You can make the shaded area disappear by adding `se = FALSE` as another argument to `geom_smooth()`.
 
 ### `geom_density()`
 
@@ -856,7 +856,7 @@ The scaled median absolute deviation (*mad*) is a measure of variation around th
 
 $$\text{mad} = 1.4826 \times \text{median}(abs(x - \tilde{x}))$$
 
-The basic idea for both *sd* and *mad* is that we need a measure of variation around the center of the distribution of the variable. *sd* uses the mean, $\bar{x}$, as its estimate of the center while *mad* uses the median, $\tilde{x}$. Because *mad* uses the absolute difference, as opposed to the squared difference, it is more robust to outliers. The 1.4826 multiplier causes the *mad* and the *sd* to be identical in the (important) case of standard normal distributions, a topic we will introduce in Chapter @wrangling.
+The basic idea for both *sd* and *mad* is that we need a measure of variation around the center of the distribution of the variable. *sd* uses the mean, $\bar{x}$, as its estimate of the center while *mad* uses the median, $\tilde{x}$. Because *mad* uses the absolute difference, as opposed to the squared difference, it is more robust to outliers. The 1.4826 multiplier causes the *mad* and the *sd* to be identical in the (important) case of standard normal distributions, a topic we will introduce in @wrangling.
 
 
 **`quantile()`**
@@ -1367,7 +1367,7 @@ dc_income_map_p
 
 *The two most important attributes of a distribution are its center and its variation around that center.*
 
-In this chapter, we first looked at basic coding terminology and concepts that we deal with when programming with R. We then learned about the three basic components that make up each plot: data, mapping, and one or more geoms. The **ggplot2** package offers a wide range of geoms that we can use to create different types of plots. Next, we examined the "super package" **tidyverse**, which includes helpful tools for visualization. It also offers features for importing and manipulating data, which is the main topic of Chapter @\ref(wrangling). Lastly, we explored advanced plotting features such as axis scaling, faceting, and themes. 
+In this chapter, we first looked at basic coding terminology and concepts that we deal with when programming with R. We then learned about the three basic components that make up each plot: data, mapping, and one or more geoms. The **ggplot2** package offers a wide range of geoms that we can use to create different types of plots. Next, we examined the "super package" **tidyverse**, which includes helpful tools for visualization. It also offers features for importing and manipulating data, which is the main topic of @wrangling. Lastly, we explored advanced plotting features such as axis scaling, faceting, and themes. 
 
 Recall the plot we began the chapter with:
 

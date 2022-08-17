@@ -1,4 +1,4 @@
-# Probability {#probability}
+# Probability {#sec-probability}
 
 ```{r hidden-libraries, echo = FALSE, message = FALSE, warning = FALSE}
  # We also load the **rayshader** and **rgl** packages. We use them to create
@@ -93,7 +93,7 @@ library(tidyverse)
 
 To understand probability more fully, we first need to understand distributions.
 
-## Distributions {#distributions}
+## Distributions {#sec-distributions}
 
 A variable in a tibble is a column, a vector of values. We sometimes refer to this vector as a "distribution." This is somewhat sloppy in that a distribution can be many things, most commonly a mathematical formula. But, strictly speaking, a "frequency distribution" or an "empirical distribution" is a list of values, so this usage is not unreasonable.
 
@@ -249,7 +249,7 @@ Assume that a probability distribution is created by a *probability function*, a
 
 We discuss three types of probability distributions: *empirical*, *mathematical*, and *posterior*. 
 
-The key difference between a *distribution*, as we have explored them in Section \@ref(distributions), and a *probability* distribution is the requirement that the sum of the probabilities of the individual outcomes must be exactly 1. There is no such requirement for a distribution in general. But any distribution can be turned into a probability distribution by "normalizing" it.  In this context, we will often refer to a distribution which is not (yet) a probability distribution as an "unnormalized" distribution.  
+The key difference between a *distribution*, as we have explored them in \@distributions, and a *probability* distribution is the requirement that the sum of the probabilities of the individual outcomes must be exactly 1. There is no such requirement for a distribution in general. But any distribution can be turned into a probability distribution by "normalizing" it.  In this context, we will often refer to a distribution which is not (yet) a probability distribution as an "unnormalized" distribution.  
 
 Pay attention to notation. Recall that when we are talking about a specific probability (represented by a single value), we will use $\rho$ (the Greek letter "rho") with a *subscript* which specifies the exact outcome of which it is the probability. For instance, $\rho_h = 0.5$ denotes the probability of getting heads on a coin toss when the coin is fair. $\rho_t$ --- spoken as "PT" or "P sub T" or "P tails" --- denotes the probability of getting tails on a coin toss. However, when we are referring to the entire probability distribution over a set of outcomes, we will use $P()$. For example, the probability distribution of a coin toss is $P(\text{coin})$. That is, $P(\text{coin})$ is composed of the two specific probabilities (50% and 50%) mapped from the two values in the domain (Heads and Tails). Similarly, $P(\text{sum of two dice})$ is the probability distribution over the set of 11 outcomes (2 through 12) which are possible when you take the sum of two dice. $P(\text{sum of two dice})$ is made up of 11 numbers --- $\rho_2$,  $\rho_3$, ..., $\rho_{12}$ --- each representing the unknown probability that the sum will equal their value. That is, $\rho_2$ is the probability of rolling a 2.
 
@@ -1310,7 +1310,7 @@ Answer:
 *As the Posterior Probability Distribution shows (x-axis=2), the chance of the bag contains exactly two white marbles given that we select 3 white marbles out of three tries is about 85%.*
 
 
-## N models
+## N models {#sec-n-models}
 
 <!-- 5 a) Now go on to Rethinking approach. I think that chapter 2 is just genius. Bayesian is really just counting. Maybe we do a very similar example to what he does? Maybe different? I am still pondering this myself. I think that there is a deep relationship here. In the simple Bayes rule decision trees, we know all the probabilities. But what if we don't? Instead, we get to observe lots of data (which are counts!) and then, from that data, figure out the probabilities. (Note that Rethinking does not talk like this --- after all, we know all the probabilities since each marble has a 20% chance of being drawn --- but I think it is implicit in his approach.) Key issue: Can we connect this in a sensible way to Bayesian scatterplot. There is always the data and the model and the relationship between the two. (And "the model" means, mainly, the parameter estimates thereof.) Tell me the data, and I will tell you the model. Tell me the model, and I will tell you the model. -->
 
@@ -1719,7 +1719,7 @@ draws
 
 <!-- DK: Need more here. Connect to the discussion in Section 2.9 -->
 
-Recall from Chapter @wrangling how we can draw randomly from specified probability distributions:
+Recall from @wrangling how we can draw randomly from specified probability distributions:
 
 ```{r}
 rnorm(10)
@@ -1936,7 +1936,7 @@ What does this mean? Well imagine a crowd playing Three Card Monte in the street
 
 We need patience in order to study and understand the unknown unknowns in our data. Patience is also important when we analyze the "realism" of our models. When we created the mathematical probability distribution for presidential elections, for instance, we assumed that the Democratic candidate would have a 50% chance of winning each vote in the electoral college. By comparing the mathematical model to our empirical cases, however, we recognize that the mathematical model is unlikely to be true. The mathematical model suggested that getting fewer than 100 votes is next to impossible, but many past Democratic candidates in the empirical distribution received less than 100 electoral votes.
 
-In Temperance, the key distinction is between the *true* posterior distribution --- what we will call "Preceptor's Posterior" --- and the estimated posterior distribution. Recall our discussion from Section \@ref(distributions). Imagine that every assumption we made in Wisdom and Justice were correct, that we correctly understand every aspect of how the world works. We still would not know the unknown value we are trying to estimate --- recall the Fundamental Problem of Causal Inference --- but the posterior we created would be perfect. That is Preceptor's Posterior. Sadly, even if our estimated posterior is, very close to Preceptor's Posterior, we can never be sure of that fact, because we can never know the truth, never be certain that all the assumptions we made are correct. 
+In Temperance, the key distinction is between the *true* posterior distribution --- what we will call "Preceptor's Posterior" --- and the estimated posterior distribution. Recall our discussion from @distributions. Imagine that every assumption we made in Wisdom and Justice were correct, that we correctly understand every aspect of how the world works. We still would not know the unknown value we are trying to estimate --- recall the Fundamental Problem of Causal Inference --- but the posterior we created would be perfect. That is Preceptor's Posterior. Sadly, even if our estimated posterior is, very close to Preceptor's Posterior, we can never be sure of that fact, because we can never know the truth, never be certain that all the assumptions we made are correct. 
 
 Even worse, we must always worry that our estimated posterior, despite all the work we put into creating it, is far from the truth. We, therefore, must be cautious in our use of that posterior, humble in our claims about its accuracy. Using our posterior, despite its fails, is better than not using it. Yet it is, as best, a distorted map of reality, a glass through which we must look darkly. Use your posterior with humility.
 

@@ -1,12 +1,23 @@
 # Priorities
 
+#one-parameter to #sec-one-paramater. Use @one-parameter to produce Chapter 6. See 
+https://quarto.org/docs/books/book-crossrefs.html#creating-references
+
+Fix warning about date in primer.data.
+
+Need to list all packages used in the book. Not sure how.
+
+Difference between Render and Preview book? Maybe Render does the whole book and Preview just does changes?
+
+How can you make a change in one chapter, render it and then view it to see if you like the changes? Update this in _quarto.yml.
+
+Figure out what quarto.yml settings are defaults and get rid of those. Explain others.
+
 Shotcut key in tutorials produces %>% instead of |>
 
 Lots of tutorials, like Webscraping, don't provide the button for easy use of previous answer.
 
 I dislike it when Run Code does not produce anything even when the answer is correct. How should we deal with this? Might at least warn students that no output is expected.
-
-Fix chapter 5 so cool 3D graphics appear.
 
 
 as_tibble() now has a warning if we don't use .name_repair argument. Deal with this.

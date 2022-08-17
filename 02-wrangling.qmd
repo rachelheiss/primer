@@ -1,4 +1,4 @@
-# Wrangling {#wrangling}
+# Wrangling {#sec-wrangling}
 
 <!-- Replace flights with fec16? airlines are boring. Got rid of 538?  -->
 
@@ -35,7 +35,7 @@ library(fivethirtyeight)
 * **lubridate** is a package for working with dates and times.
 * **skimr** contains functions that are useful for providing summary statistics, especially `skim()`.
 * **nycflights13** includes data associated with flights out of New York City's three major airports.
-* **gapminder** has annual data for countries going back more than 50 years, which we used in Chapter \@ref(visualization).
+* **gapminder** has annual data for countries going back more than 50 years, which we used in @visualization.
 * **fivethirtyeight** cleans up data from the [FiveThirtyEight](https://fivethirtyeight.com/) team.
 
 ## Tibbles
@@ -1128,7 +1128,7 @@ tibble(heads = rbinom(n = 10000, size = 10, prob = 0.5)) |>
 ```
 
 
-#### `rnorm()` {#normal}
+#### `rnorm()` {#sec-normal}
 
 
 The most important distribution is the *normal distribution*. Mathematics:

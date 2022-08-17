@@ -1,4 +1,4 @@
-# Four Parameters {#four-parameters}
+# Four Parameters {#sec-four-parameters}
 
 ```{r hidden-libraries, message = FALSE, echo = FALSE, warning = FALSE}
 library(patchwork)

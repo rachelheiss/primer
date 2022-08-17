@@ -1,4 +1,4 @@
-# Three Parameters {#three-parameters}
+# Three Parameters {#sec-three-parameters}
 
 ```{r hidden-libraries, message=FALSE, echo = FALSE, warning=FALSE}
 library(gt)
@@ -43,7 +43,7 @@ library(patchwork)
 
 
 
-Models have parameters. In Chapter @one-parameter we created models with a single parameter $p$, the proportion of red beads in an urn. In Chapter @two-parameters, we used models with two parameters: $\mu$ (the average height in the population, generically known as a model "intercept") and $\sigma$ (the variation in height in the population). Here --- can you guess where this is going? --- we will build models with three parameters: $\sigma$ (which serves the same role throughout the book) and two "coefficients." In models which relate a continuous predictor to the outcome, those two parameters will be labeled $\beta_0$ and $\beta_1$. In models which estimate two averages, the parameters will be $\beta_1$ and $\beta_2$. All this notation is confusing, not least because different academic fields use inconsistent schemes. Follow the Cardinal Virtues and tackle your problem step by step.
+Models have parameters. In @one-parameter we created models with a single parameter $p$, the proportion of red beads in an urn. In @two-parameters, we used models with two parameters: $\mu$ (the average height in the population, generically known as a model "intercept") and $\sigma$ (the variation in height in the population). Here --- can you guess where this is going? --- we will build models with three parameters: $\sigma$ (which serves the same role throughout the book) and two "coefficients." In models which relate a continuous predictor to the outcome, those two parameters will be labeled $\beta_0$ and $\beta_1$. In models which estimate two averages, the parameters will be $\beta_1$ and $\beta_2$. All this notation is confusing, not least because different academic fields use inconsistent schemes. Follow the Cardinal Virtues and tackle your problem step by step.
 
 
 
@@ -97,7 +97,7 @@ Having created the Preceptor Table, we now look at the data we have:  the `train
 
 ### EDA for `trains`
 
-*Always explore your data.* Recall the discussion from Chapter \@ref(rubin-causal-model). @enos2014 randomly placed Spanish-speaking confederates on nine train platforms around Boston, Massachusetts. Exposure to Spanish-speakers -- the `treatment` -- influenced attitudes toward immigration. These reactions were measured through changes in answers to three survey questions. Load the necessary libraries and look at the data.
+*Always explore your data.* Recall the discussion from @rubin-causal-model. @enos2014 randomly placed Spanish-speaking confederates on nine train platforms around Boston, Massachusetts. Exposure to Spanish-speakers -- the `treatment` -- influenced attitudes toward immigration. These reactions were measured through changes in answers to three survey questions. Load the necessary libraries and look at the data.
 
 ```{r, message=FALSE, warning = FALSE}
 library(primer.data)
@@ -301,7 +301,7 @@ We can also consider the type of DGM. Any DGM with age as its dependent variable
 
 <!-- Preceptor Tables should be laid out like the formula: outcome on left, predictors on right. -->
 
-A good way at looking at this is with a Preceptor Table, as seen below. Unlike the previous table in Chapter @two-parameters, we now have two columns in addition to ID.  Since our data does not include all Republicans and Democrats in the world, not every row is filled in. 
+A good way at looking at this is with a Preceptor Table, as seen below. Unlike the previous table in @two-parameters, we now have two columns in addition to ID.  Since our data does not include all Republicans and Democrats in the world, not every row is filled in. 
 
 ```{r echo = FALSE}
 tibble(ID = c("1", "2", "...", "473", "474",
@@ -362,9 +362,9 @@ Some things to note about our model:
 
 * The model is a claim about how the world works, not just for the 115 individuals for which we have data but for the all the people in the population for which we seek to draw inferences.
 
-* Although terminology differs across academic fields, the most common term to describe a model like this is a "regression." We are "regressing" `age` on `party` in order to see if they are associated with each other. The formula above is a "regression formula", and the model is a "regression model." This terminology would also apply to our model of `height` in Chapter @two-parameters. 
+* Although terminology differs across academic fields, the most common term to describe a model like this is a "regression." We are "regressing" `age` on `party` in order to see if they are associated with each other. The formula above is a "regression formula", and the model is a "regression model." This terminology would also apply to our model of `height` in @two-parameters. 
 
-* The model in Chapter @two-parameters is sometimes called "intercept-only" because the only (interesting) parameter is the intercept. Here we have a "two intercept" model because, instead of estimating an average for the whole population, we are estimating two averages.
+* The model in @two-parameters is sometimes called "intercept-only" because the only (interesting) parameter is the intercept. Here we have a "two intercept" model because, instead of estimating an average for the whole population, we are estimating two averages.
 
 
 ### Courage
@@ -376,7 +376,7 @@ knitr::include_graphics("other/images/Courage.jpg")
 Courage allows us to translate math to code.
 
 
-To get posterior distributions for our three parameters, we will again use `stan_glm()`, just as we did in Chapter @two-parameters. 
+To get posterior distributions for our three parameters, we will again use `stan_glm()`, just as we did in @two-parameters. 
 
 ```{r}
 fit_1 <- stan_glm(age ~ party - 1, 
@@ -431,7 +431,7 @@ The unknown parameters $\beta_1$ (partyDemocrat) and $\beta_2$ (partyRepublican)
 
 * Democrats seem slightly older than Republicans. That was true in the sample and so, almost (but not quite!) by definition, it will be true in our the posterior probability distributions.
 
-* Our estimate for the average age of Democrats in the population is much more precise than that for Republicans because we have five times as many Democrats as Republicans in our sample. A central lesson from Chapter @one-parameter is that the more data you have related to a parameter, the narrower your posterior distribution will be.
+* Our estimate for the average age of Democrats in the population is much more precise than that for Republicans because we have five times as many Democrats as Republicans in our sample. A central lesson from @one-parameter is that the more data you have related to a parameter, the narrower your posterior distribution will be.
 
 * There is a great deal of overlap between the two distributions. Would we be surprised if, in truth, the average age of Republicans in the population was greater than that for Democrats? Not really. We don't have enough data to be sure either way.
 
@@ -521,7 +521,7 @@ Recall the first questions with which we began this section:
 So far we have only tried our model on people from our data set whose real age we already knew. This is helpful to understand the model, but our ultimate goal is to understand more about the real world, about people we don't yet know much about. Temperance guides us to make meaningful predictions and to become aware of their known and unknown limitations.
 
 
-Start with a simple question, what are the chances that a random Democrat is over 50 years old? First, we create a tibble with the desired input for our model. In our case the tibble has a variable named "party" which contains a single observation with the value "Democrat". This is a bit different than Chapter @two-parameters. 
+Start with a simple question, what are the chances that a random Democrat is over 50 years old? First, we create a tibble with the desired input for our model. In our case the tibble has a variable named "party" which contains a single observation with the value "Democrat". This is a bit different than @two-parameters. 
 
 ```{r}
 new_obs <- tibble(party = "Democrat")
@@ -816,7 +816,7 @@ Recall the first question with which we began this section:
 
 <!-- DK: Below is also not clear. -->
 
-Chapter \@ref(rubin-causal-model) defined the *average treatment effect*. One simple estimator of the average treatment effect is the difference between $\beta_1$ and $\beta_2$. After all, the definition of $\beta_1$ is the average attitude toward immigration, of the population, for anyone, under exposure to the treatment. So, $\beta_1 - \beta_2$ is the average treatment effect for the population, roughly 1.5. However, estimating the posterior probability distribution for this parameter is tricky, unless we make use of the posterior distributions of $\beta_1$ and $\beta_2$. With that information, the problem is simple:
+Chapter @rubin-causal-model defined the *average treatment effect*. One simple estimator of the average treatment effect is the difference between $\beta_1$ and $\beta_2$. After all, the definition of $\beta_1$ is the average attitude toward immigration, of the population, for anyone, under exposure to the treatment. So, $\beta_1 - \beta_2$ is the average treatment effect for the population, roughly 1.5. However, estimating the posterior probability distribution for this parameter is tricky, unless we make use of the posterior distributions of $\beta_1$ and $\beta_2$. With that information, the problem is simple:
 
 ```{r}
 fit_2 |> 
@@ -936,7 +936,9 @@ If we had reason to believe this is true, one way that we could fix this issue o
 knitr::include_graphics("other/images/Justice.jpg")
 ```
 
-The mathematics for a continuous predictor is unchanged from the intercept-including example we explored in Section \@ref(addendum):
+The mathematics for a continuous predictor is unchanged from the intercept-including example we explored previously.
+
+<!-- Where? In addendum? -->
 
 $$y_i = \beta_0  + \beta_1 age_i + \epsilon_i$$
 
@@ -1091,7 +1093,7 @@ In our past three models, we have considered 3 possible issues that we could hav
 
 Let's consider whether this model is linear or logistic. Unlike our previous models this chapter, the outcome variable, `liberal`, for this model, only has two options, "Liberal" or "Not Liberal". Therefore, this will be logistic because there are only 2 possible outcomes and the outcome variable isn't continuous. 
 
-Recall the discussion in Section \@ref(zero-one-outcomes) about the logistic regression model which we use whenever the outcome or dependent variable is binary/logical. The math is there, if you care about math. We don't, at least not too much. Reminder:
+Recall the discussion in @zero-one-outcomes about the logistic regression model which we use whenever the outcome or dependent variable is binary/logical. The math is there, if you care about math. We don't, at least not too much. Reminder:
 
 $$p(\text{Liberal}_i = \text{TRUE}) = \frac{\text{exp}(\beta_0 + \beta_1 \text{income}_i)}{1 + \text{exp}(\beta_0 + \beta_1 \text{income}_i)}$$
 
@@ -1125,7 +1127,7 @@ Having fit the model, we can look at a printed summary. Note the use of the `dig
 print(fit_4, digits = 6)
 ```
 
-Fitted models tell us about the posterior distributions for the parameters in the formula which defines the model we have estimated. *We are assuming that the model is true.* And, as discussed in Chapter @one-parameter, that assumption is always false! Our model is never a perfectly accurate representation of reality. But, if it were perfect, then the posterior distributions which we have created for $\beta_0$, $\beta_1$, and so on would be perfect as well.
+Fitted models tell us about the posterior distributions for the parameters in the formula which defines the model we have estimated. *We are assuming that the model is true.* And, as discussed in @one-parameter, that assumption is always false! Our model is never a perfectly accurate representation of reality. But, if it were perfect, then the posterior distributions which we have created for $\beta_0$, $\beta_1$, and so on would be perfect as well.
 
 When working with a linear model, we will often interpret the meaning of the parameters, as we have already done in the first three sections of this chapter. Such interpretations are much harder with logistic models because the math is much less convenient. So, we won't even bother to try to understand the meaning of these parameters. However, we can note that $\beta_1$ is negative, suggesting that people with higher incomes are less likely to be liberal.
 
@@ -1187,7 +1189,7 @@ Study the `pp` tibble. Understand its component parts. The first column, for exa
 
 The second column is the same thing as the first column. Both are 4,000 draws from the posterior distribution for the liberal status of a random person with an income of $100,000. Yet they also have different values. They are both the same thing and different things, in the same way that `rnorm(10)` and `rnorm(10)` are the same thing --- both are 10 draws from the standard normal distribution --- and different things in that the values vary.
 
-The third and fourth columns are different from the first two columns. They are both 4,000 draws from the posterior distribution for the liberal status of a random person with an income of $200,000. And so on for later columns. We can answer very difficult questions by putting together simple building blocks, each of them a set of draws from a posterior distribution. Recall the discussion in Section \@ref(distributions).
+The third and fourth columns are different from the first two columns. They are both 4,000 draws from the posterior distribution for the liberal status of a random person with an income of $200,000. And so on for later columns. We can answer very difficult questions by putting together simple building blocks, each of them a set of draws from a posterior distribution. Recall the discussion in @distributions.
 
 The `total` column is simply the sum of the first eight columns. Having created the building blocks with 8 columns of draws from four different posterior distributions, we can switch our focus to each row. Consider row 2. It has a vector of 8 numbers: `1 1 1 0 0 1 0 0`. We can treat that vector as a unit of analysis. This is what might happen with our 8 people. The first three might be liberal, the fourth not liberal and so on. This row is just one example of what might happen, one draw from the posterior distribution of possible outcomes for groups of eight people with these incomes.
 

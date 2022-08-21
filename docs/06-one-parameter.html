@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.0.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Preceptor’s Primer for Bayesian Data Science - 6&nbsp; One Parameter</title>
 <style>
@@ -428,18 +428,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 4
-   group         red_beads prop_red group_ID
-   &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;    &lt;int&gt;
- 1 Yuki, Harry          21     0.42        1
- 2 Dohyun, Estel        18     0.36        2
- 3 Esther, Henry        17     0.34        3
- 4 Nam, Joshua          19     0.38        4
- 5 Morgan, Emily        21     0.42        5
- 6 Yao, Kate            23     0.46        6
- 7 Sanjana, Yuko        19     0.38        7
- 8 Maeve, Josh          18     0.36        8
- 9 Ilyas, Yohan         21     0.42        9
-10 Paddy, Matt          16     0.32       10
+   group          red_beads prop_red group_ID
+   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;    &lt;int&gt;
+ 1 Conrad, Vlad          16     0.32        1
+ 2 Ian, Iman             18     0.36        2
+ 3 Mal, Francis          17     0.34        3
+ 4 Dohyun, Estel         18     0.36        4
+ 5 Esther, Henry         17     0.34        5
+ 6 Sophie, Brian         21     0.42        6
+ 7 Claire, Cloud         16     0.32        7
+ 8 Yuki, Harry           21     0.42        8
+ 9 Ace, Chris            18     0.36        9
+10 Caroline, Edna        15     0.3        10
 # … with 23 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
@@ -518,7 +518,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Observe that <code>urn</code> has 1,000 rows, meaning that the urn contains 1,000 beads. The first variable <code>bead_ID</code> is used as an <em>identification variable</em>. None of the beads in the actual urn are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual bead is red or white.</p>
 <p>Note that in this section, we used the variable <code>bead_ID</code> to keep track of each bead in our urn, while in the last section we used <code>group_ID</code> to keep track of the samples drawn by the 33 individual teams. This is a better strategy than naming both variables <code>ID</code>, as it would be much more likely for us to get them confused later on.</p>
-<p>Our virtual urn needs a virtual shovel. We use <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code> and list-column mapping wizardry learned in <span class="citation" data-cites="rlist-columns-and-map-functions">(<a href="references.html#ref-rlist-columns-and-map-functions" role="doc-biblioref"><strong>rlist-columns-and-map-functions?</strong></a>)</span> to take a sample of 50 beads from our virtual urn.</p>
+<p>Our virtual urn needs a virtual shovel. We use <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample()</a></code> and list-column mapping wizardry learned in <span class="quarto-unresolved-ref">?sec-rlist-columns-and-map-functions</span> to take a sample of 50 beads from our virtual urn.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define trial_ID as one instance of us sampling 50 beads from the urn. When</span></span>
 <span><span class="co"># trial_ID is called within map(), we are performing slice_sample() upon our urn</span></span>
@@ -587,7 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s now perform the virtual analog of having 33 groups of students use the sampling shovel!</p>
 </section><section id="shovel-33-times" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="shovel-33-times">
 <span class="header-section-number">6.2.2</span> Using the virtual shovel 33 times</h3>
-<p>In our tactile sampling exercise in <span class="citation" data-cites="sampling-activity">(<a href="references.html#ref-sampling-activity" role="doc-biblioref"><strong>sampling-activity?</strong></a>)</span>, we had 33 groups of students use the shovel, yielding 33 samples of size 50 beads. We then used these 33 samples to compute 33 proportions.</p>
+<p>In our tactile sampling exercise in <a href="#sec-sampling-activity"><span>Section&nbsp;6.1</span></a>, we had 33 groups of students use the shovel, yielding 33 samples of size 50 beads. We then used these 33 samples to compute 33 proportions.</p>
 <p>Let’s use our virtual sampling to replicate the tactile sampling activity in a virtual format. We’ll save these results in a data frame called <code>virtual_samples</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span></span>
@@ -1460,7 +1460,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 <li>instead of manually going over all 1,000 beads in the urn, we can make <strong>inferences</strong> about the urn by using the results from the shovel.</li>
 </ul></section><section id="sec-sampling-definitions" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-sampling-definitions">
 <span class="header-section-number">6.3.2</span> Statistical definitions</h3>
-<p>Now, for some important statistical definitions related to sampling. As a refresher of our 1,000 repeated/replicated virtual samples of size <span class="math inline">\(n\)</span> = 25, <span class="math inline">\(n\)</span> = 50, and <span class="math inline">\(n\)</span> = 100 in <span class="citation" data-cites="virtual-sampling">(<a href="references.html#ref-virtual-sampling" role="doc-biblioref"><strong>virtual-sampling?</strong></a>)</span>, let’s display our figure showing the difference in proportions red according to different shovel sizes.</p>
+<p>Now, for some important statistical definitions related to sampling. As a refresher of our 1,000 repeated/replicated virtual samples of size <span class="math inline">\(n\)</span> = 25, <span class="math inline">\(n\)</span> = 50, and <span class="math inline">\(n\)</span> = 100 in <a href="#sec-virtual-sampling"><span>Section&nbsp;6.2</span></a>, let’s display our figure showing the difference in proportions red according to different shovel sizes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -3302,7 +3302,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 <p>We are Bayesian data scientists that make Bayesian models. This means that we make specific assumptions and consider different things to be either fixed or variable compared to other data science frameworks. One of the most important distinctions is that in Bayesian data science, <strong>we don’t know the values of our parameters</strong>. Consider the DGM created in Justice:</p>
 <p><span class="math display">\[ T_i  \sim B(\rho, n = 50) \]</span></p>
 <p>Some non-Bayesian frameworks are concerned with the probability distribution of our observed data, but do not care much about the probability distribution for <span class="math inline">\(\rho\)</span> and assume it to be fixed. If <span class="math inline">\(\rho\)</span> is fixed, the equation above becomes one simple binomial distribution. Think of this as a standard 2 dimensional plot.</p>
-<p>Us Bayesians consider our observed data to be fixed. We don’t consider alternate realities where our observed data is different due to sampling variation. Instead, we are concerned with the probability distribution of our parameter. In our urn scenario, <span class="math inline">\(\rho\)</span> is variable, so we have to create a separate binomial distribution for each possible value of <span class="math inline">\(\rho\)</span>. Think of this as a 3 dimensional joint distribution like what we created in <span class="citation" data-cites="n-models">(<a href="references.html#ref-n-models" role="doc-biblioref"><strong>n-models?</strong></a>)</span>.</p>
+<p>We Bayesians consider our observed data to be fixed. We don’t consider alternate realities where our observed data is different due to sampling variation. Instead, we are concerned with the probability distribution of our parameter. In our urn scenario, <span class="math inline">\(\rho\)</span> is variable, so we have to create a separate binomial distribution for each possible value of <span class="math inline">\(\rho\)</span>. Think of this as a 3 dimensional joint distribution like what we created in <a href="05-probability.html#sec-n-models"><span>Section&nbsp;5.6</span></a>.</p>
 <p>It is essential to understand the joint distribution and the posterior, two concepts Bayesians use to solve problems. We will provide quick a quick review here, including statistical notation that may be helpful to some.</p>
 <p><strong>The joint distribution</strong>, <span class="math inline">\(p(y|\theta)\)</span>, models the outcome <span class="math inline">\(y\)</span> given one or more unknown parameter(s), <span class="math inline">\(\theta\)</span>. The equation illustrates exact same concept we addressed while discussing the distinctions of Bayesian science: because our parameters are variable, we have to create separate distributions for each potential value. Combining all these distributions together creates a joint distribution that is 3 dimensional when plotted.</p>
 <p><strong>The posterior</strong>, <span class="math inline">\(p(\theta|y)\)</span>, is the probability distribution of our parameter(s) <span class="math inline">\(\theta\)</span>, created using data <span class="math inline">\(y\)</span> that updates our beliefs. We have referenced the posterior many times before, and this definition does not change its meaning.</p>
@@ -3695,7 +3695,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 <p>After voting for him in large numbers in 2008 and 2012, young Americans are souring on President Obama.</p>
 <p>According to a new Harvard University Institute of Politics poll, just 41 percent of millennials — adults ages 18-29 — approve of Obama’s job performance, his lowest-ever standing among the group and an 11-point drop from April.</p>
 </blockquote>
-<p>Let’s tie elements of the real life poll in this new article with our “tactile” and “virtual” urn activity from <span class="citation" data-cites="sampling-activity">(<a href="references.html#ref-sampling-activity" role="doc-biblioref"><strong>sampling-activity?</strong></a>)</span> and <span class="citation" data-cites="virtual-sampling">(<a href="references.html#ref-virtual-sampling" role="doc-biblioref"><strong>virtual-sampling?</strong></a>)</span> using the terminology, notations, and definitions we learned in <span class="citation" data-cites="standard-errors">(<a href="references.html#ref-standard-errors" role="doc-biblioref"><strong>standard-errors?</strong></a>)</span>. You’ll see that our sampling activity with the urn is an idealized version of what pollsters are trying to do in real life.</p>
+<p>Let’s tie elements of the real life poll in this new article with our “tactile” and “virtual” urn activity from <a href="#sec-sampling-activity"><span>Section&nbsp;6.1</span></a> and <a href="#sec-virtual-sampling"><span>Section&nbsp;6.2</span></a> using the terminology, notations, and definitions we learned in <a href="#sec-standard-errors"><span>Section&nbsp;6.3</span></a>. You’ll see that our sampling activity with the urn is an idealized version of what pollsters are trying to do in real life.</p>
 <p>First, who is the <strong>(Study) Population</strong> of <span class="math inline">\(N\)</span> individuals or observations of interest?</p>
 <ul>
 <li>Urn: <span class="math inline">\(N\)</span> = 1000 identically sized red and white beads</li>
@@ -3742,7 +3742,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
 <li>Obama poll: Was the sample conducted at random? We can’t answer this question without knowing about the <em>sampling methodology</em> used by Kennedy School’s Institute of Politics at Harvard University. We’ll discuss this more at the end of this section.</li>
 </ul>
 <p>In other words, the poll by Kennedy School’s Institute of Politics at Harvard University can be thought of as <em>an instance</em> of using the shovel to sample beads from the urn. Furthermore, if another polling company conducted a similar poll of young Americans at roughly the same time, they would likely get a different estimate than 41%. This is due to <em>sampling variation</em>.</p>
-<p>Let’s now revisit the sampling paradigm from <span class="citation" data-cites="terminology-and-notation">(<a href="references.html#ref-terminology-and-notation" role="doc-biblioref"><strong>terminology-and-notation?</strong></a>)</span>:</p>
+<p>Let’s now revisit the sampling paradigm from <a href="#sec-terminology-and-notation"><span>Section&nbsp;6.3.1</span></a>:</p>
 <p><strong>In general</strong>:</p>
 <ul>
 <li>If the sampling of a sample of size <span class="math inline">\(n\)</span> is done at <strong>random</strong>, then</li>

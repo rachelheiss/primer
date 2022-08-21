@@ -412,7 +412,7 @@ fit_obj
 
 The first line is telling us which model we used, in our case a `stan_glm()`. 
 
-The second line tells us this model is using a Gaussian, or normal, distribution. We discussed this distribution in @normal. We typically use this default unless we are working with a lefthand variable that is extremely non-normal, e.g., something which only takes two values like 0/1 or TRUE/FALSE. Since height is (very roughly) normally distributed, the Gaussian distribution is a good choice.
+The second line tells us this model is using a Gaussian, or normal, distribution. We discussed this distribution in @sec-normal. We typically use this default unless we are working with a lefthand variable that is extremely non-normal, e.g., something which only takes two values like 0/1 or TRUE/FALSE. Since height is (very roughly) normally distributed, the Gaussian distribution is a good choice.
 
 The third line gives us back the formula we provided. We are creating a model predicting height with a constant --- which is just about the simplest model you can create. Formulas in R are constructed in two parts. First, on the left side of the tilde (the "~" symbol) is the "response" or "dependent" variable, the thing which we are trying to explain. Since this is a model about `height`, `height` goes on the lefthand side. Second, we have the "explanatory" or "independent" or "predictor" variables on the righthand side of the tilde. There will often be many such variables but in this, the simplest possible model, there is only one, a single constant.  (The number `1` indicates that constant. It does not mean that we think that everyone is height `1`.) 
 

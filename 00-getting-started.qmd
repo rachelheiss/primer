@@ -32,7 +32,7 @@ knitr::include_graphics("00-getting-started/images/R_vs_RStudio.png")
 
 Much as we don't drive a car by interacting directly with the engine but rather by interacting with elements on the car's dashboard, we won't be using R directly. Instead, we will use RStudio's interface. After you install R and RStudio on your computer, you'll have two new *programs* (also called *applications*) you can open. Always work in RStudio and not directly in the R application.
 
-Open up RStudio. You should see three *panes*, or panels, dividing the screen: the *Console pane*, the *Environment pane*, and the *Files pane*.
+Open up RStudio. You should see three *panes* dividing the screen: the *Console pane*, the *Environment pane*, and the *Files pane*.
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/rstudio_box.png")
@@ -44,7 +44,7 @@ This is your workspace. Start with the big pane on the left:
 knitr::include_graphics("00-getting-started/images/left_window.png")
 ```
 
-There are three panels (or tabs) in this window, we'll be focusing on the Console and Terminal. When you first start R, the Console gives you some information about your version of R. The Console is where you can type and run R code. For example, if you type 1 + 1 and hit return, the Console returns 2.
+There are three tabs in the Console pane. We'll be focusing on the Console and Terminal. When you first start R, the Console gives you some information about your version of R. The Console is where you can type and run R code. For example, if you type 1 + 1 and hit return, the Console returns 2.
 
 <!-- DK: Redo this image by splitting it into two. First, show it as students see it, with nothing in the environment. Then, tell them to type x <- 5. Then, show them the image of what it looks like now. In neither case is there a data object. -->
 
@@ -54,15 +54,15 @@ Look at the top right:
 knitr::include_graphics("00-getting-started/images/top_right_window.png")
 ```
 
-The main two tabs you'll be using are Environment and Git (which is not yet visible). The Environment tab shows you the datasets and variables you currently have loaded into R. In this case, we loaded in a dataset with 3407 rows and 5 columns and a variable `x` equal to 5. For you, the Environment should be empty. Let's change that. Go to your Console and type:
+The main two tabs we will be using are Environment and Git (which is not yet visible). The Environment tab shows you the datasets and variables you currently have loaded into R. In this case, we loaded in a dataset with 3407 rows and 5 columns and a variable `x` equal to 5. For you, the Environment should be empty. Let's change that. Go to your Console and type:
 
 ```{r, eval = FALSE}
 x <- 5
 ```
 
-This assigned the value 5 to an object, x. `<-` is the operator used to assign values to objects in R. Now, hit return/enter and you should see a variable x equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command.
+This assigned the value 5 to an object, `x`. `<-` is the operator used to assign values to objects in R. Now, hit return/enter and you should see a variable `x` equal to 5 in your Environment tab. You must always hit return/enter after typing a command, otherwise RStudio will not realize that you want R to execute the command.
 
-Look at the bottom right window:
+Look at the bottom right pane:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("00-getting-started/images/bottom_right_window.png")
@@ -102,7 +102,7 @@ Before installing packages, issue this command:
 options(pkgType = "binary")
 ```
 
-<!-- DK: Cut this section since remotes comes installed with a new R installtion. (Is that true?) Of course, we need to show install.packages at some point, but it could be in a tutorial, maybe Getting Started. Goal is to make this chapter shorter! -->
+<!-- DK: Cut this section since remotes comes installed with a new R installation. (Is that true?) Of course, we need to show install.packages at some point, but it could be in a tutorial, maybe Getting Started. Goal is to make this chapter shorter! -->
 
 Doing so just makes various errors less likely.
 
@@ -127,7 +127,7 @@ R packages generally live in one of two places:
 
 -   CRAN (rhymes with "clan") for more mature, popular packages. Use `install.packages()`, as you did above.
 
--   Github for more experimental, less stable packages. Use `remotes::install_github()`. At the end of this section, we will install one package from Github.
+-   Github for more experimental, less stable packages. Use `remotes::install_github()`. At the end of this section, we will install a package from Github.
 
 ### Package loading {.unnumbered}
 
@@ -212,8 +212,6 @@ sqrt(64)
 
 -   *Errors, warnings, and messages*: these are important communications from R to you. When there is an error, the code will not run. Read (and/or Google) the message and try to fix it. Warnings don't prevent code from completing. For example, if you create a scatterplot based on data with two missing values, you will see this warning:
 
-<!-- -->
-
     Warning message:
     Removed 2 rows containing missing values (geom_point).  
 
@@ -223,21 +221,21 @@ Messages are similar. In both cases, you should fix the underlying issue until t
 
 You should have done the following:
 
--   Installed the *latest* versions of R and RStudio.
+  - Installed the *latest* versions of R and RStudio.
 
--   Installed, from CRAN, the **remotes** package:
+  - Installed, from CRAN, the **remotes** package:
 
 ```{r, eval = FALSE}
 install.packages("remotes")
 ```
 
--   Installed, from Github, the **primer.tutorials** package:
+  - Installed, from Github, the **primer.tutorials** package:
 
 ```{r, eval = FALSE}
 remotes::install_github("PPBDS/primer.tutorials")
 ```
 
--   Learned some basic terminology that will help you when you read the rest of the *Primer*.
+  - Learned some basic terminology that will help you when you read the rest of the *Primer*.
 
 Let's get started.
 

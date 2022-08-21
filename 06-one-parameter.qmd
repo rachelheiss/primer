@@ -209,7 +209,7 @@ Observe that `urn` has `r scales::comma(nrow(urn))` rows, meaning that the urn c
 
 Note that in this section, we used the variable `bead_ID` to keep track of each bead in our urn, while in the last section we used `group_ID` to keep track of the samples drawn by the 33 individual teams. This is a better strategy than naming both variables `ID`, as it would be much more likely for us to get them confused later on. 
 
-Our virtual urn needs a virtual shovel. We use `slice_sample()` and list-column mapping wizardry learned in @rlist-columns-and-map-functions to take a sample of 50 beads from our virtual urn.  
+Our virtual urn needs a virtual shovel. We use `slice_sample()` and list-column mapping wizardry learned in @sec-rlist-columns-and-map-functions to take a sample of 50 beads from our virtual urn.  
 
 ```{r}
 # Define trial_ID as one instance of us sampling 50 beads from the urn. When
@@ -265,7 +265,7 @@ Let's now perform the virtual analog of having 33 groups of students use the sam
 
 ### Using the virtual shovel 33 times {#shovel-33-times}
 
-In our tactile sampling exercise in @sampling-activity, we had 33 groups of students use the shovel, yielding 33 samples of size 50 beads. We then used these 33 samples to compute 33 proportions. 
+In our tactile sampling exercise in @sec-sampling-activity, we had 33 groups of students use the shovel, yielding 33 samples of size 50 beads. We then used these 33 samples to compute 33 proportions. 
 
 Let's use our virtual sampling to replicate the tactile sampling activity in a virtual format. We'll save these results in a data frame called `virtual_samples`. 
 
@@ -715,7 +715,7 @@ knitr::include_graphics("06-one-parameter/images/cant_breathe_sponge.png")
 
 ### Statistical definitions {#sec-sampling-definitions}
 
-Now, for some important statistical definitions related to sampling. As a refresher of our 1,000 repeated/replicated virtual samples of size $n$ = 25, $n$ = 50, and $n$ = 100 in @virtual-sampling, let's display our figure showing the difference in proportions red according to different shovel sizes.  
+Now, for some important statistical definitions related to sampling. As a refresher of our 1,000 repeated/replicated virtual samples of size $n$ = 25, $n$ = 50, and $n$ = 100 in @sec-virtual-sampling, let's display our figure showing the difference in proportions red according to different shovel sizes.  
 
 ```{r, echo = FALSE, fig.cap = "Previously seen three distributions of the sample proportion $\\hat{\rho}$."}
 comparing_sampling_distributions
@@ -1007,7 +1007,7 @@ $$ T_i  \sim B(\rho, n = 50) $$
 
 Some non-Bayesian frameworks are concerned with the probability distribution of our observed data, but do not care much about the probability distribution for $\rho$ and assume it to be fixed. If $\rho$ is fixed, the equation above becomes one simple binomial distribution. Think of this as a standard 2 dimensional plot. 
 
-Us Bayesians consider our observed data to be fixed. We don't consider alternate realities where our observed data is different due to sampling variation. Instead, we are concerned with the probability distribution of our parameter. In our urn scenario, $\rho$ is variable, so we have to create a separate binomial distribution for each possible value of $\rho$. Think of this as a 3 dimensional joint distribution like what we created in @n-models.
+We Bayesians consider our observed data to be fixed. We don't consider alternate realities where our observed data is different due to sampling variation. Instead, we are concerned with the probability distribution of our parameter. In our urn scenario, $\rho$ is variable, so we have to create a separate binomial distribution for each possible value of $\rho$. Think of this as a 3 dimensional joint distribution like what we created in @sec-n-models.
 
 It is essential to understand the joint distribution and the posterior, two concepts Bayesians use to solve problems. We will provide quick a quick review here, including statistical notation that may be helpful to some. 
 
@@ -1368,7 +1368,7 @@ On December 4, 2013, National Public Radio in the US reported on a poll of Presi
 > 
 > According to a new Harvard University Institute of Politics poll, just 41 percent of millennials — adults ages 18-29 — approve of Obama's job performance, his lowest-ever standing among the group and an 11-point drop from April.
 
-Let's tie elements of the real life poll in this new article with our "tactile" and "virtual" urn activity from @sampling-activity and @virtual-sampling using the terminology, notations, and definitions we learned in @standard-errors. You'll see that our sampling activity with the urn is an idealized version of what pollsters are trying to do in real life. 
+Let's tie elements of the real life poll in this new article with our "tactile" and "virtual" urn activity from @sec-sampling-activity and @sec-virtual-sampling using the terminology, notations, and definitions we learned in @sec-standard-errors. You'll see that our sampling activity with the urn is an idealized version of what pollsters are trying to do in real life. 
 
 First, who is the **(Study) Population** of $N$ individuals or observations of interest? 
 
@@ -1417,7 +1417,7 @@ Ninth and lastly, was the sampling done at **random**?
 
 In other words, the poll by Kennedy School's Institute of Politics at Harvard University can be thought of as *an instance* of using the shovel to sample beads from the urn. Furthermore, if another polling company conducted a similar poll of young Americans at roughly the same time, they would likely get a different estimate than 41%. This is due to *sampling variation*.
 
-Let's now revisit the sampling paradigm from @terminology-and-notation:
+Let's now revisit the sampling paradigm from @sec-terminology-and-notation:
 
 **In general**: 
 

@@ -270,22 +270,6 @@
         "vctrs"
       ]
     },
-    "bookdown": {
-      "Package": "bookdown",
-      "Version": "0.27",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "249ccee87c5a8def5cb459fd0809cca4",
-      "Requirements": [
-        "htmltools",
-        "jquerylib",
-        "knitr",
-        "rmarkdown",
-        "tinytex",
-        "xfun",
-        "yaml"
-      ]
-    },
     "boot": {
       "Package": "boot",
       "Version": "1.3-28",
@@ -524,20 +508,6 @@
       "Repository": "CRAN",
       "Hash": "8dc45fd8a1ee067a92b85ef274e66d6a",
       "Requirements": []
-    },
-    "credentials": {
-      "Package": "credentials",
-      "Version": "1.3.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "93762d0a34d78e6a025efdbfb5c6bb41",
-      "Requirements": [
-        "askpass",
-        "curl",
-        "jsonlite",
-        "openssl",
-        "sys"
-      ]
     },
     "crosstalk": {
       "Package": "crosstalk",
@@ -891,21 +861,6 @@
       "Hash": "15e9634c0fcd294799e9b2e929ed1b86",
       "Requirements": []
     },
-    "gert": {
-      "Package": "gert",
-      "Version": "1.6.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "98c014c4c933f23ea5a0321a4d0b588b",
-      "Requirements": [
-        "askpass",
-        "credentials",
-        "openssl",
-        "rstudioapi",
-        "sys",
-        "zip"
-      ]
-    },
     "gganimate": {
       "Package": "gganimate",
       "Version": "1.0.7",
@@ -1002,36 +957,6 @@
         "stringr",
         "tibble"
       ]
-    },
-    "gh": {
-      "Package": "gh",
-      "Version": "1.3.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "38c2580abbda249bd6afeec00d14f531",
-      "Requirements": [
-        "cli",
-        "gitcreds",
-        "httr",
-        "ini",
-        "jsonlite"
-      ]
-    },
-    "gifski": {
-      "Package": "gifski",
-      "Version": "1.6.6-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "32cfcc7a7a72484e5857645df33ac077",
-      "Requirements": []
-    },
-    "gitcreds": {
-      "Package": "gitcreds",
-      "Version": "0.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f3aefccc1cc50de6338146b62f115de8",
-      "Requirements": []
     },
     "globals": {
       "Package": "globals",
@@ -1288,14 +1213,6 @@
         "magrittr",
         "pkgconfig"
       ]
-    },
-    "ini": {
-      "Package": "ini",
-      "Version": "0.3.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "6154ec2223172bce8162d4153cda21f7",
-      "Requirements": []
     },
     "inline": {
       "Package": "inline",
@@ -1854,15 +1771,15 @@
     },
     "primer.data": {
       "Package": "primer.data",
-      "Version": "0.7.1.9001",
+      "Version": "0.7.2.9001",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "PPBDS",
       "RemoteRepo": "primer.data",
-      "RemoteRef": "master",
-      "RemoteSha": "5f19050549e3360e5b462edf9fc0929a6db56786",
-      "Hash": "8b9aa9e5b5a371859fc218fc07eae632",
+      "RemoteUsername": "PPBDS",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "f5e681eca3229c0627851c52e2139027b2a3cb4d",
+      "Hash": "b78a545f80c9b0680f29eead87631ffd",
       "Requirements": []
     },
     "processx": {
@@ -2775,34 +2692,6 @@
         "Rcpp"
       ]
     },
-    "usethis": {
-      "Package": "usethis",
-      "Version": "2.1.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "a67a22c201832b12c036cc059f1d137d",
-      "Requirements": [
-        "cli",
-        "clipr",
-        "crayon",
-        "curl",
-        "desc",
-        "fs",
-        "gert",
-        "gh",
-        "glue",
-        "jsonlite",
-        "lifecycle",
-        "purrr",
-        "rappdirs",
-        "rlang",
-        "rprojroot",
-        "rstudioapi",
-        "whisker",
-        "withr",
-        "yaml"
-      ]
-    },
     "utf8": {
       "Package": "utf8",
       "Version": "1.2.2",
@@ -2878,14 +2767,6 @@
         "tibble"
       ]
     },
-    "whisker": {
-      "Package": "whisker",
-      "Version": "0.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "ca970b96d894e90397ed20637a0c1bbe",
-      "Requirements": []
-    },
     "withr": {
       "Package": "withr",
       "Version": "2.5.0",
@@ -2942,14 +2823,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "458bb38374d73bf83b1bb85e353da200",
-      "Requirements": []
-    },
-    "zip": {
-      "Package": "zip",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c7eef2996ac270a18c2715c997a727c5",
       "Requirements": []
     },
     "zoo": {

@@ -166,7 +166,7 @@ install_github("PPBDS/primer.tutorials")
 
 Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn "curly." In that case, type the commands yourself from scratch.
 
-Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*. It may take a few minutes. If something gets messed up, it is often useful to use read the error messages and see if a specific package is at fault. If so, use the `remove.packages()` command to remove the problematic package and then install it again.
+Many other new packages will be installed, including **primer.data**, which provides the data sets we use in the *Primer*. It may take a few minutes. If something gets messed up, it is often useful to read the error messages and see if a specific package is at fault. If so, use the `remove.packages()` function to remove the problematic package and then install it again.
 
 Once you have **primer.tutorials** installed, run these commands.
 
@@ -175,7 +175,7 @@ library(primer.tutorials)
 prep_rstudio_settings()
 ```
 
-This command sets various R/RStudio options to convenient values.
+The `prep_rstudio_settings()` function sets various R/RStudio options to convenient values.
 
 
 ### Tutorials {.unnumbered}

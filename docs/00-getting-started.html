@@ -437,13 +437,13 @@ div.csl-indent {
 <span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"PPBDS/primer.tutorials"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Depending on your computer/browser/locale, this might fail, especially if the quotation marks you paste over turn “curly.” In that case, type the commands yourself from scratch.</p>
-<p>Many other new packages will be installed, including <strong>primer.data</strong>, which provides the data sets we use in the <em>Primer</em>. It may take a few minutes. If something gets messed up, it is often useful to use read the error messages and see if a specific package is at fault. If so, use the <code><a href="https://rdrr.io/r/utils/remove.packages.html">remove.packages()</a></code> command to remove the problematic package and then install it again.</p>
+<p>Many other new packages will be installed, including <strong>primer.data</strong>, which provides the data sets we use in the <em>Primer</em>. It may take a few minutes. If something gets messed up, it is often useful to read the error messages and see if a specific package is at fault. If so, use the <code><a href="https://rdrr.io/r/utils/remove.packages.html">remove.packages()</a></code> function to remove the problematic package and then install it again.</p>
 <p>Once you have <strong>primer.tutorials</strong> installed, run these commands.</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">primer.tutorials</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/primer.tutorials/man/prep_rstudio_settings.html">prep_rstudio_settings</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This command sets various R/RStudio options to convenient values.</p>
+<p>The <code><a href="https://rdrr.io/pkg/primer.tutorials/man/prep_rstudio_settings.html">prep_rstudio_settings()</a></code> function sets various R/RStudio options to convenient values.</p>
 </section><section id="tutorials" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="tutorials">Tutorials</h3>
 <!-- DK: Is this really necessary? I think that you get all the tutorials for free? That is, you don't need to load them explicitly. They are just found by the Tutorial pane. -->
 <p>For each chapter of the textbook, there are one or more tutorials available in the <strong>primer.tutorials</strong> package. In order to access these tutorials, you should run <code><a href="https://rdrr.io/r/base/library.html">library(primer.tutorials)</a></code> in the R Console.</p>

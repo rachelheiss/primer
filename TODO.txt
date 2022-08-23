@@ -22,6 +22,35 @@ I dislike it when Run Code does not produce anything even when the answer is cor
 as_tibble() now has a warning if we don't use .name_repair argument. Deal with this.
 
 
+https://quarto.org/docs/tools/rstudio.html suggests that there is a Quarto setting to check, but I don't see it yet.
+
+.packages() working.
+
+PDF version. Allowing students to read offline.
+
+Third, add lots and lots of comments. (Read all my comments closely first.)
+
+More details _quarto.yml. 
+
+Github Actions. Fourth, can we build it automatically on the web after accepting.
+
+https://github.com/features/actions
+
+Fifth, start pondering interactivity . . .
+
+https://bookdown.org/yihui/bookdown/
+https://bookdown.org/yihui/bookdown/configuration.html
+
+https://happygitwithr.com/usage-intro.html
+
+https://quarto.org/docs/projects/scripts.html#pre-and-post-render
+
+https://thomasmock.quarto.pub/quarto-curious/
+https://mine.quarto.pub/hello-quarto (watch movie)
+https://quarto.org/docs/books/
+https://www.njtierney.com/post/2022/04/11/rmd-to-qmd/
+https://tmb.njtierney.com/
+
 ## Important topics for this summer
 
 * very nice approach to all model topics, especially the discussion of posterior predictive checks. https://methodmatters.github.io/steps-bayesian-rstanarm/ Check this out and then redo the later chapters.

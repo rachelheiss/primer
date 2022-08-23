@@ -1093,7 +1093,7 @@ In our past three models, we have considered 3 possible issues that we could hav
 
 Let's consider whether this model is linear or logistic. Unlike our previous models this chapter, the outcome variable, `liberal`, for this model, only has two options, "Liberal" or "Not Liberal". Therefore, this will be logistic because there are only 2 possible outcomes and the outcome variable isn't continuous. 
 
-Recall the discussion in @zero-one-outcomes about the logistic regression model which we use whenever the outcome or dependent variable is binary/logical. The math is there, if you care about math. We don't, at least not too much. Reminder:
+Recall the discussion in @sec-zero-one-outcomes about the logistic regression model which we use whenever the outcome or dependent variable is binary/logical. The math is there, if you care about math. We don't, at least not too much. Reminder:
 
 $$p(\text{Liberal}_i = \text{TRUE}) = \frac{\text{exp}(\beta_0 + \beta_1 \text{income}_i)}{1 + \text{exp}(\beta_0 + \beta_1 \text{income}_i)}$$
 

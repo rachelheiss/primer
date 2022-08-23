@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Preceptor’s Primer for Bayesian Data Science - 6&nbsp; One Parameter</title>
+<title>Preceptor’s Primer for Bayesian Data Science: Using the Cardinal Virtues for Inference - 6&nbsp; One Parameter</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,19 +127,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Preceptor’s Primer for Bayesian Data Science</a> 
+      <a href="./">Preceptor’s Primer for Bayesian Data Science: Using the Cardinal Virtues for Inference</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/PPBDS/primer/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
 <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science--Using-the-Cardinal-Virtues-for-Inference.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Preceptor-s-Primer-for-Bayesian-Data-Science--Using-the-Cardinal-Virtues-for-Inference.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -227,12 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tools.html" class="sidebar-item-text sidebar-link">Tools</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./animation.html" class="sidebar-item-text sidebar-link">Animation</a>
+  <a href="./style_guide.html" class="sidebar-item-text sidebar-link">Style Guide</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -428,20 +423,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 4
-   group          red_beads prop_red group_ID
-   &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;    &lt;int&gt;
- 1 Conrad, Vlad          16     0.32        1
- 2 Ian, Iman             18     0.36        2
- 3 Mal, Francis          17     0.34        3
- 4 Dohyun, Estel         18     0.36        4
- 5 Esther, Henry         17     0.34        5
- 6 Sophie, Brian         21     0.42        6
- 7 Claire, Cloud         16     0.32        7
- 8 Yuki, Harry           21     0.42        8
- 9 Ace, Chris            18     0.36        9
-10 Caroline, Edna        15     0.3        10
-# … with 23 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+   group           red_beads prop_red group_ID
+   &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;    &lt;int&gt;
+ 1 Esther, Henry          17     0.34        1
+ 2 Mal, Francis           17     0.34        2
+ 3 Damani, Melissa        15     0.3         3
+ 4 Ellie, Terrance        17     0.34        4
+ 5 Maddie, Brent          19     0.38        5
+ 6 Ishan, Cass            15     0.3         6
+ 7 Nam, Joshua            19     0.38        7
+ 8 Dohyun, Estel          18     0.36        8
+ 9 Mark, Jane             21     0.42        9
+10 Ian, Iman              18     0.36       10
+# … with 23 more rows</code></pre>
 </div>
 </div>
 <p>For each <code>group</code>, we are given their names, the number of <code>red_beads</code> they obtained, and the corresponding proportion out of 50 beads that were red, called <code>prop_red</code>. We also have an <code>group_ID</code> variable which gives each of the 33 groups a unique identifier. Each row can be viewed as one instance of a replicated activity: using the shovel to remove 50 beads and computing the proportion of those beads that are red.</p>
@@ -512,8 +506,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  8 white       8
  9 white       9
 10 white      10
-# … with 990 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 990 more rows</code></pre>
 </div>
 </div>
 <p>Observe that <code>urn</code> has 1,000 rows, meaning that the urn contains 1,000 beads. The first variable <code>bead_ID</code> is used as an <em>identification variable</em>. None of the beads in the actual urn are marked with numbers. The second variable <code>color</code> indicates whether a particular virtual bead is red or white.</p>
@@ -612,8 +605,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  8        8 &lt;tibble [50 × 2]&gt;       21     0.42
  9        9 &lt;tibble [50 × 2]&gt;       16     0.32
 10       10 &lt;tibble [50 × 2]&gt;       20     0.4 
-# … with 23 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 23 more rows</code></pre>
 </div>
 </div>
 <p>Let’s visualize this variation in a histogram:</p>
@@ -1296,8 +1288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  8        3        50 &lt;tibble [50 × 2]&gt;       21     0.42
  9        3       100 &lt;tibble [100 × 2]&gt;      40     0.4 
 10        4        25 &lt;tibble [25 × 2]&gt;        9     0.36
-# … with 2,990 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 2,990 more rows</code></pre>
 </div>
 </div>
 <p>To those of us who do not completely understand mapping, do not fret! The <strong>tidyr</strong> package provides the <code><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid()</a></code> function as a neat alternative. We can use <code><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid()</a></code> and a new variable, <code>shovel_size</code>, to create a tibble which will organize our results. Instead of using 1,000 trials, let’s use 3 to get a feel for the function.</p>
@@ -3371,8 +3362,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
  8 0.242
  9 0.307
 10 0.300
-# … with 3,990 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 3,990 more rows</code></pre>
 </div>
 </div>
 <p>Because we do not wish to create our distribution conditional on some covariate, we want to pass in a tibble with 1 row into the <code>newdata</code> argument. An empty tibble has 0 rows, so we instead pass in a tibble with some junk data. <code>constant = 1</code> is completely meaningless. Now we plot the result:</p>
@@ -3427,8 +3417,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
  8  0.39 0.047 
  9  0.3  0.0462
 10  0.38 0.0442
-# … with 36 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 36 more rows</code></pre>
 </div>
 </div>
 <p>We can also accomplish a similar effect by passing <code>aes(y = after_stat(count/sum(count))</code> into <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> when plotting. Oftentimes, like in answering the probability that <span class="math inline">\(\rho\)</span> is between .3 and .4, we can work with the posterior distribution to the very end. Just divide the number of draws that meet our condition (are between .3 and .4), by the total number of draws.</p>
@@ -3479,8 +3468,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
  9     1     0     1     1     0     0     0     0     0     1     0     1     1
 10     0     0     1     1     0     0     0     0     0     0     0     0     0
 # … with 3,990 more rows, and 7 more variables: `14` &lt;int&gt;, `15` &lt;int&gt;,
-#   `16` &lt;int&gt;, `17` &lt;int&gt;, `18` &lt;int&gt;, `19` &lt;int&gt;, `20` &lt;int&gt;
-# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+#   `16` &lt;int&gt;, `17` &lt;int&gt;, `18` &lt;int&gt;, `19` &lt;int&gt;, `20` &lt;int&gt;</code></pre>
 </div>
 </div>
 <p>Each of our 4,000 rows represent one instance of us predicting a future sample from the urn, and each column represents the color bead in a shovel slot. We will create a new column called <code>total</code> and use <code><a href="https://rdrr.io/r/base/colSums.html">rowSums()</a></code> to calculate the total number of red beads drawn in the sample. Finally, we will graph the resulting distribution.</p>
@@ -3600,8 +3588,7 @@ $ st_dev_p_hat &lt;dbl&gt; 0.48436516, 0.34093399, 0.27629253, 0.24069833, 0.214
  8     3 FALSE      
  9     7 FALSE      
 10     6 FALSE      
-# … with 3,990 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
+# … with 3,990 more rows</code></pre>
 </div>
 </div>
 <p>We can then can set the fill of our histogram to when <code>above_eight == TRUE</code> to visualize the probability of drawing more than 8 red beads.</p>
